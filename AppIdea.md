@@ -56,8 +56,6 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
 
 ### Technical
 
-#### Miscellaneous
-* notification: push notification  https://www.raywenderlich.com/123862/push-notifications-tutorial
 #### Screens
 * [list the different screens used in the app]
 * Demand:
@@ -86,6 +84,9 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
 
 #### Data models
 * [list all Parse data models your app will need]
+
+#### Miscellaneous
+* notification: push notification     https://www.raywenderlich.com/123862/push-notifications-tutorial
 
 [Back to top ^](#)
 
