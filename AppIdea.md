@@ -60,6 +60,9 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
 * notification: push notification  https://www.raywenderlich.com/123862/push-notifications-tutorial
 #### Screens
 * [list the different screens used in the app]
+* Demand:
+  * Search screen(Initial)
+* Supply:
 
 #### External services
 * [list which APIs or external services will your app use?]
