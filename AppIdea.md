@@ -50,6 +50,7 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
 * Reference App:
    * 潔客幫
    * Maids App
+
 [Back to top ^](#)
 
 ---
@@ -165,6 +166,9 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
   * Search screen(Initial)
 * Supply:
 
+
+
+
 #### Data models
 * [list all Parse data models your app will need]
 * CleaningPerson Parse Class:
@@ -205,16 +209,32 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
 ### MVP Milestones
 [The overall milestones of first usable build, core features, and polish are just suggestions, plan to finish earlier if possible. The last 20% of work tends to take about as much time as the first 80% so do not slack off on your milestones!]
 
+#### Core Feature
+* Registration of Cleaning Person/ Customer through Facebook
+* Search Function for Customer
+* Request Send
+* Request Respond 
+
 #### Week 1
 _planing your app_
-* [goals for the week]
+
+* Data model: CleaningPerson class, Customer class, Request class
+* Search Function for Customer:
+    * SearchByCountyViewController's tableview only
+* Request sending function ( tap then initiate an instance of Request class, add new cell in to next item)
+* CleaningPerson Request View Controller's Request Table View
 
 #### Week 2
 _finishing a usable build_
-* [goals for the week, should be finishing a usable app]
+* Requst flow: 
+ * Respond
+ * CustomerRequestViewController's tableView and DetailView
+* Registration and LogIn with Facebook
+  * Cleaning Person profile setting up
+
 
 #### Week 3
-* [goals for the week]
+* SearchByCountyViewContoller's DetailView(profile of cleaning person viewing)
 
 #### Week 4
 * [goals for the week, should be finishing all core features]
