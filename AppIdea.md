@@ -82,26 +82,68 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
   2. FBLogin(2)
 
 * CustomerSide:
-  * SearchByCountyView(Initial)(1):
-    1. SearchByCountyView(1)
-    2. ResultListView(2): ViewCell(Photo, Name, HourRate, Review ), Request_Button
-    3. CleaningPersonProfileView(3): Photo, Name, HourRate, Review, Request_Button
-    4. Request_Button -> Request_for_contact_info_flow and CustomerRequestTableView(4)
-  * CustomerRequestView(4):
-    1. CustomerRequestTableView(4): In cell
-      * Cell:
-          * Photo, Name, HourRate
-          * StateOfRequest: switch(AuthorizationFromCP: Bool)
-            -> True: "Request Sent, Wait for Response"
-            -> False: "Contact Info Received, Contact Cell.Name" + PhoneIcon
-      * Tap Cell/PhoneIcon -> CleaningPersonCellDetailView(5)
+  * TabBarController(ONE, TWO, THREE):
+    * SearchByCountyViewController(Initial)(ONE):
+      1. SearchByCountyView(1): send County to ResultListView
+      2. ResultListView(2): ViewCell(Photo, Name, HourRate, Review), Request_Button
+      3. CleaningPersonProfileView(3): Photo, Name, HourRate, Review, Request_Button, Introduction
+      4. Request_Button -> Request_for_contact_info_flow and CustomerRequestTableView(4)
+    * CustomerRequestViewController(TWO):
+      1. CustomerRequestTableView(4): In cell
+        * Cell:
+            * Photo, Name, HourRate
+            * StateOfRequest: switch(AuthorizationFromCP: Bool)
+              -> True: "Request Sent, Wait for Response"
+              -> False: "Contact Info Received, Contact Cell.Name" + PhoneIcon
+        * Tap Cell/PhoneIcon -> CleaningPersonCellDetailView(5)
 
-    2. CleaningPersonCellDetailView(5):
-      * Switch(Authorization: Bool):
-        *
+      2. CleaningPersonCellDetailView(5):
+        * CleaningPerson.Photo, .Name, .HourRate, .Introduction, .Reviews
+        * Switch(Authorization: Bool):
+          * True:  CleaningPerson.ContactMethod shown bottom, while ReviewCP button on rightBarButton and the bottom of view( tapped -> ReviewView(6)
+          * False: N/A, a backTo(4)BarButton
+
+      3. ReviewView(6):
+        * BarTitle: Review CleaningPerson.Name
+        * CancelBarButton
+        * SubmitBarButton
+        * View:
+          * Star Rating
+          * Description of service
+    * CustomerSettingViewController(THREE):
+      * FunctionTableView(7):
+         * HelpCell: DetailView(8)
+         * FlaggedContent: DetailView(8)
+         * Profile & Contact Info: CustomerProfileEditView(9)
+         * Log Out
+      * DetailView(8):
+         * From Help Cell: show tutorial ?
+         * FromFlaggedContetn: show FlaggedContent?
+      * CustomerProfileEditView(9):
+         * Photo: -> ImagePickerController
+         * View and Edit Name, County, ContactMethod(Phone -> PhoneVerification, Email),AvailableTimeToContact
+         * UpdateButton -> Refresh the ProfileEditView(9)
+         * BackBarButton -> FunctionTableView(7)
 
 * CleaningPersonSide:
-
+  * TabBarController(ONE-1, TWO-1, THREE-1)
+    * ProfileViewController(ONE-1):
+      1. PreviewView(10):
+        * View Photo, Name, County, ContactMethod, AvailableTimeToContact
+        * Edit/UpdateButton -> CPProfileEditView(11)
+      2. CPProfileEditView(11):
+        * Edit .........
+        * UpdateButton -> PreviewView(10)
+        * CancelBarButton -> FunctionTableView(10)
+    * RequestViewController(TWO-1):
+      * RequestTableView(12):
+        * Cell:
+            * Customer.Photo, .Name
+            * StateOfRequest: switch(Authorized: Bool)
+              -> True: "Contact \(Customer.name) to provide your service"
+              -> False: "\(Customer.name) sent a request for your contact!" + + ReplyButton(tapped goto CustomerProfileView(13) )
+      * CustomerProfileView(13):
+        * 
 
 * Request for contact info flow:
   1. Customer sent a request for contact info to cleaning person with Customer's email, contact info , and go to the RequestView of Customer after sent
