@@ -141,9 +141,18 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
             * Customer.Photo, .Name
             * StateOfRequest: switch(Authorized: Bool)
               -> True: "Contact \(Customer.name) to provide your service"
-              -> False: "\(Customer.name) sent a request for your contact!" + + ReplyButton(tapped goto CustomerProfileView(13) )
+              -> False: "\(Customer.name) sent a request for your contact!" + ReplyButton(tapped goto CustomerProfileView(13) )
+            * TapCell -> CustomerProfileView(13) sent with StateOfRequest
       * CustomerProfileView(13):
-        * 
+        * Customer.Name, .Photo, .Email, .Phone
+        * ReplyButton show if StateOfRequest false:
+          * Tapped -> RequestTableView(12)
+
+    * SettingViewController(THREE-1):
+      * FunctionTableView(13):
+        * Help:
+        * FlaggedContent:  -> some View
+        * Log Out
 
 * Request for contact info flow:
   1. Customer sent a request for contact info to cleaning person with Customer's email, contact info , and go to the RequestView of Customer after sent
