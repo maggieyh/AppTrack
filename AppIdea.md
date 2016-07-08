@@ -64,7 +64,7 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
         * Facebook Registration:
           * Ask to Retrieve Email address, name, Photo, save into User object
       2. Phone verification: https://numverify.com/documentation
-      3. Choose county you live in   
+    //  3. Choose county you live in   
 
   * CleaningPerson:
       1. Basic Info:
@@ -86,7 +86,19 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
     1. SearchByCountyView(1)
     2. ResultListView(2): ViewCell(Photo, Name, HourRate, Review ), Request_Button
     3. CleaningPersonProfileView(3): Photo, Name, HourRate, Review, Request_Button
-    4. Request_Button -> Request_for_contact_info_flow
+    4. Request_Button -> Request_for_contact_info_flow and CustomerRequestTableView(4)
+  * CustomerRequestView(4):
+    1. CustomerRequestTableView(4): In cell
+      * Cell:
+          * Photo, Name, HourRate
+          * StateOfRequest: switch(AuthorizationFromCP: Bool)
+            -> True: "Request Sent, Wait for Response"
+            -> False: "Contact Info Received, Contact Cell.Name" + PhoneIcon
+      * Tap Cell/PhoneIcon -> CleaningPersonCellDetailView(5)
+
+    2. CleaningPersonCellDetailView(5):
+      * Switch(Authorization: Bool):
+        *
 
 * CleaningPersonSide:
 
