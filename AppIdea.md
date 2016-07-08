@@ -87,7 +87,9 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
       1. SearchByCountyView(1): send County to ResultListView
       2. ResultListView(2): ViewCell(Photo, Name, HourRate, Review), Request_Button
       3. CleaningPersonProfileView(3): Photo, Name, HourRate, Review, Request_Button, Introduction
-      4. Request_Button -> Request_for_contact_info_flow and CustomerRequestTableView(4)
+      4. Request_Button -> ReqeustAlertAction: "Request for info and your contact info will be sent to CleaningPerson.Name if CleaningPerson.Name agree to your Request"
+          -> OK-> Request_for_contact_info_flow and screen goTo CustomerRequestTableView(4)
+          -> Cancel -> go backTo CleaningPersonProfileView(3)
     * CustomerRequestViewController(TWO):
       1. CustomerRequestTableView(4): In cell
         * Cell:
@@ -144,9 +146,10 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
               -> False: "\(Customer.name) sent a request for your contact!" + ReplyButton(tapped goto CustomerProfileView(13) )
             * TapCell -> CustomerProfileView(13) sent with StateOfRequest
       * CustomerProfileView(13):
-        * Customer.Name, .Photo, .Email, .Phone
-        * ReplyButton show if StateOfRequest false:
-          * Tapped -> RequestTableView(12)
+        * Customer.Name, .Photo
+        * Switch(StateOfRequest)
+           * True: show Customer.Email, .Phone
+           * False: ReplyButton shown(Tapped -> CustomerProfileView update )
 
     * SettingViewController(THREE-1):
       * FunctionTableView(13):
@@ -155,8 +158,8 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
         * Log Out
 
 * Request for contact info flow:
-  1. Customer sent a request for contact info to cleaning person with Customer's email, contact info , and go to the RequestView of Customer after sent
-  2.
+  1. Customer sent a Request for contact info to CleaningPerson
+  2. CleaningPerson.RequestViewController received Request, push notification
   3.
 * Demand:
   * Search screen(Initial)
