@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CED2A9583AA62343EAE7587884EF4FD801BD941A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CED2A9583AA62343EAE7587884EF4FD801BD941A" : 0,
+    "B5A73F5941FB157BEC719109AA739BB2DF431730" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "01AB9A0D-8A33-4B8F-8B43-283AFC52BF11",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CED2A9583AA62343EAE7587884EF4FD801BD941A" : "DEMO\/",
+    "B5A73F5941FB157BEC719109AA739BB2DF431730" : ""
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ChoreSolver",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ChoreSolver\/ChoreSolver.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/maggieyh\/AppsTrack2016.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B5A73F5941FB157BEC719109AA739BB2DF431730"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/maggieyh\/AppTrack.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CED2A9583AA62343EAE7587884EF4FD801BD941A"
+    }
+  ]
+}

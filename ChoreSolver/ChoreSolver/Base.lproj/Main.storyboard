@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="X0R-i2-Zdq">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--User Request View Controller-->
+        <scene sceneID="Ji0-Pi-uMZ">
+            <objects>
+                <viewController title="User Request View Controller" id="yte-Is-ccW" customClass="UserRequestViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T2C-EU-KZU"/>
+                        <viewControllerLayoutGuide type="bottom" id="bBn-TV-PDP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="POl-ay-kF1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Request" id="xDn-Zp-IKW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EIs-Qx-BHm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="549" y="594"/>
+        </scene>
+        <!--User Setting View Controller-->
+        <scene sceneID="T3D-GP-dOe">
+            <objects>
+                <viewController title="User Setting View Controller" id="8J2-nE-Lmz" customClass="UserSettingViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ovj-Qi-9w1"/>
+                        <viewControllerLayoutGuide type="bottom" id="ACc-QW-U0K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="13r-hp-0fH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Setting" id="Nux-TD-ypI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y5R-ra-W8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="549" y="1286"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="iqD-Nx-TYw">
+            <objects>
+                <viewController title="Search View Controller" id="UWC-gY-suk" customClass="SearchViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mlC-I7-2wN"/>
+                        <viewControllerLayoutGuide type="bottom" id="nmJ-a1-eyJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="83h-9u-Scm">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCw-i4-wJy">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Search" id="9sW-nc-5kF"/>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="os8-Si-LVt">
+                                <rect key="frame" x="130" y="109" width="340" height="92"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="WL1-yx-J3L">
+                                        <rect key="frame" x="0.0" y="0.0" width="340" height="92"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hep-3c-3U7">
+                                                <rect key="frame" x="0.0" y="0.0" width="340" height="92"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Cleaning Service ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zy5-f3-CII">
+                                                        <rect key="frame" x="8" y="0.0" width="325" height="36"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="County" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIs-jf-HaB">
+                                                        <rect key="frame" x="122" y="56" width="97" height="36"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpO-hd-iso">
+                                <rect key="frame" x="0.0" y="224" width="600" height="286"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cCw-i4-wJy" firstAttribute="top" secondItem="mlC-I7-2wN" secondAttribute="bottom" id="9rb-GE-zCh"/>
+                            <constraint firstItem="os8-Si-LVt" firstAttribute="top" secondItem="cCw-i4-wJy" secondAttribute="bottom" constant="45" id="EIa-Nh-JeH"/>
+                            <constraint firstItem="nmJ-a1-eyJ" firstAttribute="top" secondItem="os8-Si-LVt" secondAttribute="bottom" constant="350" id="Gvl-58-JRC"/>
+                            <constraint firstAttribute="trailing" secondItem="cCw-i4-wJy" secondAttribute="trailing" id="XDk-j0-4TS"/>
+                            <constraint firstItem="mpO-hd-iso" firstAttribute="top" secondItem="os8-Si-LVt" secondAttribute="bottom" constant="23" id="XYI-LC-heg"/>
+                            <constraint firstAttribute="trailing" secondItem="os8-Si-LVt" secondAttribute="trailing" constant="130" id="d6q-nr-h10"/>
+                            <constraint firstItem="cCw-i4-wJy" firstAttribute="leading" secondItem="83h-9u-Scm" secondAttribute="leading" id="e1M-OH-4hD"/>
+                            <constraint firstItem="mpO-hd-iso" firstAttribute="leading" secondItem="83h-9u-Scm" secondAttribute="leading" id="hBo-nK-3cD"/>
+                            <constraint firstItem="os8-Si-LVt" firstAttribute="leading" secondItem="83h-9u-Scm" secondAttribute="leading" constant="130" id="lSv-sN-jZ0"/>
+                            <constraint firstItem="nmJ-a1-eyJ" firstAttribute="top" secondItem="mpO-hd-iso" secondAttribute="bottom" constant="41" id="mR6-gf-sSP"/>
+                            <constraint firstAttribute="trailing" secondItem="mpO-hd-iso" secondAttribute="trailing" id="yka-gi-8aI"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="IIE-x8-QcG"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gOC-aT-pRW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="549" y="-67"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="IYf-IL-zQF">
+            <objects>
+                <tabBarController id="X0R-i2-Zdq" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="TA2-J2-UxI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="UWC-gY-suk" kind="relationship" relationship="viewControllers" id="0JO-rs-C6h"/>
+                        <segue destination="yte-Is-ccW" kind="relationship" relationship="viewControllers" id="1Mq-EH-QD9"/>
+                        <segue destination="8J2-nE-Lmz" kind="relationship" relationship="viewControllers" id="DAT-xe-JJx"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HMs-le-TSt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-271" y="264"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="search" width="15" height="17"/>
+    </resources>
+</document>

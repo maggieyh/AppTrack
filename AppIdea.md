@@ -84,7 +84,7 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
 
 * CustomerSide:
   * TabBarController(ONE, TWO, THREE):
-    * SearchByCountyViewController(Initial)(ONE):
+    * SearchViewController(Initial)(ONE):
       1. SearchByCountyView(1): send County to ResultListView
       2. ResultListView(2): ViewCell(Photo, Name, HourRate, Review), Request_Button
       3. CleaningPersonProfileView(3): Photo, Name, HourRate, Review, Request_Button, Introduction
@@ -217,7 +217,7 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
 #### Week 1
 _planing your app_
 
-* Data model: CleaningPerson class, Customer class, Request class
+* | Data model: CleaningPerson class, Customer class, Request class
 * Search Function for Customer:
     * SearchByCountyViewController's tableview only
 * Request sending function ( tap then initiate an instance of Request class, add new cell in to next item)
