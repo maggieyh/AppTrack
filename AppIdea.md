@@ -162,9 +162,6 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
   1. Customer sent a Request for contact info to CleaningPerson
   2. CleaningPerson.RequestViewController received Request, push notification
   3.
-* Demand:
-  * Search screen(Initial)
-* Supply:
 
 
 
@@ -213,7 +210,9 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
 * Registration of Cleaning Person/ Customer through Facebook
 * Search Function for Customer
 * Request Send
-* Request Respond 
+* Request Respond
+
+**** NSTimer!!!
 
 #### Week 1
 _planing your app_
@@ -226,7 +225,7 @@ _planing your app_
 
 #### Week 2
 _finishing a usable build_
-* Requst flow: 
+* Requst flow:
  * Respond
  * CustomerRequestViewController's tableView and DetailView
 * Registration and LogIn with Facebook
@@ -235,9 +234,11 @@ _finishing a usable build_
 
 #### Week 3
 * SearchByCountyViewContoller's DetailView(profile of cleaning person viewing)
+* Cleaning Person Profile view Controller and edit
 
 #### Week 4
 * [goals for the week, should be finishing all core features]
+* design
 
 #### Week 5
 _starting the polish_
@@ -248,3 +249,12 @@ _submitting to the App Store_
 * [goals for the week, should be finishing the polish -- demo day on Saturday!]
 
 [Back to top ^](#)
+### Configuration
+* APP_Name: cleansolver-parse-yh
+* APP_ID: CleanSolver
+* MASTER_KEY: s00EeZiKo7MOckYXpmh/E4BDROlg6n+gWP78QpAk9wQ=
+* SERVER_URL: https://cleansolver-parse-yh.herokuapp.com/parse
+//DashBoard setting
+* USERNAME: yaohsiao
+* App Name (optional): parse-dashboard-yh
+* PASSWORD: QnajXYnFXvDv3MjX
