@@ -21,7 +21,7 @@ class CleanPerson: PFObject, PFSubclassing {
     //MARK: PFSubclassing Protocol
     
     static func parseClassName() -> String {
-        return "CleanPerson"
+        return "User"
     }
 
     override init () {

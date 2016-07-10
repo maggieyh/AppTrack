@@ -10,12 +10,14 @@ import UIKit
 import Parse
 import ConvenienceKit
 class TestRequestViewController: UIViewController {
+    
+    @IBOutlet weak var searchResultTableView: UITableView!
 
-    //var cleanPersons: [CleanPerson] = []
+    var cleanPersons: [PFUser] = []
+    var imageData: [NSData] = []
+    var numOfClean: Int?
     
-    
-    @IBOutlet weak var customerNameLabel: UILabel!
-    //@IBOutlet weak var searchResultTableView: UITableView!
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,21 +34,23 @@ class TestRequestViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let cleanpersonQuery = PFQuery(className: "User")
-        cleanpersonQuery.whereKey("userType", equalTo: "CleanPerson")
-        
-        cleanpersonQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
-                if let result = result {
-                    print("enter")
-                    for ele in result {
-                        print(ele["username"])
-                    }
-                } else {
-                    print("fail")
+        let cleanPersonQuery : PFQuery = PFUser.query()!
+        cleanPersonQuery.whereKey("userType", equalTo: "CleanPerson")
+        cleanPersonQuery.whereKey("county", equalTo: "Hualien")
+        cleanPersonQuery.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error: NSError?) in
+            if let result = result {
+                self.cleanPersons = result as! [PFUser]
+                self.numOfClean = result.count
+                self.searchResultTableView.reloadData()
+                let per = result[0]
+                if per["imageFile"] != nil {
+                    print("valid")
                 }
-                
+            } else {
+                print(error)
             }
+        }
+        
         
     }
 
@@ -64,16 +68,27 @@ class TestRequestViewController: UIViewController {
     
 }
 
-//extension TestRequestViewController: UITableViewDataSource {
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 3
-//    }
-//    
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("CleanPersonCell", forIndexPath: indexPath) as! SearchResultTableViewCell
-//        cell.imageView?.image = UIImage(named: "search")
-//        cell.cleanPersonNameLabel?.text = "aName"
-//        
-//        return cell
-//    }
-//}
+extension TestRequestViewController: UITableViewDataSource {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let num = numOfClean ?? 0
+        return num
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("CleanPersonCell", forIndexPath: indexPath) as! SearchResultTableViewCell
+        let person = cleanPersons[indexPath.row]
+//        do {
+//            let imageFile = person["imageFile"] as! PFFile
+            
+//            cell.imageView?.image = UIImage(data: data, scale: 1.0)
+//        } catch {
+        cell.imageView?.image = UIImage(named: "search")
+//        }
+        
+        
+        cell.cleanPersonNameLabel.text = person.username!
+        
+        
+        return cell
+    }
+}
