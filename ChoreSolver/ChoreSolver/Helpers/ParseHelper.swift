@@ -13,6 +13,7 @@ class ParseHelper {
     static let ParseRequestClass = "Request"
     static let ParseRequestCustomer = "customer"
     static let ParseRequestCleanPerson = "cleanPerson"
+    
     static func initRequestInfo(customer: PFUser, cleanPerson: PFUser) {
         let requestObject = PFObject(className: ParseRequestClass)
         requestObject[ParseRequestCustomer] = customer

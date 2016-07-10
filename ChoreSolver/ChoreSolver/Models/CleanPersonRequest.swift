@@ -12,7 +12,7 @@ import Foundation
 import Bond
 import Parse
 import ConvenienceKit
-class Request: PFObject, PFSubclassing {
+class CleanPersonRequest: PFObject, PFSubclassing {
     
     @NSManaged var customer: PFUser?
     @NSManaged var cleanPerson: PFUser?
@@ -36,6 +36,10 @@ class Request: PFObject, PFSubclassing {
             // inform Parse about this subclass
             self.registerSubclass()
         }
+    }
+    
+    func fetchRequest() {
+        
     }
     
 }
