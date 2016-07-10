@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="bfH-Va-CQ5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iWU-CO-xVj">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -155,37 +155,51 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="ZaJ-UD-8Lq">
-                                                    <rect key="frame" x="18" y="8" width="484" height="63"/>
-                                                    <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2t0-pq-B2g">
-                                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="60" id="U5M-cu-ZCn"/>
-                                                                <constraint firstAttribute="height" constant="60" id="iJ0-s6-zb3"/>
-                                                            </constraints>
-                                                        </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZn-QO-YYm">
-                                                            <rect key="frame" x="80" y="0.0" width="404" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2t0-pq-B2g">
+                                                    <rect key="frame" x="14" y="10" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="U5M-cu-ZCn"/>
+                                                        <constraint firstAttribute="height" constant="60" id="iJ0-s6-zb3"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="30"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lZn-QO-YYm">
+                                                    <rect key="frame" x="82" y="15" width="45" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qno-Il-Gy9">
-                                                    <rect key="frame" x="522" y="25" width="57" height="30"/>
+                                                    <rect key="frame" x="514" y="10" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="JIK-Ix-PdS"/>
+                                                        <constraint firstAttribute="width" constant="60" id="eA7-Zx-zPS"/>
+                                                    </constraints>
                                                     <state key="normal" title="Request"/>
+                                                    <connections>
+                                                        <action selector="requestInfoTapped:" destination="LOL-qx-1e0" eventType="touchDown" id="4UH-Rj-cNW"/>
+                                                        <action selector="requestInfoTapped:" destination="LOL-qx-1e0" eventType="touchUpInside" id="bgw-8e-li8"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="qno-Il-Gy9" firstAttribute="leading" secondItem="ZaJ-UD-8Lq" secondAttribute="trailing" constant="20" id="74a-kn-ZKW"/>
+                                                <constraint firstItem="2t0-pq-B2g" firstAttribute="centerY" secondItem="uHm-1U-R3O" secondAttribute="centerY" id="AlY-CS-l41"/>
+                                                <constraint firstItem="qno-Il-Gy9" firstAttribute="centerY" secondItem="uHm-1U-R3O" secondAttribute="centerY" id="Jmi-Ti-WCt"/>
+                                                <constraint firstItem="2t0-pq-B2g" firstAttribute="leading" secondItem="uHm-1U-R3O" secondAttribute="leadingMargin" constant="6" id="Kh2-G1-THv"/>
                                                 <constraint firstItem="qno-Il-Gy9" firstAttribute="centerY" secondItem="uHm-1U-R3O" secondAttribute="centerY" id="OH7-Q4-1mr"/>
-                                                <constraint firstItem="ZaJ-UD-8Lq" firstAttribute="leading" secondItem="uHm-1U-R3O" secondAttribute="leadingMargin" constant="10" id="fWc-ZO-WHu"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ZaJ-UD-8Lq" secondAttribute="trailing" constant="90" id="gen-UK-gBM"/>
-                                                <constraint firstItem="ZaJ-UD-8Lq" firstAttribute="top" secondItem="uHm-1U-R3O" secondAttribute="topMargin" id="uuL-94-IRA"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ZaJ-UD-8Lq" secondAttribute="bottom" id="xNo-6j-jhc"/>
+                                                <constraint firstItem="qno-Il-Gy9" firstAttribute="leading" secondItem="uHm-1U-R3O" secondAttribute="leadingMargin" constant="506" id="TtT-J3-2Oe"/>
+                                                <constraint firstItem="lZn-QO-YYm" firstAttribute="leading" secondItem="2t0-pq-B2g" secondAttribute="trailing" constant="8" id="fhj-fD-uft"/>
+                                                <constraint firstItem="lZn-QO-YYm" firstAttribute="top" secondItem="uHm-1U-R3O" secondAttribute="topMargin" constant="7" id="jrI-Dp-DOM"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="OH7-Q4-1mr"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cleanPersonImage" destination="2t0-pq-B2g" id="MqQ-sf-FNe"/>
@@ -217,7 +231,7 @@
         <!--Test-cleanperson-request-->
         <scene sceneID="aAx-xy-LMJ">
             <objects>
-                <viewController title="Test-cleanperson-request" id="iWU-CO-xVj" sceneMemberID="viewController">
+                <viewController title="Test-cleanperson-request" id="iWU-CO-xVj" customClass="TestCleanPersonRequestViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v2o-7O-Tfl"/>
                         <viewControllerLayoutGuide type="bottom" id="Pux-Jh-UYi"/>
@@ -229,7 +243,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type of user" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMJ-9A-PGg">
                                 <rect key="frame" x="192" y="94" width="96" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eXw-SA-H2f">
@@ -255,7 +269,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Request PFQuery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q5K-5w-Sh2">
                                 <rect key="frame" x="98" y="161" width="134" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -264,7 +278,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zkS-jD-erc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="394" y="-1102"/>
+            <point key="canvasLocation" x="-265" y="-1844"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="IYf-IL-zQF">

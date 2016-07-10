@@ -14,7 +14,7 @@ class TestRequestViewController: UIViewController {
     @IBOutlet weak var searchResultTableView: UITableView!
 
     var cleanPersons: [PFUser] = []
-    var imageData: [NSData] = []
+    var imageData: [NSData?] = []
     var numOfClean: Int?
     
  
@@ -49,6 +49,7 @@ class TestRequestViewController: UIViewController {
                         self.imageData.append(data)
                     } catch {
                         print("fail")
+                        self.imageData.append(nil)
                     }
                     
                 }
@@ -84,14 +85,14 @@ extension TestRequestViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CleanPersonCell", forIndexPath: indexPath) as! SearchResultTableViewCell
         let person = cleanPersons[indexPath.row]
-//        do {
-//            let imageFile = person["imageFile"] as! PFFile
-            
-//            cell.imageView?.image = UIImage(data: data, scale: 1.0)
-//        } catch {
-        cell.imageView?.image = UIImage(named: "search")
-//        }
+        if let imageData = self.imageData[indexPath.row] {
+            cell.cleanPersonImage.image = UIImage(data: imageData, scale: 0.8)
+        } else {
+            cell.cleanPersonImage.image = UIImage(named: "search")
+        }
         
+//        cell.cleanPersonImage.contentMode = UIViewContentMode.ScaleAspectFill
+//        cell.imageView?.clipsToBounds = true
         
         cell.cleanPersonNameLabel.text = person.username!
         

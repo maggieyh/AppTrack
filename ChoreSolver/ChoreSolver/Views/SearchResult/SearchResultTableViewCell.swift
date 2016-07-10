@@ -12,7 +12,10 @@ class SearchResultTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cleanPersonNameLabel: UILabel!
     @IBOutlet weak var cleanPersonImage: UIImageView!
-    
+ 
+    @IBAction func requestInfoTapped(sender: AnyObject) {
+        
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

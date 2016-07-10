@@ -16,6 +16,8 @@
 		6F43947C1D30DE7B000A1F49 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43947B1D30DE7B000A1F49 /* SearchViewController.swift */; };
 		6F43947E1D30DE8F000A1F49 /* UserRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43947D1D30DE8F000A1F49 /* UserRequestViewController.swift */; };
 		6F4394801D30DEA1000A1F49 /* UserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43947F1D30DEA1000A1F49 /* UserSettingViewController.swift */; };
+		6F5391B21D327E6400C1AA9C /* TestCleanPersonRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5391B11D327E6400C1AA9C /* TestCleanPersonRequestViewController.swift */; };
+		6F5391B41D327EEF00C1AA9C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5391B31D327EEF00C1AA9C /* Request.swift */; };
 		6F8E6A8B1D31F28500618103 /* TestRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A8A1D31F28500618103 /* TestRequestViewController.swift */; };
 		6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */; };
 		6F8E6A921D31FDF600618103 /* CleanPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A911D31FDF600618103 /* CleanPerson.swift */; };
@@ -33,6 +35,8 @@
 		6F43947B1D30DE7B000A1F49 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		6F43947D1D30DE8F000A1F49 /* UserRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestViewController.swift; sourceTree = "<group>"; };
 		6F43947F1D30DEA1000A1F49 /* UserSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
+		6F5391B11D327E6400C1AA9C /* TestCleanPersonRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCleanPersonRequestViewController.swift; sourceTree = "<group>"; };
+		6F5391B31D327EEF00C1AA9C /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		6F8E6A8A1D31F28500618103 /* TestRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestRequestViewController.swift; sourceTree = "<group>"; };
 		6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		6F8E6A911D31FDF600618103 /* CleanPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPerson.swift; sourceTree = "<group>"; };
@@ -117,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				6F8E6A8A1D31F28500618103 /* TestRequestViewController.swift */,
+				6F5391B11D327E6400C1AA9C /* TestCleanPersonRequestViewController.swift */,
 			);
 			path = TestViewControllers;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				6F8E6A911D31FDF600618103 /* CleanPerson.swift */,
+				6F5391B31D327EEF00C1AA9C /* Request.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -281,7 +287,9 @@
 				6F43947C1D30DE7B000A1F49 /* SearchViewController.swift in Sources */,
 				6F43947E1D30DE8F000A1F49 /* UserRequestViewController.swift in Sources */,
 				6F4394801D30DEA1000A1F49 /* UserSettingViewController.swift in Sources */,
+				6F5391B21D327E6400C1AA9C /* TestCleanPersonRequestViewController.swift in Sources */,
 				6F4394691D30D71B000A1F49 /* AppDelegate.swift in Sources */,
+				6F5391B41D327EEF00C1AA9C /* Request.swift in Sources */,
 				6F8E6A921D31FDF600618103 /* CleanPerson.swift in Sources */,
 				6F22205E1D31EA1E00A3BDC9 /* ParseHelper.swift in Sources */,
 			);

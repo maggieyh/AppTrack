@@ -216,11 +216,9 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
 
 #### Week 1
 _planing your app_
-
+* name： 979要清洁，7966清潔溜溜
 * Data model: User class, Request class, Roles class ??
   * User Class: userType
-  *
-
   * Relation property, a user class relation to cleanperson class
   var post = myComment["parent"] as PFObject
 post.fetchIfNeededInBackgroundWithBlock {
