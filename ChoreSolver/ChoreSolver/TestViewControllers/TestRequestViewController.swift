@@ -42,10 +42,17 @@ class TestRequestViewController: UIViewController {
                 self.cleanPersons = result as! [PFUser]
                 self.numOfClean = result.count
                 self.searchResultTableView.reloadData()
-                let per = result[0]
-                if per["imageFile"] != nil {
-                    print("valid")
+                for ele in result {
+                    let imageFile = ele["imageFile"] as! PFFile
+                    do {
+                        let data = try imageFile.getData()
+                        self.imageData.append(data)
+                    } catch {
+                        print("fail")
+                    }
+                    
                 }
+                print(self.imageData.count)
             } else {
                 print(error)
             }
