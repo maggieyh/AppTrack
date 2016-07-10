@@ -74,7 +74,7 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
           * Ask to Retrieve Email address, name, Photo, save into User object
       2. HourRate
       3. Phone verification:
-         * verify valid phone Number: https://numverify.com/documentation
+         * verify valid phone Number:https://numverify.com/documentation
       4. County in which CleaningPerson could provide his/her services
 
 * Log In:
@@ -217,7 +217,20 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
 #### Week 1
 _planing your app_
 
-* | Data model: CleaningPerson class, Customer class, Request class
+* Data model: User class, Request class, Roles class ??
+  * User Class: userType
+  *
+
+  * Relation property, a user class relation to cleanperson class
+  var post = myComment["parent"] as PFObject
+post.fetchIfNeededInBackgroundWithBlock {
+ (post: PFObject?, error: NSError?) -> Void in
+ let title = post?["title"] as? NSString
+ // do something with your title variable
+}
+
+
+
 * Search Function for Customer:
     * SearchByCountyViewController's tableview only
 * Request sending function ( tap then initiate an instance of Request class, add new cell in to next item)
