@@ -33,11 +33,11 @@
 		6F4394721D30D71B000A1F49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F4394741D30D71B000A1F49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F5391B71D329B2A00C1AA9C /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		6F5F58BD1D335F67000ABB58 /* CleanPersonRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPersonRequestViewController.swift; sourceTree = "<group>"; };
-		6F5F58BF1D33631B000ABB58 /* CustomerReqeustViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerReqeustViewController.swift; sourceTree = "<group>"; };
+		6F5F58BD1D335F67000ABB58 /* CleanPersonRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CleanPersonRequestViewController.swift; path = ../../CleanPersonRequestViewController.swift; sourceTree = "<group>"; };
+		6F5F58BF1D33631B000ABB58 /* CustomerReqeustViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomerReqeustViewController.swift; path = ../../CustomerReqeustViewController.swift; sourceTree = "<group>"; };
 		6F5F58C21D336C56000ABB58 /* sentRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sentRequestTableViewCell.swift; sourceTree = "<group>"; };
-		6F5F58C71D33E718000ABB58 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		6F8E6A8A1D31F28500618103 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
+		6F5F58C71D33E718000ABB58 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../../SearchViewController.swift; sourceTree = "<group>"; };
+		6F8E6A8A1D31F28500618103 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestViewController.swift; path = ../../RequestViewController.swift; sourceTree = "<group>"; };
 		6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		6F8E6A911D31FDF600618103 /* CleanPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPerson.swift; sourceTree = "<group>"; };
 		83AC856F9968EC949A59AAB8 /* Pods_ChoreSolver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChoreSolver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,13 +114,61 @@
 			path = CustomerRequestResult;
 			sourceTree = "<group>";
 		};
-		6F8E6A851D31EF3800618103 /* TestViewControllers */ = {
+		6F5F58CD1D33E8EF000ABB58 /* CleanPerson */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58CE1D33E8EF000ABB58 /* TabProfile */,
+				6F5F58CF1D33E8EF000ABB58 /* TabRequest */,
+			);
+			path = CleanPerson;
+			sourceTree = "<group>";
+		};
+		6F5F58CE1D33E8EF000ABB58 /* TabProfile */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TabProfile;
+			sourceTree = "<group>";
+		};
+		6F5F58CF1D33E8EF000ABB58 /* TabRequest */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58BD1D335F67000ABB58 /* CleanPersonRequestViewController.swift */,
+			);
+			path = TabRequest;
+			sourceTree = "<group>";
+		};
+		6F5F58D01D33E8EF000ABB58 /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58D11D33E8EF000ABB58 /* TabRequest */,
+				6F5F58D21D33E8EF000ABB58 /* TabSearch */,
+			);
+			path = Customer;
+			sourceTree = "<group>";
+		};
+		6F5F58D11D33E8EF000ABB58 /* TabRequest */ = {
 			isa = PBXGroup;
 			children = (
 				6F5F58BF1D33631B000ABB58 /* CustomerReqeustViewController.swift */,
+			);
+			path = TabRequest;
+			sourceTree = "<group>";
+		};
+		6F5F58D21D33E8EF000ABB58 /* TabSearch */ = {
+			isa = PBXGroup;
+			children = (
 				6F5F58C71D33E718000ABB58 /* SearchViewController.swift */,
 				6F8E6A8A1D31F28500618103 /* RequestViewController.swift */,
-				6F5F58BD1D335F67000ABB58 /* CleanPersonRequestViewController.swift */,
+			);
+			path = TabSearch;
+			sourceTree = "<group>";
+		};
+		6F8E6A851D31EF3800618103 /* TestViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6F5F58D01D33E8EF000ABB58 /* Customer */,
+				6F5F58CD1D33E8EF000ABB58 /* CleanPerson */,
 			);
 			path = TestViewControllers;
 			sourceTree = "<group>";

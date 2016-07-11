@@ -10,8 +10,8 @@ import UIKit
 import Parse
 import ConvenienceKit
 import Foundation
-class RequestViewController: UIViewController {
-    
+class SearchResultViewController: UIViewController {
+
     @IBOutlet weak var searchResultTableView: UITableView!
 
     var cleanPersons: [PFUser] = []
@@ -84,7 +84,7 @@ class RequestViewController: UIViewController {
     
 }
 
-extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
+extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.cleanPersons.count ?? 0

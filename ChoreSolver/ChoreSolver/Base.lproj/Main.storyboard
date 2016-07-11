@@ -165,7 +165,7 @@
         <!--Test-Result-View-->
         <scene sceneID="t1z-V0-xm4">
             <objects>
-                <viewController storyboardIdentifier="searchResultViewController" title="Test-Result-View" id="bfH-Va-CQ5" customClass="RequestViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchResultViewController" title="Test-Result-View" id="bfH-Va-CQ5" customClass="SearchResultViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jJD-9z-JKJ"/>
                         <viewControllerLayoutGuide type="bottom" id="gEq-qd-thP"/>
