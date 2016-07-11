@@ -12,28 +12,13 @@ import Foundation
 import Bond
 import Parse
 import ConvenienceKit
-class CleanPerson: PFObject, PFSubclassing {
+class CleanPerson: PFUser {
     
     @NSManaged var imageFile: PFFile?
-    @NSManaged var user: PFUser?
+    @NSManaged var hourRate: NSNumber?
+    @NSManaged var instroduction: NSString?
+    @NSManaged var phoneNumber: NSString?
     
     
-    //MARK: PFSubclassing Protocol
-    
-    static func parseClassName() -> String {
-        return "User"
-    }
-
-    override init () {
-        super.init()
-    }
-    
-    override class func initialize() {
-        var onceToken : dispatch_once_t = 0;
-        dispatch_once(&onceToken) {
-            // inform Parse about this subclass
-            self.registerSubclass()
-        }
-    }
     
 }

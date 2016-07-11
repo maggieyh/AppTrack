@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import ConvenienceKit
 import Foundation
-class TestRequestViewController: UIViewController {
+class RequestViewController: UIViewController {
     
     @IBOutlet weak var searchResultTableView: UITableView!
 
@@ -81,7 +81,7 @@ class TestRequestViewController: UIViewController {
     
 }
 
-extension TestRequestViewController: UITableViewDataSource, UITableViewDelegate {
+extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let num = numOfClean ?? 0
