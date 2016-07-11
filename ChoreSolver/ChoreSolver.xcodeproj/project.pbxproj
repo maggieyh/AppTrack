@@ -14,11 +14,11 @@
 		6F4394701D30D71B000A1F49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F43946F1D30D71B000A1F49 /* Assets.xcassets */; };
 		6F4394731D30D71B000A1F49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F4394711D30D71B000A1F49 /* LaunchScreen.storyboard */; };
 		6F5391B81D329B2A00C1AA9C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5391B71D329B2A00C1AA9C /* Request.swift */; };
-		6F5F58BE1D335F67000ABB58 /* CleanPersonRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58BD1D335F67000ABB58 /* CleanPersonRequestViewController.swift */; };
-		6F5F58C01D33631B000ABB58 /* CustomerReqeustViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58BF1D33631B000ABB58 /* CustomerReqeustViewController.swift */; };
 		6F5F58C31D336C56000ABB58 /* sentRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58C21D336C56000ABB58 /* sentRequestTableViewCell.swift */; };
-		6F5F58C81D33E718000ABB58 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58C71D33E718000ABB58 /* SearchViewController.swift */; };
-		6F8E6A8B1D31F28500618103 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A8A1D31F28500618103 /* RequestViewController.swift */; };
+		6F5F58D41D33EB61000ABB58 /* CustomerReqeustViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58D31D33EB61000ABB58 /* CustomerReqeustViewController.swift */; };
+		6F5F58D61D33EBD2000ABB58 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58D51D33EBD2000ABB58 /* SearchViewController.swift */; };
+		6F5F58D81D33EC19000ABB58 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58D71D33EC19000ABB58 /* SearchResultViewController.swift */; };
+		6F5F58DA1D33ED66000ABB58 /* CleanPersonRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58D91D33ED66000ABB58 /* CleanPersonRequestViewController.swift */; };
 		6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */; };
 		6F8E6A921D31FDF600618103 /* CleanPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A911D31FDF600618103 /* CleanPerson.swift */; };
 /* End PBXBuildFile section */
@@ -33,11 +33,11 @@
 		6F4394721D30D71B000A1F49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F4394741D30D71B000A1F49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F5391B71D329B2A00C1AA9C /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
-		6F5F58BD1D335F67000ABB58 /* CleanPersonRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CleanPersonRequestViewController.swift; path = ../../CleanPersonRequestViewController.swift; sourceTree = "<group>"; };
-		6F5F58BF1D33631B000ABB58 /* CustomerReqeustViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomerReqeustViewController.swift; path = ../../CustomerReqeustViewController.swift; sourceTree = "<group>"; };
 		6F5F58C21D336C56000ABB58 /* sentRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sentRequestTableViewCell.swift; sourceTree = "<group>"; };
-		6F5F58C71D33E718000ABB58 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../../SearchViewController.swift; sourceTree = "<group>"; };
-		6F8E6A8A1D31F28500618103 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestViewController.swift; path = ../../RequestViewController.swift; sourceTree = "<group>"; };
+		6F5F58D31D33EB61000ABB58 /* CustomerReqeustViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerReqeustViewController.swift; sourceTree = "<group>"; };
+		6F5F58D51D33EBD2000ABB58 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6F5F58D71D33EC19000ABB58 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		6F5F58D91D33ED66000ABB58 /* CleanPersonRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPersonRequestViewController.swift; sourceTree = "<group>"; };
 		6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		6F8E6A911D31FDF600618103 /* CleanPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPerson.swift; sourceTree = "<group>"; };
 		83AC856F9968EC949A59AAB8 /* Pods_ChoreSolver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChoreSolver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,7 +133,7 @@
 		6F5F58CF1D33E8EF000ABB58 /* TabRequest */ = {
 			isa = PBXGroup;
 			children = (
-				6F5F58BD1D335F67000ABB58 /* CleanPersonRequestViewController.swift */,
+				6F5F58D91D33ED66000ABB58 /* CleanPersonRequestViewController.swift */,
 			);
 			path = TabRequest;
 			sourceTree = "<group>";
@@ -150,7 +150,7 @@
 		6F5F58D11D33E8EF000ABB58 /* TabRequest */ = {
 			isa = PBXGroup;
 			children = (
-				6F5F58BF1D33631B000ABB58 /* CustomerReqeustViewController.swift */,
+				6F5F58D31D33EB61000ABB58 /* CustomerReqeustViewController.swift */,
 			);
 			path = TabRequest;
 			sourceTree = "<group>";
@@ -158,8 +158,8 @@
 		6F5F58D21D33E8EF000ABB58 /* TabSearch */ = {
 			isa = PBXGroup;
 			children = (
-				6F5F58C71D33E718000ABB58 /* SearchViewController.swift */,
-				6F8E6A8A1D31F28500618103 /* RequestViewController.swift */,
+				6F5F58D51D33EBD2000ABB58 /* SearchViewController.swift */,
+				6F5F58D71D33EC19000ABB58 /* SearchResultViewController.swift */,
 			);
 			path = TabSearch;
 			sourceTree = "<group>";
@@ -331,14 +331,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */,
-				6F5F58C81D33E718000ABB58 /* SearchViewController.swift in Sources */,
-				6F8E6A8B1D31F28500618103 /* RequestViewController.swift in Sources */,
-				6F5F58BE1D335F67000ABB58 /* CleanPersonRequestViewController.swift in Sources */,
+				6F5F58D61D33EBD2000ABB58 /* SearchViewController.swift in Sources */,
+				6F5F58DA1D33ED66000ABB58 /* CleanPersonRequestViewController.swift in Sources */,
 				6F5391B81D329B2A00C1AA9C /* Request.swift in Sources */,
 				6F5F58C31D336C56000ABB58 /* sentRequestTableViewCell.swift in Sources */,
 				6F4394691D30D71B000A1F49 /* AppDelegate.swift in Sources */,
-				6F5F58C01D33631B000ABB58 /* CustomerReqeustViewController.swift in Sources */,
 				6F8E6A921D31FDF600618103 /* CleanPerson.swift in Sources */,
+				6F5F58D81D33EC19000ABB58 /* SearchResultViewController.swift in Sources */,
+				6F5F58D41D33EB61000ABB58 /* CustomerReqeustViewController.swift in Sources */,
 				6F22205E1D31EA1E00A3BDC9 /* ParseHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
