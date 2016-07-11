@@ -11,16 +11,26 @@ import Parse
 class SearchResultTableViewCell: UITableViewCell {
 
     var cleanPerson: PFUser?
-    var tabBarController: UITabBarController?
+    var viewController: UIViewController?
     
     @IBOutlet weak var cleanPersonNameLabel: UILabel!
     @IBOutlet weak var cleanPersonImage: UIImageView!
+    @IBOutlet weak var hourRateLabel: UILabel!
 
     @IBAction func requestInfoTapped(sender: AnyObject) {
         ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson!)
-        self.tabBarController!.selectedViewController = self.tabBarController!.viewControllers![1]
+        //self.tabBarController!.selectedViewController = self.tabBarController!.viewControllers![1]
+        //self.viewController?.presentViewController(RequestViewController, animated: true, completion: nil)
         
     }
+    
+    //func transition(Sender: UIButton!) {
+      //  let secondViewController:SecondViewController = SecondViewController()
+        
+      //  self.presentViewController(secondViewController, animated: true, completion: nil)
+        
+    //}
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -37,6 +37,10 @@ class RequestViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+//        if self.tabBarController == nil {
+//            print("fail")
+//            return
+//        }
         let cleanPersonQuery : PFQuery = PFUser.query()!
         cleanPersonQuery.whereKey("userType", equalTo: "CleanPerson")
         cleanPersonQuery.whereKey("county", equalTo: "Hualien")
@@ -97,7 +101,9 @@ extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
 
         cell.cleanPersonNameLabel.text = person.username!
         cell.cleanPerson = person
-        cell.tabBarController = self.tabBarController!
+        cell.hourRateLabel.text = person["county"] as? String
+     //   cell.tabBarController = self.tabBarController!
+        cell.viewController = self
         return cell
     }
     

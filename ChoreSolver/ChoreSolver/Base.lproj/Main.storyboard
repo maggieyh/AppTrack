@@ -136,7 +136,7 @@
         <!--Search-->
         <scene sceneID="nxg-yt-SPc">
             <objects>
-                <viewController id="suA-Mf-64O" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchViewController" id="suA-Mf-64O" customClass="SearchViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8EP-Dm-J3Z"/>
                         <viewControllerLayoutGuide type="bottom" id="jQw-lV-7ak"/>
@@ -146,10 +146,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jef-Aw-5kW">
-                                <rect key="frame" x="438" y="257" width="46" height="30"/>
+                                <rect key="frame" x="102" y="140" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="bfH-Va-CQ5" kind="show" id="XSb-bI-bN0"/>
+                                    <action selector="buttonTapped:" destination="suA-Mf-64O" eventType="touchDown" id="A61-ia-BYS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -164,7 +164,7 @@
         <!--Test-Result-View-->
         <scene sceneID="t1z-V0-xm4">
             <objects>
-                <viewController title="Test-Result-View" id="bfH-Va-CQ5" customClass="RequestViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchResultViewController" title="Test-Result-View" id="bfH-Va-CQ5" customClass="RequestViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jJD-9z-JKJ"/>
                         <viewControllerLayoutGuide type="bottom" id="gEq-qd-thP"/>
@@ -173,7 +173,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ecs-IX-Kaf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ecs-IX-Kaf">
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -203,7 +203,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qno-Il-Gy9">
-                                                    <rect key="frame" x="502" y="10" width="60" height="60"/>
+                                                    <rect key="frame" x="490" y="10" width="60" height="60"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="60" id="JIK-Ix-PdS"/>
                                                         <constraint firstAttribute="width" constant="60" id="eA7-Zx-zPS"/>
@@ -221,7 +221,7 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="qno-Il-Gy9" secondAttribute="trailing" constant="30" id="2tT-Ej-4zX"/>
+                                                <constraint firstAttribute="trailing" secondItem="qno-Il-Gy9" secondAttribute="trailing" constant="50" id="2tT-Ej-4zX"/>
                                                 <constraint firstItem="sXY-Dc-d88" firstAttribute="leading" secondItem="2t0-pq-B2g" secondAttribute="trailing" constant="8" id="7IY-wX-GoU"/>
                                                 <constraint firstItem="2t0-pq-B2g" firstAttribute="centerY" secondItem="uHm-1U-R3O" secondAttribute="centerY" id="AlY-CS-l41"/>
                                                 <constraint firstItem="qno-Il-Gy9" firstAttribute="centerY" secondItem="uHm-1U-R3O" secondAttribute="centerY" id="Jmi-Ti-WCt"/>
@@ -242,6 +242,7 @@
                                         <connections>
                                             <outlet property="cleanPersonImage" destination="2t0-pq-B2g" id="MqQ-sf-FNe"/>
                                             <outlet property="cleanPersonNameLabel" destination="lZn-QO-YYm" id="vd9-8x-oL6"/>
+                                            <outlet property="hourRateLabel" destination="sXY-Dc-d88" id="BSb-Zf-2X9"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -258,14 +259,14 @@
                             <constraint firstItem="gEq-qd-thP" firstAttribute="top" secondItem="Ecs-IX-Kaf" secondAttribute="bottom" id="muA-Mg-jqb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" id="qNQ-f8-g8p"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="qNQ-f8-g8p"/>
                     <connections>
                         <outlet property="searchResultTableView" destination="Ecs-IX-Kaf" id="pez-P9-Rid"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4I-gH-x8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2168" y="-1550"/>
+            <point key="canvasLocation" x="2028" y="-1550"/>
         </scene>
         <!--CustomerRequests-->
         <scene sceneID="Ah6-dE-BOS">
@@ -429,8 +430,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="QGK-kZ-Ogx" kind="relationship" relationship="viewControllers" id="WCG-jp-d10"/>
                         <segue destination="suA-Mf-64O" kind="relationship" relationship="viewControllers" id="6N2-MG-cm9"/>
+                        <segue destination="QGK-kZ-Ogx" kind="relationship" relationship="viewControllers" id="WCG-jp-d10"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APl-hi-7kn" userLabel="First Responder" sceneMemberID="firstResponder"/>

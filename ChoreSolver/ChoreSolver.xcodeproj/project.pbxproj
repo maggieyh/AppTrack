@@ -34,7 +34,7 @@
 		6F43946F1D30D71B000A1F49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F4394721D30D71B000A1F49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F4394741D30D71B000A1F49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F43947B1D30DE7B000A1F49 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		6F43947B1D30DE7B000A1F49 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../ViewControllers/SearchViewController.swift; sourceTree = "<group>"; };
 		6F43947D1D30DE8F000A1F49 /* UserRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestViewController.swift; sourceTree = "<group>"; };
 		6F43947F1D30DEA1000A1F49 /* UserSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
 		6F5391B71D329B2A00C1AA9C /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
@@ -114,7 +114,6 @@
 		6F43947A1D30DE49000A1F49 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6F43947B1D30DE7B000A1F49 /* SearchViewController.swift */,
 				6F43947D1D30DE8F000A1F49 /* UserRequestViewController.swift */,
 				6F43947F1D30DEA1000A1F49 /* UserSettingViewController.swift */,
 			);
@@ -132,6 +131,7 @@
 		6F8E6A851D31EF3800618103 /* TestViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6F43947B1D30DE7B000A1F49 /* SearchViewController.swift */,
 				6F8E6A8A1D31F28500618103 /* RequestViewController.swift */,
 				6F5F58BF1D33631B000ABB58 /* CustomerReqeustViewController.swift */,
 				6F5F58BD1D335F67000ABB58 /* CleanPersonRequestViewController.swift */,

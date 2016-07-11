@@ -10,7 +10,7 @@ import UIKit
 import Parse
 class CustomerReqeustViewController: UIViewController {
 
-    var requests: [Request] = []
+    var requestCleanPersons: [PFUser] = []
     
     @IBOutlet weak var requestTableView: UITableView!
     override func viewDidLoad() {
@@ -29,15 +29,12 @@ class CustomerReqeustViewController: UIViewController {
         super.viewDidAppear(animated)
         let requestQuery = PFQuery(className: "Request")
         requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
+        requestQuery.selectKeys(["cleanPerson"])
         requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
             if let result = result {
-                self.requests = result as! [Request]
+                self.requestCleanPersons = result as! [PFUser]
                 self.requestTableView.reloadData()
-                if self.requests[0].cleanPerson != nil {
-                    print("aaa")
-                } else {
-                    print("fff")
-                }
+
             }
         }
 
@@ -59,11 +56,13 @@ class CustomerReqeustViewController: UIViewController {
 
 extension CustomerReqeustViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.requests.count ?? 0
+        return self.requestCleanPersons.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("sentRequestCell", forIndexPath: indexPath) as! sentRequestTableViewCell
+        let person = self.requestCleanPersons[indexPath.row]
+        cell.nameLabel.text = person.username
         return cell
         
     }

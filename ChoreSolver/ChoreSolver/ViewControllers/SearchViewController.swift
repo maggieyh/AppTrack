@@ -10,6 +10,22 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
+    @IBAction func buttonTapped(sender: AnyObject) {
+       // self.performSegueWithIdentifier("showResult", sender: sender)
+//        let mainStoryboard = UIStoryboard(name: "searchViewController", bundle: NSBundle.mainBundle())
+//        let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("searchResultViewController") as UIViewController
+//    
+//        self.presentViewController(vc, animated: true, completion: nil)
+    }
+    
+  //  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if segue.identifier == "showResult" {
+//            segue.destinationViewController.tabBarController = self.tabBarController
+//        }
+//    }
+    override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
