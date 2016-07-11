@@ -16,7 +16,7 @@ class sentRequestTableViewCell: UITableViewCell {
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var hourRateLabel: UILabel!
     
-    
+    var request: Request?
     
     
     override func awakeFromNib() {

@@ -12,12 +12,11 @@ import Foundation
 import Bond
 import Parse
 import ConvenienceKit
-class CleanPersonRequest: PFObject, PFSubclassing {
+class Request: PFObject, PFSubclassing {
     
     @NSManaged var customer: PFUser?
     @NSManaged var cleanPerson: PFUser?
-    
-    
+    @NSManaged var agree: NSString?
     
     //MARK: PFSubclassing Protocol
     

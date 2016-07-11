@@ -10,6 +10,9 @@ import UIKit
 import Parse
 class CustomerReqeustViewController: UIViewController {
 
+    var requests: [Request] = []
+    
+    @IBOutlet weak var requestTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,33 +27,20 @@ class CustomerReqeustViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let reqeustQuery = PFQuery(className: "Request")
-        reqeustQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
-//        
-//        cleanPersonQuery.whereKey("userType", equalTo: "CleanPerson")
-//        cleanPersonQuery.whereKey("county", equalTo: "Hualien")
-//        cleanPersonQuery.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error: NSError?) in
-//            if let result = result {
-//                self.cleanPersons = result as! [PFUser]
-//                self.numOfClean = result.count
-//                self.searchResultTableView.reloadData()
-//                self.imageData = []
-//                for ele in result {
-//                    let imageFile = ele["imageFile"] as! PFFile
-//                    do {
-//                        let data = try imageFile.getData()
-//                        self.imageData.append(data)
-//                    } catch {
-//                        print("fail")
-//                        self.imageData.append(nil)
-//                    }
-//                    
-//                }
-//                print(self.imageData.count)
-//            } else {
-//                print(error)
-//            }
-//        }
+        let requestQuery = PFQuery(className: "Request")
+        requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
+        requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+            if let result = result {
+                self.requests = result as! [Request]
+                self.requestTableView.reloadData()
+                if self.requests[0].cleanPerson != nil {
+                    print("aaa")
+                } else {
+                    print("fff")
+                }
+            }
+        }
+
         
     }
     
@@ -69,7 +59,7 @@ class CustomerReqeustViewController: UIViewController {
 
 extension CustomerReqeustViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return self.requests.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

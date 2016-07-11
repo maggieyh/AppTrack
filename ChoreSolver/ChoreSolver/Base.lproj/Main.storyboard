@@ -346,6 +346,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Request" id="vHP-KK-M8W"/>
+                    <connections>
+                        <outlet property="requestTableView" destination="xaT-aE-wzy" id="q4F-n1-YiR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XQ0-VN-Kb8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

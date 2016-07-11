@@ -16,7 +16,7 @@ class RequestViewController: UIViewController {
 
     var cleanPersons: [PFUser] = []
     var imageData: [NSData?] = []
-    var numOfClean: Int?
+    
     
     //get the specific view controller's index
 
@@ -43,7 +43,6 @@ class RequestViewController: UIViewController {
         cleanPersonQuery.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error: NSError?) in
             if let result = result {
                 self.cleanPersons = result as! [PFUser]
-                self.numOfClean = result.count
                 self.searchResultTableView.reloadData()
                 self.imageData = []
                 for ele in result {
@@ -57,7 +56,7 @@ class RequestViewController: UIViewController {
                     }
                     
                 }
-                print(self.imageData.count)
+                
             } else {
                 print(error)
             }
@@ -84,8 +83,7 @@ class RequestViewController: UIViewController {
 extension RequestViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let num = numOfClean ?? 0
-        return num
+        return self.cleanPersons.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
