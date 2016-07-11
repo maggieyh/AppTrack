@@ -133,7 +133,7 @@
             </objects>
             <point key="canvasLocation" x="1361" y="-67"/>
         </scene>
-        <!--Search-->
+        <!--Search View Controller-->
         <scene sceneID="nxg-yt-SPc">
             <objects>
                 <viewController storyboardIdentifier="searchViewController" id="suA-Mf-64O" customClass="SearchViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
@@ -149,17 +149,18 @@
                                 <rect key="frame" x="102" y="140" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <action selector="buttonTapped:" destination="suA-Mf-64O" eventType="touchDown" id="A61-ia-BYS"/>
+                                    <action selector="buttonTapped:" destination="suA-Mf-64O" eventType="touchDown" id="dfY-wj-VgT"/>
+                                    <segue destination="bfH-Va-CQ5" kind="show" id="wIb-hg-1Ri"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" image="search" id="E3g-Mh-PqC"/>
+                    <navigationItem key="navigationItem" id="GdH-tU-dYc"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hi-sA-Bwf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1361" y="-1550"/>
+            <point key="canvasLocation" x="2173" y="-1550"/>
         </scene>
         <!--Test-Result-View-->
         <scene sceneID="t1z-V0-xm4">
@@ -178,7 +179,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CleanPersonCell" rowHeight="80" id="LOL-qx-1e0" customClass="SearchResultTableViewCell" customModule="ChoreSolver" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LOL-qx-1e0" id="uHm-1U-R3O">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
@@ -266,7 +267,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4I-gH-x8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2028" y="-1550"/>
+            <point key="canvasLocation" x="2840" y="-1550"/>
         </scene>
         <!--CustomerRequests-->
         <scene sceneID="Ah6-dE-BOS">
@@ -430,13 +431,32 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="suA-Mf-64O" kind="relationship" relationship="viewControllers" id="6N2-MG-cm9"/>
+                        <segue destination="Zod-oR-4g4" kind="relationship" relationship="viewControllers" id="6N2-MG-cm9"/>
                         <segue destination="QGK-kZ-Ogx" kind="relationship" relationship="viewControllers" id="WCG-jp-d10"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="APl-hi-7kn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="547" y="-1275"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="jLs-iH-c5G">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zod-oR-4g4" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="search" id="E3g-Mh-PqC"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x5S-jF-rIc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="suA-Mf-64O" kind="relationship" relationship="rootViewController" id="YJM-mj-3En"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fKO-mN-Z29" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1361" y="-1550"/>
         </scene>
     </scenes>
     <resources>

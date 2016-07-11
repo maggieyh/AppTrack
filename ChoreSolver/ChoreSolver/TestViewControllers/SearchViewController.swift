@@ -1,21 +1,28 @@
 //
-//  UserSettingViewController.swift
+//  SearchViewController.swift
 //  ChoreSolver
 //
-//  Created by yao  on 7/9/16.
+//  Created by yao  on 7/11/16.
 //  Copyright © 2016 yao . All rights reserved.
 //
 
 import UIKit
 
-class UserSettingViewController: UIViewController {
+class SearchViewController: UIViewController {
 
+    
+    @IBAction func buttonTapped(sender: AnyObject) {
+    }
+    override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

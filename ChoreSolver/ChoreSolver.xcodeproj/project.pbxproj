@@ -13,13 +13,11 @@
 		6F43946E1D30D71B000A1F49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F43946C1D30D71B000A1F49 /* Main.storyboard */; };
 		6F4394701D30D71B000A1F49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F43946F1D30D71B000A1F49 /* Assets.xcassets */; };
 		6F4394731D30D71B000A1F49 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F4394711D30D71B000A1F49 /* LaunchScreen.storyboard */; };
-		6F43947C1D30DE7B000A1F49 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43947B1D30DE7B000A1F49 /* SearchViewController.swift */; };
-		6F43947E1D30DE8F000A1F49 /* UserRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43947D1D30DE8F000A1F49 /* UserRequestViewController.swift */; };
-		6F4394801D30DEA1000A1F49 /* UserSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F43947F1D30DEA1000A1F49 /* UserSettingViewController.swift */; };
 		6F5391B81D329B2A00C1AA9C /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5391B71D329B2A00C1AA9C /* Request.swift */; };
 		6F5F58BE1D335F67000ABB58 /* CleanPersonRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58BD1D335F67000ABB58 /* CleanPersonRequestViewController.swift */; };
 		6F5F58C01D33631B000ABB58 /* CustomerReqeustViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58BF1D33631B000ABB58 /* CustomerReqeustViewController.swift */; };
 		6F5F58C31D336C56000ABB58 /* sentRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58C21D336C56000ABB58 /* sentRequestTableViewCell.swift */; };
+		6F5F58C81D33E718000ABB58 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58C71D33E718000ABB58 /* SearchViewController.swift */; };
 		6F8E6A8B1D31F28500618103 /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A8A1D31F28500618103 /* RequestViewController.swift */; };
 		6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */; };
 		6F8E6A921D31FDF600618103 /* CleanPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A911D31FDF600618103 /* CleanPerson.swift */; };
@@ -34,13 +32,11 @@
 		6F43946F1D30D71B000A1F49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6F4394721D30D71B000A1F49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6F4394741D30D71B000A1F49 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6F43947B1D30DE7B000A1F49 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../ViewControllers/SearchViewController.swift; sourceTree = "<group>"; };
-		6F43947D1D30DE8F000A1F49 /* UserRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestViewController.swift; sourceTree = "<group>"; };
-		6F43947F1D30DEA1000A1F49 /* UserSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSettingViewController.swift; sourceTree = "<group>"; };
 		6F5391B71D329B2A00C1AA9C /* Request.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
 		6F5F58BD1D335F67000ABB58 /* CleanPersonRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPersonRequestViewController.swift; sourceTree = "<group>"; };
 		6F5F58BF1D33631B000ABB58 /* CustomerReqeustViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerReqeustViewController.swift; sourceTree = "<group>"; };
 		6F5F58C21D336C56000ABB58 /* sentRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sentRequestTableViewCell.swift; sourceTree = "<group>"; };
+		6F5F58C71D33E718000ABB58 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		6F8E6A8A1D31F28500618103 /* RequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		6F8E6A911D31FDF600618103 /* CleanPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPerson.swift; sourceTree = "<group>"; };
@@ -101,7 +97,6 @@
 				6F8E6A8C1D31F94900618103 /* Views */,
 				6F8E6A851D31EF3800618103 /* TestViewControllers */,
 				6F22205C1D31EA1200A3BDC9 /* Helpers */,
-				6F43947A1D30DE49000A1F49 /* ViewControllers */,
 				6F4394681D30D71B000A1F49 /* AppDelegate.swift */,
 				6F43946C1D30D71B000A1F49 /* Main.storyboard */,
 				6F43946F1D30D71B000A1F49 /* Assets.xcassets */,
@@ -109,15 +104,6 @@
 				6F4394741D30D71B000A1F49 /* Info.plist */,
 			);
 			path = ChoreSolver;
-			sourceTree = "<group>";
-		};
-		6F43947A1D30DE49000A1F49 /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				6F43947D1D30DE8F000A1F49 /* UserRequestViewController.swift */,
-				6F43947F1D30DEA1000A1F49 /* UserSettingViewController.swift */,
-			);
-			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		6F5F58C11D336C42000ABB58 /* CustomerRequestResult */ = {
@@ -131,9 +117,9 @@
 		6F8E6A851D31EF3800618103 /* TestViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				6F43947B1D30DE7B000A1F49 /* SearchViewController.swift */,
-				6F8E6A8A1D31F28500618103 /* RequestViewController.swift */,
 				6F5F58BF1D33631B000ABB58 /* CustomerReqeustViewController.swift */,
+				6F5F58C71D33E718000ABB58 /* SearchViewController.swift */,
+				6F8E6A8A1D31F28500618103 /* RequestViewController.swift */,
 				6F5F58BD1D335F67000ABB58 /* CleanPersonRequestViewController.swift */,
 			);
 			path = TestViewControllers;
@@ -297,13 +283,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */,
+				6F5F58C81D33E718000ABB58 /* SearchViewController.swift in Sources */,
 				6F8E6A8B1D31F28500618103 /* RequestViewController.swift in Sources */,
-				6F43947C1D30DE7B000A1F49 /* SearchViewController.swift in Sources */,
 				6F5F58BE1D335F67000ABB58 /* CleanPersonRequestViewController.swift in Sources */,
-				6F43947E1D30DE8F000A1F49 /* UserRequestViewController.swift in Sources */,
 				6F5391B81D329B2A00C1AA9C /* Request.swift in Sources */,
 				6F5F58C31D336C56000ABB58 /* sentRequestTableViewCell.swift in Sources */,
-				6F4394801D30DEA1000A1F49 /* UserSettingViewController.swift in Sources */,
 				6F4394691D30D71B000A1F49 /* AppDelegate.swift in Sources */,
 				6F5F58C01D33631B000ABB58 /* CustomerReqeustViewController.swift in Sources */,
 				6F8E6A921D31FDF600618103 /* CleanPerson.swift in Sources */,
