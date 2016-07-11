@@ -7,13 +7,18 @@
 //
 
 import UIKit
-
+import Parse
 class SearchResultTableViewCell: UITableViewCell {
 
+    var cleanPerson: PFUser?
+    var tabBarController: UITabBarController?
+    
     @IBOutlet weak var cleanPersonNameLabel: UILabel!
     @IBOutlet weak var cleanPersonImage: UIImageView!
- 
+
     @IBAction func requestInfoTapped(sender: AnyObject) {
+        ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson!)
+        self.tabBarController!.selectedViewController = self.tabBarController!.viewControllers![1]
         
     }
     override func awakeFromNib() {
@@ -28,4 +33,5 @@ class SearchResultTableViewCell: UITableViewCell {
     }
     
 
+    
 }

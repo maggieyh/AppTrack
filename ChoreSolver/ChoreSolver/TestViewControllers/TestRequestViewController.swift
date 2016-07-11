@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import ConvenienceKit
+import Foundation
 class TestRequestViewController: UIViewController {
     
     @IBOutlet weak var searchResultTableView: UITableView!
@@ -17,11 +18,13 @@ class TestRequestViewController: UIViewController {
     var imageData: [NSData?] = []
     var numOfClean: Int?
     
- 
+    //get the specific view controller's index
+
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         
     }
@@ -42,6 +45,7 @@ class TestRequestViewController: UIViewController {
                 self.cleanPersons = result as! [PFUser]
                 self.numOfClean = result.count
                 self.searchResultTableView.reloadData()
+                self.imageData = []
                 for ele in result {
                     let imageFile = ele["imageFile"] as! PFFile
                     do {
@@ -74,9 +78,11 @@ class TestRequestViewController: UIViewController {
 
     
     
+    
 }
 
-extension TestRequestViewController: UITableViewDataSource {
+extension TestRequestViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let num = numOfClean ?? 0
         return num
@@ -90,13 +96,14 @@ extension TestRequestViewController: UITableViewDataSource {
         } else {
             cell.cleanPersonImage.image = UIImage(named: "search")
         }
-        
-//        cell.cleanPersonImage.contentMode = UIViewContentMode.ScaleAspectFill
-//        cell.imageView?.clipsToBounds = true
-        
+
         cell.cleanPersonNameLabel.text = person.username!
-        
-        
+        cell.cleanPerson = person
+        cell.tabBarController = self.tabBarController!
         return cell
     }
+    
+    
 }
+    
+

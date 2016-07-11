@@ -15,6 +15,9 @@ class ParseHelper {
     static let ParseRequestCleanPerson = "cleanPerson"
     
     static func initRequestInfo(customer: PFUser, cleanPerson: PFUser) {
+        //another snippet to check if the Request object already set between these two user
+        
+        //Set up new Request object
         let requestObject = PFObject(className: ParseRequestClass)
         requestObject[ParseRequestCustomer] = customer
         requestObject[ParseRequestCleanPerson] = cleanPerson
