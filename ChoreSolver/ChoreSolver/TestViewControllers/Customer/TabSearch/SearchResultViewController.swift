@@ -37,10 +37,6 @@ class SearchResultViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-//        if self.tabBarController == nil {
-//            print("fail")
-//            return
-//        }
         let cleanPersonQuery : PFQuery = PFUser.query()!
         cleanPersonQuery.whereKey("userType", equalTo: "CleanPerson")
         cleanPersonQuery.whereKey("county", equalTo: "Hualien")
@@ -101,9 +97,13 @@ extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate
 
         cell.cleanPersonNameLabel.text = person.username!
         cell.cleanPerson = person
-        cell.hourRateLabel.text = person["county"] as? String
-     //   cell.tabBarController = self.tabBarController!
-        cell.viewController = self
+        if person["county"] != nil {
+            let num = person["hourRate"] as! NSNumber
+            print(num.doubleValue)
+        }
+        
+        cell.tabBarViewController = self.tabBarController ?? nil
+        
         return cell
     }
     

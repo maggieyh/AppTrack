@@ -11,7 +11,7 @@ import Parse
 class SearchResultTableViewCell: UITableViewCell {
 
     var cleanPerson: PFUser?
-    var viewController: UIViewController?
+    var tabBarViewController: UITabBarController?
     
     @IBOutlet weak var cleanPersonNameLabel: UILabel!
     @IBOutlet weak var cleanPersonImage: UIImageView!
