@@ -22,7 +22,6 @@ class ParseHelper {
         requestQuery.whereKey(ParseRequestCleanPerson, equalTo: cleanPerson)
         requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
             if result!.count == 0 {
-                print("aa")
                 //Set up new Request object
                 let requestObject = PFObject(className: ParseRequestClass)
                 requestObject[ParseRequestCustomer] = customer

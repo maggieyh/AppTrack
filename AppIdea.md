@@ -145,7 +145,7 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
             * StateOfRequest: switch(Authorized: Bool)
               -> True: "Contact \(Customer.name) to provide your service"
               -> False: "\(Customer.name) sent a request for your contact!" + ReplyButton(tapped goto CustomerProfileView(13) and AletAction to tell)
-              
+
             * button tapped:
                StateOfRequest is true -> (13)
                false -> alert to tell the cleanperson to respond
@@ -233,8 +233,7 @@ post.fetchIfNeededInBackgroundWithBlock {
  // do something with your title variable
 }
 
-
-
+*  the request button on customer-result-view should be gone when the request already made
 * Search Function for Customer:
     * SearchByCountyViewController's tableview only
 * Request sending function ( tap then initiate an instance of Request class, add new cell in to next item)
@@ -246,6 +245,10 @@ _finishing a usable build_
  * Respond
  * CustomerRequestViewController's tableView and DetailView
 * Registration and LogIn with Facebook
+
+
+
+
   * Cleaning Person profile setting up
 
 
@@ -305,4 +308,5 @@ http://stackoverflow.com/questions/30608871/retrieving-custom-parse-user-variabl
 http://shrikar.com/uitableview-delegate-and-datasource-in-swift/
 * http://stackoverflow.com/questions/18880341/why-is-there-extra-padding-at-the-top-of-my-uitableview-with-style-uitableviewst
 
-*
+* pickerView
+https://makeapppie.com/tag/uipickerview-in-swift/

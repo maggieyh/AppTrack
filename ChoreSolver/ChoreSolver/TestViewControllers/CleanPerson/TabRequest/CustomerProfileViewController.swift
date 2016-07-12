@@ -10,10 +10,10 @@ import UIKit
 import Parse
 class CustomerProfileViewController: UIViewController {
 
+    
     var request: Request?
     @IBOutlet weak var replyBarButton: UIBarButtonItem!
     @IBAction func replyButtonTapped(sender: AnyObject) {
-        print("aa")
         self.navigationItem.rightBarButtonItem = nil
         let query = PFQuery(className:"Request")
         query.getObjectInBackgroundWithId(request!.objectId!) {
@@ -28,6 +28,14 @@ class CustomerProfileViewController: UIViewController {
         
     }
     
+    
+//    else {
+//    let alertController = UIAlertController(title: "\(viewController.request?.customer?.username) sent a request for your contact!", message: "Reply ?", preferredStyle: UIAlertControllerStyle.Alert)
+//    alertController.addAction(UIAlertAction(title: "Reply", style: .Default, handler: nil))
+//    alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+//    self.presentViewController(alertController, animated: true, completion: nil)
+//    
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

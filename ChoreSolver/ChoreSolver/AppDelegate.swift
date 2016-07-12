@@ -26,8 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         // Set up fake testCustomer login
         do {
-//            try PFUser.logInWithUsername("testCustomer", password: "testCustomer")
-            try PFUser.logInWithUsername("testCleanPerson", password: "testCleanPerson")
+            try PFUser.logInWithUsername("testCustomer", password: "testCustomer")
+//            try PFUser.logInWithUsername("testCleanPerson", password: "testCleanPerson")
 
         } catch {
             print("Unable to log in")

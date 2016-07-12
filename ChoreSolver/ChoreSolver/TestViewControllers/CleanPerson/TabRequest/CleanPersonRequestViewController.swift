@@ -16,6 +16,8 @@ class CleanPersonRequestViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.requestTableView.estimatedRowHeight = 80.0
+        self.requestTableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,7 +36,7 @@ class CleanPersonRequestViewController: UIViewController {
                 viewController.request = requests[indexPath.row]
                 if viewController.request!.agree.boolValue {
                     viewController.navigationItem.rightBarButtonItem = nil
-                }
+                } 
             }
             
 
@@ -71,10 +73,10 @@ class CleanPersonRequestViewController: UIViewController {
 extension CleanPersonRequestViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
         return requests.count
         
     }
+    
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cleanPersonRequestCell", forIndexPath: indexPath) as! cleanPersonRequestTableViewCell
@@ -90,11 +92,13 @@ extension CleanPersonRequestViewController: UITableViewDataSource, UITableViewDe
                 }
             }
         }
-        
+        let str = requests[indexPath.row].customer!.username
         if requests[indexPath.row].agree.boolValue {
             cell.replyButton.hidden = true
+            cell.requestStateLabel.text = "Contact \(str!) to provide your service"
         } else {
             cell.replyButton.hidden = false
+            cell.requestStateLabel.text = "\(str!) sent a request for your contact!"
         }
         cell.request = requests[indexPath.row]
         return cell

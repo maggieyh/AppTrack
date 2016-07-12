@@ -18,7 +18,7 @@ class SearchResultViewController: UIViewController {
     
     var cleanPersons: [PFUser] = []
     var imageData: [NSData?] = []
-    
+    var selectedCounty: String?
     
     //get the specific view controller's index
 

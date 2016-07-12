@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vk3-3s-PnK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="o9u-af-U6J">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -19,18 +19,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jef-Aw-5kW">
-                                <rect key="frame" x="102" y="140" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eTk-ql-GbT">
+                                <rect key="frame" x="0.0" y="113" width="600" height="76"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Cleaning Service ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1YQ-0K-uFV">
+                                        <rect key="frame" x="155" y="0.0" width="290" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your County" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tte-Ob-Nbl">
+                                        <rect key="frame" x="210" y="50" width="180" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KdW-BX-IRc">
+                                <rect key="frame" x="0.0" y="208" width="600" height="234"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="234" id="dsg-fb-XgZ"/>
+                                </constraints>
                                 <connections>
-                                    <action selector="buttonTapped:" destination="suA-Mf-64O" eventType="touchDown" id="dfY-wj-VgT"/>
-                                    <segue destination="bfH-Va-CQ5" kind="show" id="wIb-hg-1Ri"/>
+                                    <outlet property="dataSource" destination="suA-Mf-64O" id="bv6-Au-Kn6"/>
+                                    <outlet property="delegate" destination="suA-Mf-64O" id="nyK-M4-4lw"/>
                                 </connections>
-                            </button>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="eTk-ql-GbT" firstAttribute="leading" secondItem="d6c-Rb-ltY" secondAttribute="leading" id="6I1-wD-sAq"/>
+                            <constraint firstAttribute="trailing" secondItem="KdW-BX-IRc" secondAttribute="trailing" id="AFV-ef-zFc"/>
+                            <constraint firstItem="eTk-ql-GbT" firstAttribute="top" secondItem="8EP-Dm-J3Z" secondAttribute="bottom" constant="49" id="YW5-Oj-RdI"/>
+                            <constraint firstAttribute="trailing" secondItem="eTk-ql-GbT" secondAttribute="trailing" id="cBv-pI-0Z2"/>
+                            <constraint firstItem="KdW-BX-IRc" firstAttribute="top" secondItem="eTk-ql-GbT" secondAttribute="bottom" constant="19" id="gig-c8-dJJ"/>
+                            <constraint firstItem="KdW-BX-IRc" firstAttribute="leading" secondItem="d6c-Rb-ltY" secondAttribute="leading" id="y7Y-bF-gvG"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Search" id="M3h-cg-hBj"/>
+                    <connections>
+                        <outlet property="countyPickerView" destination="KdW-BX-IRc" id="nIt-gx-nh2"/>
+                        <segue destination="bfH-Va-CQ5" kind="show" identifier="showResult" id="vOW-T8-cRT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hi-sA-Bwf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -355,19 +386,19 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bml-aM-xo4">
-                                                            <rect key="frame" x="67" y="9" width="170" height="46"/>
+                                                            <rect key="frame" x="67" y="9" width="130" height="46"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoR-8p-azd">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="170" height="21"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="21"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="170" id="ojA-dH-dcj"/>
+                                                                        <constraint firstAttribute="width" constant="130" id="ojA-dH-dcj"/>
                                                                     </constraints>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGQ-H2-K4W">
-                                                                    <rect key="frame" x="0.0" y="21" width="170" height="25"/>
+                                                                    <rect key="frame" x="0.0" y="21" width="130" height="25"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="25" id="ZUW-Nt-mPS"/>
                                                                     </constraints>
@@ -377,8 +408,8 @@
                                                                 </label>
                                                             </subviews>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxy-fd-TPe">
-                                                            <rect key="frame" x="242" y="21" width="262" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sxy-fd-TPe">
+                                                            <rect key="frame" x="202" y="21" width="302" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
