@@ -10,10 +10,11 @@ import UIKit
 import Parse
 class CustomerProfileViewController: UIViewController {
 
-  
+    var request: Request?
+    @IBOutlet weak var replyBarButton: UIBarButtonItem!
     @IBAction func replyButtonTapped(sender: AnyObject) {
-        self.replyButton.hidden = true
-       
+        print("aa")
+        self.navigationItem.rightBarButtonItem = nil
         let query = PFQuery(className:"Request")
         query.getObjectInBackgroundWithId(request!.objectId!) {
             (request: PFObject?, error: NSError?) -> Void in

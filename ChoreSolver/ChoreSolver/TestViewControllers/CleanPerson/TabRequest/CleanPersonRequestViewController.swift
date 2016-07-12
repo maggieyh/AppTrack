@@ -23,7 +23,25 @@ class CleanPersonRequestViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func unwindBackToRequestView(segue:UIStoryboardSegue) {
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showCustomerProfile" {
+            let viewController = segue.destinationViewController as! CustomerProfileViewController
+            if let indexPath = self.requestTableView.indexPathForSelectedRow{
+                viewController.request = requests[indexPath.row]
+                if viewController.request!.agree.boolValue {
+                    viewController.navigationItem.rightBarButtonItem = nil
+                }
+            }
+            
 
+        }
+    }
+ 
+  
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let requestQuery = PFQuery(className: "Request")
@@ -53,7 +71,9 @@ class CleanPersonRequestViewController: UIViewController {
 extension CleanPersonRequestViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       
         return requests.count
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

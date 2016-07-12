@@ -417,7 +417,7 @@
                                             <outlet property="customerNameLabel" destination="HoR-8p-azd" id="N17-T6-jY8"/>
                                             <outlet property="replyButton" destination="lxx-2K-CqG" id="7In-L6-1Fk"/>
                                             <outlet property="requestStateLabel" destination="Sxy-fd-TPe" id="ms7-X6-Aj2"/>
-                                            <segue destination="kSi-Og-QQz" kind="show" id="lGc-4i-iTs"/>
+                                            <segue destination="kSi-Og-QQz" kind="show" identifier="showCustomerProfile" id="lGc-4i-iTs"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -459,13 +459,17 @@
                     <navigationItem key="navigationItem" title="Customer Profile" id="fNW-zQ-BCh">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="KqA-Iv-ZCT">
                             <connections>
-                                <segue destination="LnW-KO-9RR" kind="unwind" unwindAction="unwindBackToRequestView:" id="q07-Pu-ilf"/>
+                                <segue destination="LnW-KO-9RR" kind="unwind" unwindAction="unwindBackToRequestView:" id="nDR-cb-htf"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Reply" id="1D9-Dg-Vig"/>
+                        <barButtonItem key="rightBarButtonItem" title="Reply" id="1D9-Dg-Vig">
+                            <connections>
+                                <action selector="replyButtonTapped:" destination="kSi-Og-QQz" id="Cgc-j2-jrz"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="replyBarButton" destination="1D9-Dg-Vig" id="yqO-rN-jG0"/>
+                        <outlet property="replyBarButton" destination="1D9-Dg-Vig" id="sEJ-z6-a9O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6SQ-jR-c9S" userLabel="First Responder" sceneMemberID="firstResponder"/>
