@@ -97,11 +97,7 @@ extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate
 
         cell.cleanPersonNameLabel.text = person.username!
         cell.cleanPerson = person
-        if person["county"] != nil {
-            let num = person["hourRate"] as! NSNumber
-            print(num.doubleValue)
-        }
-        
+        cell.hourRateLabel.text = person["hourRate"] as? String
         cell.tabBarViewController = self.tabBarController ?? nil
         
         return cell

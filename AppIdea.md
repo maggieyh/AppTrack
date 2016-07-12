@@ -269,3 +269,31 @@ _submitting to the App Store_
 * USERNAME: yaohsiao
 * App Name (optional): parse-dashboard-yh
 * PASSWORD: QnajXYnFXvDv3MjX
+
+
+####Reference
+* Conversion between String, NSString, NSData and [UInt8] array in Swift:
+http://studyswift.blogspot.sg/2016/02/conversion-between-string-nsstring.html
+* Picker View, gesture:
+http://www.appcoda.com/ios-gesture-recognizers/
+* Options Menu:
+https://github.com/HighBay/OptionsMenu
+* Push Notification:
+https://www.raywenderlich.com/123862/push-notifications-tutorial
+* Message service api:
+http://quickblox.com/#connect-app
+* retrieve PFQuery:
+http://stackoverflow.com/questions/30608871/retrieving-custom-parse-user-variables
+
+* segue:
+  * If your segue exists in the storyboard with a segue identifier between your two views, you can just call it programmatically using:
+    performSegueWithIdentifier("mySegueID", sender: nil)
+  You could also do:
+    presentViewController(nextViewController, animated: true, completion: nil)
+  Or if you are in a Navigation controller:
+    self.navigationController?.pushViewController(nextViewController, animated: true)
+  *
+
+
+* UITableViewDelegate and DataSource:
+http://shrikar.com/uitableview-delegate-and-datasource-in-swift/
