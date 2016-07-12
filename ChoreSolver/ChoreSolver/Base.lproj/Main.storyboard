@@ -7,7 +7,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Search View Controller-->
+        <!--Search-->
         <scene sceneID="nxg-yt-SPc">
             <objects>
                 <viewController storyboardIdentifier="searchViewController" id="suA-Mf-64O" customClass="SearchViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
@@ -30,7 +30,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="GdH-tU-dYc"/>
+                    <navigationItem key="navigationItem" title="Search" id="M3h-cg-hBj"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hi-sA-Bwf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -39,7 +39,7 @@
         <!--Test-Result-View-->
         <scene sceneID="t1z-V0-xm4">
             <objects>
-                <viewController storyboardIdentifier="searchResultViewController" title="Test-Result-View" id="bfH-Va-CQ5" customClass="SearchResultViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="searchResultViewController" title="Test-Result-View" automaticallyAdjustsScrollViewInsets="NO" id="bfH-Va-CQ5" customClass="SearchResultViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jJD-9z-JKJ"/>
                         <viewControllerLayoutGuide type="bottom" id="gEq-qd-thP"/>
@@ -48,12 +48,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ecs-IX-Kaf">
-                                <rect key="frame" x="0.0" y="20" width="600" height="531"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ecs-IX-Kaf">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CleanPersonCell" rowHeight="80" id="LOL-qx-1e0" customClass="SearchResultTableViewCell" customModule="ChoreSolver" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="80"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LOL-qx-1e0" id="uHm-1U-R3O">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="79"/>
@@ -134,12 +134,19 @@
                             <constraint firstItem="gEq-qd-thP" firstAttribute="top" secondItem="Ecs-IX-Kaf" secondAttribute="bottom" id="muA-Mg-jqb"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" image="search" id="qNQ-f8-g8p"/>
+                    <navigationItem key="navigationItem" title="Search Result" id="vek-lN-neT">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="jVl-0N-yXU">
+                            <connections>
+                                <segue destination="wHO-dY-De9" kind="unwind" unwindAction="unwindBackToSearchView:" id="3Of-rX-xfb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchResultTableView" destination="Ecs-IX-Kaf" id="pez-P9-Rid"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4I-gH-x8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="wHO-dY-De9" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2840" y="-1550"/>
         </scene>

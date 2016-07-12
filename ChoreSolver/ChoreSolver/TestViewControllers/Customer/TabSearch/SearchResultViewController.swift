@@ -13,7 +13,9 @@ import Foundation
 class SearchResultViewController: UIViewController {
 
     @IBOutlet weak var searchResultTableView: UITableView!
-
+    
+   
+    
     var cleanPersons: [PFUser] = []
     var imageData: [NSData?] = []
     
@@ -97,7 +99,8 @@ extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate
 
         cell.cleanPersonNameLabel.text = person.username!
         cell.cleanPerson = person
-        cell.hourRateLabel.text = person["hourRate"] as? String
+        let str = (person["hourRate"] as? String) ?? ""
+        cell.hourRateLabel.text = str + "$/hr"
         cell.tabBarViewController = self.tabBarController ?? nil
         
         return cell

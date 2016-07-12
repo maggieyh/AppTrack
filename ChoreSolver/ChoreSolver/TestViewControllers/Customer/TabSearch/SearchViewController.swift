@@ -14,8 +14,9 @@ class SearchViewController: UIViewController {
     
     @IBAction func buttonTapped(sender: AnyObject) {
     }
-    override func unwindForSegue(unwindSegue: UIStoryboardSegue, towardsViewController subsequentVC: UIViewController) {
+    @IBAction func unwindBackToSearchView(segue:UIStoryboardSegue) {
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
