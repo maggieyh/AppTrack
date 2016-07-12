@@ -21,6 +21,8 @@
 		6F5F58DA1D33ED66000ABB58 /* CleanPersonRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58D91D33ED66000ABB58 /* CleanPersonRequestViewController.swift */; };
 		6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */; };
 		6F8E6A921D31FDF600618103 /* CleanPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A911D31FDF600618103 /* CleanPerson.swift */; };
+		6FDDB8791D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */; };
+		6FDDB87B1D34D11700DBA28F /* CustomerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		6F5F58D91D33ED66000ABB58 /* CleanPersonRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPersonRequestViewController.swift; sourceTree = "<group>"; };
 		6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		6F8E6A911D31FDF600618103 /* CleanPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPerson.swift; sourceTree = "<group>"; };
+		6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cleanPersonRequestTableViewCell.swift; sourceTree = "<group>"; };
+		6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerProfileViewController.swift; sourceTree = "<group>"; };
 		83AC856F9968EC949A59AAB8 /* Pods_ChoreSolver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChoreSolver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A184FD2700C9E36EE66331 /* Pods-ChoreSolver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreSolver.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChoreSolver/Pods-ChoreSolver.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				6F5F58D91D33ED66000ABB58 /* CleanPersonRequestViewController.swift */,
+				6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */,
 			);
 			path = TabRequest;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 		6F8E6A8C1D31F94900618103 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6FDDB8771D34B86E00DBA28F /* CleanPersonRequest */,
 				6F5F58C11D336C42000ABB58 /* CustomerRequestResult */,
 				6F8E6A8D1D31F94900618103 /* SearchResult */,
 			);
@@ -197,6 +203,14 @@
 				6F5391B71D329B2A00C1AA9C /* Request.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6FDDB8771D34B86E00DBA28F /* CleanPersonRequest */ = {
+			isa = PBXGroup;
+			children = (
+				6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */,
+			);
+			path = CleanPersonRequest;
 			sourceTree = "<group>";
 		};
 		F1D4BAF4E8101AB1148B2FFA /* Pods */ = {
@@ -330,9 +344,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FDDB8791D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift in Sources */,
 				6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */,
 				6F5F58D61D33EBD2000ABB58 /* SearchViewController.swift in Sources */,
 				6F5F58DA1D33ED66000ABB58 /* CleanPersonRequestViewController.swift in Sources */,
+				6FDDB87B1D34D11700DBA28F /* CustomerProfileViewController.swift in Sources */,
 				6F5391B81D329B2A00C1AA9C /* Request.swift in Sources */,
 				6F5F58C31D336C56000ABB58 /* sentRequestTableViewCell.swift in Sources */,
 				6F4394691D30D71B000A1F49 /* AppDelegate.swift in Sources */,

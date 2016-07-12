@@ -7,11 +7,11 @@
 //
 
 import UIKit
-
+import Parse
 class CleanPersonRequestViewController: UIViewController {
 
     @IBOutlet weak var requestTableView: UITableView!
-   
+    var requests: [Request] = []
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +24,20 @@ class CleanPersonRequestViewController: UIViewController {
     }
     
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let requestQuery = PFQuery(className: "Request")
+        requestQuery.whereKey("cleanPerson", equalTo: PFUser.currentUser()!)
+        requestQuery.includeKey("customer")
+        requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+            if let result = result {
+                self.requests = result as! [Request]
+                self.requestTableView.reloadData()
+            }
+            
+        }
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -34,4 +48,35 @@ class CleanPersonRequestViewController: UIViewController {
     }
     */
 
+}
+
+extension CleanPersonRequestViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return requests.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cleanPersonRequestCell", forIndexPath: indexPath) as! cleanPersonRequestTableViewCell
+        if let customer = requests[indexPath.row].customer {
+            cell.customerNameLabel.text = customer.username
+            
+            if let imageFile = customer["imageFile"] as? PFFile {
+                do {
+                    let data = try imageFile.getData()
+                    cell.customerImageView.image = UIImage(data: data, scale: 1.0)
+                } catch {
+                    print("fail")
+                }
+            }
+        }
+        
+        if requests[indexPath.row].agree.boolValue {
+            cell.replyButton.hidden = true
+        } else {
+            cell.replyButton.hidden = false
+        }
+        cell.request = requests[indexPath.row]
+        return cell
+    }
 }

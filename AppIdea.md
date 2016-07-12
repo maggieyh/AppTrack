@@ -144,7 +144,13 @@ Supply: Anyone wants to be a part-time cleaning person , say: students
             * Customer.Photo, .Name
             * StateOfRequest: switch(Authorized: Bool)
               -> True: "Contact \(Customer.name) to provide your service"
-              -> False: "\(Customer.name) sent a request for your contact!" + ReplyButton(tapped goto CustomerProfileView(13) )
+              -> False: "\(Customer.name) sent a request for your contact!" + ReplyButton(tapped goto CustomerProfileView(13) and AletAction to tell)
+              
+            * button tapped:
+               StateOfRequest is true -> (13)
+               false -> alert to tell the cleanperson to respond
+
+
             * TapCell -> CustomerProfileView(13) sent with StateOfRequest
       * CustomerProfileView(13):
         * Customer.Name, .Photo
@@ -299,4 +305,4 @@ http://stackoverflow.com/questions/30608871/retrieving-custom-parse-user-variabl
 http://shrikar.com/uitableview-delegate-and-datasource-in-swift/
 * http://stackoverflow.com/questions/18880341/why-is-there-extra-padding-at-the-top-of-my-uitableview-with-style-uitableviewst
 
-* 
+*
