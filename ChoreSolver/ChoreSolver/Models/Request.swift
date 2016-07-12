@@ -16,7 +16,8 @@ class Request: PFObject, PFSubclassing {
     
     @NSManaged var customer: PFUser?
     @NSManaged var cleanPerson: PFUser?
-    @NSManaged var agree: NSString?
+    @NSManaged var agree: NSNumber //Parse's boolean is NSNumber
+    
     
     //MARK: PFSubclassing Protocol
     
@@ -37,8 +38,6 @@ class Request: PFObject, PFSubclassing {
         }
     }
     
-    func fetchRequest() {
-        
-    }
+    
     
 }
