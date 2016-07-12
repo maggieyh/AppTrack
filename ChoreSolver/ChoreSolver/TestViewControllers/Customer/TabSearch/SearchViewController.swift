@@ -14,6 +14,7 @@ class SearchViewController: UIViewController {
     
     @IBAction func buttonTapped(sender: AnyObject) {
     }
+    
     @IBAction func unwindBackToSearchView(segue:UIStoryboardSegue) {
     }
 

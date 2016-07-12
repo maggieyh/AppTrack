@@ -297,3 +297,6 @@ http://stackoverflow.com/questions/30608871/retrieving-custom-parse-user-variabl
 
 * UITableViewDelegate and DataSource:
 http://shrikar.com/uitableview-delegate-and-datasource-in-swift/
+* http://stackoverflow.com/questions/18880341/why-is-there-extra-padding-at-the-top-of-my-uitableview-with-style-uitableviewst
+
+* 

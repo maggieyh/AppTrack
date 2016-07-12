@@ -19,17 +19,11 @@ class SearchResultTableViewCell: UITableViewCell {
 
     @IBAction func requestInfoTapped(sender: AnyObject) {
         ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson!)
-        //self.tabBarController!.selectedViewController = self.tabBarController!.viewControllers![1]
-        //self.viewController?.presentViewController(RequestViewController, animated: true, completion: nil)
+        //transition to tab Request
+        self.tabBarViewController!.selectedViewController = self.tabBarViewController!.viewControllers![1]
+        
         
     }
-    
-    //func transition(Sender: UIButton!) {
-      //  let secondViewController:SecondViewController = SecondViewController()
-        
-      //  self.presentViewController(secondViewController, animated: true, completion: nil)
-        
-    //}
     
     override func awakeFromNib() {
         super.awakeFromNib()

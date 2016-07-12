@@ -13,11 +13,16 @@ class CustomerReqeustViewController: UIViewController {
     var requests: [Request] = []
     
     @IBOutlet weak var requestTableView: UITableView!
+    
+    @IBAction func unwindBackToRequestView(segue:UIStoryboardSegue) {
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        self.requestTableView.estimatedRowHeight = 80.0
+        self.requestTableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func didReceiveMemoryWarning() {
@@ -63,9 +68,27 @@ extension CustomerReqeustViewController: UITableViewDelegate, UITableViewDataSou
         let request = self.requests[indexPath.row]
         let cleanPerson = request.cleanPerson
         if let cleanPerson = cleanPerson {
-            print("ye")
             cell.nameLabel.text = cleanPerson.username
+            cell.hourRateLabel.text = ((cleanPerson["hourRate"] as? String) ?? "" ) + "$/hr"
+            if request.agree.boolValue {
+                cell.stateLabel.text = "Contact Info Received, Contact " + cell.hourRateLabel.text! + "!"
+            } else {
+                cell.stateLabel.text = "Request Sent, Wait for Response"
+            }
+            
+            let imageFile = cleanPerson["imageFile"] as! PFFile
+            do {
+                let data = try imageFile.getData()
+                cell.cleanPersonImage.image = UIImage(data: data, scale: 1.0)
+            } catch {
+                print("fail")
+            }
         }
+        
+        
+        
+        
+        
         return cell
         
     }
