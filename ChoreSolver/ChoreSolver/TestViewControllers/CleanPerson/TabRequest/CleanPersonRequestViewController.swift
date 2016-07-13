@@ -77,19 +77,19 @@ extension CleanPersonRequestViewController: UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cleanPersonRequestCell", forIndexPath: indexPath) as! cleanPersonRequestTableViewCell
-        if let customer = requests[indexPath.row].customer {
-            cell.customerNameLabel.text = customer.username
-            
-            if let imageFile = customer["imageFile"] as? PFFile {
-                do {
-                    let data = try imageFile.getData()
-                    cell.customerImageView.image = UIImage(data: data, scale: 1.0)
-                } catch {
-                    print("fail")
-                }
+        let customer = requests[indexPath.row].customer
+        cell.customerNameLabel.text = customer.username
+        
+        if let imageFile = customer["imageFile"] as? PFFile {
+            do {
+                let data = try imageFile.getData()
+                cell.customerImageView.image = UIImage(data: data, scale: 1.0)
+            } catch {
+                print("fail")
             }
         }
-        let str = requests[indexPath.row].customer!.username
+        
+        let str = requests[indexPath.row].customer.username
         if requests[indexPath.row].agree.boolValue {
             cell.replyButton.hidden = true
             cell.requestStateLabel.text = "Contact \(str!) to provide your service"

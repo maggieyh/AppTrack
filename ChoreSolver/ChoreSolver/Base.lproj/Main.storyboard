@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="o9u-af-U6J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -527,10 +527,10 @@
             </objects>
             <point key="canvasLocation" x="2790" y="-2296"/>
         </scene>
-        <!--tabBarController-->
+        <!--customerTabBarController-->
         <scene sceneID="3sy-VI-SM4">
             <objects>
-                <tabBarController storyboardIdentifier="tabBarController" title="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="o9u-af-U6J" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="customerTabBarController" title="customerTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="o9u-af-U6J" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="1ph-1c-Hau">
                         <autoresizingMask key="autoresizingMask"/>
@@ -661,7 +661,6 @@
         <!--Profile-->
         <scene sceneID="f8s-7D-29A">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1Fj-gN-tJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p0z-cF-LnI" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Profile" id="0qg-wL-IOg"/>
                     <toolbarItems/>
@@ -674,6 +673,7 @@
                         <segue destination="oma-3N-B0B" kind="relationship" relationship="rootViewController" id="rXD-Hx-VTz"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Fj-gN-tJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1361" y="-3037"/>
         </scene>

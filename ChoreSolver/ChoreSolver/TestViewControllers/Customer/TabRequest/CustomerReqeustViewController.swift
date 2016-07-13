@@ -39,6 +39,7 @@ class CustomerReqeustViewController: UIViewController {
         requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
             if let result = result {
                 self.requests = result as! [Request]
+                
                 self.requestTableView.reloadData()
             }
         }
@@ -68,7 +69,7 @@ extension CustomerReqeustViewController: UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCellWithIdentifier("sentRequestCell", forIndexPath: indexPath) as! sentRequestTableViewCell
         let request = self.requests[indexPath.row]
         let cleanPerson = request.cleanPerson
-        if let cleanPerson = cleanPerson {
+//        if let cleanPerson = cleanPerson {
             cell.nameLabel.text = cleanPerson.username
             cell.hourRateLabel.text = ((cleanPerson["hourRate"] as? String) ?? "" ) + "$/hr"
             if request.agree.boolValue {
@@ -84,7 +85,7 @@ extension CustomerReqeustViewController: UITableViewDelegate, UITableViewDataSou
             } catch {
                 print("fail")
             }
-        }
+//        }
         
         
         

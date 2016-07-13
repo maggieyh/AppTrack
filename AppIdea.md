@@ -255,6 +255,10 @@ _finishing a usable build_
 * Log In
 pfloginviewcontroller!!!!
 
+* push notification
+
+
+* Message service
 
 #### Week 3
 * SearchByCountyViewContoller's DetailView(profile of cleaning person viewing)
@@ -314,3 +318,11 @@ http://shrikar.com/uitableview-delegate-and-datasource-in-swift/
 
 * pickerView
 https://makeapppie.com/tag/uipickerview-in-swift/
+
+* Desgin ios-gesture-recognizers
+https://designcode.io/
+Adaptive design
+* http://designmodo.github.io/Flat-UI/#
+flatUIKit coacopods
+* PHONE verification
+https://get.digits.com/
