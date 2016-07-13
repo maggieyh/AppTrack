@@ -326,3 +326,7 @@ Adaptive design
 flatUIKit coacopods
 * PHONE verification
 https://get.digits.com/
+* Facebook login
+https://developers.facebook.com/docs/facebook-login/permissions
+https://developers.facebook.com/docs/reference/ios/current/class/FBSDKGraphRequest/
+

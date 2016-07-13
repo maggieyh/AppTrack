@@ -47,20 +47,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
        
         // Set up fake testCustomer login
-        do {
-   //         try PFUser.logInWithUsername("testCustomer", password: "testCustomer")
-            try PFUser.logInWithUsername("testCleanPerson", password: "testCleanPerson")
-
-        } catch {
-            print("Unable to log in")
-        }
-        
-        if let currentUser = PFUser.currentUser() {
-            print("\(currentUser.username!) logged in successfully")
-        } else {
-            print("No logged in user :(")
-        }
-    
+//        do {
+//            try PFUser.logInWithUsername("testCustomer", password: "testCustomer")
+//     //       try PFUser.logInWithUsername("testCleanPerson", password: "testCleanPerson")
+//
+//        } catch {
+//            print("Unable to log in")
+//        }
+//        
+//        if let currentUser = PFUser.currentUser() {
+//            print("\(currentUser.username!) logged in successfully")
+//        } else {
+//            print("No logged in user :(")
+//        }
+//    
 
         
         //decide which view controller should be the rootViewController of our app.
@@ -75,14 +75,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let startViewController: UIViewController
         
         if (user != nil) {
-            // 3
-            // if we have a user, set the TabBarController to be the initial view controller
+
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             startViewController = storyboard.instantiateViewControllerWithIdentifier("customerTabBarController") as! UITabBarController
         } else {
-            // 4
-            // Otherwise set the LoginViewController to be the first
+        
             let loginViewController = PFLogInViewController()
+//            let loginViewController = FBloginhelperViewController()
+            loginViewController.facebookPermissions = ["public_profile", "email"]
             loginViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton, .PasswordForgotten, .Facebook]
             loginViewController.delegate = parseLoginHelper
             loginViewController.signUpController?.delegate = parseLoginHelper

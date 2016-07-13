@@ -40,13 +40,14 @@ extension ParseLoginHelper : PFLogInViewControllerDelegate {
     func logInViewController(logInController: PFLogInViewController, didLogInUser user: PFUser) {
         // Determine if this is a Facebook login
         let isFacebookLogin = FBSDKAccessToken.currentAccessToken() != nil
-        
+      //  logInController.facebookPermissions = ["name", "email"]
         if !isFacebookLogin {
             // Plain parse login, we can return user immediately
             self.callback(user, nil)
+            print("aa")
         } else {
             // if this is a Facebook login, fetch the username from Facebook
-            
+            print(FBSDKAccessToken.currentAccessToken())
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,name,first_name,last_name,email"]).startWithCompletionHandler {
                 (connection: FBSDKGraphRequestConnection!, result: AnyObject?, error: NSError?) -> Void in
                 if let error = error {
