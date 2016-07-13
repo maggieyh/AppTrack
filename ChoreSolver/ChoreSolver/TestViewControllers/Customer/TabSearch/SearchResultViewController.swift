@@ -40,7 +40,7 @@ class SearchResultViewController: UIViewController {
         super.viewDidAppear(animated)
         let cleanPersonQuery : PFQuery = PFUser.query()!
         cleanPersonQuery.whereKey("userType", equalTo: "CleanPerson")
-        cleanPersonQuery.whereKey("county", equalTo: "Hualien")
+        cleanPersonQuery.whereKey("county", equalTo: self.selectedCounty!)
         cleanPersonQuery.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error: NSError?) in
             if let result = result {
                 self.cleanPersons = result as! [PFUser]
@@ -76,7 +76,9 @@ class SearchResultViewController: UIViewController {
     }
     */
 
-    
+    @IBAction func unwindBackToRequestView(segue:UIStoryboardSegue) {
+        
+    }
     
     
 }

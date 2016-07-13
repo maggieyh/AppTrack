@@ -24,10 +24,7 @@ class CleanPersonRequestViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    @IBAction func unwindBackToRequestView(segue:UIStoryboardSegue) {
-        
-    }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showCustomerProfile" {

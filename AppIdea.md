@@ -249,7 +249,11 @@ _finishing a usable build_
 
 
 
-  * Cleaning Person profile setting up
+
+* Cleaning Person profile setting up
+* register
+* Log In
+pfloginviewcontroller!!!!
 
 
 #### Week 3

@@ -13,12 +13,11 @@ class SearchViewController: UIViewController {
 
     var selectedCounty: String?
     
-    @IBAction func buttonTapped(sender: AnyObject) {
-    }
     
    // @IBOutlet var countiesPicker: [UIPickerView]!
     @IBOutlet weak var countyPickerView: UIPickerView!
     @IBAction func unwindBackToSearchView(segue:UIStoryboardSegue) {
+        
     }
     let pickerData = ["Changhua County", "Chiayi City", "Chiayi County","Hsinchu City",
                       "Hsinchu County", "Hualien County", "Kaohsiung City", "Keelung City", "Kinmen County", "Lienchiang County", "Miaoli County", "Nantou County", "New Taipei City", "Penghu County", "Pingtung County", "Taichung City", "Tainan City", "Taipei City", "Taitung County", "Taoyuan City", "Yilan County", "Yunlin County"]
