@@ -530,7 +530,7 @@
         <!--CustomerTabBarController-->
         <scene sceneID="3sy-VI-SM4">
             <objects>
-                <tabBarController storyboardIdentifier="customerTabBarController" title="CustomerTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="o9u-af-U6J" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="CustomerTabBarController" title="CustomerTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="o9u-af-U6J" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="1ph-1c-Hau">
                         <autoresizingMask key="autoresizingMask"/>
@@ -586,7 +586,7 @@
         <!--CleanPersonTabBarController-->
         <scene sceneID="xlk-a7-rft">
             <objects>
-                <tabBarController title="CleanPersonTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="vk3-3s-PnK" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="CleanPersonTabBarController" title="CleanPersonTabBarController" automaticallyAdjustsScrollViewInsets="NO" id="vk3-3s-PnK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="1Xy-3H-a24">
                         <autoresizingMask key="autoresizingMask"/>
