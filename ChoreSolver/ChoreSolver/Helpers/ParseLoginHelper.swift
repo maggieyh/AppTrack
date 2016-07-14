@@ -44,7 +44,6 @@ extension ParseLoginHelper : PFLogInViewControllerDelegate {
         if !isFacebookLogin {
             // Plain parse login, we can return user immediately
             self.callback(user, nil)
-            print("aa")
         } else {
             // if this is a Facebook login, fetch the username from Facebook
             print(FBSDKAccessToken.currentAccessToken())

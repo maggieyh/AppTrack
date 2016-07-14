@@ -29,13 +29,12 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.countyPickerView.delegate = self
         self.countyPickerView.dataSource = self
-        let accessToken = FBSDKAccessToken.currentAccessToken()
         if((FBSDKAccessToken.currentAccessToken()) != nil){
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, birthday, email"], HTTPMethod: "GET").startWithCompletionHandler({ (connection, result, error) -> Void in
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, birthday, email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
                 if (error == nil){
                     print(result)
                 }

@@ -16,25 +16,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var parseLoginHelper: ParseLoginHelper!
-
-    override init() {
-        super.init()
-        
-        parseLoginHelper = ParseLoginHelper {[unowned self] user, error in
-            // Initialize the ParseLoginHelper with a callback
-            if let error = error {
-                // 1
-                ErrorHandling.defaultErrorHandler(error)
-            } else  if let _ = user {
-                // if login was successful, display the TabBarController
-                // 2
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let tabBarController = storyboard.instantiateViewControllerWithIdentifier("customerTabBarController")
-                // 3
-                self.window?.rootViewController!.presentViewController(tabBarController, animated:true, completion:nil)
-            }
-        }
-    }
+//
+//    override init() {
+//        super.init()
+//        
+//        parseLoginHelper = ParseLoginHelper {[unowned self] user, error in
+//            // Initialize the ParseLoginHelper with a callback
+//            if let error = error {
+//                // 1
+//                ErrorHandling.defaultErrorHandler(error)
+//            } else  if let _ = user {
+//                // if login was successful, display the TabBarController
+//                // 2
+//                print("first")
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let tabBarController = storyboard.instantiateViewControllerWithIdentifier("CleanPersonTabBarController")
+//                // 3
+//                self.window?.rootViewController!.presentViewController(tabBarController, animated:true, completion:nil)
+//            }
+//        }
+//    }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -71,13 +72,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // check if we have logged in user
         // 2
         let user = PFUser.currentUser()
-        
-        let startViewController: UIViewController
-        
-        if (user != nil) {
-
+        var startViewController: UIViewController
+        if let _ = user {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            startViewController = storyboard.instantiateViewControllerWithIdentifier("customerTabBarController") as! UITabBarController
+            
+            do {
+                let user = try PFUser.currentUser()!.fetch()
+                if user["userType"] as! String == "Customer" {
+                    startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
+                    
+                } else {
+                    startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
+                }
+            } catch {
+                startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
+            }
+            
+
+            
+//                } else {
+//                    startViewController = storyboard.instantiateViewControllerWithIdentifier("customerTabBarController") as! UITabBarController
+//                }
+//            })
+            
+            
         } else {
         
             let loginViewController = PFLogInViewController()
