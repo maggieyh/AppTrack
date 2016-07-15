@@ -8,71 +8,152 @@
 
 import UIKit
 import Parse
-import DropDown
-
-
-class RegisterViewController: UIViewController, UIPopoverPresentationControllerDelegate {
-
-    let countyDropDown = DropDown()
+//import DropDown
+import ParseUI
+class RegisterViewController: UIViewController,UIPopoverPresentationControllerDelegate {
+    var backgroundImage : UIImageView!
+    //let countyDropDown = DropDown()
     
     let customerData = ["Name", "Email", "Phone Number"]
     let cleanPersonData = ["Name", "Email", "Phone Number","Hour Rate" ]
     var userType: String = "Customer"
-    
+    var textFields: [UITextField!]?
     
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
+    
+    //for Clean Person
     @IBOutlet weak var hourRateTextField: UITextField!
     @IBOutlet weak var introductionTextView: UITextView!
-    
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var hourRateLabel: UILabel!
-    @IBOutlet weak var introductionLabel: UILabel!
-    
-    @IBAction func doneTapped(sender: AnyObject) {
-        if userType == "Customer" {
-            let viewController = storyboard?.instantiateViewControllerWithIdentifier("CleanPersonTabBarController")
-            self.presentViewController(viewController!, animated: true, completion: nil)
-        } else {
-            let viewController = storyboard?.instantiateViewControllerWithIdentifier("CustomerTabBarController")
-            self.presentViewController(viewController!, animated: true, completion: nil)
-        }
-    }
     @IBOutlet weak var countyButton: UIButton!
     
     @IBAction func chooseCounty(sender: AnyObject) {
-        countyDropDown.show()
+        //countyDropDown.show()
     }
 
-    
     @IBAction func userTypeToggled(sender: AnyObject) {
         if userType == "CleanPerson" {
             userType = "Customer"
+            self.countyButton.hidden = true
+            self.introductionTextView.hidden = true
+            self.hourRateTextField.hidden = true
         } else {
             userType = "CleanPerson"
+            self.countyButton.hidden = false
+            self.introductionTextView.hidden = false
+            self.hourRateTextField.hidden = false
         }
     }
-    //MARK: customer
+
+    
+    
+    @IBAction func doneTapped(sender: AnyObject) {
+         //make new user
+        var finished: Bool = true
+        for ele in self.textFields! {
+            if ele.text == nil {
+                finished = false
+                break
+            }
+        }
+        
+        if finished {
+            let username = self.userNameTextField.text!
+            let password = self.passwordTextField.text
+            let email = self.emailTextField.text
+            let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            
+            let newUser = PFUser()
+            
+            newUser.username = username
+            newUser.password = password
+            newUser.email = finalEmail
+            
+            // Sign up the user asynchronously
+            newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
+                
+                // Stop the spinner
+//                spinner.stopAnimating()
+                if ((error) != nil) {
+                    print(error)
+                    
+                } else {
+                    print("sucess")
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        
+                        if self.userType == "Customer" {
+                            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
+                            self.presentViewController(viewController, animated: true, completion: nil)
+                        } else {
+                            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CleanPersonTabBarController") as! UITabBarController
+                            self.presentViewController(viewController, animated: true, completion: nil)
+                        }
+
+    
+                    })
+                }
+            })
+            
+            
+            
+        } else {
+            print("invalid something incomplete")
+        }
+    
+    }
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-        self.setupChooseCountyDropDown()
+     //   self.setupChooseCountyDropDown()
+        
+        self.textFields = [self.userNameTextField, self.passwordTextField, self.emailTextField, self.phoneNumberTextField]
+        
+        self.countyButton?.hidden = true
+        self.introductionTextView?.hidden = true
+        self.hourRateTextField?.hidden = true
+        
+        // set our custom background image
+        //        backgroundImage = UIImageView(image: UIImage(named: "welcome_bg"))
+        //        backgroundImage.contentMode = UIViewContentMode.ScaleAspectFill
+        //        signUpView!.insertSubview(backgroundImage, atIndex: 0)
+        //
+        // remove the parse Logo
+//        let logo = UILabel()
+//        logo.text = "Vay.K"
+//        logo.textColor = UIColor.whiteColor()
+//        logo.font = UIFont(name: "Pacifico", size: 70)
+//        logo.shadowColor = UIColor.lightGrayColor()
+//        logo.shadowOffset = CGSizeMake(2, 2)
+//        signUpView?.logo = logo
+        
+//        self.signUpView?.signUpButton
+        
+        
     }
-
+/*
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // stretch background image to fill screen
+        backgroundImage.frame = CGRectMake( 0,  0,  signUpView!.frame.width,  signUpView!.frame.height)
+        
+        // position logo at top with larger frame
+        signUpView!.logo!.sizeToFit()
+        let logoFrame = signUpView!.logo!.frame
+        signUpView!.logo!.frame = CGRectMake(logoFrame.origin.x, signUpView!.usernameField!.frame.origin.y - logoFrame.height - 16, signUpView!.frame.width,  logoFrame.height)
+    }*/
 
     /*
     // MARK: - Navigation
@@ -84,7 +165,7 @@ class RegisterViewController: UIViewController, UIPopoverPresentationControllerD
     }
     */
     
-    func setupChooseCountyDropDown() {
+    /*func setupChooseCountyDropDown() {
         countyDropDown.anchorView = countyButton
         
         // Will set a custom with instead of anchor view width
@@ -115,7 +196,7 @@ class RegisterViewController: UIViewController, UIPopoverPresentationControllerD
         
         // You can manually select a row if needed
         //		dropDown.selectRowAtIndex(3)
-    }
+    }*/
 
 }
 

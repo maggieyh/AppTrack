@@ -20,34 +20,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //
     override init() {
         super.init()
-        //Parse login afterward ?
+        
         parseLoginHelper = ParseLoginHelper {[unowned self] user, error in
-            // Initialize the ParseLoginHelper with a callback
+            //initializa the ParseLoginHelper with a callback
             if let error = error {
-                // 1
+                //1
                 ErrorHandling.defaultErrorHandler(error)
-            } else  if let _ = user {
-                // if login was successful, display the TabBarController
-                // 2
-                
-//                
-//                do {
-//                    let user = try PFUser.currentUser()!.fetch()
-//                    if user["userType"] as! String == "Customer" {
-//                        startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
-//                        
-//                    } else {
-//                        startViewController = storyboard.instantiateViewControllerWithIdentifier("CleanPersonTabBarController") as! UITabBarController
-//                    }
-//                } catch {
-//                    startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
-//                    print("failt in switch")
-//                }
-
+            } else if let _ = user {
+                // if user != nil ????
+                print("aa")
+                //if login was successful, display the TabBarConTroller
+               /* //2 load storyboard and view controller manually
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let tabBarController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
+//                //3 choose the main view controller of our app, in code, by setting the rootViewController property of the AppDelegate's window
+//                self.window?.rootViewController!.presentViewController(tabBarController, animated: true, completion: nil)*/
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let tabBarController = storyboard.instantiateViewControllerWithIdentifier("CleanPersonTabBarController")
-                // 3
-                self.window?.rootViewController!.presentViewController(tabBarController, animated:true, completion:nil)
+                self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+                let tabBarController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
+                self.window?.rootViewController = tabBarController
+                self.window?.makeKeyAndVisible()
+                
             }
         }
     }
@@ -55,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         //set up drop down
-        DropDown.startListeningToKeyboard()
+//        DropDown.startListeningToKeyboard()
         
         // Set up the Parse SDK
         let configuration = ParseClientConfiguration {
@@ -65,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.initializeWithConfiguration(configuration)
         
        
-        // Set up fake testCustomer login
+//         Set up fake testCustomer login
 //        do {
 //            try PFUser.logInWithUsername("testCustomer", password: "testCustomer")
 //     //       try PFUser.logInWithUsername("testCleanPerson", password: "testCleanPerson")
@@ -85,14 +78,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //decide which view controller should be the rootViewController of our app.
         // Initialize Facebook
         // 1
-        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+//        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
         // check if we have logged in user
         // 2
         let user = PFUser.currentUser()
         var startViewController: UIViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if (user != nil) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            
             
             do {
                 let user = try PFUser.currentUser()!.fetch()
@@ -111,14 +105,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         } else {
         
-            let loginViewController = PFLogInViewController()
-//            let loginViewController = FBloginhelperViewController()
-            loginViewController.facebookPermissions = ["public_profile", "email"]
-            loginViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton, .PasswordForgotten, .Facebook]
-            loginViewController.delegate = parseLoginHelper
-            loginViewController.signUpController?.delegate = parseLoginHelper
+//            let loginViewController = PFLogInViewController()
+////            let loginViewController = FBloginhelperViewController()
+////            loginViewController.facebookPermissions = ["public_profile", "email"]
+//            
+//            let signUpViewController = storyboard.instantiateViewControllerWithIdentifier("signUpViewController") as! RegisterViewController
+//            loginViewController.fields = [.UsernameAndPassword, .LogInButton, .SignUpButton, .PasswordForgotten]
+//            loginViewController.delegate = parseLoginHelper
+//            loginViewController.signUpController = signUpViewController
+//            //loginViewController.signUpController?.delegate = parseLoginHelper
+//           
+//            startViewController = loginViewController
             
-            startViewController = loginViewController
+            startViewController = storyboard.instantiateViewControllerWithIdentifier("logInViewController")
         }
         
         
@@ -126,8 +125,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = startViewController;
         self.window?.makeKeyAndVisible()
         
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+//        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
+        return true
     }
 
     //MARK: Facebook Integration
