@@ -24,6 +24,15 @@
 		6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */; };
 		6F8E6A921D31FDF600618103 /* CleanPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A911D31FDF600618103 /* CleanPerson.swift */; };
 		6F9E1BBE1D3681480035A60D /* FBloginhelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9E1BBD1D3681480035A60D /* FBloginhelperViewController.swift */; };
+		6FAE34CA1D37C40900BDDC10 /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C01D37C40800BDDC10 /* DPDConstants.swift */; };
+		6FAE34CB1D37C40900BDDC10 /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C11D37C40800BDDC10 /* DPDKeyboardListener.swift */; };
+		6FAE34CC1D37C40900BDDC10 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C21D37C40800BDDC10 /* DPDUIView+Extension.swift */; };
+		6FAE34CD1D37C40900BDDC10 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FAE34C31D37C40800BDDC10 /* Info.plist */; };
+		6FAE34CE1D37C40900BDDC10 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FAE34C51D37C40800BDDC10 /* DropDownCell.xib */; };
+		6FAE34CF1D37C40900BDDC10 /* DropDown+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C71D37C40800BDDC10 /* DropDown+Appearance.swift */; };
+		6FAE34D01D37C40900BDDC10 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C81D37C40800BDDC10 /* DropDown.swift */; };
+		6FAE34D11D37C40900BDDC10 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C91D37C40800BDDC10 /* DropDownCell.swift */; };
+		6FB6603E1D376FCE00C74109 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6603D1D376FCE00C74109 /* RegisterViewController.swift */; };
 		6FDDB8791D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */; };
 		6FDDB87B1D34D11700DBA28F /* CustomerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -48,6 +57,16 @@
 		6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		6F8E6A911D31FDF600618103 /* CleanPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPerson.swift; sourceTree = "<group>"; };
 		6F9E1BBD1D3681480035A60D /* FBloginhelperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBloginhelperViewController.swift; sourceTree = "<group>"; };
+		6FAE34BE1D37C40800BDDC10 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
+		6FAE34C01D37C40800BDDC10 /* DPDConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDConstants.swift; sourceTree = "<group>"; };
+		6FAE34C11D37C40800BDDC10 /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDKeyboardListener.swift; sourceTree = "<group>"; };
+		6FAE34C21D37C40800BDDC10 /* DPDUIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DPDUIView+Extension.swift"; sourceTree = "<group>"; };
+		6FAE34C31D37C40800BDDC10 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6FAE34C51D37C40800BDDC10 /* DropDownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
+		6FAE34C71D37C40800BDDC10 /* DropDown+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DropDown+Appearance.swift"; sourceTree = "<group>"; };
+		6FAE34C81D37C40800BDDC10 /* DropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
+		6FAE34C91D37C40800BDDC10 /* DropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		6FB6603D1D376FCE00C74109 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cleanPersonRequestTableViewCell.swift; sourceTree = "<group>"; };
 		6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerProfileViewController.swift; sourceTree = "<group>"; };
 		83AC856F9968EC949A59AAB8 /* Pods_ChoreSolver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChoreSolver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +107,7 @@
 		6F43945C1D30D71B000A1F49 = {
 			isa = PBXGroup;
 			children = (
+				6FAE34BD1D37C40800BDDC10 /* DropDown */,
 				6F4394671D30D71B000A1F49 /* ChoreSolver */,
 				6F4394661D30D71B000A1F49 /* Products */,
 				F1D4BAF4E8101AB1148B2FFA /* Pods */,
@@ -181,6 +201,7 @@
 		6F8E6A851D31EF3800618103 /* TestViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6FB6603C1D376FC000C74109 /* General */,
 				6F5F58D01D33E8EF000ABB58 /* Customer */,
 				6F5F58CD1D33E8EF000ABB58 /* CleanPerson */,
 			);
@@ -190,6 +211,7 @@
 		6F8E6A8C1D31F94900618103 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6FB660421D378BF500C74109 /* Register */,
 				6FDDB8771D34B86E00DBA28F /* CleanPersonRequest */,
 				6F5F58C11D336C42000ABB58 /* CustomerRequestResult */,
 				6F8E6A8D1D31F94900618103 /* SearchResult */,
@@ -212,6 +234,61 @@
 				6F5391B71D329B2A00C1AA9C /* Request.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		6FAE34BD1D37C40800BDDC10 /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				6FAE34BE1D37C40800BDDC10 /* DropDown.h */,
+				6FAE34BF1D37C40800BDDC10 /* helpers */,
+				6FAE34C31D37C40800BDDC10 /* Info.plist */,
+				6FAE34C41D37C40800BDDC10 /* resources */,
+				6FAE34C61D37C40800BDDC10 /* src */,
+			);
+			path = DropDown;
+			sourceTree = "<group>";
+		};
+		6FAE34BF1D37C40800BDDC10 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6FAE34C01D37C40800BDDC10 /* DPDConstants.swift */,
+				6FAE34C11D37C40800BDDC10 /* DPDKeyboardListener.swift */,
+				6FAE34C21D37C40800BDDC10 /* DPDUIView+Extension.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		6FAE34C41D37C40800BDDC10 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				6FAE34C51D37C40800BDDC10 /* DropDownCell.xib */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		6FAE34C61D37C40800BDDC10 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				6FAE34C71D37C40800BDDC10 /* DropDown+Appearance.swift */,
+				6FAE34C81D37C40800BDDC10 /* DropDown.swift */,
+				6FAE34C91D37C40800BDDC10 /* DropDownCell.swift */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		6FB6603C1D376FC000C74109 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				6FB6603D1D376FCE00C74109 /* RegisterViewController.swift */,
+			);
+			path = General;
+			sourceTree = "<group>";
+		};
+		6FB660421D378BF500C74109 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		6FDDB8771D34B86E00DBA28F /* CleanPersonRequest */ = {
@@ -292,8 +369,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FAE34CD1D37C40900BDDC10 /* Info.plist in Resources */,
 				6F4394731D30D71B000A1F49 /* LaunchScreen.storyboard in Resources */,
 				6F4394701D30D71B000A1F49 /* Assets.xcassets in Resources */,
+				6FAE34CE1D37C40900BDDC10 /* DropDownCell.xib in Resources */,
 				6F43946E1D30D71B000A1F49 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -353,17 +432,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6FAE34D11D37C40900BDDC10 /* DropDownCell.swift in Sources */,
 				6FDDB8791D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift in Sources */,
 				6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */,
+				6FAE34CC1D37C40900BDDC10 /* DPDUIView+Extension.swift in Sources */,
 				6F5F58D61D33EBD2000ABB58 /* SearchViewController.swift in Sources */,
+				6FAE34CB1D37C40900BDDC10 /* DPDKeyboardListener.swift in Sources */,
+				6FAE34D01D37C40900BDDC10 /* DropDown.swift in Sources */,
 				6F5F58DA1D33ED66000ABB58 /* CleanPersonRequestViewController.swift in Sources */,
 				6FDDB87B1D34D11700DBA28F /* CustomerProfileViewController.swift in Sources */,
 				6F9E1BBE1D3681480035A60D /* FBloginhelperViewController.swift in Sources */,
+				6FAE34CF1D37C40900BDDC10 /* DropDown+Appearance.swift in Sources */,
 				6F5391B81D329B2A00C1AA9C /* Request.swift in Sources */,
 				6F5F58C31D336C56000ABB58 /* sentRequestTableViewCell.swift in Sources */,
 				6F4394691D30D71B000A1F49 /* AppDelegate.swift in Sources */,
 				6F8E6A921D31FDF600618103 /* CleanPerson.swift in Sources */,
 				6F6BE5781D36025C0037263E /* ErrorHandling.swift in Sources */,
+				6FAE34CA1D37C40900BDDC10 /* DPDConstants.swift in Sources */,
+				6FB6603E1D376FCE00C74109 /* RegisterViewController.swift in Sources */,
 				6F5F58D81D33EC19000ABB58 /* SearchResultViewController.swift in Sources */,
 				6F6BE5761D3601B10037263E /* ParseLoginHelper.swift in Sources */,
 				6F5F58D41D33EB61000ABB58 /* CustomerReqeustViewController.swift in Sources */,

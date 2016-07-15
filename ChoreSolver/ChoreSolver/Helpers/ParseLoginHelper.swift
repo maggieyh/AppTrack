@@ -47,18 +47,18 @@ extension ParseLoginHelper : PFLogInViewControllerDelegate {
         } else {
             // if this is a Facebook login, fetch the username from Facebook
             print(FBSDKAccessToken.currentAccessToken())
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,name,first_name,last_name,email"]).startWithCompletionHandler {
+            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id,name,email"]).startWithCompletionHandler {
                 (connection: FBSDKGraphRequestConnection!, result: AnyObject?, error: NSError?) -> Void in
                 if let error = error {
                     // Facebook Error? -> hand error to callback
                     self.callback(nil, error)
-                    ErrorHandling.defaultErrorHandler(error)
+                  //  ErrorHandling.defaultErrorHandler(error)
                 }
                 
-                if let userEmail = result!.valueForKey("email") as? NSString {
-                    print("User Email is: \(userEmail)")
-                }
-                
+//                if let userEmail = result?["email"] as? NSString {
+//                    print("User Email is: \(userEmail)")
+//                }
+//                
                 if let fbUsername = result?["name"] as? String {
                     // assign Facebook name to PFUser
                     user.username = fbUsername

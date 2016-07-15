@@ -11,23 +11,40 @@ import Parse
 import FBSDKCoreKit
 import ParseUI
 import ParseFacebookUtilsV4
-class FBloginhelperViewController: PFLogInViewController {
-    var loginButton:FBSDKLoginButton?
+class FBloginhelperViewController: PFLogInViewController, FBSDKLoginButtonDelegate {
+    //var loginButton:FBSDKLoginButton?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
-        self.loginButton = FBSDKLoginButton()
-        self.view.addSubview(loginButton!)
-        loginButton!.center = self.view.center
-        loginButton!.readPermissions = ["public_profile", "email", "user_friends"]
-        self.facebookPermissions = ["public_profile", "email", "user_friends"]
-
-        loginButton?.addTarget(self, action: nil, forControlEvents: .TouchDown)
+        // Do any additional setup after loading the view.
+        print("aloginbutton")
+        let loginButton = FBSDKLoginButton()
+        loginButton.center = self.view.center
+        loginButton.delegate = self
+        self.view.addSubview(loginButton)
+//        loginButton!.readPermissions = ["public_profile", "email", "user_friends"]
+//        self.facebookPermissions = ["public_profile", "email", "user_friends"]
+//
+//        loginButton?.addTarget(self, action: nil, forControlEvents: .TouchDown)
      //   self.view.
     }
+    //MARK: FBSDKLoginButtonDelegate
+    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+        /*
+         Check for successful login and act accordingly.
+         Perform your segue to another UIViewController here.
+         */
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabBarController = storyboard.instantiateViewControllerWithIdentifier("CleanPersonTabBarController")
+        print("ahahahaha")
+        self.presentViewController(tabBarController, animated:true, completion:nil)
+        
+    }
     
+    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+        // Actions for when the user logged out goes here
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

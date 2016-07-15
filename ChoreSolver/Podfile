@@ -11,7 +11,7 @@ target 'ChoreSolver' do
   pod ‘Parse’
   pod ‘ParseFacebookUtilsV4’
   pod ‘ParseUI’
-  
+  pod ‘DropDown’
   
 
 end

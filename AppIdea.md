@@ -330,3 +330,4 @@ https://get.digits.com/
 https://developers.facebook.com/docs/facebook-login/permissions
 https://developers.facebook.com/docs/reference/ios/current/class/FBSDKGraphRequest/
 
+* slide down menu: http://www.appcoda.com/slide-down-menu-swift/

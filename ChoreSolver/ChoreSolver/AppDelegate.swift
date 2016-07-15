@@ -11,33 +11,51 @@ import Parse
 import FBSDKCoreKit
 import ParseUI
 import ParseFacebookUtilsV4
+import DropDown
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var parseLoginHelper: ParseLoginHelper!
 //
-//    override init() {
-//        super.init()
-//        
-//        parseLoginHelper = ParseLoginHelper {[unowned self] user, error in
-//            // Initialize the ParseLoginHelper with a callback
-//            if let error = error {
-//                // 1
-//                ErrorHandling.defaultErrorHandler(error)
-//            } else  if let _ = user {
-//                // if login was successful, display the TabBarController
-//                // 2
-//                print("first")
-//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                let tabBarController = storyboard.instantiateViewControllerWithIdentifier("CleanPersonTabBarController")
-//                // 3
-//                self.window?.rootViewController!.presentViewController(tabBarController, animated:true, completion:nil)
-//            }
-//        }
-//    }
+    override init() {
+        super.init()
+        //Parse login afterward ?
+        parseLoginHelper = ParseLoginHelper {[unowned self] user, error in
+            // Initialize the ParseLoginHelper with a callback
+            if let error = error {
+                // 1
+                ErrorHandling.defaultErrorHandler(error)
+            } else  if let _ = user {
+                // if login was successful, display the TabBarController
+                // 2
+                
+//                
+//                do {
+//                    let user = try PFUser.currentUser()!.fetch()
+//                    if user["userType"] as! String == "Customer" {
+//                        startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
+//                        
+//                    } else {
+//                        startViewController = storyboard.instantiateViewControllerWithIdentifier("CleanPersonTabBarController") as! UITabBarController
+//                    }
+//                } catch {
+//                    startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
+//                    print("failt in switch")
+//                }
+
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let tabBarController = storyboard.instantiateViewControllerWithIdentifier("CleanPersonTabBarController")
+                // 3
+                self.window?.rootViewController!.presentViewController(tabBarController, animated:true, completion:nil)
+            }
+        }
+    }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        //set up drop down
+        DropDown.startListeningToKeyboard()
         
         // Set up the Parse SDK
         let configuration = ParseClientConfiguration {
@@ -73,28 +91,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 2
         let user = PFUser.currentUser()
         var startViewController: UIViewController
-        if let _ = user {
+        if (user != nil) {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             
             do {
                 let user = try PFUser.currentUser()!.fetch()
-                if user["userType"] as! String == "Customer" {
+                if user["userType"] as? String == "Customer" {
+                    print("cusotmer")
                     startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
                     
                 } else {
+                    print("cleanPErson")
                     startViewController = storyboard.instantiateViewControllerWithIdentifier("CleanPersonTabBarController") as! UITabBarController
                 }
             } catch {
                 startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
+                print("failt in switch")
             }
-            
-
-            
-//                } else {
-//                    startViewController = storyboard.instantiateViewControllerWithIdentifier("customerTabBarController") as! UITabBarController
-//                }
-//            })
-            
             
         } else {
         
@@ -108,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             startViewController = loginViewController
         }
         
-        // 5
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = startViewController;
         self.window?.makeKeyAndVisible()
