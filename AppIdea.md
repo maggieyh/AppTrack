@@ -254,14 +254,13 @@ _finishing a usable build_
 * register
 * Log In
 pfloginviewcontroller!!!!
-
-
 * spinner for sign up 
-* protocol for county drop down ?
-* cleanPerson's views
-* Settings such as tutorials?, flagged content, log out
+
+
 * OPTIMIZATION
 * DESIGN
+
+* Settings such as tutorials?, flagged content, log out
 * push notification
 * initiation feature for cleanPerson
 * 

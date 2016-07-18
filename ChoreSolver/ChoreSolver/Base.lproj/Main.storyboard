@@ -354,6 +354,11 @@
                                             <constraint firstAttribute="width" constant="110" id="Ap6-4C-L7E"/>
                                             <constraint firstAttribute="height" constant="110" id="sP1-W1-1bX"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="55"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="sP1-W1-1bX"/>
@@ -464,7 +469,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D1V-LZ-mJt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="8Dx-bt-yTR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2790" y="-878"/>
+            <point key="canvasLocation" x="2790" y="-866"/>
         </scene>
         <!--CleanPerson-profile-->
         <scene sceneID="tTq-aO-FqO">
