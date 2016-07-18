@@ -17,6 +17,8 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var cleanPersonImage: UIImageView!
     @IBOutlet weak var hourRateLabel: UILabel!
 
+    @IBOutlet weak var requestButton: UIButton!
+    
     @IBAction func requestInfoTapped(sender: AnyObject) {
         ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson!)
         //transition to tab Request

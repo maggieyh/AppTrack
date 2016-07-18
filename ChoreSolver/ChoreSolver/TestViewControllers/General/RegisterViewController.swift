@@ -8,18 +8,20 @@
 
 import UIKit
 import Parse
-//import DropDown
+import DropDown
 import ParseUI
+import Parse
 class RegisterViewController: UIViewController,UIPopoverPresentationControllerDelegate {
     var backgroundImage : UIImageView!
-    //let countyDropDown = DropDown()
-    
-    let customerData = ["Name", "Email", "Phone Number"]
-    let cleanPersonData = ["Name", "Email", "Phone Number","Hour Rate" ]
+    let countyDropDown = DropDown()
     var userType: String = "Customer"
     var textFields: [UITextField!]?
+    var photoTakingHelper: PhotoTakingHelper?
+    var imageFile: PFFile?
     
+    @IBOutlet var spinner:UIActivityIndicatorView!
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
+    
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -27,12 +29,25 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
     @IBOutlet weak var phoneNumberTextField: UITextField!
     
     //for Clean Person
+    var county: String? = nil
     @IBOutlet weak var hourRateTextField: UITextField!
     @IBOutlet weak var introductionTextView: UITextView!
     @IBOutlet weak var countyButton: UIButton!
     
+    @IBAction func choosePhotoTapped(sender: AnyObject) {
+        //func takePhoto()
+        photoTakingHelper = PhotoTakingHelper(viewController: self) { (image: UIImage?) in
+            //turn the UIImage into an NSData instance because the PFFile class needs an NSData argument for its initializer.
+            if let image = image {
+                self.userImage.image = image
+                let data = UIImagePNGRepresentation(image)
+                self.imageFile = PFFile(name: "cleanPerson.jpg", data: data!)
+            }
+            
+        }
+    }
     @IBAction func chooseCounty(sender: AnyObject) {
-        //countyDropDown.show()
+        countyDropDown.show()
     }
 
     @IBAction func userTypeToggled(sender: AnyObject) {
@@ -52,6 +67,9 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
     
     
     @IBAction func doneTapped(sender: AnyObject) {
+        
+        
+        
          //make new user
         var finished: Bool = true
         for ele in self.textFields! {
@@ -60,29 +78,61 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
                 break
             }
         }
-        
-        if finished {
-            let username = self.userNameTextField.text!
-            let password = self.passwordTextField.text
-            let email = self.emailTextField.text
-            let finalEmail = email!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        if self.imageFile == nil {
+            finished = false
             
+        }
+        if userType == "CleanPerson" {
+            if let county = countyDropDown.selectedItem {
+                self.county = county
+            } else {
+                finished = false
+                print("county fail")
+            }
+            
+            if self.hourRateTextField.text == nil{
+                finished = false
+                print("hourRate fail")
+            }
+        }
+        if finished {
+            //spinner?
+        
+            let username = self.userNameTextField.text!
+            let password = self.passwordTextField.text!
+            let email = self.emailTextField.text!
+            let finalEmail = email.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            let phoneNum = self.phoneNumberTextField.text!
             let newUser = PFUser()
             
             newUser.username = username
             newUser.password = password
             newUser.email = finalEmail
+            newUser["userType"] = userType
+            newUser["phoneNumber"] = phoneNum
+            
+            self.imageFile?.saveInBackground()
+            if userType == "CleanPerson" {
+                newUser["hourRate"] = self.hourRateTextField.text ?? ""
+                newUser["introduction"] = self.introductionTextView.text ?? ""
+                newUser["county"] = self.county ?? ""
+                newUser["imageFile"] = self.imageFile
+            }
+            
+            spinner.hidesWhenStopped = true
+            spinner.center = view.center
+            self.view.addSubview(spinner)
+            spinner.startAnimating()
             
             // Sign up the user asynchronously
             newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
                 
-                // Stop the spinner
-//                spinner.stopAnimating()
+                
                 if ((error) != nil) {
                     print(error)
                     
                 } else {
-                    print("sucess")
+                    print("success")
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         
                         if self.userType == "Customer" {
@@ -93,15 +143,18 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
                             self.presentViewController(viewController, animated: true, completion: nil)
                         }
 
-    
+                        self.spinner.stopAnimating()
+                        
                     })
                 }
             })
             
             
-            
         } else {
-            print("invalid something incomplete")
+            self.spinner.stopAnimating()
+            let alertController = UIAlertController(title: "Some Fields are not completed", message: "Please comlete text fields", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     
     }
@@ -112,7 +165,7 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-     //   self.setupChooseCountyDropDown()
+        self.setupChooseCountyDropDown()
         
         self.textFields = [self.userNameTextField, self.passwordTextField, self.emailTextField, self.phoneNumberTextField]
         
@@ -125,25 +178,12 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
         //        backgroundImage.contentMode = UIViewContentMode.ScaleAspectFill
         //        signUpView!.insertSubview(backgroundImage, atIndex: 0)
         //
-        // remove the parse Logo
-//        let logo = UILabel()
-//        logo.text = "Vay.K"
-//        logo.textColor = UIColor.whiteColor()
-//        logo.font = UIFont(name: "Pacifico", size: 70)
-//        logo.shadowColor = UIColor.lightGrayColor()
-//        logo.shadowOffset = CGSizeMake(2, 2)
-//        signUpView?.logo = logo
-        
-//        self.signUpView?.signUpButton
+
         
         
     }
 /*
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+ 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // stretch background image to fill screen
@@ -165,11 +205,17 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
     }
     */
     
-    /*func setupChooseCountyDropDown() {
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func setupChooseCountyDropDown() {
         countyDropDown.anchorView = countyButton
-        
+        let appearance = DropDown.appearance()
+        appearance.backgroundColor = UIColor.whiteColor()
         // Will set a custom with instead of anchor view width
-        //		dropDown.width = 100
+        countyDropDown.width = 180
         
         // By default, the dropdown will have its origin on the top left corner of its anchor view
         // So it will come over the anchor view and hide it completely
@@ -178,8 +224,7 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
         
         // You can also use localizationKeysDataSource instead. Check the docs.
         countyDropDown.dataSource = [
-            "Changhua County", "Chiayi City", "Chiayi County","Hsinchu City",
-            "Hsinchu County", "Hualien County", "Kaohsiung City", "Keelung City", "Kinmen County", "Lienchiang County", "Miaoli County", "Nantou County", "New Taipei City", "Penghu County", "Pingtung County", "Taichung City", "Tainan City", "Taipei City", "Taitung County", "Taoyuan City", "Yilan County", "Yunlin County"
+            "Changhua County", "Chiayi City", "Chiayi County","Hsinchu City","Hsinchu County", "Hualien County", "Kaohsiung City", "Keelung City", "Kinmen County", "Lienchiang County", "Miaoli County", "Nantou County", "New Taipei City", "Penghu County", "Pingtung County", "Taichung City", "Tainan City", "Taipei City", "Taitung County", "Taoyuan City", "Yilan County", "Yunlin County"
         ]
         
         // Action triggered on selection
@@ -196,7 +241,7 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
         
         // You can manually select a row if needed
         //		dropDown.selectRowAtIndex(3)
-    }*/
+    }
 
 }
 

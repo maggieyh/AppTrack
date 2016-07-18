@@ -255,11 +255,23 @@ _finishing a usable build_
 * Log In
 pfloginviewcontroller!!!!
 
+
+* spinner for sign up 
+* protocol for county drop down ?
+* cleanPerson's views
+* Settings such as tutorials?, flagged content, log out
+* OPTIMIZATION
+* DESIGN
 * push notification
-
-
+* initiation feature for cleanPerson
+* 
 * Message service
 
+
+* testing:
+ * clean person search for potential customer and give contact initiatively
+ * after reply the request, go to customer profile detail view
+ * 
 #### Week 3
 * SearchByCountyViewContoller's DetailView(profile of cleaning person viewing)
 * Cleaning Person Profile view Controller and edit
@@ -331,3 +343,7 @@ https://developers.facebook.com/docs/facebook-login/permissions
 https://developers.facebook.com/docs/reference/ios/current/class/FBSDKGraphRequest/
 
 * slide down menu: http://www.appcoda.com/slide-down-menu-swift/
+
+* animation UIKit
+https://www.youtube.com/watch?v=Zts_vU1dn-I
+* 

@@ -22,13 +22,28 @@ class LogInViewController: UIViewController {
                 (user: PFUser?, error: NSError?) -> Void in
                 if user != nil {
                     // Do stuff after successful login.
-                    print("successfully log in")
+                    if error != nil {
+                        return
+                    }
+                    if user!["userType"] as? String == "Customer" {
+                        print("cusotmer")
+                        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
+                        self.presentViewController(viewController, animated: true, completion: nil)
+                    } else {
+                        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CleanPersonTabBarController") as! UITabBarController
+                        self.presentViewController(viewController, animated: true, completion: nil)
+                        
+                    }
+
                 } else {
                     // The login failed. Check error to see why.
                     print("ah!!!")
                 }
             }
         }
+        
+    }
+    @IBAction func unwindBackToLogInView(segue:UIStoryboardSegue) {
         
     }
     override func viewDidLoad() {

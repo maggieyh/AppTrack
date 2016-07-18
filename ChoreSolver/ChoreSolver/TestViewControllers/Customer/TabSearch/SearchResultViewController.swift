@@ -30,7 +30,31 @@ class SearchResultViewController: UIViewController {
         // Do any additional setup after loading the view.
         
     }
-    
+    @IBAction func unwindBackToResultView(segue:UIStoryboardSegue) {
+        
+    }
+    @IBAction func unwindBackToRequestView(segue:UIStoryboardSegue) {
+        
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showCleanPersonDetailFromResultView" {
+            let cleanPersonDetailViewController = segue.destinationViewController as! CleanPersonDetailViewController
+            if let indexPath = self.searchResultTableView.indexPathForSelectedRow {
+                cleanPersonDetailViewController.cleanPerson = cleanPersons[indexPath.row]
+                
+                let requestQuery = PFQuery(className: "Request")
+                requestQuery.whereKey("cleanPerson", equalTo: cleanPersons[indexPath.row])
+                requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
+                do {
+                    let request = try requestQuery.findObjects() as! [Request]
+                    cleanPersonDetailViewController.agree = request[0].agree.boolValue
+                } catch {
+                    cleanPersonDetailViewController.agree = nil
+                }
+                
+            }
+        }
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -77,9 +101,7 @@ class SearchResultViewController: UIViewController {
     }
     */
 
-    @IBAction func unwindBackToRequestView(segue:UIStoryboardSegue) {
-        
-    }
+    
     
     
 }
@@ -105,10 +127,27 @@ extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate
         cell.hourRateLabel.text = str + "$/hr"
         cell.tabBarViewController = self.tabBarController ?? nil
         
+        let requestQuery = PFQuery(className: "Request")
+        requestQuery.whereKey("cleanPerson", equalTo: cleanPersons[indexPath.row])
+        requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
+        do {
+            let request = try requestQuery.findObjects() as! [Request]
+            if !request.isEmpty {
+                if request[0].agree.boolValue {
+                    cell.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
+                } else {
+                    cell.requestButton.setTitle("Request Sent", forState: UIControlState.Normal)
+                }
+                cell.requestButton.enabled = false
+            }
+            
+        } catch {
+            
+        }
         return cell
     }
     
     
 }
-    
+
 

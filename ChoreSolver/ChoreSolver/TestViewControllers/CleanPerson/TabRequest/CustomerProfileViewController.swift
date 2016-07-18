@@ -12,6 +12,7 @@ class CustomerProfileViewController: UIViewController {
 
     
     var request: Request?
+    
     @IBOutlet weak var replyBarButton: UIBarButtonItem!
     @IBAction func replyButtonTapped(sender: AnyObject) {
         self.navigationItem.rightBarButtonItem = nil
@@ -28,18 +29,34 @@ class CustomerProfileViewController: UIViewController {
         
     }
     
+    @IBOutlet weak var customerImageView: UIImageView!
+    @IBOutlet weak var customerNameLabel: UILabel!
+    @IBOutlet weak var contactMethodTextView: UITextView!
     
-//    else {
-//    let alertController = UIAlertController(title: "\(viewController.request?.customer?.username) sent a request for your contact!", message: "Reply ?", preferredStyle: UIAlertControllerStyle.Alert)
-//    alertController.addAction(UIAlertAction(title: "Reply", style: .Default, handler: nil))
-//    alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-//    self.presentViewController(alertController, animated: true, completion: nil)
-//    
-//    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if request!.agree.boolValue {
+            self.navigationItem.rightBarButtonItem = nil
+            self.navigationItem.rightBarButtonItem?.enabled = false
+        }
+        let customer = request?.customer
+        if let imageFile = customer!["imageFile"] as? PFFile {
+            do {
+                let data = try imageFile.getData()
+                self.customerImageView.image = UIImage(data: data, scale: 1.0)
+            } catch {
+                print("fail")
+            }
+        }
+        self.customerNameLabel.text = customer?.username!
+        self.contactMethodTextView.editable = false
+        let email = customer!.email!
+        let phone = customer!["phoneNumber"]! as! String
+        let str = "Email addresss: " + email + "\nPhone number: " + phone
+        self.contactMethodTextView.text = str
+        
     }
 
     override func didReceiveMemoryWarning() {

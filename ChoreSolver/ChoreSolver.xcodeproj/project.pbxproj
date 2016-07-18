@@ -10,6 +10,7 @@
 		66FB7089552F19A552AFD4BB /* Pods_ChoreSolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC856F9968EC949A59AAB8 /* Pods_ChoreSolver.framework */; };
 		6F22205E1D31EA1E00A3BDC9 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F22205D1D31EA1E00A3BDC9 /* ParseHelper.swift */; };
 		6F28E85B1D38B8E300E886F8 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F28E85A1D38B8E300E886F8 /* LogInViewController.swift */; };
+		6F3F511C1D39CF9100D0FB7E /* CleanPersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3F511B1D39CF9100D0FB7E /* CleanPersonDetailViewController.swift */; };
 		6F4394691D30D71B000A1F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4394681D30D71B000A1F49 /* AppDelegate.swift */; };
 		6F43946E1D30D71B000A1F49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F43946C1D30D71B000A1F49 /* Main.storyboard */; };
 		6F4394701D30D71B000A1F49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F43946F1D30D71B000A1F49 /* Assets.xcassets */; };
@@ -20,10 +21,10 @@
 		6F5F58D61D33EBD2000ABB58 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58D51D33EBD2000ABB58 /* SearchViewController.swift */; };
 		6F5F58D81D33EC19000ABB58 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58D71D33EC19000ABB58 /* SearchResultViewController.swift */; };
 		6F5F58DA1D33ED66000ABB58 /* CleanPersonRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5F58D91D33ED66000ABB58 /* CleanPersonRequestViewController.swift */; };
-		6F6BE5761D3601B10037263E /* ParseLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6BE5751D3601B10037263E /* ParseLoginHelper.swift */; };
 		6F6BE5781D36025C0037263E /* ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6BE5771D36025C0037263E /* ErrorHandling.swift */; };
 		6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */; };
 		6F8E6A921D31FDF600618103 /* CleanPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A911D31FDF600618103 /* CleanPerson.swift */; };
+		6F9045D81D3C73D200881640 /* CleanPersonProfileEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9045D71D3C73D200881640 /* CleanPersonProfileEditingViewController.swift */; };
 		6F9E1BBE1D3681480035A60D /* FBloginhelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9E1BBD1D3681480035A60D /* FBloginhelperViewController.swift */; };
 		6FAE34CA1D37C40900BDDC10 /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C01D37C40800BDDC10 /* DPDConstants.swift */; };
 		6FAE34CB1D37C40900BDDC10 /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C11D37C40800BDDC10 /* DPDKeyboardListener.swift */; };
@@ -36,12 +37,14 @@
 		6FB6603E1D376FCE00C74109 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6603D1D376FCE00C74109 /* RegisterViewController.swift */; };
 		6FDDB8791D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */; };
 		6FDDB87B1D34D11700DBA28F /* CustomerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */; };
+		6FF998881D3BD24300A3466C /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF998871D3BD24300A3466C /* PhotoTakingHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4C26C908E74100B9CB8DBBFC /* Pods-ChoreSolver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreSolver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChoreSolver/Pods-ChoreSolver.debug.xcconfig"; sourceTree = "<group>"; };
 		6F22205D1D31EA1E00A3BDC9 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		6F28E85A1D38B8E300E886F8 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		6F3F511B1D39CF9100D0FB7E /* CleanPersonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPersonDetailViewController.swift; sourceTree = "<group>"; };
 		6F4394651D30D71B000A1F49 /* ChoreSolver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreSolver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F4394681D30D71B000A1F49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F43946D1D30D71B000A1F49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -54,10 +57,10 @@
 		6F5F58D51D33EBD2000ABB58 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		6F5F58D71D33EC19000ABB58 /* SearchResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		6F5F58D91D33ED66000ABB58 /* CleanPersonRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPersonRequestViewController.swift; sourceTree = "<group>"; };
-		6F6BE5751D3601B10037263E /* ParseLoginHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseLoginHelper.swift; sourceTree = "<group>"; };
 		6F6BE5771D36025C0037263E /* ErrorHandling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHandling.swift; sourceTree = "<group>"; };
 		6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		6F8E6A911D31FDF600618103 /* CleanPerson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPerson.swift; sourceTree = "<group>"; };
+		6F9045D71D3C73D200881640 /* CleanPersonProfileEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPersonProfileEditingViewController.swift; sourceTree = "<group>"; };
 		6F9E1BBD1D3681480035A60D /* FBloginhelperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBloginhelperViewController.swift; sourceTree = "<group>"; };
 		6FAE34BE1D37C40800BDDC10 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
 		6FAE34C01D37C40800BDDC10 /* DPDConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDConstants.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 		6FB6603D1D376FCE00C74109 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cleanPersonRequestTableViewCell.swift; sourceTree = "<group>"; };
 		6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerProfileViewController.swift; sourceTree = "<group>"; };
+		6FF998871D3BD24300A3466C /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		83AC856F9968EC949A59AAB8 /* Pods_ChoreSolver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChoreSolver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A184FD2700C9E36EE66331 /* Pods-ChoreSolver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreSolver.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChoreSolver/Pods-ChoreSolver.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,9 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				6F22205D1D31EA1E00A3BDC9 /* ParseHelper.swift */,
-				6F6BE5751D3601B10037263E /* ParseLoginHelper.swift */,
 				6F6BE5771D36025C0037263E /* ErrorHandling.swift */,
 				6F9E1BBD1D3681480035A60D /* FBloginhelperViewController.swift */,
+				6FF998871D3BD24300A3466C /* PhotoTakingHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -161,6 +165,7 @@
 		6F5F58CE1D33E8EF000ABB58 /* TabProfile */ = {
 			isa = PBXGroup;
 			children = (
+				6F9045D71D3C73D200881640 /* CleanPersonProfileEditingViewController.swift */,
 			);
 			path = TabProfile;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				6F5F58D31D33EB61000ABB58 /* CustomerReqeustViewController.swift */,
+				6F3F511B1D39CF9100D0FB7E /* CleanPersonDetailViewController.swift */,
 			);
 			path = TabRequest;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 				6FAE34CC1D37C40900BDDC10 /* DPDUIView+Extension.swift in Sources */,
 				6F5F58D61D33EBD2000ABB58 /* SearchViewController.swift in Sources */,
 				6FAE34CB1D37C40900BDDC10 /* DPDKeyboardListener.swift in Sources */,
+				6F9045D81D3C73D200881640 /* CleanPersonProfileEditingViewController.swift in Sources */,
 				6FAE34D01D37C40900BDDC10 /* DropDown.swift in Sources */,
 				6F5F58DA1D33ED66000ABB58 /* CleanPersonRequestViewController.swift in Sources */,
 				6FDDB87B1D34D11700DBA28F /* CustomerProfileViewController.swift in Sources */,
@@ -453,9 +460,10 @@
 				6F6BE5781D36025C0037263E /* ErrorHandling.swift in Sources */,
 				6FAE34CA1D37C40900BDDC10 /* DPDConstants.swift in Sources */,
 				6FB6603E1D376FCE00C74109 /* RegisterViewController.swift in Sources */,
+				6FF998881D3BD24300A3466C /* PhotoTakingHelper.swift in Sources */,
 				6F28E85B1D38B8E300E886F8 /* LogInViewController.swift in Sources */,
+				6F3F511C1D39CF9100D0FB7E /* CleanPersonDetailViewController.swift in Sources */,
 				6F5F58D81D33EC19000ABB58 /* SearchResultViewController.swift in Sources */,
-				6F6BE5761D3601B10037263E /* ParseLoginHelper.swift in Sources */,
 				6F5F58D41D33EB61000ABB58 /* CustomerReqeustViewController.swift in Sources */,
 				6F22205E1D31EA1E00A3BDC9 /* ParseHelper.swift in Sources */,
 			);

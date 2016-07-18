@@ -26,6 +26,16 @@ class CustomerReqeustViewController: UIViewController {
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showCleanPersonProfileFromRequest" {
+            let cleanPersonDetailViewController = segue.destinationViewController as! CleanPersonDetailViewController
+            if let indexPath = self.requestTableView.indexPathForSelectedRow {
+                cleanPersonDetailViewController.cleanPerson = requests[indexPath.row].cleanPerson
+                cleanPersonDetailViewController.agree = requests[indexPath.row].agree.boolValue
+            }
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -73,19 +83,21 @@ extension CustomerReqeustViewController: UITableViewDelegate, UITableViewDataSou
             cell.nameLabel.text = cleanPerson.username
             cell.hourRateLabel.text = ((cleanPerson["hourRate"] as? String) ?? "" ) + "$/hr"
             if request.agree.boolValue {
-                cell.stateLabel.text = "Contact Info Received, Contact " + cell.hourRateLabel.text! + "!"
+                cell.stateLabel.text = "Contact Info Received, Contact " + cell.nameLabel.text! + "!"
             } else {
                 cell.stateLabel.text = "Request Sent, Wait for Response"
             }
             
-            let imageFile = cleanPerson["imageFile"] as! PFFile
+        if let imageFile = cleanPerson["imageFile"] as? PFFile {
             do {
                 let data = try imageFile.getData()
                 cell.cleanPersonImage.image = UIImage(data: data, scale: 1.0)
             } catch {
                 print("fail")
             }
-//        }
+
+        }
+    //        }
         
         
         
