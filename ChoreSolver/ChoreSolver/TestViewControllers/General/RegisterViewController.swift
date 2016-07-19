@@ -13,13 +13,15 @@ import ParseUI
 import Parse
 import IHKeyboardAvoiding
 
-class RegisterViewController: UIViewController,UIPopoverPresentationControllerDelegate {
+class RegisterViewController: UIViewController {
     var backgroundImage : UIImageView!
     let countyDropDown = DropDown()
     var userType: String = "Customer"
     var textFields: [UITextField!]?
     var photoTakingHelper: PhotoTakingHelper?
     var imageFile: PFFile?
+    
+    @IBOutlet weak var topLayout: NSLayoutConstraint!
     
     @IBOutlet var spinner:UIActivityIndicatorView!
     @IBOutlet weak var typeSegmentedControl: UISegmentedControl!
@@ -262,23 +264,43 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         subscribeToKeyboardNotifications()
+       
     }
-    
-    func dismissKeyboard() {
-        view.endEditing(true)
-    }
+
+//    func dismissKeyboard() {
+//        view.endEditing(true)
+//    }
     
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:))    , name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:))    , name: UIKeyboardWillHideNotification, object: nil)
+        
+//          self.topLayout.active = false
+        
     }
     
+    var bo: Bool = true
     func keyboardWillShow(notification: NSNotification) {
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        let height = getKeyboardHeight(notification) - 30
+        if bo {
+            self.topLayout.active = false
+            if self.topLayout == nil {
+                print("nil")
+            }
+            view.frame.origin.y -= height
+            bo = false
+        }
     }
-    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
+    }
     func keyboardWillHide(notification: NSNotification) {
-        view.frame.origin.y += getKeyboardHeight(notification)
+        let height = getKeyboardHeight(notification) - 30
+        if !bo {
+            view.frame.origin.y += height
+            self.topLayout.active = true
+            bo = true
+        }
     }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
@@ -292,6 +314,8 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
     }
     
     func unsubscribeFromKeyboardNotifications() {
+        print("ttre")
+        self.topLayout.active = true
         NSNotificationCenter.defaultCenter().removeObserver(self, name:
             UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name:
@@ -300,38 +324,3 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
 }
 
 
-//extension RegisterViewController: UITextViewDelegate {
-//    func textViewDidBeginEditing(textView: UITextView) {
-//        print("aa")
-//        let frame: CGRect = introductionTextView.frame
-//        let heights: CGFloat = self.view.frame.size.height
-//        // 当前点击textfield的坐标的Y值 + 当前点击textFiled的高度 - （屏幕高度- 键盘高度 - 键盘上tabbar高度）
-//        // 在这一部 就是了一个 当前textfile的的最大Y值 和 键盘的最全高度的差值，用来计算整个view的偏移量
-//        let offset = frame.origin.y + 130 - (heights - 216 - 35)  + 25
-//        //键盘高度216
-//        let animationDuration: NSTimeInterval = 0.30
-//        UIView.beginAnimations("ResizeForKeyBoard", context: nil)
-//        UIView.setAnimationDuration(animationDuration)
-//        let width = self.view.frame.size.width
-//        let height = self.view.frame.size.height
-//        if offset > 0 {
-//            let rect: CGRect = CGRectMake(0.0, -offset, width, height)
-//            self.view.frame = rect
-//        }
-//        UIView.commitAnimations()
-//        print("aaaa")
-//    }
-//    
-//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        print("touchesBegan")
-//        self.view!.endEditing(true)
-//        let animationDuration: NSTimeInterval = 0.30
-//        UIView.beginAnimations("ResizeForKeyboard", context: nil)
-//        UIView.setAnimationDuration(animationDuration)
-//        let rect: CGRect = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)
-//        self.view.frame = rect
-//        UIView.commitAnimations()
-//    }
-//}
-//
-//

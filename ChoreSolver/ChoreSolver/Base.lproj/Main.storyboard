@@ -524,7 +524,7 @@
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Qg-bf-ZUd">
                                         <rect key="frame" x="0.0" y="150" width="500" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hour Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yo1-OY-4tJ">
                                         <rect key="frame" x="0.0" y="190" width="500" height="30"/>
@@ -554,6 +554,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="8Qg-bf-ZUd" firstAttribute="leading" secondItem="i6L-bM-CBc" secondAttribute="leading" id="1uN-ew-DTk"/>
+                                    <constraint firstAttribute="height" constant="400" id="EyF-Pt-kwo"/>
                                     <constraint firstItem="EzK-a2-VWK" firstAttribute="leading" secondItem="i6L-bM-CBc" secondAttribute="leading" id="VaM-bH-Ugq"/>
                                     <constraint firstItem="Yo1-OY-4tJ" firstAttribute="leading" secondItem="i6L-bM-CBc" secondAttribute="leading" id="f9r-hR-JsX"/>
                                     <constraint firstItem="Ev4-t9-RcX" firstAttribute="leading" secondItem="i6L-bM-CBc" secondAttribute="leading" id="l5d-pi-snl"/>
@@ -565,6 +566,7 @@
                         <constraints>
                             <constraint firstItem="i6L-bM-CBc" firstAttribute="top" secondItem="7k8-Nh-OuD" secondAttribute="bottom" constant="20" id="dqE-cV-T0s"/>
                             <constraint firstItem="i6L-bM-CBc" firstAttribute="leading" secondItem="dbQ-aa-rrV" secondAttribute="leadingMargin" constant="30" id="kQy-vo-2kj"/>
+                            <constraint firstItem="sTK-dN-bJf" firstAttribute="top" secondItem="i6L-bM-CBc" secondAttribute="bottom" priority="750" constant="67" id="mBn-Vg-VMr"/>
                             <constraint firstItem="i6L-bM-CBc" firstAttribute="centerX" secondItem="dbQ-aa-rrV" secondAttribute="centerX" id="uib-K2-hER"/>
                         </constraints>
                     </view>
@@ -584,6 +586,7 @@
                         <outlet property="imageView" destination="rq4-Q6-iVk" id="Kot-m6-H8O"/>
                         <outlet property="introductionTextView" destination="EzK-a2-VWK" id="d5y-fb-fQt"/>
                         <outlet property="phoneNumberTextField" destination="8Qg-bf-ZUd" id="4iK-Fx-7KA"/>
+                        <outlet property="topLayout" destination="dqE-cV-T0s" id="vfy-Hf-BIc"/>
                         <outlet property="userNameTextField" destination="Yg9-S3-7qV" id="XR4-n4-VlV"/>
                     </connections>
                 </viewController>
@@ -919,7 +922,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="juh-bF-rY8">
-                                <rect key="frame" x="25" y="108" width="550" height="205"/>
+                                <rect key="frame" x="25" y="110" width="550" height="205"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FuD-0p-1yG">
                                         <rect key="frame" x="168" y="0.0" width="214" height="60"/>
@@ -966,7 +969,7 @@
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZJS-0i-aMK">
                                                 <rect key="frame" x="0.0" y="105" width="550" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                                <textInputTraits key="textInputTraits"/>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -978,11 +981,12 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="205" id="5da-MA-phZ"/>
                                     <constraint firstItem="pS5-9X-ilg" firstAttribute="leading" secondItem="juh-bF-rY8" secondAttribute="leading" id="RWk-fR-Izx"/>
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mZx-Qg-VF0">
-                                <rect key="frame" x="180" y="28" width="241" height="65"/>
+                                <rect key="frame" x="180" y="30" width="241" height="65"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up as:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKy-I1-Yzv">
                                         <rect key="frame" x="78" y="0.0" width="86" height="20"/>
@@ -1006,21 +1010,21 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2B-8n-mLh">
-                                <rect key="frame" x="538" y="28" width="37" height="30"/>
+                                <rect key="frame" x="538" y="30" width="37" height="30"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
                                     <action selector="doneTapped:" destination="3bZ-Vn-37C" eventType="touchDown" id="mRg-dh-1D0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3F-dP-Zpm">
-                                <rect key="frame" x="25" y="28" width="48" height="30"/>
+                                <rect key="frame" x="25" y="30" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
                                     <segue destination="1Nn-J2-psl" kind="unwind" unwindAction="unwindBackToLogInView:" id="uab-DM-2SK"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Introduce Yourself" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6su-km-Kfs">
-                                <rect key="frame" x="25" y="361" width="550" height="130"/>
+                                <rect key="frame" x="25" y="363" width="550" height="130"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="27X-ce-ZQ4"/>
@@ -1029,39 +1033,48 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l92-gg-i9p">
-                                <rect key="frame" x="230" y="499" width="141" height="30"/>
+                                <rect key="frame" x="230" y="501" width="141" height="30"/>
                                 <state key="normal" title="Choose Your County"/>
                                 <connections>
                                     <action selector="chooseCounty:" destination="3bZ-Vn-37C" eventType="touchDown" id="U12-YL-24X"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hour Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aJi-Q9-Nlf">
-                                <rect key="frame" x="25" y="321" width="550" height="30"/>
+                                <rect key="frame" x="25" y="323" width="550" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="jWg-aJ-NFf"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="juh-bF-rY8" secondAttribute="trailing" constant="5" id="1MQ-pJ-x9j"/>
                             <constraint firstItem="juh-bF-rY8" firstAttribute="leading" secondItem="tt7-rc-oro" secondAttribute="leadingMargin" constant="5" id="6yl-Gf-9aE"/>
                             <constraint firstItem="l92-gg-i9p" firstAttribute="centerX" secondItem="tt7-rc-oro" secondAttribute="centerX" id="7I7-YH-TIM"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="aJi-Q9-Nlf" secondAttribute="trailing" constant="5" id="9Pw-vJ-glB"/>
                             <constraint firstItem="6su-km-Kfs" firstAttribute="leading" secondItem="tt7-rc-oro" secondAttribute="leadingMargin" constant="5" id="F3C-jB-EYG"/>
                             <constraint firstItem="c2B-8n-mLh" firstAttribute="top" secondItem="mZx-Qg-VF0" secondAttribute="top" id="GIL-BD-BxA"/>
-                            <constraint firstItem="sDf-fq-I75" firstAttribute="top" secondItem="l92-gg-i9p" secondAttribute="bottom" constant="71" id="GiM-5R-3Ec"/>
+                            <constraint firstItem="sDf-fq-I75" firstAttribute="top" secondItem="l92-gg-i9p" secondAttribute="bottom" priority="750" constant="71" id="GiM-5R-3Ec"/>
                             <constraint firstItem="c2B-8n-mLh" firstAttribute="trailing" secondItem="juh-bF-rY8" secondAttribute="trailing" id="I3h-nP-04f"/>
                             <constraint firstItem="l92-gg-i9p" firstAttribute="top" secondItem="6su-km-Kfs" secondAttribute="bottom" constant="8" id="Kdf-sb-yOl"/>
                             <constraint firstItem="H3F-dP-Zpm" firstAttribute="leading" secondItem="juh-bF-rY8" secondAttribute="leading" id="KyJ-hU-ItM"/>
                             <constraint firstItem="mZx-Qg-VF0" firstAttribute="centerX" secondItem="tt7-rc-oro" secondAttribute="centerX" id="Nzu-Uz-QPJ"/>
                             <constraint firstItem="aJi-Q9-Nlf" firstAttribute="centerX" secondItem="tt7-rc-oro" secondAttribute="centerX" id="Vka-0f-SJy"/>
+                            <constraint firstItem="sDf-fq-I75" firstAttribute="top" secondItem="l92-gg-i9p" secondAttribute="bottom" priority="750" constant="69" id="WpR-Kc-hfb"/>
                             <constraint firstItem="juh-bF-rY8" firstAttribute="top" secondItem="mZx-Qg-VF0" secondAttribute="bottom" constant="15" id="Y4k-mH-Xsj"/>
                             <constraint firstItem="aJi-Q9-Nlf" firstAttribute="top" secondItem="ZJS-0i-aMK" secondAttribute="bottom" constant="8" id="b9D-cL-UJN"/>
                             <constraint firstItem="H3F-dP-Zpm" firstAttribute="top" secondItem="mZx-Qg-VF0" secondAttribute="top" id="gru-tU-Lhq"/>
+                            <constraint firstItem="6su-km-Kfs" firstAttribute="centerX" secondItem="tt7-rc-oro" secondAttribute="centerX" id="hph-mX-mnU"/>
+                            <constraint firstItem="juh-bF-rY8" firstAttribute="centerX" secondItem="tt7-rc-oro" secondAttribute="centerX" id="idd-20-41k"/>
                             <constraint firstItem="6su-km-Kfs" firstAttribute="top" secondItem="aJi-Q9-Nlf" secondAttribute="bottom" constant="10" id="nsU-vy-0bc"/>
+                            <constraint firstItem="mZx-Qg-VF0" firstAttribute="top" secondItem="4jF-B8-Bqk" secondAttribute="bottom" constant="10" id="qBc-TV-mj3"/>
                             <constraint firstItem="aJi-Q9-Nlf" firstAttribute="leading" secondItem="tt7-rc-oro" secondAttribute="leadingMargin" constant="5" id="v7B-ek-cnX"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="6su-km-Kfs" secondAttribute="trailing" constant="5" id="wPt-lJ-SX9"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="GiM-5R-3Ec"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="countyButton" destination="l92-gg-i9p" id="wi3-TN-NrE"/>
@@ -1072,6 +1085,7 @@
                         <outlet property="passwordTextField" destination="7p7-3M-WUE" id="R9I-bm-FSY"/>
                         <outlet property="phoneNumberTextField" destination="ZJS-0i-aMK" id="Ws2-4d-9XL"/>
                         <outlet property="spinner" destination="FCi-Ye-k9u" id="P3S-7L-V25"/>
+                        <outlet property="topLayout" destination="qBc-TV-mj3" id="29t-X2-HP9"/>
                         <outlet property="typeSegmentedControl" destination="bKw-0u-9aE" id="ovi-Ge-Rkv"/>
                         <outlet property="userImage" destination="3hL-Lb-bqy" id="fKU-Zv-CMZ"/>
                         <outlet property="userNameTextField" destination="krl-pK-GIb" id="QtU-zP-SCm"/>

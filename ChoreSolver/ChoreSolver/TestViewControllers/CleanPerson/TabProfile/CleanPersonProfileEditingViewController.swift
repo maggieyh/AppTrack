@@ -10,9 +10,13 @@ import UIKit
 import Parse
 import DropDown
 class CleanPersonProfileEditingViewController: UIViewController {
+
+    
+    @IBOutlet var topLayout: NSLayoutConstraint!
     let counties = ["Changhua County", "Chiayi City", "Chiayi County","Hsinchu City","Hsinchu County", "Hualien County", "Kaohsiung City", "Keelung City", "Kinmen County", "Lienchiang County", "Miaoli County", "Nantou County", "New Taipei City", "Penghu County", "Pingtung County", "Taichung City", "Tainan City", "Taipei City", "Taitung County", "Taoyuan City", "Yilan County", "Yunlin County"]
     var county: String?
     var imageFile: PFFile?
+    var bo: Bool = true
     
     var photoTakingHelper: PhotoTakingHelper?
     let countyDropDown = DropDown()
@@ -90,7 +94,11 @@ class CleanPersonProfileEditingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+//        self.hideKeyboardWhenTappedAround()
         
         self.user = PFUser.currentUser()!
         self.userNameTextField.text = self.user!.username!
@@ -160,4 +168,77 @@ class CleanPersonProfileEditingViewController: UIViewController {
     }
     */
 
+}
+
+extension CleanPersonProfileEditingViewController {
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        subscribeToKeyboardNotifications()
+        
+    }
+    
+    //    func dismissKeyboard() {
+    //        view.endEditing(true)
+    //    }
+    
+    func subscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:))    , name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:))    , name: UIKeyboardWillHideNotification, object: nil)
+        
+        //          self.topLayout.active = false
+        
+    }
+    
+    
+    func keyboardWillShow(notification: NSNotification) {
+        let height = getKeyboardHeight(notification) - 40
+        if bo {
+           // NSLayoutConstraint.deactivateConstraints([self.topLayout])
+            if  self.topLayout == nil {
+                print("nil")
+            } else {
+                print("not nil")
+            }
+            self.topLayout.active = false
+            if self.topLayout == nil {
+                print("laternil")
+            }
+            view.frame.origin.y -= height
+            bo = false
+        }
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        let height = getKeyboardHeight(notification) - 40
+        if !bo {
+            
+            
+            view.frame.origin.y += height
+            self.topLayout.active = true
+            bo = true
+        }
+    }
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.CGRectValue().height
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        print("ttre")
+        self.topLayout.active = true
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:
+            UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:
+            UIKeyboardWillHideNotification, object: nil)
+    }
 }
