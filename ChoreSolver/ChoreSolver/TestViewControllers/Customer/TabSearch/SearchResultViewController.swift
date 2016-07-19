@@ -47,7 +47,12 @@ class SearchResultViewController: UIViewController {
                 requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
                 do {
                     let request = try requestQuery.findObjects() as! [Request]
-                    cleanPersonDetailViewController.agree = request[0].agree.boolValue
+                    if !request.isEmpty {
+                        cleanPersonDetailViewController.agree = request[0].agree.boolValue
+                    } else {
+                        cleanPersonDetailViewController.agree = nil
+                    }
+                    
                 } catch {
                     cleanPersonDetailViewController.agree = nil
                 }

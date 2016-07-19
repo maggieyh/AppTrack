@@ -90,6 +90,8 @@ class CleanPersonProfileEditingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
+        
         self.user = PFUser.currentUser()!
         self.userNameTextField.text = self.user!.username!
         self.userNameTextField.enabled = false

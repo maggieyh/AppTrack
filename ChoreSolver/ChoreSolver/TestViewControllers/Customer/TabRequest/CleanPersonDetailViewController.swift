@@ -15,6 +15,8 @@ class CleanPersonDetailViewController: UIViewController {
     
     @IBOutlet weak var nameLabel: UILabel!
    
+    @IBOutlet weak var contactLabel: UILabel!
+    
     @IBOutlet weak var hourRateLabel: UILabel!
     @IBOutlet weak var introductionTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
@@ -56,8 +58,8 @@ class CleanPersonDetailViewController: UIViewController {
                     contactMethodTextView.text = "Wait for \(nameLabel.text!)'s response"
                 }
             } else {
-                introductionLabel.hidden = true
-                introductionTextView.hidden = true
+                contactMethodTextView.hidden = true
+                contactLabel.hidden = true
             }
         }
     }

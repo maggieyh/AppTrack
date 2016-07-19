@@ -11,6 +11,8 @@ import Parse
 import DropDown
 import ParseUI
 import Parse
+import IHKeyboardAvoiding
+
 class RegisterViewController: UIViewController,UIPopoverPresentationControllerDelegate {
     var backgroundImage : UIImageView!
     let countyDropDown = DropDown()
@@ -160,11 +162,23 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
     }
     
     
+    @IBOutlet weak var generalStackView: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Do any additional setup after loading the view.
+//        self.introductionTextView.delegate = self
+//        self.view.addSubview(introductionTextView)
+        
+        //keyboard avoiding test
+  
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+
+        
+        
         self.setupChooseCountyDropDown()
         
         self.textFields = [self.userNameTextField, self.passwordTextField, self.emailTextField, self.phoneNumberTextField]
@@ -179,7 +193,7 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
         //        signUpView!.insertSubview(backgroundImage, atIndex: 0)
         //
 
-        
+      //  self.hideKeyboardWhenTappedAround()
         
     }
 /*
@@ -243,7 +257,81 @@ class RegisterViewController: UIViewController,UIPopoverPresentationControllerDe
         //		dropDown.selectRowAtIndex(3)
     }
 
+    
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        subscribeToKeyboardNotifications()
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func subscribeToKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:))    , name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:))    , name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        view.frame.origin.y += getKeyboardHeight(notification)
+    }
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.CGRectValue().height
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    func unsubscribeFromKeyboardNotifications() {
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:
+            UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name:
+            UIKeyboardWillHideNotification, object: nil)
+    }
 }
 
 
-
+//extension RegisterViewController: UITextViewDelegate {
+//    func textViewDidBeginEditing(textView: UITextView) {
+//        print("aa")
+//        let frame: CGRect = introductionTextView.frame
+//        let heights: CGFloat = self.view.frame.size.height
+//        // 当前点击textfield的坐标的Y值 + 当前点击textFiled的高度 - （屏幕高度- 键盘高度 - 键盘上tabbar高度）
+//        // 在这一部 就是了一个 当前textfile的的最大Y值 和 键盘的最全高度的差值，用来计算整个view的偏移量
+//        let offset = frame.origin.y + 130 - (heights - 216 - 35)  + 25
+//        //键盘高度216
+//        let animationDuration: NSTimeInterval = 0.30
+//        UIView.beginAnimations("ResizeForKeyBoard", context: nil)
+//        UIView.setAnimationDuration(animationDuration)
+//        let width = self.view.frame.size.width
+//        let height = self.view.frame.size.height
+//        if offset > 0 {
+//            let rect: CGRect = CGRectMake(0.0, -offset, width, height)
+//            self.view.frame = rect
+//        }
+//        UIView.commitAnimations()
+//        print("aaaa")
+//    }
+//    
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        print("touchesBegan")
+//        self.view!.endEditing(true)
+//        let animationDuration: NSTimeInterval = 0.30
+//        UIView.beginAnimations("ResizeForKeyboard", context: nil)
+//        UIView.setAnimationDuration(animationDuration)
+//        let rect: CGRect = CGRectMake(0.0, 0.0, self.view.frame.size.width, self.view.frame.size.height)
+//        self.view.frame = rect
+//        UIView.commitAnimations()
+//    }
+//}
+//
+//

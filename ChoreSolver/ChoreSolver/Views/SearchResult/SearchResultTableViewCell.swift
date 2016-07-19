@@ -20,9 +20,10 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var requestButton: UIButton!
     
     @IBAction func requestInfoTapped(sender: AnyObject) {
-        ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson!)
+        ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson!, block: { (success: Bool, error: NSError?) in
+            self.tabBarViewController!.selectedViewController = self.tabBarViewController!.viewControllers![1]
+        })
         //transition to tab Request
-        self.tabBarViewController!.selectedViewController = self.tabBarViewController!.viewControllers![1]
         
         
     }

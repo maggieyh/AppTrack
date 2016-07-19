@@ -12,6 +12,6 @@ target 'ChoreSolver' do
   pod ‘ParseFacebookUtilsV4’
   pod ‘ParseUI’
   pod ‘DropDown’
-  
+  pod 'IHKeyboardAvoiding'
 
 end

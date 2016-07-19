@@ -15,7 +15,7 @@ class ParseHelper {
     static let ParseRequestCleanPerson = "cleanPerson"
     static let ParseRequestAgree = "Agree"
     
-    static func initRequestInfo(customer: PFUser, cleanPerson: PFUser) {
+    static func initRequestInfo(customer: PFUser, cleanPerson: PFUser, block: PFBooleanResultBlock ) {
         //Check if the Request object already set between these two user
         let requestQuery = PFQuery(className: ParseRequestClass)
         requestQuery.whereKey(ParseRequestCustomer , equalTo: customer)
@@ -27,7 +27,7 @@ class ParseHelper {
                 requestObject[ParseRequestCustomer] = customer
                 requestObject[ParseRequestCleanPerson] = cleanPerson
                 requestObject[ParseRequestAgree] = NSNumber(bool: false)
-                requestObject.saveInBackgroundWithBlock(nil)
+                requestObject.saveInBackgroundWithBlock(block)
             }
         }
         
