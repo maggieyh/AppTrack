@@ -13,7 +13,7 @@ import ParseUI
 import Parse
 import IHKeyboardAvoiding
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextViewDelegate {
     var backgroundImage : UIImageView!
     let countyDropDown = DropDown()
     var userType: String = "Customer"
@@ -174,6 +174,8 @@ class RegisterViewController: UIViewController {
 //        self.introductionTextView.delegate = self
 //        self.view.addSubview(introductionTextView)
         
+        introductionTextView.textColor = UIColor.lightGrayColor()
+        
         //keyboard avoiding test
   
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
@@ -281,7 +283,7 @@ class RegisterViewController: UIViewController {
     
     var bo: Bool = true
     func keyboardWillShow(notification: NSNotification) {
-        let height = getKeyboardHeight(notification) - 30
+        let height = getKeyboardHeight(notification) - 40
         if bo {
             self.topLayout.active = false
             if self.topLayout == nil {
@@ -295,7 +297,7 @@ class RegisterViewController: UIViewController {
         self.view.endEditing(true)
     }
     func keyboardWillHide(notification: NSNotification) {
-        let height = getKeyboardHeight(notification) - 30
+        let height = getKeyboardHeight(notification) - 40
         if !bo {
             view.frame.origin.y += height
             self.topLayout.active = true
@@ -315,12 +317,27 @@ class RegisterViewController: UIViewController {
     
     func unsubscribeFromKeyboardNotifications() {
         print("ttre")
-        self.topLayout.active = true
+     //   self.topLayout.active = true
         NSNotificationCenter.defaultCenter().removeObserver(self, name:
             UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name:
             UIKeyboardWillHideNotification, object: nil)
     }
+    
+    func textViewDidBeginEditing(textView: UITextView) {
+        if textView.textColor == UIColor.lightGrayColor() {
+            textView.text = nil
+            textView.textColor = UIColor.blackColor()
+        }
+    }
+    
+    func textViewDidEndEditing(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Introduce Yourself"
+            textView.textColor = UIColor.lightGrayColor()
+        }
+    }
 }
+
 
 

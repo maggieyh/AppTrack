@@ -25,6 +25,7 @@
 		6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */; };
 		6F9045D81D3C73D200881640 /* CleanPersonProfileEditingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9045D71D3C73D200881640 /* CleanPersonProfileEditingViewController.swift */; };
 		6F9E1BBE1D3681480035A60D /* FBloginhelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9E1BBD1D3681480035A60D /* FBloginhelperViewController.swift */; };
+		6FA271481D3E113200E60902 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA271471D3E113200E60902 /* User.swift */; };
 		6FAE34CA1D37C40900BDDC10 /* DPDConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C01D37C40800BDDC10 /* DPDConstants.swift */; };
 		6FAE34CB1D37C40900BDDC10 /* DPDKeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C11D37C40800BDDC10 /* DPDKeyboardListener.swift */; };
 		6FAE34CC1D37C40900BDDC10 /* DPDUIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C21D37C40800BDDC10 /* DPDUIView+Extension.swift */; };
@@ -60,6 +61,7 @@
 		6F8E6A8E1D31F96200618103 /* SearchResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultTableViewCell.swift; sourceTree = "<group>"; };
 		6F9045D71D3C73D200881640 /* CleanPersonProfileEditingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPersonProfileEditingViewController.swift; sourceTree = "<group>"; };
 		6F9E1BBD1D3681480035A60D /* FBloginhelperViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBloginhelperViewController.swift; sourceTree = "<group>"; };
+		6FA271471D3E113200E60902 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6FAE34BE1D37C40800BDDC10 /* DropDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDown.h; sourceTree = "<group>"; };
 		6FAE34C01D37C40800BDDC10 /* DPDConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDConstants.swift; sourceTree = "<group>"; };
 		6FAE34C11D37C40800BDDC10 /* DPDKeyboardListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DPDKeyboardListener.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				6F5391B71D329B2A00C1AA9C /* Request.swift */,
+				6FA271471D3E113200E60902 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				6FAE34D11D37C40900BDDC10 /* DropDownCell.swift in Sources */,
 				6FDDB8791D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift in Sources */,
 				6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */,
+				6FA271481D3E113200E60902 /* User.swift in Sources */,
 				6FAE34CC1D37C40900BDDC10 /* DPDUIView+Extension.swift in Sources */,
 				6F5F58D61D33EBD2000ABB58 /* SearchViewController.swift in Sources */,
 				6FAE34CB1D37C40900BDDC10 /* DPDKeyboardListener.swift in Sources */,
