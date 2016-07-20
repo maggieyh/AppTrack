@@ -84,22 +84,8 @@ extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate
         cell.hourRateLabel.text = str + "$/hr"
         cell.tabBarViewController = self.tabBarController ?? nil
         cell.requestButton.enabled = false
-        if let customer = PFUser.currentUser()! as? User {
-            ParseHelper.fetchParticularRequest(customer, cleanPerson: person) { (result: [PFObject]?, error: NSError?) in
-                let request = result as! [Request]?
-                if !request!.isEmpty {
-                    if request![0].agree.boolValue {
-                        cell.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
-                    } else {
-                        cell.requestButton.setTitle("Request Sent", forState: UIControlState.Normal)
-                    }
-                    cell.requestButton.enabled = false
-                } else {
-                    cell.requestButton.enabled = true
-                }
-            }
-        }
-        
+     
+        cell.fetchRequest()        
         return cell
     }
     

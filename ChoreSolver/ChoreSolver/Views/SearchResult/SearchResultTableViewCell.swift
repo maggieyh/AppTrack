@@ -13,28 +13,8 @@ class SearchResultTableViewCell: UITableViewCell {
     
     var requestDisposable: DisposableType?
     var imageDisposable: DisposableType?
-    var customer: User?
-//    var agree: Bool? {
-//        didSet {
-//            requestDisposable?.dispose()
-//            if let agree = agree {
-//                requestDisposable = requset.observe ({ (value: Bool?) in
-//                    if let value = value {
-//                        if value {
-//                            
-//                        } else {
-//                            
-//                        }
-//                    } else {
-//                        
-//                    }
-//                })
-//            } else {
-//                
-//            }
-//        }
-//    }
-    var requset: Observable<Request?> = Observable(nil)
+    var existingRequest: Observable<Bool?> = Observable(nil)
+    
     var cleanPerson: User? {
         didSet {
             imageDisposable?.dispose()
@@ -42,6 +22,7 @@ class SearchResultTableViewCell: UITableViewCell {
             if let oldValue = oldValue where oldValue != cleanPerson {
                 oldValue.image.value = nil
             }
+            //to check if the new value is nil
             if let cleanPerson = cleanPerson {
 //                cleanPerson.image.bindTo(cleanPersonImage.bnd_image)
                 imageDisposable = cleanPerson.image.bindTo(cleanPersonImage.bnd_image)
@@ -53,8 +34,27 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var cleanPersonNameLabel: UILabel!
     @IBOutlet weak var cleanPersonImage: UIImageView!
     @IBOutlet weak var hourRateLabel: UILabel!
-
-    @IBOutlet weak var requestButton: UIButton!
+    @IBOutlet weak var requestButton: UIButton! {
+        didSet {
+            requestDisposable?.dispose()
+            if requestButton != nil {
+                requestDisposable = existingRequest.observe ({ (value: Bool?) -> ()in
+                    if let value = value {
+                        if value {
+                            self.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
+                        } else {
+                            self.requestButton.setTitle("Request Sent", forState: UIControlState.Normal)
+                        }
+                        self.requestButton.enabled = false
+                    } else {
+                        self.requestButton.enabled = true
+                    }
+                })
+            } else {
+                self.requestButton.enabled = true
+            }
+        }
+    }
     
     @IBAction func requestInfoTapped(sender: AnyObject) {
         ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson!, block: { (success: Bool, error: NSError?) in
@@ -75,6 +75,20 @@ class SearchResultTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func fetchRequest() {
+        if request.value == nil {
+            ParseHelper.fetchParticularRequest(PFUser.currentUser()!, cleanPerson: cleanPerson!) { (request: PFObject?, error: NSError?) in
+                if let request = request as? Request {
+                    let rqst = request 
+                    
+                } else {
+                    self.request.value = nil
+                }
+            }
+        }
+    }
+    
     
 
     

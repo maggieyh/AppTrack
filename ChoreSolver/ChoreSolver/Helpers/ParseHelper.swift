@@ -46,12 +46,12 @@ class ParseHelper {
     }
    
     
-    static func fetchParticularRequest(customer: User, cleanPerson: User, completionBlock: PFQueryArrayResultBlock) {
+    static func fetchParticularRequest(customer: PFUser, cleanPerson: PFUser, completionBlock: ((PFObject?, NSError?)->Void) ) {
         let requestQuery = PFQuery(className: ParseRequestClass)
         requestQuery.whereKey(ParseRequestCleanPerson, equalTo: cleanPerson)
         requestQuery.whereKey(ParseRequestCustomer, equalTo: customer)
-        requestQuery.findObjectsInBackgroundWithBlock(completionBlock)            
-        
+//        requestQuery.findObjectsInBackgroundWithBlock(completionBlock)            
+        requestQuery.getFirstObjectInBackgroundWithBlock(completionBlock)
     }
     
 }

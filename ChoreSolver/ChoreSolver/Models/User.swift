@@ -44,7 +44,7 @@ class User: PFUser {
     }
 
     func downloadImage() {
-            image.value = User.imageCache[self.imageFile!.name]
+        image.value = User.imageCache[self.imageFile!.name]
         if image.value == nil {
             imageFile?.getDataInBackgroundWithBlock({ (data: NSData?, error: NSError?) in
                 print("download")
