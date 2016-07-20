@@ -14,15 +14,9 @@ class SearchResultViewController: UIViewController {
 
     @IBOutlet weak var searchResultTableView: UITableView!
     
-   
-    
-    var cleanPersons: [PFUser] = []
-    var imageData: [NSData?] = []
+    var cleanPersons: [User] = []
     var selectedCounty: String?
-    
-    //get the specific view controller's index
 
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,32 +25,16 @@ class SearchResultViewController: UIViewController {
         
     }
     @IBAction func unwindBackToResultView(segue:UIStoryboardSegue) {
-        
     }
     @IBAction func unwindBackToRequestView(segue:UIStoryboardSegue) {
-        
     }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showCleanPersonDetailFromResultView" {
             let cleanPersonDetailViewController = segue.destinationViewController as! CleanPersonDetailViewController
             if let indexPath = self.searchResultTableView.indexPathForSelectedRow {
                 cleanPersonDetailViewController.cleanPerson = cleanPersons[indexPath.row]
-                
-                let requestQuery = PFQuery(className: "Request")
-                requestQuery.whereKey("cleanPerson", equalTo: cleanPersons[indexPath.row])
-                requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
-                do {
-                    let request = try requestQuery.findObjects() as! [Request]
-                    if !request.isEmpty {
-                        cleanPersonDetailViewController.agree = request[0].agree.boolValue
-                    } else {
-                        cleanPersonDetailViewController.agree = nil
-                    }
-                    
-                } catch {
-                    cleanPersonDetailViewController.agree = nil
-                }
-                
+//                cleanPersonDetailViewController.imageView.image = cleanPersons[indexPath.row].image.value
             }
         }
     }
@@ -67,30 +45,10 @@ class SearchResultViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let cleanPersonQuery : PFQuery = PFUser.query()!
-        cleanPersonQuery.whereKey("userType", equalTo: "CleanPerson")
-     //   cleanPersonQuery.whereKey("county", equalTo: self.selectedCounty!)
-        cleanPersonQuery.whereKey("county", equalTo: "Hualien")
-        cleanPersonQuery.findObjectsInBackgroundWithBlock { (result:[PFObject]?, error: NSError?) in
-            if let result = result {
-                self.cleanPersons = result as! [PFUser]
-                self.searchResultTableView.reloadData()
-                self.imageData = []
-                for ele in result {
-                    let imageFile = ele["imageFile"] as! PFFile
-                    do {
-                        let data = try imageFile.getData()
-                        self.imageData.append(data)
-                    } catch {
-                        print("fail")
-                        self.imageData.append(nil)
-                    }
-                    
-                }
-                
-            } else {
-                print(error)
-            }
+        ParseHelper.searchResultViewRequestForCleanPerson(self.selectedCounty!){ (result:[PFObject]?, error: NSError?) in
+            self.cleanPersons = result as? [User] ?? []
+          
+            self.searchResultTableView.reloadData()
         }
         
         
@@ -105,8 +63,6 @@ class SearchResultViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    
     
     
 }
@@ -120,35 +76,30 @@ extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CleanPersonCell", forIndexPath: indexPath) as! SearchResultTableViewCell
         let person = cleanPersons[indexPath.row]
-        if let imageData = self.imageData[indexPath.row] {
-            cell.cleanPersonImage.image = UIImage(data: imageData, scale: 0.8)
-        } else {
-            cell.cleanPersonImage.image = UIImage(named: "search")
-        }
-
+        person.downloadImage()
+//        cell.cleanPersonImage.image = person.image
         cell.cleanPersonNameLabel.text = person.username!
         cell.cleanPerson = person
-        let str = (person["hourRate"] as? String) ?? ""
+        let str = (person.hourRate as? String) ?? ""
         cell.hourRateLabel.text = str + "$/hr"
         cell.tabBarViewController = self.tabBarController ?? nil
-        
-        let requestQuery = PFQuery(className: "Request")
-        requestQuery.whereKey("cleanPerson", equalTo: cleanPersons[indexPath.row])
-        requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
-        do {
-            let request = try requestQuery.findObjects() as! [Request]
-            if !request.isEmpty {
-                if request[0].agree.boolValue {
-                    cell.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
+        cell.requestButton.enabled = false
+        if let customer = PFUser.currentUser()! as? User {
+            ParseHelper.fetchParticularRequest(customer, cleanPerson: person) { (result: [PFObject]?, error: NSError?) in
+                let request = result as! [Request]?
+                if !request!.isEmpty {
+                    if request![0].agree.boolValue {
+                        cell.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
+                    } else {
+                        cell.requestButton.setTitle("Request Sent", forState: UIControlState.Normal)
+                    }
+                    cell.requestButton.enabled = false
                 } else {
-                    cell.requestButton.setTitle("Request Sent", forState: UIControlState.Normal)
+                    cell.requestButton.enabled = true
                 }
-                cell.requestButton.enabled = false
             }
-            
-        } catch {
-            
         }
+        
         return cell
     }
     

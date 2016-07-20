@@ -30,7 +30,7 @@ class CustomerReqeustViewController: UIViewController {
         if segue.identifier == "showCleanPersonProfileFromRequest" {
             let cleanPersonDetailViewController = segue.destinationViewController as! CleanPersonDetailViewController
             if let indexPath = self.requestTableView.indexPathForSelectedRow {
-                cleanPersonDetailViewController.cleanPerson = requests[indexPath.row].cleanPerson
+                cleanPersonDetailViewController.cleanPerson = requests[indexPath.row].cleanPerson as? User
                 cleanPersonDetailViewController.agree = requests[indexPath.row].agree.boolValue
             }
         }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		66FB7089552F19A552AFD4BB /* Pods_ChoreSolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83AC856F9968EC949A59AAB8 /* Pods_ChoreSolver.framework */; };
 		6F22205E1D31EA1E00A3BDC9 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F22205D1D31EA1E00A3BDC9 /* ParseHelper.swift */; };
+		6F2285781D3F18C900AEF880 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2285771D3F18C900AEF880 /* Data.swift */; };
 		6F28E85B1D38B8E300E886F8 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F28E85A1D38B8E300E886F8 /* LogInViewController.swift */; };
 		6F3F511C1D39CF9100D0FB7E /* CleanPersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3F511B1D39CF9100D0FB7E /* CleanPersonDetailViewController.swift */; };
 		6F4394691D30D71B000A1F49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4394681D30D71B000A1F49 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		4C26C908E74100B9CB8DBBFC /* Pods-ChoreSolver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreSolver.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ChoreSolver/Pods-ChoreSolver.debug.xcconfig"; sourceTree = "<group>"; };
 		6F22205D1D31EA1E00A3BDC9 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
+		6F2285771D3F18C900AEF880 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		6F28E85A1D38B8E300E886F8 /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		6F3F511B1D39CF9100D0FB7E /* CleanPersonDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CleanPersonDetailViewController.swift; sourceTree = "<group>"; };
 		6F4394651D30D71B000A1F49 /* ChoreSolver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChoreSolver.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +241,7 @@
 			children = (
 				6F5391B71D329B2A00C1AA9C /* Request.swift */,
 				6FA271471D3E113200E60902 /* User.swift */,
+				6F2285771D3F18C900AEF880 /* Data.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				6FB6603E1D376FCE00C74109 /* RegisterViewController.swift in Sources */,
 				6FF998881D3BD24300A3466C /* PhotoTakingHelper.swift in Sources */,
 				6F28E85B1D38B8E300E886F8 /* LogInViewController.swift in Sources */,
+				6F2285781D3F18C900AEF880 /* Data.swift in Sources */,
 				6F3F511C1D39CF9100D0FB7E /* CleanPersonDetailViewController.swift in Sources */,
 				6F5F58D81D33EC19000ABB58 /* SearchResultViewController.swift in Sources */,
 				6F5F58D41D33EB61000ABB58 /* CustomerReqeustViewController.swift in Sources */,

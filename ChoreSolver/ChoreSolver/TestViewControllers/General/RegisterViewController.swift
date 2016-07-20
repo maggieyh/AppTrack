@@ -20,7 +20,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
     var textFields: [UITextField!]?
     var photoTakingHelper: PhotoTakingHelper?
     var imageFile: PFFile?
-    
+    var bo: Bool = true
     @IBOutlet weak var topLayout: NSLayoutConstraint!
     
     @IBOutlet var spinner:UIActivityIndicatorView!
@@ -39,9 +39,8 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var countyButton: UIButton!
     
     @IBAction func choosePhotoTapped(sender: AnyObject) {
-        //func takePhoto()
+       
         photoTakingHelper = PhotoTakingHelper(viewController: self) { (image: UIImage?) in
-            //turn the UIImage into an NSData instance because the PFFile class needs an NSData argument for its initializer.
             if let image = image {
                 self.userImage.image = image
                 let data = UIImagePNGRepresentation(image)
@@ -68,98 +67,77 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         }
     }
 
-    
-    
+    func alert() {
+        let alertController = UIAlertController(title: "Some Fields are not completed", message: "Please comlete text fields", preferredStyle: UIAlertControllerStyle.Alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
     @IBAction func doneTapped(sender: AnyObject) {
-        
-        
-        
          //make new user
-        var finished: Bool = true
-        for ele in self.textFields! {
-            if ele.text == nil {
-                finished = false
-                break
-            }
-        }
-        if self.imageFile == nil {
-            finished = false
-            
-        }
-        if userType == "CleanPerson" {
-            if let county = countyDropDown.selectedItem {
-                self.county = county
-            } else {
-                finished = false
-                print("county fail")
-            }
-            
-            if self.hourRateTextField.text == nil{
-                finished = false
-                print("hourRate fail")
-            }
-        }
-        if finished {
-            //spinner?
         
-            let username = self.userNameTextField.text!
-            let password = self.passwordTextField.text!
-            let email = self.emailTextField.text!
-            let finalEmail = email.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            let phoneNum = self.phoneNumberTextField.text!
-            let newUser = PFUser()
-            
-            newUser.username = username
-            newUser.password = password
-            newUser.email = finalEmail
-            newUser["userType"] = userType
-            newUser["phoneNumber"] = phoneNum
-            
-            self.imageFile?.saveInBackground()
-            if userType == "CleanPerson" {
-                newUser["hourRate"] = self.hourRateTextField.text ?? ""
-                newUser["introduction"] = self.introductionTextView.text ?? ""
-                newUser["county"] = self.county ?? ""
-                newUser["imageFile"] = self.imageFile
-            }
-            
-            spinner.hidesWhenStopped = true
-            spinner.center = view.center
-            self.view.addSubview(spinner)
-            spinner.startAnimating()
-            
-            // Sign up the user asynchronously
-            newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
-                
-                
-                if ((error) != nil) {
-                    print(error)
-                    
-                } else {
-                    print("success")
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        
-                        if self.userType == "Customer" {
-                            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
-                            self.presentViewController(viewController, animated: true, completion: nil)
-                        } else {
-                            let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CleanPersonTabBarController") as! UITabBarController
-                            self.presentViewController(viewController, animated: true, completion: nil)
-                        }
-
-                        self.spinner.stopAnimating()
-                        
-                    })
-                }
-            })
-            
-            
-        } else {
-            self.spinner.stopAnimating()
-            let alertController = UIAlertController(title: "Some Fields are not completed", message: "Please comlete text fields", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-            self.presentViewController(alertController, animated: true, completion: nil)
+        for ele in self.textFields! {
+            guard ele.text != nil else{ self.alert(); return }
         }
+        
+        guard self.imageFile != nil else{ self.alert(); return }
+        if userType == "CleanPerson" {
+            guard countyDropDown.selectedItem != nil else { self.alert(); return }
+            guard self.hourRateTextField.text != nil else { self.alert(); return }
+        }
+        
+        self.county = countyDropDown.selectedItem!
+        let username = self.userNameTextField.text!
+        let password = self.passwordTextField.text!
+        let email = self.emailTextField.text!
+        let finalEmail = email.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        let phoneNum = self.phoneNumberTextField.text!
+        let newUser = PFUser()
+        
+        newUser.username = username
+        newUser.password = password
+        newUser.email = finalEmail
+        newUser["userType"] = userType
+        newUser["phoneNumber"] = phoneNum
+        newUser["imageFile"] = self.imageFile
+        self.imageFile?.saveInBackground()
+        if userType == "CleanPerson" {
+            newUser["hourRate"] = self.hourRateTextField.text ?? ""
+            newUser["introduction"] = self.introductionTextView.text ?? ""
+            newUser["county"] = self.county ?? ""
+            
+        }
+        
+        spinner.hidesWhenStopped = true
+        spinner.center = view.center
+        self.view.addSubview(spinner)
+        spinner.startAnimating()
+        
+        // Sign up the user asynchronously
+        newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
+            
+            
+            if ((error) != nil) {
+                print(error)
+                
+            } else {
+                print("success")
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    
+                    if self.userType == "Customer" {
+                        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
+                        self.presentViewController(viewController, animated: true, completion: nil)
+                    } else {
+                        let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CleanPersonTabBarController") as! UITabBarController
+                        self.presentViewController(viewController, animated: true, completion: nil)
+                    }
+
+                    self.spinner.stopAnimating()
+                    
+                })
+            }
+        })
+    
+        
     
     }
     
@@ -171,8 +149,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         
         
         // Do any additional setup after loading the view.
-//        self.introductionTextView.delegate = self
-//        self.view.addSubview(introductionTextView)
+
         
         introductionTextView.textColor = UIColor.lightGrayColor()
         
@@ -200,18 +177,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
       //  self.hideKeyboardWhenTappedAround()
         
     }
-/*
- 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        // stretch background image to fill screen
-        backgroundImage.frame = CGRectMake( 0,  0,  signUpView!.frame.width,  signUpView!.frame.height)
-        
-        // position logo at top with larger frame
-        signUpView!.logo!.sizeToFit()
-        let logoFrame = signUpView!.logo!.frame
-        signUpView!.logo!.frame = CGRectMake(logoFrame.origin.x, signUpView!.usernameField!.frame.origin.y - logoFrame.height - 16, signUpView!.frame.width,  logoFrame.height)
-    }*/
+
 
     /*
     // MARK: - Navigation
@@ -261,27 +227,22 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         //		dropDown.selectRowAtIndex(3)
     }
 
-    
-    
+}
+
+extension RegisterViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         subscribeToKeyboardNotifications()
        
     }
 
-//    func dismissKeyboard() {
-//        view.endEditing(true)
-//    }
-    
+
     func subscribeToKeyboardNotifications() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillShow(_:))    , name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillHide(_:))    , name: UIKeyboardWillHideNotification, object: nil)
         
-//          self.topLayout.active = false
-        
-    }
     
-    var bo: Bool = true
+    }
     func keyboardWillShow(notification: NSNotification) {
         let height = getKeyboardHeight(notification) - 40
         if bo {

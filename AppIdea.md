@@ -257,13 +257,16 @@ pfloginviewcontroller!!!!
 * spinner for sign up 
 
 
-* OPTIMIZATION
+
+
+
+* OPTIMIZATION:
+    * unwinde back to result view: and the query run again !!!!
+* acl readaccess = false // is this the thing ?????
 * Cusotmer edit file ?
 * DESIGN
-
-* Settings such as tutorials?, flagged content, log out
 * push notification
-* initiation feature for cleanPerson
+ * initiation feature for cleanPerson
 * 
 * Message service
 
@@ -352,6 +355,14 @@ https://www.youtube.com/watch?v=Zts_vU1dn-I
 http://blog.csdn.net/winer888/article/details/51084756
 http://stackoverflow.com/questions/1126726/how-to-make-a-uitextfield-move-up-when-keyboard-is-present
 
-*
+* In-Out Parameters
+* Generics function:
+	* func swapTwoValues<T>(inout a: T, inout _ b: T) {
+		let temp = a
+		a = b
+		b = temp
+		}
+		
+* 
 
 

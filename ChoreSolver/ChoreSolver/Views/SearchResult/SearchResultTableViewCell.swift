@@ -7,10 +7,47 @@
 //
 
 import UIKit
+import Bond
 import Parse
 class SearchResultTableViewCell: UITableViewCell {
-
-    var cleanPerson: PFUser?
+    
+    var requestDisposable: DisposableType?
+    var imageDisposable: DisposableType?
+    var customer: User?
+//    var agree: Bool? {
+//        didSet {
+//            requestDisposable?.dispose()
+//            if let agree = agree {
+//                requestDisposable = requset.observe ({ (value: Bool?) in
+//                    if let value = value {
+//                        if value {
+//                            
+//                        } else {
+//                            
+//                        }
+//                    } else {
+//                        
+//                    }
+//                })
+//            } else {
+//                
+//            }
+//        }
+//    }
+    var requset: Observable<Request?> = Observable(nil)
+    var cleanPerson: User? {
+        didSet {
+            imageDisposable?.dispose()
+            //free memory of image stored with the CP that is no longer displayed
+            if let oldValue = oldValue where oldValue != cleanPerson {
+                oldValue.image.value = nil
+            }
+            if let cleanPerson = cleanPerson {
+//                cleanPerson.image.bindTo(cleanPersonImage.bnd_image)
+                imageDisposable = cleanPerson.image.bindTo(cleanPersonImage.bnd_image)
+            }
+        }
+    }
     var tabBarViewController: UITabBarController?
     
     @IBOutlet weak var cleanPersonNameLabel: UILabel!
@@ -40,5 +77,6 @@ class SearchResultTableViewCell: UITableViewCell {
     }
     
 
+    
     
 }

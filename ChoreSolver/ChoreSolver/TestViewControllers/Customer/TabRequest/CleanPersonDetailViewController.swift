@@ -10,7 +10,7 @@ import UIKit
 import Parse
 class CleanPersonDetailViewController: UIViewController {
 
-    var cleanPerson: PFUser?
+    var cleanPerson: User?
     var agree: Bool?
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -27,15 +27,8 @@ class CleanPersonDetailViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         if let cleanPerson = cleanPerson {
-            
-            if let imageFile = cleanPerson["imageFile"] as? PFFile {
-                do {
-                    let data = try imageFile.getData()
-                    imageView.image = UIImage(data: data, scale: 1.0)
-                } catch {
-                    print("fail")
-                }
-            }
+            cleanPerson.downloadImage()
+            imageView.image = cleanPerson.image.value
             
             nameLabel.text = cleanPerson.username
             if let hourRate = cleanPerson["hourRate"] as? String {

@@ -16,16 +16,11 @@ import ParseFacebookUtilsV4
 class SearchViewController: UIViewController {
 
     var selectedCounty: String?
-    
-    
-   // @IBOutlet var countiesPicker: [UIPickerView]!
     @IBOutlet weak var countyPickerView: UIPickerView!
     @IBAction func unwindBackToSearchView(segue:UIStoryboardSegue) {
         
     }
-    let pickerData = ["Changhua County", "Chiayi City", "Chiayi County","Hsinchu City",
-                      "Hsinchu County", "Hualien County", "Kaohsiung City", "Keelung City", "Kinmen County", "Lienchiang County", "Miaoli County", "Nantou County", "New Taipei City", "Penghu County", "Pingtung County", "Taichung City", "Tainan City", "Taipei City", "Taitung County", "Taoyuan City", "Yilan County", "Yunlin County"]
-    
+    let pickerData = Data.counties
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,13 +28,7 @@ class SearchViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.countyPickerView.delegate = self
         self.countyPickerView.dataSource = self
-        if((FBSDKAccessToken.currentAccessToken()) != nil){
-            FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, birthday, email"]).startWithCompletionHandler({ (connection, result, error) -> Void in
-                if (error == nil){
-                    print(result)
-                }
-            })
-        }
+        
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -80,7 +69,6 @@ extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print("pick\(pickerData[row])")
         self.selectedCounty = pickerData[row]
         self.performSegueWithIdentifier("showResult", sender: pickerView)
         
