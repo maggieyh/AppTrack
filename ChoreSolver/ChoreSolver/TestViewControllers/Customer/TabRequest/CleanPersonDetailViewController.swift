@@ -9,9 +9,10 @@
 import UIKit
 import Parse
 class CleanPersonDetailViewController: UIViewController {
-
+    var fromRequestView: Bool?
     var cleanPerson: User?
     var agree: Bool?
+    var stateOfRequest: Int?
     
     @IBOutlet weak var nameLabel: UILabel!
    
@@ -29,8 +30,8 @@ class CleanPersonDetailViewController: UIViewController {
         if let cleanPerson = cleanPerson {
             cleanPerson.downloadImage()
             imageView.image = cleanPerson.image.value
-            
             nameLabel.text = cleanPerson.username
+            
             if let hourRate = cleanPerson["hourRate"] as? String {
                 hourRateLabel.text = hourRate + "$/hr"
             } else {
@@ -41,19 +42,45 @@ class CleanPersonDetailViewController: UIViewController {
             } else {
                 introductionTextView.text = ""
             }
-            if let agree = agree {
-                if agree {
-                    let email = cleanPerson.email! 
+//            if let fromRequestView = fromRequestView  {
+//                if fromRequestView {
+//                        if agree! {
+//                            let email = cleanPerson.email! 
+//                            let phone = cleanPerson["phoneNumber"]! as! String
+//                            let str = "Email addresss: " + email + "\nPhone number: " + phone
+//                            contactMethodTextView.text = str
+//                        } else {
+//                            contactMethodTextView.text = "Wait for \(nameLabel.text!)'s response"
+//                        }
+//                    } else {
+//                        contactMethodTextView.hidden = true
+//                        contactLabel.hidden = true
+//                    }
+//                } else {
+//                    
+//                }
+//            }
+            
+            if let value = stateOfRequest {
+                switch(value){
+                case 1:
+                    //agree
+                    let email = cleanPerson.email!
                     let phone = cleanPerson["phoneNumber"]! as! String
                     let str = "Email addresss: " + email + "\nPhone number: " + phone
                     contactMethodTextView.text = str
-                } else {
+                case 2:
+                    //not yet repond
                     contactMethodTextView.text = "Wait for \(nameLabel.text!)'s response"
+                default:
+                    contactMethodTextView.hidden = true
+                    contactLabel.hidden = true
                 }
             } else {
                 contactMethodTextView.hidden = true
                 contactLabel.hidden = true
             }
+
         }
     }
 

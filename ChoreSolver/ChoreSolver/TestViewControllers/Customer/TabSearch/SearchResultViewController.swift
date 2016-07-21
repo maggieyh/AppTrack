@@ -34,7 +34,9 @@ class SearchResultViewController: UIViewController {
             let cleanPersonDetailViewController = segue.destinationViewController as! CleanPersonDetailViewController
             if let indexPath = self.searchResultTableView.indexPathForSelectedRow {
                 cleanPersonDetailViewController.cleanPerson = cleanPersons[indexPath.row]
-//                cleanPersonDetailViewController.imageView.image = cleanPersons[indexPath.row].image.value
+                let cell = self.searchResultTableView.cellForRowAtIndexPath(indexPath) as! SearchResultTableViewCell
+                cleanPersonDetailViewController.stateOfRequest = cell.stateRequest.value
+ 
             }
         }
     }
@@ -47,7 +49,8 @@ class SearchResultViewController: UIViewController {
         super.viewDidAppear(animated)
         ParseHelper.searchResultViewRequestForCleanPerson(self.selectedCounty!){ (result:[PFObject]?, error: NSError?) in
             self.cleanPersons = result as? [User] ?? []
-          
+            SearchResultTableViewCell.stateCache = NSCacheSwift<String, Int?>()
+
             self.searchResultTableView.reloadData()
         }
         
@@ -77,14 +80,13 @@ extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCellWithIdentifier("CleanPersonCell", forIndexPath: indexPath) as! SearchResultTableViewCell
         let person = cleanPersons[indexPath.row]
         person.downloadImage()
-//        cell.cleanPersonImage.image = person.image
         cell.cleanPersonNameLabel.text = person.username!
         cell.cleanPerson = person
         let str = (person.hourRate as? String) ?? ""
         cell.hourRateLabel.text = str + "$/hr"
         cell.tabBarViewController = self.tabBarController ?? nil
         cell.requestButton.enabled = false
-     
+        
         cell.fetchRequest()        
         return cell
     }

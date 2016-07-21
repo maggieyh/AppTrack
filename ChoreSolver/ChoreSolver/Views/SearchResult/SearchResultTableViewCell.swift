@@ -9,11 +9,13 @@
 import UIKit
 import Bond
 import Parse
+import ConvenienceKit
 class SearchResultTableViewCell: UITableViewCell {
     
-    var requestDisposable: DisposableType?
+    static var stateCache: NSCacheSwift<String, Int?>!
+    var existingRequestDisposable: DisposableType?
     var imageDisposable: DisposableType?
-    var existingRequest: Observable<Bool?> = Observable(nil)
+    var stateRequest: Observable<Int?> = Observable(nil)
     
     var cleanPerson: User? {
         didSet {
@@ -29,6 +31,9 @@ class SearchResultTableViewCell: UITableViewCell {
             }
         }
     }
+   
+   
+
     var tabBarViewController: UITabBarController?
     
     @IBOutlet weak var cleanPersonNameLabel: UILabel!
@@ -36,23 +41,30 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBOutlet weak var hourRateLabel: UILabel!
     @IBOutlet weak var requestButton: UIButton! {
         didSet {
-            requestDisposable?.dispose()
-            if requestButton != nil {
-                requestDisposable = existingRequest.observe ({ (value: Bool?) -> ()in
-                    if let value = value {
-                        if value {
-                            self.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
-                        } else {
-                            self.requestButton.setTitle("Request Sent", forState: UIControlState.Normal)
-                        }
+            existingRequestDisposable?.dispose()
+//            if requestButton != nil {
+            existingRequestDisposable = stateRequest.observe ({ (value: Int?) -> ()in
+                if let value = value {
+                    switch(value){
+                    case 0:
+                        // no reqeust between the two
+                        self.requestButton.enabled = true
+                    case 1:
+                        //agree
+                        self.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
                         self.requestButton.enabled = false
-                    } else {
+                    case 2:
+                        self.requestButton.setTitle("Request Sent", forState: UIControlState.Normal)
+                        self.requestButton.enabled = false
+                    default:
                         self.requestButton.enabled = true
                     }
-                })
-            } else {
-                self.requestButton.enabled = true
-            }
+                   
+                }
+            })
+//            } else {
+//                self.requestButton.enabled = true
+//            }
         }
     }
     
@@ -77,15 +89,29 @@ class SearchResultTableViewCell: UITableViewCell {
     }
     
     func fetchRequest() {
-        if request.value == nil {
+        
+        if let result = SearchResultTableViewCell.stateCache[self.cleanPerson!.username!]{
+            self.stateRequest.value = result
+        } else {
             ParseHelper.fetchParticularRequest(PFUser.currentUser()!, cleanPerson: cleanPerson!) { (request: PFObject?, error: NSError?) in
-                if let request = request as? Request {
-                    let rqst = request 
-                    
-                } else {
-                    self.request.value = nil
+                
+                if error != nil {
+                    //no result, 0-> nil
+                    self.stateRequest.value = 0
                 }
+                
+                if let request = request as? Request {
+                    if request.agree.boolValue {
+                        self.stateRequest.value = 1  // a request exist and have agree
+                    } else {
+                        self.stateRequest.value = 2 // a request exist and no agree yet
+                    }
+                }
+                
+                SearchResultTableViewCell.stateCache[self.cleanPerson!.username!] = self.stateRequest.value
+                
             }
+            
         }
     }
     

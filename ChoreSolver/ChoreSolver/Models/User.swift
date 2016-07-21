@@ -26,7 +26,7 @@ class User: PFUser {
     
     
     var image: Observable<UIImage?> = Observable(nil)
-    
+
     override init() {
         super.init()
         
@@ -47,9 +47,9 @@ class User: PFUser {
         image.value = User.imageCache[self.imageFile!.name]
         if image.value == nil {
             imageFile?.getDataInBackgroundWithBlock({ (data: NSData?, error: NSError?) in
-                print("download")
+
                 if let data = data {
-                    let image = UIImage(data: data, scale: 1.0)!
+                    let image = UIImage(data: data, scale: 0.5)!
                     self.image.value = image
                     User.imageCache[self.imageFile!.name] = image
                 }
@@ -57,9 +57,6 @@ class User: PFUser {
             })
         }
          
-    }
-    func uploadImage() {
-
     }
     
     

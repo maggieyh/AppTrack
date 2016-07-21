@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var startViewController: UIViewController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if (user != nil) {
-
+//            PFUser.currentUser()?.fetchInBackgroundWithBlock(<#T##block: PFObjectResultBlock?##PFObjectResultBlock?##(PFObject?, NSError?) -> Void#>)
             do {
                 let user = try PFUser.currentUser()!.fetch()
                 if user["userType"] as? String == "Customer" {

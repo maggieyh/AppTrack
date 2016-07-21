@@ -11,7 +11,7 @@ import Parse
 class CustomerReqeustViewController: UIViewController {
 
     var requests: [Request] = []
-    
+    var cleanPersons: [User] = []
     @IBOutlet weak var requestTableView: UITableView!
     
     override func viewDidLoad() {
@@ -30,8 +30,12 @@ class CustomerReqeustViewController: UIViewController {
         if segue.identifier == "showCleanPersonProfileFromRequest" {
             let cleanPersonDetailViewController = segue.destinationViewController as! CleanPersonDetailViewController
             if let indexPath = self.requestTableView.indexPathForSelectedRow {
-                cleanPersonDetailViewController.cleanPerson = requests[indexPath.row].cleanPerson as? User
-                cleanPersonDetailViewController.agree = requests[indexPath.row].agree.boolValue
+                cleanPersonDetailViewController.cleanPerson = requests[indexPath.row].cleanPerson
+                if requests[indexPath.row].agree.boolValue {
+                    cleanPersonDetailViewController.stateOfRequest = 1
+                } else {
+                    cleanPersonDetailViewController.stateOfRequest = 2
+                }
             }
         }
     }
@@ -47,15 +51,15 @@ class CustomerReqeustViewController: UIViewController {
         requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
         requestQuery.includeKey("cleanPerson")
         requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
-            if let result = result {
-                self.requests = result as! [Request]
-                
-                self.requestTableView.reloadData()
+            let result = result as! [Request]
+            self.requests = result
+            self.cleanPersons = result.map { $0.cleanPerson }
+            self.requestTableView.reloadData()
             }
-        }
+    }
 
         
-    }
+    
     
 
     /*
@@ -79,29 +83,17 @@ extension CustomerReqeustViewController: UITableViewDelegate, UITableViewDataSou
         let cell = tableView.dequeueReusableCellWithIdentifier("sentRequestCell", forIndexPath: indexPath) as! sentRequestTableViewCell
         let request = self.requests[indexPath.row]
         let cleanPerson = request.cleanPerson
-//        if let cleanPerson = cleanPerson {
-            cell.nameLabel.text = cleanPerson.username
-            cell.hourRateLabel.text = ((cleanPerson["hourRate"] as? String) ?? "" ) + "$/hr"
-            if request.agree.boolValue {
-                cell.stateLabel.text = "Contact Info Received, Contact " + cell.nameLabel.text! + "!"
-            } else {
-                cell.stateLabel.text = "Request Sent, Wait for Response"
-            }
-            
-        if let imageFile = cleanPerson["imageFile"] as? PFFile {
-            do {
-                let data = try imageFile.getData()
-                cell.cleanPersonImage.image = UIImage(data: data, scale: 1.0)
-            } catch {
-                print("fail")
-            }
-
+        cell.cleanPerson = cleanPerson
+        cleanPerson.downloadImage()
+        
+        cell.nameLabel.text = cleanPerson.username
+        cell.hourRateLabel.text = ((cleanPerson["hourRate"] as? String) ?? "" ) + "$/hr"
+        if request.agree.boolValue {
+            cell.stateLabel.text = "Contact Info Received, Contact " + cell.nameLabel.text! + "!"
+        } else {
+            cell.stateLabel.text = "Request Sent, Wait for Response"
         }
-    //        }
-        
-        
-        
-        
+  
         
         return cell
         

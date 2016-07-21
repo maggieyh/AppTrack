@@ -14,8 +14,8 @@ import Parse
 import ConvenienceKit
 class Request: PFObject, PFSubclassing {
     
-    @NSManaged var customer: PFUser
-    @NSManaged var cleanPerson: PFUser
+    @NSManaged var customer: User
+    @NSManaged var cleanPerson: User
     @NSManaged var agree: NSNumber //Parse's boolean is NSNumber
     
     

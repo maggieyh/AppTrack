@@ -8,10 +8,19 @@
 
 import UIKit
 import Parse
-
+import Bond
 class cleanPersonRequestTableViewCell: UITableViewCell {
-
+    var imageDisposable: DisposableType?
+    var customer: User? {
+        didSet {
+            imageDisposable?.dispose()
+            if let customer = customer {
+                imageDisposable = customer.image.bindTo(customerImageView.bnd_image)
+            }
+        }
+    }
     var request: Request?
+    
     @IBOutlet weak var customerImageView: UIImageView!
     @IBOutlet weak var customerNameLabel: UILabel!
     @IBOutlet weak var requestStateLabel: UILabel!
@@ -23,8 +32,9 @@ class cleanPersonRequestTableViewCell: UITableViewCell {
             (request: PFObject?, error: NSError?) -> Void in
             if error != nil {
                 print(error)
-            } else if let request = request {
-                request["agree"] = NSNumber(bool: true)
+            }
+            if let request = request as? Request {
+                request.agree = NSNumber(bool: true)
                 request.saveInBackground()
             }
         }

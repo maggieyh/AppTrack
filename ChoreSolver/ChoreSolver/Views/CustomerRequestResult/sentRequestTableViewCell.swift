@@ -8,14 +8,26 @@
 
 import UIKit
 import Parse
-
+import Bond
+import ConvenienceKit
 class sentRequestTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cleanPersonImage: UIImageView!
     @IBOutlet weak var stateLabel: UILabel!
     @IBOutlet weak var hourRateLabel: UILabel!
-    
+    var imageDisposable: DisposableType?
+    var cleanPerson: User? {
+        didSet {
+            imageDisposable?.dispose()
+            if let oldValue = oldValue where oldValue != cleanPerson {
+                oldValue.image.value = nil
+            }
+            if let cleanPerson = cleanPerson {
+                imageDisposable = cleanPerson.image.bindTo(cleanPersonImage.bnd_image)
+            }
+        }
+    }
     var request: Request?
     
     
