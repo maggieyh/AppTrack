@@ -9,18 +9,22 @@
 import UIKit
 import Parse
 import DropDown
+import Bond
 class CleanPersonProfileEditingViewController: UIViewController {
 
     
     @IBOutlet var topLayout: NSLayoutConstraint!
     var county: String?
     var imageFile: PFFile?
+    var image: Observable<UIImage?> = Observable(nil)
     var bo: Bool = true
     
     var photoTakingHelper: PhotoTakingHelper?
     let countyDropDown = DropDown()
     var textFields: [UITextField!]?
-    var user: User
+    var user: PFUser?
+    
+    
     var doubleTapped: Bool = true
     func state(bool: Bool) {
         self.chooseImageButton.enabled = bool
@@ -54,7 +58,7 @@ class CleanPersonProfileEditingViewController: UIViewController {
             self.update()
             editBarButton.title = "Edit"
             doubleTapped = true
-           // self.viewDidLoad()
+    
         }
     }
     @IBOutlet weak var imageView: UIImageView!
@@ -68,11 +72,7 @@ class CleanPersonProfileEditingViewController: UIViewController {
                 let data = UIImagePNGRepresentation(image)
                 let user = PFUser.currentUser()!
                 user.setValue(PFFile(name: "cleanPerson.jpg", data: data!), forKey: "imageFile")
-                do {
-                    try user.save()
-                } catch {
-                    print("fail")
-                }
+                user.saveInBackground()
                 
             }
             
@@ -93,7 +93,7 @@ class CleanPersonProfileEditingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.image.bindTo(self.imageView.bnd_image)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         
@@ -112,13 +112,18 @@ class CleanPersonProfileEditingViewController: UIViewController {
         
         self.chooseCountyButton.setTitle(self.user!["county"] as? String, forState: .Normal)
         
-        let imageFile = self.user!["imageFile"] as? PFFile
-        do {
-            let data = try imageFile!.getData()
-            self.imageView.image = UIImage(data: data, scale: 1.0)
-        } catch {
-            print("fail")
-        }
+        
+        
+        self.imageFile = self.user!["imageFile"] as? PFFile
+        
+        self.downloadImage()
+//
+//        do {
+//            let data = try imageFile!.getData()
+//            self.imageView.image = UIImage(data: data, scale: 1.0)
+//        } catch {
+//            print("fail")
+//        }
         
         self.textFields = [self.emailTextFiled, self.phoneNumberTextField, self.hourRateTextField]
         self.state(false)
@@ -163,7 +168,21 @@ class CleanPersonProfileEditingViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func downloadImage() {
+        // if image is not downloaded yet, get it
+        // 1
+        if (image.value == nil) {
+            // 2
+            imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
+                if let data = data {
+                    let image = UIImage(data: data, scale:1.0)!
+                    // 3
+                    self.image.value = image
+                    self.imageView.image = self.image.value
+                }
+            }
+        }
+    }
 }
 
 extension CleanPersonProfileEditingViewController {
