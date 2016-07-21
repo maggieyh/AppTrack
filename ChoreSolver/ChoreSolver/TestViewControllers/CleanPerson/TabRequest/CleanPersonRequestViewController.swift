@@ -36,6 +36,7 @@ class CleanPersonRequestViewController: UIViewController {
             let viewController = segue.destinationViewController as! CustomerProfileViewController
             if let indexPath = self.requestTableView.indexPathForSelectedRow{
                 viewController.request = requests[indexPath.row]
+                
                 if viewController.request!.agree.boolValue {
                     viewController.navigationItem.rightBarButtonItem = nil
                 } 
@@ -84,11 +85,11 @@ extension CleanPersonRequestViewController: UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cleanPersonRequestCell", forIndexPath: indexPath) as! cleanPersonRequestTableViewCell
         cell.request = self.requests[indexPath.row]
+        self.customer[indexPath.row].downloadImage()
+        
         cell.customer = self.customer[indexPath.row]
         cell.customerNameLabel.text = self.customer[indexPath.row].username!
-        cell.customer!.downloadImage()
         
-    
         if requests[indexPath.row].agree.boolValue {
             cell.replyButton.hidden = true
             cell.requestStateLabel.text = "Contact \(self.customer[indexPath.row].username!) to provide your service"

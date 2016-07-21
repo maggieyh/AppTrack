@@ -41,19 +41,12 @@ class CustomerProfileViewController: UIViewController {
             self.navigationItem.rightBarButtonItem = nil
             self.navigationItem.rightBarButtonItem?.enabled = false
         }
-        let customer = request?.customer
-        if let imageFile = customer!["imageFile"] as? PFFile {
-            do {
-                let data = try imageFile.getData()
-                self.customerImageView.image = UIImage(data: data, scale: 1.0)
-            } catch {
-                print("fail")
-            }
-        }
-        self.customerNameLabel.text = customer?.username!
+        let customer = request!.customer
+        customerImageView.image = customer.image.value
+        self.customerNameLabel.text = customer.username!
         self.contactMethodTextView.editable = false
-        let email = customer!.email!
-        let phone = customer!["phoneNumber"]! as! String
+        let email = customer.email!
+        let phone = customer.phoneNumber as! String
         let str = "Email addresss: " + email + "\nPhone number: " + phone
         self.contactMethodTextView.text = str
         

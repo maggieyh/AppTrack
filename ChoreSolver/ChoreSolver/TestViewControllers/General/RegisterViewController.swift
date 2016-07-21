@@ -277,7 +277,6 @@ extension RegisterViewController {
     }
     
     func unsubscribeFromKeyboardNotifications() {
-        print("ttre")
      //   self.topLayout.active = true
         NSNotificationCenter.defaultCenter().removeObserver(self, name:
             UIKeyboardWillShowNotification, object: nil)

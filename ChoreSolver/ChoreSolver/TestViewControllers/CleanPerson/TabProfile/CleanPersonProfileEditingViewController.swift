@@ -13,7 +13,6 @@ class CleanPersonProfileEditingViewController: UIViewController {
 
     
     @IBOutlet var topLayout: NSLayoutConstraint!
-    let counties = ["Changhua County", "Chiayi City", "Chiayi County","Hsinchu City","Hsinchu County", "Hualien County", "Kaohsiung City", "Keelung City", "Kinmen County", "Lienchiang County", "Miaoli County", "Nantou County", "New Taipei City", "Penghu County", "Pingtung County", "Taichung City", "Tainan City", "Taipei City", "Taitung County", "Taoyuan City", "Yilan County", "Yunlin County"]
     var county: String?
     var imageFile: PFFile?
     var bo: Bool = true
@@ -21,7 +20,7 @@ class CleanPersonProfileEditingViewController: UIViewController {
     var photoTakingHelper: PhotoTakingHelper?
     let countyDropDown = DropDown()
     var textFields: [UITextField!]?
-    var user: PFUser?
+    var user: User
     var doubleTapped: Bool = true
     func state(bool: Bool) {
         self.chooseImageButton.enabled = bool
@@ -146,10 +145,7 @@ class CleanPersonProfileEditingViewController: UIViewController {
         countyDropDown.bottomOffset = CGPoint(x: 0, y: chooseCountyButton.bounds.height)
         
         // You can also use localizationKeysDataSource instead. Check the docs.
-        countyDropDown.dataSource = [
-            "Changhua County", "Chiayi City", "Chiayi County","Hsinchu City","Hsinchu County", "Hualien County", "Kaohsiung City", "Keelung City", "Kinmen County", "Lienchiang County", "Miaoli County", "Nantou County", "New Taipei City", "Penghu County", "Pingtung County", "Taichung City", "Tainan City", "Taipei City", "Taitung County", "Taoyuan City", "Yilan County", "Yunlin County"
-        ]
-        
+        countyDropDown.dataSource = Data.counties
         // Action triggered on selection
         countyDropDown.selectionAction = { [unowned self] (index, item) in
             self.chooseCountyButton.setTitle(item, forState: .Normal)
@@ -234,7 +230,6 @@ extension CleanPersonProfileEditingViewController {
     }
     
     func unsubscribeFromKeyboardNotifications() {
-        print("ttre")
         self.topLayout.active = true
         NSNotificationCenter.defaultCenter().removeObserver(self, name:
             UIKeyboardWillShowNotification, object: nil)
