@@ -271,6 +271,14 @@ pfloginviewcontroller!!!!
 * Message service
 
 
+
+* Request button to another place ??
+* review system
+* push notification
+* cleanPerson reach out
+* available time suggestted in introduction text field
+*  during registration an alert acction to suggeset what to say in introduction
+*  
 * testing:
  * clean person search for potential customer and give contact initiatively
  * after reply the request, go to customer profile detail view

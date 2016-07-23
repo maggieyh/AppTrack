@@ -57,24 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.initializeWithConfiguration(configuration)
         
        
-//         Set up fake testCustomer login
-//        do {
-////            try PFUser.logInWithUsername("testCustomer", password: "testCustomer")
-//            try PFUser.logInWithUsername("testCleanPerson", password: "testCleanPerson")
-//
-//        } catch {
-//            print("Unable to log in")
-//        }
-//        
-//        if let currentUser = PFUser.currentUser() {
-//            print("\(currentUser.username!) logged in successfully")
-//        } else {
-//            print("No logged in user :(")
-//        }
-//    
-
-        
-       
         // Initialize Facebook
        
 //        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
@@ -83,22 +65,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let user = PFUser.currentUser()
         var startViewController: UIViewController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if (user != nil) {
-//            PFUser.currentUser()?.fetchInBackgroundWithBlock(<#T##block: PFObjectResultBlock?##PFObjectResultBlock?##(PFObject?, NSError?) -> Void#>)
-            do {
-                let user = try PFUser.currentUser()!.fetch()
-                if user["userType"] as? String == "Customer" {
-                    print("cusotmer")
-                    startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
-                    
-                } else {
-                    print("cleanPErson")
-                    startViewController = storyboard.instantiateViewControllerWithIdentifier("CleanPersonTabBarController") as! UITabBarController
-                }
-            } catch {
+        if let user = user {
+
+            if user["userType"] as? String == "Customer" {
+                print("cusotmer")
                 startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
-                print("fail in switch")
+                
+            } else {
+                print("cleanPErson")
+                startViewController = storyboard.instantiateViewControllerWithIdentifier("CleanPersonTabBarController") as! UITabBarController
             }
+//            } catch {
+//                startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
+//                print("fail in switch")
+//            }
             
         } else {
         

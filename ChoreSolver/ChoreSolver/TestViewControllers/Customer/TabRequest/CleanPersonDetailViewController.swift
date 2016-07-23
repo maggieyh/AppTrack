@@ -42,24 +42,6 @@ class CleanPersonDetailViewController: UIViewController {
             } else {
                 introductionTextView.text = ""
             }
-//            if let fromRequestView = fromRequestView  {
-//                if fromRequestView {
-//                        if agree! {
-//                            let email = cleanPerson.email! 
-//                            let phone = cleanPerson["phoneNumber"]! as! String
-//                            let str = "Email addresss: " + email + "\nPhone number: " + phone
-//                            contactMethodTextView.text = str
-//                        } else {
-//                            contactMethodTextView.text = "Wait for \(nameLabel.text!)'s response"
-//                        }
-//                    } else {
-//                        contactMethodTextView.hidden = true
-//                        contactLabel.hidden = true
-//                    }
-//                } else {
-//                    
-//                }
-//            }
             
             if let value = stateOfRequest {
                 switch(value){

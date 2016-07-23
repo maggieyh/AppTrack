@@ -22,6 +22,7 @@ class SearchResultViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+        SearchResultTableViewCell.stateCache = NSCacheSwift<String, Int?>()
         
     }
     @IBAction func unwindBackToResultView(segue:UIStoryboardSegue) {
@@ -49,8 +50,8 @@ class SearchResultViewController: UIViewController {
         super.viewDidAppear(animated)
         ParseHelper.searchResultViewRequestForCleanPerson(self.selectedCounty!){ (result:[PFObject]?, error: NSError?) in
             self.cleanPersons = result as? [User] ?? []
-            SearchResultTableViewCell.stateCache = NSCacheSwift<String, Int?>()
-
+            
+            
             self.searchResultTableView.reloadData()
         }
         

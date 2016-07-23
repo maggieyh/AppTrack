@@ -83,9 +83,10 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         if userType == "CleanPerson" {
             guard countyDropDown.selectedItem != nil else { self.alert(); return }
             guard self.hourRateTextField.text != nil else { self.alert(); return }
+            
         }
         
-        self.county = countyDropDown.selectedItem!
+//        self.county = countyDropDown.selec
         let username = self.userNameTextField.text!
         let password = self.passwordTextField.text!
         let email = self.emailTextField.text!
@@ -104,6 +105,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
             newUser["hourRate"] = self.hourRateTextField.text ?? ""
             newUser["introduction"] = self.introductionTextView.text ?? ""
             newUser["county"] = self.county ?? ""
+            
             
         }
         

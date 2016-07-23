@@ -19,10 +19,11 @@ class LogInViewController: UIViewController {
     
     func dismissKeyboard() {
         self.view.endEditing(true)
+       
     }
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+
     @IBAction func logInTapped(sender: AnyObject) {
         if userNameTextField.text == nil || passwordTextField.text == nil {
             print("try again")
@@ -59,7 +60,7 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-       // self.hideKeyboardWhenTappedAround()
+        self.hideKeyboardWhenTappedAround()
     }
 
     override func didReceiveMemoryWarning() {

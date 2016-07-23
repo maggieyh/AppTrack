@@ -29,7 +29,7 @@ class sentRequestTableViewCell: UITableViewCell {
         }
     }
     var request: Request?
-    
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

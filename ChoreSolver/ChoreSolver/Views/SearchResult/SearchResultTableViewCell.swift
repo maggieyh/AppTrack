@@ -16,7 +16,7 @@ class SearchResultTableViewCell: UITableViewCell {
     var existingRequestDisposable: DisposableType?
     var imageDisposable: DisposableType?
     var stateRequest: Observable<Int?> = Observable(nil)
-    
+   
     var cleanPerson: User? {
         didSet {
             imageDisposable?.dispose()
@@ -46,9 +46,6 @@ class SearchResultTableViewCell: UITableViewCell {
             existingRequestDisposable = stateRequest.observe ({ (value: Int?) -> ()in
                 if let value = value {
                     switch(value){
-                    case 0:
-                        // no reqeust between the two
-                        self.requestButton.enabled = true
                     case 1:
                         //agree
                         self.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
@@ -89,28 +86,32 @@ class SearchResultTableViewCell: UITableViewCell {
     }
     
     func fetchRequest() {
+    
+        self.stateRequest.value = SearchResultTableViewCell.stateCache[self.cleanPerson!.username!] ?? nil
+        if self.stateRequest.value == nil {
         
-        if let result = SearchResultTableViewCell.stateCache[self.cleanPerson!.username!]{
-            self.stateRequest.value = result
-        } else {
-            ParseHelper.fetchParticularRequest(PFUser.currentUser()!, cleanPerson: cleanPerson!) { (request: PFObject?, error: NSError?) in
-                
+            ParseHelper.fetchParticularRequest(PFUser.currentUser()!, cleanPerson: cleanPerson!) { (result: [PFObject]?, error: NSError?) in
                 if error != nil {
                     //no result, 0-> nil
                     self.stateRequest.value = 0
                 }
-                
-                if let request = request as? Request {
-                    if request.agree.boolValue {
-                        self.stateRequest.value = 1  // a request exist and have agree
+                print("e")
+                if let result = result as? [Request]? {
+                    if result?.count != 0 {
+                        if result![0].agree.boolValue {
+                            self.stateRequest.value = 1  // a request exist and have agree
+                        } else {
+                            self.stateRequest.value = 2 // a request exist and no agree yet
+                        }
                     } else {
-                        self.stateRequest.value = 2 // a request exist and no agree yet
+                        self.stateRequest.value = 0
                     }
                 }
                 
                 SearchResultTableViewCell.stateCache[self.cleanPerson!.username!] = self.stateRequest.value
                 
             }
+            
             
         }
     }
