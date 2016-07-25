@@ -17,6 +17,7 @@ class SearchViewController: UIViewController {
 
     var selectedCounty: String?
     @IBOutlet weak var countyPickerView: UIPickerView!
+    
     @IBAction func unwindBackToSearchView(segue:UIStoryboardSegue) {
         
     }

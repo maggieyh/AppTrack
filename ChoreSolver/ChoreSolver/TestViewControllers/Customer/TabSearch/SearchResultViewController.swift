@@ -10,13 +10,24 @@ import UIKit
 import Parse
 import ConvenienceKit
 import Foundation
-class SearchResultViewController: UIViewController {
+class SearchResultViewController: UIViewController, TimelineComponentTarget {
 
-    @IBOutlet weak var searchResultTableView: UITableView!
+    
+    @IBOutlet weak var tableView: UITableView!
     
     var cleanPersons: [User] = []
     var selectedCounty: String?
-
+    let defaultRange = 0...4
+    let additionalRangeSize = 5
+    var timelineComponent: TimelineComponent<User, SearchResultViewController>!
+    
+    func loadInRange(range: Range<Int>, completionBlock: ([User]?) -> Void) {
+        // 1
+        ParseHelper.searchResultViewRequestForCleanPerson(range, county: selectedCounty!) { (result: [PFObject]?, error: NSError?) in
+            let cleanPerson = result as! [User]?
+            completionBlock(cleanPerson)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +35,12 @@ class SearchResultViewController: UIViewController {
         // Do any additional setup after loading the view.
         SearchResultTableViewCell.stateCache = NSCacheSwift<String, Int?>()
         
+        timelineComponent = TimelineComponent(target: self)
+//        self.tabBarController?.delegate = self
+        
     }
     @IBAction func unwindBackToResultView(segue:UIStoryboardSegue) {
+        
     }
     @IBAction func unwindBackToRequestView(segue:UIStoryboardSegue) {
     }
@@ -33,11 +48,14 @@ class SearchResultViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showCleanPersonDetailFromResultView" {
             let cleanPersonDetailViewController = segue.destinationViewController as! CleanPersonDetailViewController
-            if let indexPath = self.searchResultTableView.indexPathForSelectedRow {
-                cleanPersonDetailViewController.cleanPerson = cleanPersons[indexPath.row]
-                let cell = self.searchResultTableView.cellForRowAtIndexPath(indexPath) as! SearchResultTableViewCell
+        
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                cleanPersonDetailViewController.cleanPerson = timelineComponent.content[indexPath.row]
+                let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! SearchResultTableViewCell
                 cleanPersonDetailViewController.stateOfRequest = cell.stateRequest.value
- 
+                let str = cell.cleanPerson?.username!
+                cleanPersonDetailViewController.navigationBarItem.title =  str! + "'s profile"
+                self.tableView.deselectRowAtIndexPath(indexPath, animated:true)
             }
         }
     }
@@ -48,12 +66,15 @@ class SearchResultViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        ParseHelper.searchResultViewRequestForCleanPerson(self.selectedCounty!){ (result:[PFObject]?, error: NSError?) in
-            self.cleanPersons = result as? [User] ?? []
-            
-            
-            self.searchResultTableView.reloadData()
-        }
+        
+        timelineComponent.loadInitialIfRequired()
+        
+//        ParseHelper.searchResultViewRequestForCleanPerson(self.selectedCounty!){ (result:[PFObject]?, error: NSError?) in
+//            self.cleanPersons = result as? [User] ?? []
+//            
+//            
+//            self.searchResultTableView.reloadData()
+//        }
         
         
     }
@@ -73,13 +94,22 @@ class SearchResultViewController: UIViewController {
 
 extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate {
     
+    
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        timelineComponent.targetWillDisplayEntry(indexPath.row)
+    }
+
+    
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.cleanPersons.count ?? 0
+//        return self.cleanPersons.count ?? 0
+        return timelineComponent.content.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("CleanPersonCell", forIndexPath: indexPath) as! SearchResultTableViewCell
-        let person = cleanPersons[indexPath.row]
+//        let person = cleanPersons[indexPath.row]
+        let person = timelineComponent.content[indexPath.row]
         person.downloadImage()
         cell.cleanPersonNameLabel.text = person.username!
         cell.cleanPerson = person

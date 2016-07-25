@@ -158,6 +158,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="bfH-Va-CQ5" id="8eL-Sc-Vy6"/>
+                                    <outlet property="delegate" destination="bfH-Va-CQ5" id="PMo-xV-d8L"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -177,7 +178,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="searchResultTableView" destination="Ecs-IX-Kaf" id="pez-P9-Rid"/>
+                        <outlet property="tableView" destination="Ecs-IX-Kaf" id="oeV-Wq-Bpr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P4I-gH-x8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -468,6 +469,7 @@
                         <outlet property="introductionLabel" destination="ugX-h7-TdR" id="CVy-Jb-jil"/>
                         <outlet property="introductionTextView" destination="YaS-kP-7h0" id="87Y-Op-50k"/>
                         <outlet property="nameLabel" destination="xHn-8q-sfe" id="gDI-ET-ouf"/>
+                        <outlet property="navigationBarItem" destination="POV-wA-a16" id="mHI-ca-b7R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D1V-LZ-mJt" userLabel="First Responder" sceneMemberID="firstResponder"/>

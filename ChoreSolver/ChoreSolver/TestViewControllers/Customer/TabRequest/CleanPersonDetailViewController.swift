@@ -14,6 +14,7 @@ class CleanPersonDetailViewController: UIViewController {
     var agree: Bool?
     var stateOfRequest: Int?
     
+    @IBOutlet weak var navigationBarItem: UINavigationItem!
     @IBOutlet weak var nameLabel: UILabel!
    
     @IBOutlet weak var contactLabel: UILabel!

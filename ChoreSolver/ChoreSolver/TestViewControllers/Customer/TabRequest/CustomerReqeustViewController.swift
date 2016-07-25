@@ -31,6 +31,8 @@ class CustomerReqeustViewController: UIViewController {
             let cleanPersonDetailViewController = segue.destinationViewController as! CleanPersonDetailViewController
             if let indexPath = self.requestTableView.indexPathForSelectedRow {
                 cleanPersonDetailViewController.cleanPerson = requests[indexPath.row].cleanPerson
+                let str = cleanPersonDetailViewController.cleanPerson?.username
+                cleanPersonDetailViewController.navigationBarItem.title = str! + "'s profile"
                 if requests[indexPath.row].agree.boolValue {
                     cleanPersonDetailViewController.stateOfRequest = 1
                 } else {

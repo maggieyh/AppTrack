@@ -255,13 +255,11 @@ _finishing a usable build_
 * Log In
 pfloginviewcontroller!!!!
 * spinner for sign up 
-
-
-
-
-
 * OPTIMIZATION:
     * unwinde back to result view: and the query run again !!!!
+
+    
+ 
 * acl readaccess = false // is this the thing ?????
 * Cusotmer edit file ?
 * DESIGN
@@ -274,7 +272,7 @@ pfloginviewcontroller!!!!
 
 * Request button to another place ??
 * review system
-* push notification
+* Verification
 * cleanPerson reach out
 * available time suggestted in introduction text field
 *  during registration an alert acction to suggeset what to say in introduction
@@ -371,6 +369,9 @@ http://stackoverflow.com/questions/1126726/how-to-make-a-uitextfield-move-up-whe
 		b = temp
 		}
 		
-* 
+* PUSH notification
+https://www.raywenderlich.com/123862/push-notifications-tutorial
+http://www.appcoda.com/push-notification-ios/
+
 
 

@@ -37,12 +37,16 @@ class ParseHelper {
         
     }
     
-    static func searchResultViewRequestForCleanPerson(county: String, completionBlock: PFQueryArrayResultBlock) {
+    static func searchResultViewRequestForCleanPerson(range: Range<Int>, county: String, completionBlock: PFQueryArrayResultBlock) {
         let cleanPersonQuery : PFQuery = PFUser.query()!
         cleanPersonQuery.whereKey(ParseUserType, equalTo: "CleanPerson")
         //   cleanPersonQuery.whereKey("county", equalTo: self.selectedCounty!)
         cleanPersonQuery.whereKey(ParseUserCounty, equalTo: county)
+        
+        cleanPersonQuery.skip = range.startIndex
+        cleanPersonQuery.limit = range.endIndex - range.startIndex
         cleanPersonQuery.findObjectsInBackgroundWithBlock(completionBlock)
+        
     }
    
     
