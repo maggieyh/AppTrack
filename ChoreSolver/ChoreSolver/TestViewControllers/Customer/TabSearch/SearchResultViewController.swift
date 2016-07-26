@@ -17,8 +17,8 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
     
     var cleanPersons: [User] = []
     var selectedCounty: String?
-    let defaultRange = 0...4
-    let additionalRangeSize = 5
+    let defaultRange = 0...6
+    let additionalRangeSize = 7
     var timelineComponent: TimelineComponent<User, SearchResultViewController>!
     
     func loadInRange(range: Range<Int>, completionBlock: ([User]?) -> Void) {

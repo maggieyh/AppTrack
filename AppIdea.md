@@ -298,6 +298,9 @@ _starting the polish_
 _submitting to the App Store_
 * [goals for the week, should be finishing the polish -- demo day on Saturday!]
 
+
+
+* in About page pay tribute to https://icons8.com
 [Back to top ^](#)
 ### Configuration
 *  CHANGE PASSWORD 

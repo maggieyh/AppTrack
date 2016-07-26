@@ -13,5 +13,5 @@ target 'ChoreSolver' do
   pod ‘ParseUI’
   pod ‘DropDown’
   pod 'IHKeyboardAvoiding'
-
+  pod ‘FlatUIKit’
 end

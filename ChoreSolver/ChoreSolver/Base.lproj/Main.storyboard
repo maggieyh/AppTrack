@@ -863,7 +863,7 @@
         <scene sceneID="M9Y-dY-7R3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cLb-4m-0RC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Request" id="vHP-KK-M8W"/>
+                    <tabBarItem key="tabBarItem" title="Request" image="Requests" selectedImage="Requests" id="vHP-KK-M8W"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r0r-dU-UO8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1176,7 +1176,7 @@
         <scene sceneID="f8s-7D-29A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p0z-cF-LnI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="0qg-wL-IOg"/>
+                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="profile" id="0qg-wL-IOg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6p8-Q8-8TC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1193,10 +1193,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Requests" width="313" height="339"/>
+        <image name="profile" width="182" height="182"/>
         <image name="search" width="15" height="17"/>
         <image name="user" width="626" height="626"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MQO-sq-OWD"/>
+        <segue reference="o9i-bz-S5k"/>
     </inferredMetricsTieBreakers>
 </document>
