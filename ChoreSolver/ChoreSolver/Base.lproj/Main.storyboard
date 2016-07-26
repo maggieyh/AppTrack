@@ -863,7 +863,7 @@
         <scene sceneID="M9Y-dY-7R3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cLb-4m-0RC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Request" image="Requests" selectedImage="Requests" id="vHP-KK-M8W"/>
+                    <tabBarItem key="tabBarItem" title="Request" image="request" id="vHP-KK-M8W"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r0r-dU-UO8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -900,7 +900,7 @@
         <scene sceneID="pnW-Rs-WEy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kiE-0O-k62" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Request" id="iVE-4J-6AC"/>
+                    <tabBarItem key="tabBarItem" title="Request" image="receivedRequest" id="iVE-4J-6AC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XVA-Ye-Au6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1136,22 +1136,26 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdI-S6-ddS">
-                                <rect key="frame" x="279" y="322" width="42" height="30"/>
-                                <state key="normal" title="Log In"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdI-S6-ddS">
+                                <rect key="frame" x="279" y="326" width="42" height="30"/>
+                                <state key="normal" title="Log In">
+                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="logInTapped:" destination="wGs-zp-Rxa" eventType="touchDown" id="fOr-by-h1T"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JgL-Gj-dAL">
                                 <rect key="frame" x="273" y="484" width="55" height="30"/>
-                                <state key="normal" title="Sign Up"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="3bZ-Vn-37C" kind="show" id="7ib-7a-9GM"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.24313725490196078" green="0.52941176470588236" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="sdI-S6-ddS" firstAttribute="top" secondItem="Aoh-0s-vyE" secondAttribute="bottom" constant="8" id="FhG-fB-HPW"/>
                             <constraint firstItem="mae-Sg-yfc" firstAttribute="top" secondItem="JgL-Gj-dAL" secondAttribute="bottom" constant="86" id="TTS-qk-Bl7"/>
@@ -1176,7 +1180,7 @@
         <scene sceneID="f8s-7D-29A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p0z-cF-LnI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" selectedImage="profile" id="0qg-wL-IOg"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="0qg-wL-IOg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6p8-Q8-8TC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1193,8 +1197,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Requests" width="313" height="339"/>
-        <image name="profile" width="182" height="182"/>
+        <image name="profile" width="23" height="23"/>
+        <image name="receivedRequest" width="25" height="26"/>
+        <image name="request" width="24" height="25"/>
         <image name="search" width="15" height="17"/>
         <image name="user" width="626" height="626"/>
     </resources>

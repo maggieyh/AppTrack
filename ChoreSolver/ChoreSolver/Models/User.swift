@@ -17,7 +17,7 @@ class User: PFUser {
     @NSManaged var userType: NSString?
     @NSManaged var phoneNumber: NSString?
     @NSManaged var imageFile: PFFile?
-    
+    @NSManaged var oneSignalID: NSString?
     @NSManaged var county: NSString?
     @NSManaged var introduction: NSString?
     @NSManaged var hourRate: NSString?

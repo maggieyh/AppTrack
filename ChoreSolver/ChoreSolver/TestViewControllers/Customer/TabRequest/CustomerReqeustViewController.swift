@@ -20,6 +20,7 @@ class CustomerReqeustViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.requestTableView.estimatedRowHeight = 80.0
         self.requestTableView.rowHeight = UITableViewAutomaticDimension
+    
     }
 
     @IBAction func unwindBackToRequestView(segue:UIStoryboardSegue) {
@@ -34,9 +35,22 @@ class CustomerReqeustViewController: UIViewController {
                 let str = cleanPersonDetailViewController.cleanPerson?.username
                 cleanPersonDetailViewController.navigationBarItem.title = str! + "'s profile"
                 if requests[indexPath.row].agree.boolValue {
-                    cleanPersonDetailViewController.stateOfRequest = 1
+                    cleanPersonDetailViewController.stateOfRequest = 1 //agree
+                    print("aa")
+                    if !(requests[indexPath.row].checked.boolValue) && self.tabBarController?.tabBar.items![1].badgeValue != nil {
+                        requests[indexPath.row].checked = NSNumber(bool: true)
+                        requests[indexPath.row].saveInBackground()
+                        let num = Int((self.tabBarController?.tabBar.items![1].badgeValue)!)
+                        print(num)
+                        if num <= 1 {
+                            self.tabBarController?.tabBar.items![1].badgeValue = nil
+                        } else {
+                            self.tabBarController?.tabBar.items![1].badgeValue = String(num!-1)
+                        }
+                        
+                    }
                 } else {
-                    cleanPersonDetailViewController.stateOfRequest = 2
+                    cleanPersonDetailViewController.stateOfRequest = 2 //not yet respond
                 }
             }
         }

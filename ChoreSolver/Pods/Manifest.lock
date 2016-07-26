@@ -14,6 +14,7 @@ PODS:
     - FBSDKCoreKit
   - FlatUIKit (1.6.2)
   - IHKeyboardAvoiding (2.6)
+  - OneSignal (1.13.3)
   - Parse (1.13.0):
     - Bolts/Tasks (~> 1.6)
   - ParseFacebookUtilsV4 (1.11.1):
@@ -32,6 +33,7 @@ DEPENDENCIES:
   - DropDown
   - FlatUIKit
   - IHKeyboardAvoiding
+  - OneSignal
   - Parse
   - ParseFacebookUtilsV4
   - ParseUI
@@ -45,10 +47,11 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4
   FlatUIKit: 1b41f0d4952ce8d970d8479ce79df54a960242c4
   IHKeyboardAvoiding: d2541ee56dad83e160cd9aed0468c52247af6f49
+  OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
   ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
 
-PODFILE CHECKSUM: a5ae1cd58a4960ed5ea8b560324fefba27d1974f
+PODFILE CHECKSUM: 7998a964cd2b753e4cad809a1b9648942a3330a7
 
 COCOAPODS: 1.0.1

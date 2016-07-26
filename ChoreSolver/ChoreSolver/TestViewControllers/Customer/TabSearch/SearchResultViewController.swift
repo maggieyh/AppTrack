@@ -37,7 +37,7 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
         
         timelineComponent = TimelineComponent(target: self)
 //        self.tabBarController?.delegate = self
-        
+                
     }
     @IBAction func unwindBackToResultView(segue:UIStoryboardSegue) {
         

@@ -12,12 +12,13 @@ import FBSDKCoreKit
 import ParseUI
 import ParseFacebookUtilsV4
 import DropDown
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 //    var parseLoginHelper: ParseLoginHelper!
-
+    static var oneSignal: OneSignal?
     override init() {
         super.init()
         
@@ -70,7 +71,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if user["userType"] as? String == "Customer" {
                 print("cusotmer")
                 startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
-                
+                let temp = startViewController as! UITabBarController
+                let requestQuery = PFQuery(className: "Request")
+                requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
+                requestQuery.includeKey("cleanPerson")
+                requestQuery.includeKey("checked")
+                requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+                    var result = result as! [Request]
+                    result = result.filter { $0.checked.boolValue == false && $0.agree == true }
+                    print(result.count)
+                    temp.tabBar.items![1].badgeValue = String(result.count)
+         
+                }
             } else {
                 print("cleanPErson")
                 startViewController = storyboard.instantiateViewControllerWithIdentifier("CleanPersonTabBarController") as! UITabBarController
@@ -111,9 +123,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
         
         
+        
+        
+        AppDelegate.oneSignal = OneSignal(launchOptions: launchOptions, appId: "6f185136-e88e-4421-84b2-f8e681c0da7e", handleNotification: nil)
+//        AppDelegate.oneSignal!.sendTag("objectId", value: PFUser.currentUser()?.objectId!)
+        OneSignal.defaultClient().enableInAppAlertNotification(true)
+        print("aa")
+//        AppDelegate.oneSignal!.IdsAvailable({ (userId, pushToken) in
+//            NSLog("UserId:%@", userId)
+//            
+//            if (pushToken != nil) {
+//                NSLog("pushToken:%@", pushToken)
+//                
+//            } else {
+//                //refuse the notification
+//            }
+//        })
+        
         return true
     }
-
+    //push notification test
+    
+    
     //MARK: Facebook Integration
     
     func applicationDidBecomeActive(application: UIApplication) {

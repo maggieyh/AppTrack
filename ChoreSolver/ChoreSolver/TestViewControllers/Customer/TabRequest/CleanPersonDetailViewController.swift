@@ -53,7 +53,7 @@ class CleanPersonDetailViewController: UIViewController {
                     let str = "Email addresss: " + email + "\nPhone number: " + phone
                     contactMethodTextView.text = str
                 case 2:
-                    //not yet repond
+                    //not yet respond
                     contactMethodTextView.text = "Wait for \(nameLabel.text!)'s response"
                 default:
                     contactMethodTextView.hidden = true

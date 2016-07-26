@@ -17,7 +17,7 @@ class Request: PFObject, PFSubclassing {
     @NSManaged var customer: User
     @NSManaged var cleanPerson: User
     @NSManaged var agree: NSNumber //Parse's boolean is NSNumber
-    
+    @NSManaged var checked: NSNumber
     
     //MARK: PFSubclassing Protocol
     

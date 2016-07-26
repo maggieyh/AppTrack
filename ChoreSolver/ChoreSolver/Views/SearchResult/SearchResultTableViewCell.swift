@@ -68,9 +68,14 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBAction func requestInfoTapped(sender: AnyObject) {
         ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson!, block: { (success: Bool, error: NSError?) in
             self.tabBarViewController!.selectedViewController = self.tabBarViewController!.viewControllers![1]
+            let customerName = PFUser.currentUser()?.username!
+            if let cleanPersonOneSignalID = self.cleanPerson?.oneSignalID as? String {
+            let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [cleanPersonOneSignalID],"contents": ["en": "\(customerName) sent a request for your contact info! Reply \(customerName)!"]]
+            
+            AppDelegate.oneSignal!.postNotification(jsonData)
+            }
         })
         //transition to tab Request
-        
         
     }
     

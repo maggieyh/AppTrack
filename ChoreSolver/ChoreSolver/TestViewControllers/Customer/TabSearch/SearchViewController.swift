@@ -16,6 +16,7 @@ import ParseFacebookUtilsV4
 class SearchViewController: UIViewController {
 
     var selectedCounty: String?
+    var notificationNum: Int?
     @IBOutlet weak var countyPickerView: UIPickerView!
     
     @IBAction func unwindBackToSearchView(segue:UIStoryboardSegue) {
@@ -29,6 +30,7 @@ class SearchViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.countyPickerView.delegate = self
         self.countyPickerView.dataSource = self
+//        self.tabBarController?.tabBar.items![1].badgeValue = String(notificationNum!)
         
     }
 

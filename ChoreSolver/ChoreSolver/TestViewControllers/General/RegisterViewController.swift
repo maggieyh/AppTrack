@@ -114,10 +114,23 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         self.view.addSubview(spinner)
         spinner.startAnimating()
         
+        //need to save one signal id 
+        
         // Sign up the user asynchronously
         newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
             
-            
+//            AppDelegate.oneSignal!.sendTag("objectId", value: PFUser.currentUser()?.objectId!)
+            AppDelegate.oneSignal!.IdsAvailable({ (userId, pushToken) in
+                NSLog("UserId:%@", userId)
+                
+                if (pushToken != nil) {
+                    NSLog("pushToken:%@", pushToken)
+                    
+                } else {
+                    //refuse the notification
+                }
+            })
+
             if ((error) != nil) {
                 print(error)
                 
