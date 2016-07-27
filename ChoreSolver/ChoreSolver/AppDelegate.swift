@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 //    var parseLoginHelper: ParseLoginHelper!
-    static var oneSignal: OneSignal?
+    var oneSignal: OneSignal?
     override init() {
         super.init()
         
@@ -59,10 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
        
         // Initialize Facebook
-       
 //        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
         
-        // check if we have logged in user
         let user = PFUser.currentUser()
         var startViewController: UIViewController
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -79,9 +77,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
                     var result = result as! [Request]
                     result = result.filter { $0.checked.boolValue == false && $0.agree == true }
-                    print(result.count)
+                    if result.count >= 1 {
                     temp.tabBar.items![1].badgeValue = String(result.count)
-         
+                    }
                 }
             } else {
                 print("cleanPErson")
@@ -115,31 +113,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
 //        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-
         
+//        let acl = PFACL()
+//        acl.publicReadAccess = true
+//        PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
+//        
+//        
         
-        let acl = PFACL()
-        acl.publicReadAccess = false
-        PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
-        
-        
-        
-        
-        AppDelegate.oneSignal = OneSignal(launchOptions: launchOptions, appId: "6f185136-e88e-4421-84b2-f8e681c0da7e", handleNotification: nil)
-//        AppDelegate.oneSignal!.sendTag("objectId", value: PFUser.currentUser()?.objectId!)
+        self.oneSignal = OneSignal(launchOptions: launchOptions, appId: "6f185136-e88e-4421-84b2-f8e681c0da7e", handleNotification: nil, autoRegister: false)
         OneSignal.defaultClient().enableInAppAlertNotification(true)
-        print("aa")
-//        AppDelegate.oneSignal!.IdsAvailable({ (userId, pushToken) in
-//            NSLog("UserId:%@", userId)
-//            
-//            if (pushToken != nil) {
-//                NSLog("pushToken:%@", pushToken)
-//                
-//            } else {
-//                //refuse the notification
-//            }
-//        })
-        
+    
         return true
     }
     //push notification test

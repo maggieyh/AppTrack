@@ -63,6 +63,13 @@ class CustomerReqeustViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        do {
+            let reqst = try PFQuery.getObjectOfClass("Request", objectId: "zXfRC6jvp7")
+            print("success")
+        } catch {
+            print("fail")
+        }
+        
         let requestQuery = PFQuery(className: "Request")
         requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
         requestQuery.includeKey("cleanPerson")

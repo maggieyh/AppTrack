@@ -49,17 +49,17 @@ class CleanPersonRequestViewController: UIViewController {
   
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
         let requestQuery = PFQuery(className: "Request")
         requestQuery.whereKey("cleanPerson", equalTo: PFUser.currentUser()!)
         requestQuery.includeKey("customer")
         requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
             if let result = result {
+                
                 self.requests = result as! [Request]
                 self.customer = self.requests.map { $0.customer }
                 self.requestTableView.reloadData()
+                print(self.requests.count)
             }
-            
         }
         
     }

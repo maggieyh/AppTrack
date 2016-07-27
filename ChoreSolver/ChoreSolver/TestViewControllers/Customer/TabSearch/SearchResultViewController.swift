@@ -110,6 +110,8 @@ extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate
         let cell = tableView.dequeueReusableCellWithIdentifier("CleanPersonCell", forIndexPath: indexPath) as! SearchResultTableViewCell
 //        let person = cleanPersons[indexPath.row]
         let person = timelineComponent.content[indexPath.row]
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        cell.oneSignal = appDelegate?.oneSignal
         person.downloadImage()
         cell.cleanPersonNameLabel.text = person.username!
         cell.cleanPerson = person

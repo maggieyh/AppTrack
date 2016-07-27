@@ -28,15 +28,27 @@ class cleanPersonRequestTableViewCell: UITableViewCell {
     @IBAction func replyButtonTapped(sender: AnyObject) {
         self.replyButton.hidden = true
         let query = PFQuery(className:"Request")
+        self.request?.agree = NSNumber(bool: true)
+        self.request?.saveInBackground()
+        print(request!.objectId!)
         query.getObjectInBackgroundWithId(request!.objectId!) {
             (request: PFObject?, error: NSError?) -> Void in
             if error != nil {
                 print(error)
             }
             if let request = request as? Request {
+                print("aa")
                 request.agree = NSNumber(bool: true)
                 request.saveInBackground()
             }
+          
+            let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+            if let customerOneSignalID = self.customer!.oneSignalID as? String {
+                let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [customerOneSignalID],"contents": ["en": "You recieved \(PFUser.currentUser()!.username!)'s info. Contact each other !!"]]
+                
+                appDelegate!.oneSignal!.postNotification(jsonData)
+            }
+            
         }
         
     }

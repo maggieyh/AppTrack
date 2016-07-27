@@ -21,6 +21,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
     var photoTakingHelper: PhotoTakingHelper?
     var imageFile: PFFile?
     var bo: Bool = true
+    var oneSignal: OneSignal?
     @IBOutlet weak var topLayout: NSLayoutConstraint!
     
     @IBOutlet var spinner:UIActivityIndicatorView!
@@ -101,6 +102,18 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         newUser["phoneNumber"] = phoneNum
         newUser["imageFile"] = self.imageFile
         self.imageFile?.saveInBackground()
+        
+        self.oneSignal!.IdsAvailable({ (userId, pushToken) in
+            NSLog("UserId:%@", userId)
+            
+            if (pushToken != nil) {
+                NSLog("pushToken:%@", pushToken)
+                newUser["oneSignalID"] = userId
+            } else {
+                //refuse the notification
+            }
+        })
+        
         if userType == "CleanPerson" {
             newUser["hourRate"] = self.hourRateTextField.text ?? ""
             newUser["introduction"] = self.introductionTextView.text ?? ""
@@ -120,17 +133,6 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         newUser.signUpInBackgroundWithBlock({ (succeed, error) -> Void in
             
 //            AppDelegate.oneSignal!.sendTag("objectId", value: PFUser.currentUser()?.objectId!)
-            AppDelegate.oneSignal!.IdsAvailable({ (userId, pushToken) in
-                NSLog("UserId:%@", userId)
-                
-                if (pushToken != nil) {
-                    NSLog("pushToken:%@", pushToken)
-                    
-                } else {
-                    //refuse the notification
-                }
-            })
-
             if ((error) != nil) {
                 print(error)
                 
@@ -166,6 +168,8 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         // Do any additional setup after loading the view.
 
         
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        self.oneSignal = appDelegate?.oneSignal
         introductionTextView.textColor = UIColor.lightGrayColor()
         
         //keyboard avoiding test
@@ -173,6 +177,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
 
+        self.oneSignal?.registerForPushNotifications()
         
         
         self.setupChooseCountyDropDown()
@@ -292,7 +297,7 @@ extension RegisterViewController {
     }
     
     func unsubscribeFromKeyboardNotifications() {
-     //   self.topLayout.active = true
+     
         NSNotificationCenter.defaultCenter().removeObserver(self, name:
             UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name:
