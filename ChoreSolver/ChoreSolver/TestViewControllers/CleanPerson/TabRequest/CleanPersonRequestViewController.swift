@@ -24,7 +24,7 @@ class CleanPersonRequestViewController: UIViewController {
     @IBAction func unwindBackToCleanPersonRequestView(segue:UIStoryboardSegue) {
         
     }
-    
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -93,6 +93,7 @@ extension CleanPersonRequestViewController: UITableViewDataSource, UITableViewDe
         if requests[indexPath.row].agree.boolValue {
             cell.replyButton.hidden = true
             cell.requestStateLabel.text = "Contact \(self.customer[indexPath.row].username!) to provide your service"
+            cell.trailingConstraint.constant = 0
         } else {
             cell.replyButton.hidden = false
             cell.requestStateLabel.text = "\(self.customer[indexPath.row].username!) sent a request for your contact!"

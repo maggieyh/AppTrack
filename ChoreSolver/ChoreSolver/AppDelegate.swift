@@ -72,13 +72,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let temp = startViewController as! UITabBarController
                 let requestQuery = PFQuery(className: "Request")
                 requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
-                requestQuery.includeKey("cleanPerson")
-                requestQuery.includeKey("checked")
                 requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
-                    var result = result as! [Request]
-                    result = result.filter { $0.checked.boolValue == false && $0.agree == true }
-                    if result.count >= 1 {
-                    temp.tabBar.items![1].badgeValue = String(result.count)
+                    if let result = result as? [Request] {
+                        let rqst = result.filter { $0.checked.boolValue == false && $0.agree == true }
+                        if rqst.count >= 1 {
+                        temp.tabBar.items![1].badgeValue = String(rqst.count)
+                        }
                     }
                 }
             } else {

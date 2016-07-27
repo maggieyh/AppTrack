@@ -21,11 +21,13 @@ class cleanPersonRequestTableViewCell: UITableViewCell {
     }
     var request: Request?
     
+    @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var customerImageView: UIImageView!
     @IBOutlet weak var customerNameLabel: UILabel!
     @IBOutlet weak var requestStateLabel: UILabel!
     @IBOutlet weak var replyButton: UIButton!
     @IBAction func replyButtonTapped(sender: AnyObject) {
+        trailingConstraint.constant = 0
         self.replyButton.hidden = true
         let query = PFQuery(className:"Request")
         self.request?.agree = NSNumber(bool: true)

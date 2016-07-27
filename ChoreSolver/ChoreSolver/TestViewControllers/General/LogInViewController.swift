@@ -10,6 +10,7 @@ import UIKit
 import ParseUI
 import Parse
 
+
 class LogInViewController: UIViewController {
     
     func hideKeyboardWhenTappedAround() {
@@ -17,6 +18,8 @@ class LogInViewController: UIViewController {
         self.view.addGestureRecognizer(tap)
     }
     
+    @IBOutlet weak var logInButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     func dismissKeyboard() {
         self.view.endEditing(true)
        
@@ -61,6 +64,9 @@ class LogInViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.hideKeyboardWhenTappedAround()
+        customizeButton(self.logInButton)
+        customizeButton(self.signUpButton)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,5 +84,11 @@ class LogInViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func customizeButton(button: UIButton!) {
+        button.setBackgroundImage(nil, forState: .Normal)
+        button.backgroundColor = UIColor.clearColor()
+        button.layer.cornerRadius = 5
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.whiteColor().CGColor
+    }
 }

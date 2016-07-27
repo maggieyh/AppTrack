@@ -30,6 +30,7 @@ class SearchViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.countyPickerView.delegate = self
         self.countyPickerView.dataSource = self
+        self.countyPickerView.tintColor = UIColor.whiteColor()
 //        self.tabBarController?.tabBar.items![1].badgeValue = String(notificationNum!)
         
     }
@@ -38,6 +39,7 @@ class SearchViewController: UIViewController {
         if segue.identifier == "showResult" {
             let viewController = segue.destinationViewController as! SearchResultViewController
             viewController.selectedCounty = self.selectedCounty!
+            viewController.activate = true
         }
     }
     override func didReceiveMemoryWarning() {
@@ -55,7 +57,10 @@ class SearchViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let attributedString = NSAttributedString(string: Data.counties[row], attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        return attributedString
+    }
 }
 
 extension SearchViewController: UIPickerViewDelegate, UIPickerViewDataSource {

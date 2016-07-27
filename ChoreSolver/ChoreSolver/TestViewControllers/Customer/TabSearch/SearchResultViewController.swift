@@ -13,8 +13,9 @@ import Foundation
 class SearchResultViewController: UIViewController, TimelineComponentTarget {
 
     
+//    @IBOutlet weak var backToSearchBarButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-    
+    var activate: Bool = false
     var cleanPersons: [User] = []
     var selectedCounty: String?
     let defaultRange = 0...6
@@ -23,9 +24,11 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
     
     func loadInRange(range: Range<Int>, completionBlock: ([User]?) -> Void) {
         // 1
+        
         ParseHelper.searchResultViewRequestForCleanPerson(range, county: selectedCounty!) { (result: [PFObject]?, error: NSError?) in
             let cleanPerson = result as! [User]?
             completionBlock(cleanPerson)
+            self.navigationItem.leftBarButtonItem?.enabled = true
         }
     }
     
@@ -66,7 +69,10 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        
+        if self.activate {
+            self.navigationItem.leftBarButtonItem?.enabled = false
+            self.activate = false
+        }
         timelineComponent.loadInitialIfRequired()
         
 //        ParseHelper.searchResultViewRequestForCleanPerson(self.selectedCounty!){ (result:[PFObject]?, error: NSError?) in
@@ -75,7 +81,6 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
 //            
 //            self.searchResultTableView.reloadData()
 //        }
-        
         
     }
 
@@ -98,8 +103,6 @@ extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         timelineComponent.targetWillDisplayEntry(indexPath.row)
     }
-
-    
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        return self.cleanPersons.count ?? 0
