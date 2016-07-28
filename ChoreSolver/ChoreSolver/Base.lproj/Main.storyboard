@@ -458,7 +458,7 @@
                     <navigationItem key="navigationItem" title="CleanPerson's profile" id="POV-wA-a16">
                         <barButtonItem key="leftBarButtonItem" title="back" id="d3o-Fn-MKn">
                             <connections>
-                                <segue destination="8Dx-bt-yTR" kind="unwind" unwindAction="unwindBackToRequestView:" id="B1m-BC-6Rl"/>
+                                <action selector="backBarButtonTapped:" destination="DmH-vk-If5" id="szi-tL-11C"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Review" id="pXQ-1w-aqO">
@@ -477,6 +477,8 @@
                         <outlet property="nameLabel" destination="xHn-8q-sfe" id="gDI-ET-ouf"/>
                         <outlet property="navigationBarItem" destination="POV-wA-a16" id="B2b-KK-4ba"/>
                         <outlet property="rightBarButton" destination="pXQ-1w-aqO" id="g92-jZ-C7d"/>
+                        <segue destination="8Dx-bt-yTR" kind="unwind" identifier="unwindBackToRequestView" unwindAction="unwindBackToRequestView:" id="ZMM-FZ-zmc"/>
+                        <segue destination="8Dx-bt-yTR" kind="unwind" identifier="unwindBackToResultView" unwindAction="unwindBackToResultView:" id="XcU-ZI-EXJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D1V-LZ-mJt" userLabel="First Responder" sceneMemberID="firstResponder"/>

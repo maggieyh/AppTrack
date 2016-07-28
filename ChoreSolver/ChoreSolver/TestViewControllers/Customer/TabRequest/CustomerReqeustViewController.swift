@@ -30,6 +30,7 @@ class CustomerReqeustViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showCleanPersonProfileFromRequest" {
             let cleanPersonDetailViewController = segue.destinationViewController as! CleanPersonDetailViewController
+            cleanPersonDetailViewController.fromRequestView = true
             if let indexPath = self.requestTableView.indexPathForSelectedRow {
                 cleanPersonDetailViewController.cleanPerson = requests[indexPath.row].cleanPerson
                 let str = cleanPersonDetailViewController.cleanPerson?.username

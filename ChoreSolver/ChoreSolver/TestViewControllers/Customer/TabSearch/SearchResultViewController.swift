@@ -20,6 +20,7 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
     var selectedCounty: String?
     let defaultRange = 0...6
     let additionalRangeSize = 7
+    var indexPath: NSIndexPath? //selected indexPath
     var timelineComponent: TimelineComponent<User, SearchResultViewController>!
     
     func loadInRange(range: Range<Int>, completionBlock: ([User]?) -> Void) {
@@ -43,16 +44,35 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
                 
     }
     @IBAction func unwindBackToResultView(segue:UIStoryboardSegue) {
+        print("successfully")
+        let segueVC = segue.sourceViewController as! CleanPersonDetailViewController
+        let cell = self.tableView.cellForRowAtIndexPath(self.indexPath!) as! SearchResultTableViewCell
+        if let value = segueVC.stateOfRequest {
+            switch(value){
+            case 1:
+                //agree
+                cell.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
+                cell.requestButton.enabled = false
+            case 2:
+                cell.requestButton.setTitle("Request Sent", forState: UIControlState.Normal)
+                cell.requestButton.enabled = false
+            default:
+                cell.requestButton.enabled = true
+            }
+            
+        }
+        
         
     }
-    @IBAction func unwindBackToRequestView(segue:UIStoryboardSegue) {
-    }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showCleanPersonDetailFromResultView" {
             let cleanPersonDetailViewController = segue.destinationViewController as! CleanPersonDetailViewController
-        
+            cleanPersonDetailViewController.fromRequestView = false
+            
             if let indexPath = self.tableView.indexPathForSelectedRow {
+                self.indexPath = indexPath
                 cleanPersonDetailViewController.cleanPerson = timelineComponent.content[indexPath.row]
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! SearchResultTableViewCell
                 cleanPersonDetailViewController.stateOfRequest = cell.stateRequest.value

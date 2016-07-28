@@ -54,6 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = ParseClientConfiguration {
             $0.applicationId = "CleanSolver"
             $0.server = "https://cleansolver-parse-yh.herokuapp.com/parse"
+            
+            
         }
         Parse.initializeWithConfiguration(configuration)
         
