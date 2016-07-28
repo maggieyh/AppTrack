@@ -16,6 +16,7 @@ class CleanPersonDetailViewController: UIViewController {
     var oneSignal: OneSignal?
     var indexPath: NSIndexPath?
     var viewController: UIViewController?
+    
     @IBAction func backBarButtonTapped(sender: AnyObject) {
         if fromRequestView! {
             self.performSegueWithIdentifier("unwindBackToRequestView", sender: self)
@@ -34,25 +35,8 @@ class CleanPersonDetailViewController: UIViewController {
             self.contactLabel.hidden = false
             self.navigationItem.rightBarButtonItem = nil
             self.stateOfRequest = 2
-            let alertController: UIAlertController = UIAlertController(title: "Send a message", message: "Anything you want to tell", preferredStyle: .Alert)
-            alertController.addTextFieldWithConfigurationHandler(nil)
-            let okAction: UIAlertAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { (action: UIAlertAction) in
-                let message: UITextField = (alertController.textFields?.first)!
-                print(message.text)
-            })
-            alertController.addAction(okAction)
-//            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-//            alertController.addAction(cancelAction)
-            self.presentViewController(alertController, animated: false, completion: nil)
-
-            ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson!, block: { (success: Bool, error: NSError?) in
-                let customerName = PFUser.currentUser()?.username!
-                
-                if let cleanPersonOneSignalID = self.cleanPerson?.oneSignalID as? String {
-                    let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [cleanPersonOneSignalID],"contents": ["en": "\(customerName) sent a request for your contact info! Reply \(customerName)!"]]
-                    self.oneSignal?.postNotification(jsonData)
-                }
-            })
+            
+            FeatureHelper.postNotification(self, oneSignal: self.oneSignal!, cleanPerson: self.cleanPerson!)
         } else {
             
         }

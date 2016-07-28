@@ -22,7 +22,7 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
     let additionalRangeSize = 7
     var indexPath: NSIndexPath? //selected indexPath
     var timelineComponent: TimelineComponent<User, SearchResultViewController>!
-    
+    var oneSignal: OneSignal?
     func loadInRange(range: Range<Int>, completionBlock: ([User]?) -> Void) {
         // 1
         
@@ -41,12 +41,15 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
         
         timelineComponent = TimelineComponent(target: self)
 //        self.tabBarController?.delegate = self
+        let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+        self.oneSignal = appDelegate?.oneSignal
                 
     }
     @IBAction func unwindBackToResultView(segue:UIStoryboardSegue) {
-        print("successfully")
         let segueVC = segue.sourceViewController as! CleanPersonDetailViewController
         let cell = self.tableView.cellForRowAtIndexPath(self.indexPath!) as! SearchResultTableViewCell
+        SearchResultTableViewCell.stateCache[cell.cleanPersonNameLabel.text!] = segueVC.stateOfRequest
+        cell.stateRequest.value = segueVC.stateOfRequest
         if let value = segueVC.stateOfRequest {
             switch(value){
             case 1:
@@ -104,21 +107,10 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
         
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
 }
 
 extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate {
-    
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
         timelineComponent.targetWillDisplayEntry(indexPath.row)
@@ -142,12 +134,18 @@ extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate
         cell.hourRateLabel.text = str + "$/hr"
         cell.tabBarViewController = self.tabBarController ?? nil
         cell.requestButton.enabled = false
-        
-        cell.fetchRequest()        
+        cell.fetchRequest()
+        cell.delegate = self
         return cell
     }
     
     
+    
 }
-
+extension SearchResultViewController: searchResultDelegate {
+    func requestButtonTap(cleanPerson: User) {
+        print("fasd")
+        FeatureHelper.postNotification(self, oneSignal: self.oneSignal!, cleanPerson: cleanPerson)
+    }
+}
 

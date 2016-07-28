@@ -36,6 +36,7 @@
 		6FAE34D01D37C40900BDDC10 /* DropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C81D37C40800BDDC10 /* DropDown.swift */; };
 		6FAE34D11D37C40900BDDC10 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C91D37C40800BDDC10 /* DropDownCell.swift */; };
 		6FB6603E1D376FCE00C74109 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6603D1D376FCE00C74109 /* RegisterViewController.swift */; };
+		6FBBF69C1D49D93E003A7D12 /* FeatureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBF69B1D49D93E003A7D12 /* FeatureHelper.swift */; };
 		6FDDB8791D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */; };
 		6FDDB87B1D34D11700DBA28F /* CustomerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */; };
 		6FF998881D3BD24300A3466C /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF998871D3BD24300A3466C /* PhotoTakingHelper.swift */; };
@@ -74,6 +75,7 @@
 		6FAE34C81D37C40800BDDC10 /* DropDown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDown.swift; sourceTree = "<group>"; };
 		6FAE34C91D37C40800BDDC10 /* DropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
 		6FB6603D1D376FCE00C74109 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		6FBBF69B1D49D93E003A7D12 /* FeatureHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureHelper.swift; sourceTree = "<group>"; };
 		6FBCF7291D474C020013022D /* ChoreSolver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ChoreSolver-Bridging-Header.h"; path = "ChoreSolver/ChoreSolver-Bridging-Header.h"; sourceTree = "<group>"; };
 		6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cleanPersonRequestTableViewCell.swift; sourceTree = "<group>"; };
 		6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerProfileViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				6F22205D1D31EA1E00A3BDC9 /* ParseHelper.swift */,
+				6FBBF69B1D49D93E003A7D12 /* FeatureHelper.swift */,
 				6F6BE5771D36025C0037263E /* ErrorHandling.swift */,
 				6F9E1BBD1D3681480035A60D /* FBloginhelperViewController.swift */,
 				6FF998871D3BD24300A3466C /* PhotoTakingHelper.swift */,
@@ -455,6 +458,7 @@
 				6F5F58D61D33EBD2000ABB58 /* SearchViewController.swift in Sources */,
 				6FAE34CB1D37C40900BDDC10 /* DPDKeyboardListener.swift in Sources */,
 				6F9045D81D3C73D200881640 /* CleanPersonProfileEditingViewController.swift in Sources */,
+				6FBBF69C1D49D93E003A7D12 /* FeatureHelper.swift in Sources */,
 				6FAE34D01D37C40900BDDC10 /* DropDown.swift in Sources */,
 				6F5F58DA1D33ED66000ABB58 /* CleanPersonRequestViewController.swift in Sources */,
 				6FDDB87B1D34D11700DBA28F /* CustomerProfileViewController.swift in Sources */,

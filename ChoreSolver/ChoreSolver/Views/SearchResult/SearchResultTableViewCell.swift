@@ -10,6 +10,9 @@ import UIKit
 import Bond
 import Parse
 import ConvenienceKit
+protocol searchResultDelegate {
+    func requestButtonTap(cleanPerson: User)
+}
 class SearchResultTableViewCell: UITableViewCell {
     
     static var stateCache: NSCacheSwift<String, Int?>!
@@ -18,6 +21,7 @@ class SearchResultTableViewCell: UITableViewCell {
     var stateRequest: Observable<Int?> = Observable(nil)
     var oneSignal: OneSignal?
     var tabBarViewController: UITabBarController?
+    var viewController: UIViewController?
     var cleanPerson: User? {
         didSet {
             imageDisposable?.dispose()
@@ -32,7 +36,7 @@ class SearchResultTableViewCell: UITableViewCell {
             }
         }
     }
-   
+    var delegate: searchResultDelegate?
 
     @IBOutlet weak var cleanPersonNameLabel: UILabel!
     @IBOutlet weak var cleanPersonImage: UIImageView!
@@ -65,19 +69,12 @@ class SearchResultTableViewCell: UITableViewCell {
     
     @IBAction func requestInfoTapped(sender: AnyObject) {
         SearchResultTableViewCell.stateCache[self.cleanPerson!.username!] = 2
+        self.stateRequest.value = 2
         self.requestButton.setTitle("Request Sent", forState: .Normal)
         self.requestButton.enabled = false
-        ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson!, block: { (success: Bool, error: NSError?) in
-            self.tabBarViewController!.selectedViewController = self.tabBarViewController!.viewControllers![1]
-            
-            
-            let customerName = PFUser.currentUser()?.username!
-            if let cleanPersonOneSignalID = self.cleanPerson?.oneSignalID as? String {
-            let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [cleanPersonOneSignalID],"contents": ["en": "\(customerName) sent a request for your contact info! Reply \(customerName)!"]]
-            
-            self.oneSignal?.postNotification(jsonData)
-            }
-        })
+        self.delegate?.requestButtonTap(self.cleanPerson!)
+
+//        
         //transition to tab Request
         
     }
