@@ -9,8 +9,12 @@
 import UIKit
 import Parse
 import Bond
+protocol tableViewCellNotificationDelegate {
+    func presentViewController(alertController: UIAlertController, indexPath: NSIndexPath)
+}
 class cleanPersonRequestTableViewCell: UITableViewCell {
     var imageDisposable: DisposableType?
+    var indexPath: NSIndexPath?
     var customer: User? {
         didSet {
             imageDisposable?.dispose()
@@ -20,7 +24,7 @@ class cleanPersonRequestTableViewCell: UITableViewCell {
         }
     }
     var request: Request?
-    
+    var delegate: tableViewCellNotificationDelegate?
     @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var customerImageView: UIImageView!
     @IBOutlet weak var customerNameLabel: UILabel!
@@ -29,29 +33,29 @@ class cleanPersonRequestTableViewCell: UITableViewCell {
     @IBAction func replyButtonTapped(sender: AnyObject) {
         trailingConstraint.constant = 0
         self.replyButton.hidden = true
-        let query = PFQuery(className:"Request")
         self.request?.agree = NSNumber(bool: true)
         self.request?.saveInBackground()
-        print(request!.objectId!)
-        query.getObjectInBackgroundWithId(request!.objectId!) {
-            (request: PFObject?, error: NSError?) -> Void in
-            if error != nil {
-                print(error)
-            }
-            if let request = request as? Request {
-                print("aa")
-                request.agree = NSNumber(bool: true)
-                request.saveInBackground()
-            }
-          
-            let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
-            if let customerOneSignalID = self.customer!.oneSignalID as? String {
-                let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [customerOneSignalID],"contents": ["en": "You recieved \(PFUser.currentUser()!.username!)'s info. Contact each other !!"]]
+        
+        let alertController: UIAlertController = UIAlertController(title: "Send a message", message: "Anything you want to tell", preferredStyle: .Alert)
+        alertController.addTextFieldWithConfigurationHandler(nil)
+        var message: UITextField?
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+                message = (alertController.textFields?.first)!
+                if message!.text == nil {
+                    message!.text = ""
+                }
+        
+                let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
                 
-                appDelegate!.oneSignal!.postNotification(jsonData)
-            }
+                if let customerOneSignalID = self.customer!.oneSignalID as? String {
+                    let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [customerOneSignalID],"contents": ["en": "You recieved \(PFUser.currentUser()!.username!)'s info. Contact each other !!\n\(message!.text!)"]]
+                    
+                    appDelegate!.oneSignal!.postNotification(jsonData)
+                }
             
-        }
+         }))
+        
+        self.delegate?.presentViewController(alertController, indexPath: self.indexPath!)
         
     }
     override func awakeFromNib() {

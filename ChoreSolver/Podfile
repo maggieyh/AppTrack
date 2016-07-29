@@ -15,4 +15,7 @@ target 'ChoreSolver' do
   pod 'IHKeyboardAvoiding'
   pod ‘FlatUIKit’
   pod ‘OneSignal’
+  pod ‘Cosmos’, ‘~> 1.2’
+  pod 'Atlas'
+  pod 'SVProgressHUD'
 end

@@ -12,6 +12,7 @@ class CustomerReqeustViewController: UIViewController {
 
     var requests: [Request] = []
     var cleanPersons: [User] = []
+    
     @IBOutlet weak var requestTableView: UITableView!
     
     override func viewDidLoad() {
@@ -37,7 +38,6 @@ class CustomerReqeustViewController: UIViewController {
                 cleanPersonDetailViewController.navigationBarItem.title = str! + "'s profile"
                 if requests[indexPath.row].agree.boolValue {
                     cleanPersonDetailViewController.stateOfRequest = 1 //agree
-                    print("aa")
                     if !(requests[indexPath.row].checked.boolValue) && self.tabBarController?.tabBar.items![1].badgeValue != nil {
                         requests[indexPath.row].checked = NSNumber(bool: true)
                         requests[indexPath.row].saveInBackground()
@@ -50,6 +50,7 @@ class CustomerReqeustViewController: UIViewController {
                         }
                         
                     }
+                    
                 } else {
                     cleanPersonDetailViewController.stateOfRequest = 2 //not yet respond
                 }
@@ -75,6 +76,8 @@ class CustomerReqeustViewController: UIViewController {
                     self.requestTableView.reloadData()
             
             }
+        
+        
     }
 
         

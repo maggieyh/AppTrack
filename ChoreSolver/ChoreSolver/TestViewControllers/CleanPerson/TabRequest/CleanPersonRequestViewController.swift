@@ -36,7 +36,7 @@ class CleanPersonRequestViewController: UIViewController {
             let viewController = segue.destinationViewController as! CustomerProfileViewController
             if let indexPath = self.requestTableView.indexPathForSelectedRow{
                 viewController.request = requests[indexPath.row]
-                
+                self.requestTableView.deselectRowAtIndexPath(indexPath, animated: true)
                 if viewController.request!.agree.boolValue {
                     viewController.navigationItem.rightBarButtonItem = nil
                 } 
@@ -97,8 +97,23 @@ extension CleanPersonRequestViewController: UITableViewDataSource, UITableViewDe
         } else {
             cell.replyButton.hidden = false
             cell.requestStateLabel.text = "\(self.customer[indexPath.row].username!) sent a request for your contact!"
+            cell.trailingConstraint.constant = 60
         }
         cell.request = requests[indexPath.row]
+        cell.delegate = self
+        cell.indexPath = indexPath
         return cell
+    }
+}
+
+extension CleanPersonRequestViewController: tableViewCellNotificationDelegate {
+    
+    func presentViewController(alertController: UIAlertController, indexPath: NSIndexPath){
+        print("fasdf")
+        self.presentViewController(alertController, animated: true, completion: nil)
+        let cell = self.requestTableView.cellForRowAtIndexPath(indexPath) as! cleanPersonRequestTableViewCell
+        cell.replyButton.hidden = true
+        cell.requestStateLabel.text = "Contact \(self.customer[indexPath.row].username!) to provide your service"
+        cell.trailingConstraint.constant = 0
     }
 }

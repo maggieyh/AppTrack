@@ -8,7 +8,7 @@
 
 import UIKit
 import Parse
-class CleanPersonDetailViewController: UIViewController {
+class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
     var fromRequestView: Bool?
     var cleanPerson: User?
     var agree: Bool?
@@ -16,13 +16,16 @@ class CleanPersonDetailViewController: UIViewController {
     var oneSignal: OneSignal?
     var indexPath: NSIndexPath?
     var viewController: UIViewController?
-    
+//    var review: Review?
     @IBAction func backBarButtonTapped(sender: AnyObject) {
         if fromRequestView! {
             self.performSegueWithIdentifier("unwindBackToRequestView", sender: self)
         } else {
             self.performSegueWithIdentifier("unwindBackToResultView", sender: self)
         }
+    }
+    @IBAction func unwindBackToCleanPersonDetailView(segue:UIStoryboardSegue) {
+        
     }
     
     @IBOutlet var rightBarButton: UIBarButtonItem!
@@ -38,7 +41,7 @@ class CleanPersonDetailViewController: UIViewController {
             
             FeatureHelper.postNotification(self, oneSignal: self.oneSignal!, cleanPerson: self.cleanPerson!)
         } else {
-            
+            self.performSegueWithIdentifier("goToReviewPage", sender: self)
         }
     }
     
@@ -91,7 +94,7 @@ class CleanPersonDetailViewController: UIViewController {
                 default:
                     contactMethodTextView.hidden = true
                     contactLabel.hidden = true
-                    //request
+                     //request
                     self.rightBarButton.title = "Request"
                 }
             } else {
@@ -117,5 +120,5 @@ class CleanPersonDetailViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

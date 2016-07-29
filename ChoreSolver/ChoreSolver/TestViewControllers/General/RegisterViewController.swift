@@ -69,7 +69,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
     }
 
     func alert() {
-        let alertController = UIAlertController(title: "Some Fields are not completed", message: "Please comlete text fields", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "Some Fields are not completed", message: "Please comlete text fields and upload your picture!", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }

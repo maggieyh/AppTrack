@@ -64,7 +64,7 @@ class LogInViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.hideKeyboardWhenTappedAround()
-        customizeButton(self.logInButton)
+//        customizeButton(self.logInButton)
         customizeButton(self.signUpButton)
         
     }

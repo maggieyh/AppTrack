@@ -9,23 +9,35 @@
 import UIKit
 import Parse
 class CustomerProfileViewController: UIViewController {
-
     
     var request: Request?
-    
+   
     @IBOutlet weak var replyBarButton: UIBarButtonItem!
     @IBAction func replyButtonTapped(sender: AnyObject) {
         self.navigationItem.rightBarButtonItem = nil
-        let query = PFQuery(className:"Request")
-        query.getObjectInBackgroundWithId(request!.objectId!) {
-            (request: PFObject?, error: NSError?) -> Void in
-            if error != nil {
-                print(error)
-            } else if let request = request {
-                request["agree"] = NSNumber(bool: true)
-                request.saveInBackground()
+        self.request?.agree = NSNumber(bool: true)
+        self.request?.saveInBackground()
+        
+        let alertController: UIAlertController = UIAlertController(title: "Send a message", message: "Anything you want to tell", preferredStyle: .Alert)
+        alertController.addTextFieldWithConfigurationHandler(nil)
+        var message: UITextField?
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+            message = (alertController.textFields?.first)!
+            if message!.text == nil {
+                message!.text = ""
             }
-        }
+            
+            let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
+            
+            if let customerOneSignalID = self.request!.customer.oneSignalID as? String {
+                let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [customerOneSignalID],"contents": ["en": "You recieved \(PFUser.currentUser()!.username!)'s info. Contact each other !!\n\(message!.text!)"]]
+                
+                appDelegate!.oneSignal!.postNotification(jsonData)
+            }
+            
+        }))
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
         
     }
     

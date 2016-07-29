@@ -37,6 +37,8 @@
 		6FAE34D11D37C40900BDDC10 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAE34C91D37C40800BDDC10 /* DropDownCell.swift */; };
 		6FB6603E1D376FCE00C74109 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6603D1D376FCE00C74109 /* RegisterViewController.swift */; };
 		6FBBF69C1D49D93E003A7D12 /* FeatureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBF69B1D49D93E003A7D12 /* FeatureHelper.swift */; };
+		6FBBF6A21D49FFFE003A7D12 /* ReviewPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBF6A11D49FFFE003A7D12 /* ReviewPersonViewController.swift */; };
+		6FBBF6A41D4A616B003A7D12 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBF6A31D4A616A003A7D12 /* Review.swift */; };
 		6FDDB8791D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */; };
 		6FDDB87B1D34D11700DBA28F /* CustomerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */; };
 		6FF998881D3BD24300A3466C /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF998871D3BD24300A3466C /* PhotoTakingHelper.swift */; };
@@ -76,6 +78,8 @@
 		6FAE34C91D37C40800BDDC10 /* DropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
 		6FB6603D1D376FCE00C74109 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		6FBBF69B1D49D93E003A7D12 /* FeatureHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeatureHelper.swift; sourceTree = "<group>"; };
+		6FBBF6A11D49FFFE003A7D12 /* ReviewPersonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewPersonViewController.swift; sourceTree = "<group>"; };
+		6FBBF6A31D4A616A003A7D12 /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		6FBCF7291D474C020013022D /* ChoreSolver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ChoreSolver-Bridging-Header.h"; path = "ChoreSolver/ChoreSolver-Bridging-Header.h"; sourceTree = "<group>"; };
 		6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cleanPersonRequestTableViewCell.swift; sourceTree = "<group>"; };
 		6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerProfileViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 			children = (
 				6F5F58D31D33EB61000ABB58 /* CustomerReqeustViewController.swift */,
 				6F3F511B1D39CF9100D0FB7E /* CleanPersonDetailViewController.swift */,
+				6FBBF6A11D49FFFE003A7D12 /* ReviewPersonViewController.swift */,
 			);
 			path = TabRequest;
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 				6F5391B71D329B2A00C1AA9C /* Request.swift */,
 				6FA271471D3E113200E60902 /* User.swift */,
 				6F2285771D3F18C900AEF880 /* Data.swift */,
+				6FBBF6A31D4A616A003A7D12 /* Review.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -472,6 +478,8 @@
 				6FB6603E1D376FCE00C74109 /* RegisterViewController.swift in Sources */,
 				6FF998881D3BD24300A3466C /* PhotoTakingHelper.swift in Sources */,
 				6F28E85B1D38B8E300E886F8 /* LogInViewController.swift in Sources */,
+				6FBBF6A21D49FFFE003A7D12 /* ReviewPersonViewController.swift in Sources */,
+				6FBBF6A41D4A616B003A7D12 /* Review.swift in Sources */,
 				6F2285781D3F18C900AEF880 /* Data.swift in Sources */,
 				6F3F511C1D39CF9100D0FB7E /* CleanPersonDetailViewController.swift in Sources */,
 				6F5F58D81D33EC19000ABB58 /* SearchResultViewController.swift in Sources */,

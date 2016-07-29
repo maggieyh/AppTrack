@@ -10,18 +10,21 @@ import Foundation
 import Parse
 
 class FeatureHelper {
-    static let alertController: UIAlertController = UIAlertController(title: "Send a message", message: "Anything you want to tell", preferredStyle: .Alert)
+    
     static func postNotification(viewController: UIViewController, oneSignal: OneSignal, cleanPerson: User){
-        
+        let alertController: UIAlertController = UIAlertController(title: "Send a message", message: "Anything you want to tell", preferredStyle: .Alert)
         alertController.addTextFieldWithConfigurationHandler(nil)
         var message: UITextField?
-        let okAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
-            message = (self.alertController.textFields?.first)!
-            if message!.text == nil {
-                message!.text = ""
-            }
-            
-            ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson, block: { (success: Bool, error: NSError?) in
+        alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+                message = (alertController.textFields?.first)!
+                if message!.text == nil {
+                    message!.text = ""
+                }
+        }))
+
+        viewController.presentViewController(alertController, animated: true, completion: nil)
+        
+        ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson, block: { (success: Bool, error: NSError?) in
                 let customerName = PFUser.currentUser()?.username!
                 
                 if let cleanPersonOneSignalID = cleanPerson.oneSignalID as? String {
@@ -29,13 +32,8 @@ class FeatureHelper {
                     oneSignal.postNotification(jsonData)
                 }
             })
-        })
-        
-            
-        
-        alertController.addAction(okAction)
-        //            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil)
-        //            alertController.addAction(cancelAction)
-        viewController.presentViewController(alertController, animated: false, completion: nil)
     }
+        
+    
 }
+
