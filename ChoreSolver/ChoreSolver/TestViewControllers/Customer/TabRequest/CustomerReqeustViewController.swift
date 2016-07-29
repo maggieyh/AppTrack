@@ -98,7 +98,9 @@ class CustomerReqeustViewController: UIViewController {
 
 extension CustomerReqeustViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(self.requests.count)
         return self.requests.count ?? 0
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -106,8 +108,10 @@ extension CustomerReqeustViewController: UITableViewDelegate, UITableViewDataSou
         let request = self.requests[indexPath.row]
         let cleanPerson = request.cleanPerson
         cell.cleanPerson = cleanPerson
-        cleanPerson.downloadImage()
-        
+    
+        if let _ = cleanPerson.imageFile?.name {
+            cleanPerson.downloadImage()
+        }
         cell.nameLabel.text = cleanPerson.username
         cell.hourRateLabel.text = ((cleanPerson["hourRate"] as? String) ?? "" ) + "$/hr"
         if request.agree.boolValue {

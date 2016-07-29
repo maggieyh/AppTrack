@@ -71,14 +71,14 @@ class CleanPersonProfileEditingViewController: UIViewController {
                 self.imageView.image = image
                 let data = UIImagePNGRepresentation(image)
                 let user = PFUser.currentUser()!
-                user.setValue(PFFile(name: "cleanPerson.jpg", data: data!), forKey: "imageFile")
+                user.setValue(PFFile(name: "\(user.username)\(user.email!).jpg", data: data!), forKey: "imageFile")
                 user.saveInBackground()
                 
             }
             
         }
     }
-    
+    var keyboard: Bool? = false
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextFiled: UITextField!
     @IBOutlet weak var phoneNumberTextField: UITextField!
@@ -97,8 +97,7 @@ class CleanPersonProfileEditingViewController: UIViewController {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         
-//        self.hideKeyboardWhenTappedAround()
-        
+        self.introductionTextView.delegate = self
         self.user = PFUser.currentUser()!
         self.userNameTextField.text = self.user!.username!
         self.userNameTextField.enabled = false
@@ -206,14 +205,11 @@ extension CleanPersonProfileEditingViewController {
     
     
     func keyboardWillShow(notification: NSNotification) {
-        let height = getKeyboardHeight(notification) - 40
+        if self.keyboard! == false { return }
+        let height = getKeyboardHeight(notification) - 50
+
         if bo {
            // NSLayoutConstraint.deactivateConstraints([self.topLayout])
-            if  self.topLayout == nil {
-                print("nil")
-            } else {
-                print("not nil")
-            }
             self.topLayout.active = false
             if self.topLayout == nil {
                 print("laternil")
@@ -228,10 +224,9 @@ extension CleanPersonProfileEditingViewController {
     }
     
     func keyboardWillHide(notification: NSNotification) {
-        let height = getKeyboardHeight(notification) - 40
+        if self.keyboard! == false { return }
+        let height = getKeyboardHeight(notification) - 50
         if !bo {
-            
-            
             view.frame.origin.y += height
             self.topLayout.active = true
             bo = true
@@ -254,5 +249,19 @@ extension CleanPersonProfileEditingViewController {
             UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name:
             UIKeyboardWillHideNotification, object: nil)
+    }
+}
+
+extension CleanPersonProfileEditingViewController: UITextViewDelegate {
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        print("shoudl begin")
+        self.keyboard = true
+        return true
+    }
+
+    func textViewDidEndEditing(textView: UITextView) {
+        print("didend")
+        self.keyboard = false
+        
     }
 }

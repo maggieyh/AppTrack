@@ -22,6 +22,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
     var imageFile: PFFile?
     var bo: Bool = true
     var oneSignal: OneSignal?
+    var keyboard: Bool?
     @IBOutlet weak var topLayout: NSLayoutConstraint!
     
     @IBOutlet var spinner:UIActivityIndicatorView!
@@ -44,8 +45,6 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         photoTakingHelper = PhotoTakingHelper(viewController: self) { (image: UIImage?) in
             if let image = image {
                 self.userImage.image = image
-                let data = UIImagePNGRepresentation(image)
-                self.imageFile = PFFile(name: "cleanPerson.jpg", data: data!)
             }
             
         }
@@ -65,6 +64,8 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
             self.countyButton.hidden = false
             self.introductionTextView.hidden = false
             self.hourRateTextField.hidden = false
+            
+
         }
     }
 
@@ -79,21 +80,25 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         for ele in self.textFields! {
             guard ele.text != nil else{ self.alert(); return }
         }
-        
-        guard self.imageFile != nil else{ self.alert(); return }
+        guard self.userImage.image != nil else{ self.alert(); return }
+        guard countyDropDown.selectedItem != nil else { self.alert(); return }
+        self.county = countyDropDown.selectedItem!
         if userType == "CleanPerson" {
             guard countyDropDown.selectedItem != nil else { self.alert(); return }
             guard self.hourRateTextField.text != nil else { self.alert(); return }
             
         }
         
-//        self.county = countyDropDown.selec
         let username = self.userNameTextField.text!
         let password = self.passwordTextField.text!
         let email = self.emailTextField.text!
         let finalEmail = email.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         let phoneNum = self.phoneNumberTextField.text!
         let newUser = PFUser()
+        
+        
+        let data = UIImagePNGRepresentation(self.userImage.image!)
+        self.imageFile = PFFile(name: "\(username)\(email).jpg", data: data!)
         
         newUser.username = username
         newUser.password = password
@@ -117,8 +122,8 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         if userType == "CleanPerson" {
             newUser["hourRate"] = self.hourRateTextField.text ?? ""
             newUser["introduction"] = self.introductionTextView.text ?? ""
-            newUser["county"] = self.county ?? ""
-            
+            newUser["county"] = self.county!
+
             
         }
         
@@ -174,12 +179,10 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         
         //keyboard avoiding test
   
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-
+        self.keyboard = false
         self.oneSignal?.registerForPushNotifications()
         
-        
+        self.hourRateTextField.delegate = self
         self.setupChooseCountyDropDown()
         
         self.textFields = [self.userNameTextField, self.passwordTextField, self.emailTextField, self.phoneNumberTextField]
@@ -187,6 +190,10 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         self.countyButton?.hidden = true
         self.introductionTextView?.hidden = true
         self.hourRateTextField?.hidden = true
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
         
         // set our custom background image
         //        backgroundImage = UIImageView(image: UIImage(named: "welcome_bg"))
@@ -248,6 +255,14 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
     }
 
 }
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(textField: UITextField) {
+        self.keyboard = true
+    }
+    func textFieldDidEndEditing(textField: UITextField) {
+        self.keyboard = false
+    }
+}
 
 extension RegisterViewController {
     override func viewDidAppear(animated: Bool) {
@@ -264,25 +279,29 @@ extension RegisterViewController {
     
     }
     func keyboardWillShow(notification: NSNotification) {
-        let height = getKeyboardHeight(notification) - 40
-        if bo {
-            self.topLayout.active = false
-            if self.topLayout == nil {
-                print("nil")
+        if self.userType == "CleanPerson" && self.keyboard! {
+            let height = getKeyboardHeight(notification) - 40
+            if bo {
+                self.topLayout.active = false
+                if self.topLayout == nil {
+                    print("nil")
+                }
+                view.frame.origin.y -= height
+                bo = false
             }
-            view.frame.origin.y -= height
-            bo = false
         }
     }
     func dismissKeyboard() {
         self.view.endEditing(true)
     }
     func keyboardWillHide(notification: NSNotification) {
-        let height = getKeyboardHeight(notification) - 40
-        if !bo {
-            view.frame.origin.y += height
-            self.topLayout.active = true
-            bo = true
+        if self.userType == "CleanPerson" && self.keyboard! {
+            let height = getKeyboardHeight(notification) - 40
+            if !bo {
+                view.frame.origin.y += height
+                self.topLayout.active = true
+                bo = true
+            }
         }
     }
     
@@ -303,15 +322,24 @@ extension RegisterViewController {
         NSNotificationCenter.defaultCenter().removeObserver(self, name:
             UIKeyboardWillHideNotification, object: nil)
     }
-    
+    func textViewShouldBeginEditing(textView: UITextView) -> Bool {
+        self.keyboard = true
+        return true
+    }
+   
+   
     func textViewDidBeginEditing(textView: UITextView) {
+        
         if textView.textColor == UIColor.lightGrayColor() {
             textView.text = nil
             textView.textColor = UIColor.blackColor()
         }
     }
     
+    
     func textViewDidEndEditing(textView: UITextView) {
+        print("didend")
+        self.keyboard = false
         if textView.text.isEmpty {
             textView.text = "Introduce Yourself"
             textView.textColor = UIColor.lightGrayColor()

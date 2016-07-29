@@ -13,6 +13,7 @@ import Parse
 
 class LogInViewController: UIViewController {
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LogInViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
@@ -31,8 +32,13 @@ class LogInViewController: UIViewController {
         if userNameTextField.text == nil || passwordTextField.text == nil {
             print("try again")
         } else {
+            spinner.hidesWhenStopped = true
+            spinner.center = view.center
+            self.view.addSubview(spinner)
+            spinner.startAnimating()
             PFUser.logInWithUsernameInBackground(userNameTextField.text!, password:passwordTextField.text!) {
                 (user: PFUser?, error: NSError?) -> Void in
+                self.spinner.stopAnimating()
                 if user != nil {
                     // Do stuff after successful login.
                     if error != nil {
@@ -50,7 +56,9 @@ class LogInViewController: UIViewController {
 
                 } else {
                     // The login failed. Check error to see why.
-                    print("ah!!!")
+                    let alertController = UIAlertController(title: "Fail!!", message: "Something wrong" , preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 }
             }
         }
