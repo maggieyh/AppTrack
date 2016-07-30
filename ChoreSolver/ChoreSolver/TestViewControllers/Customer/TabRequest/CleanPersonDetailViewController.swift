@@ -8,6 +8,8 @@
 
 import UIKit
 import Parse
+import Bond
+import ConvenienceKit
 class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
     var fromRequestView: Bool?
     var cleanPerson: User?
@@ -16,7 +18,7 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
     var oneSignal: OneSignal?
     var indexPath: NSIndexPath?
     var viewController: UIViewController?
-//    var review: Review?
+
     @IBAction func backBarButtonTapped(sender: AnyObject) {
         if fromRequestView! {
             self.performSegueWithIdentifier("unwindBackToRequestView", sender: self)
@@ -28,6 +30,13 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showReviewsTable" {
+            let VC = segue.destinationViewController as! ReviewTableViewController
+            VC.reviews = self.reviews
+            VC.cleanPerson = self.cleanPerson
+        }
+    }
     @IBOutlet var rightBarButton: UIBarButtonItem!
     @IBOutlet weak var navigationBarItem: UINavigationItem!
     @IBOutlet weak var nameLabel: UILabel!
@@ -54,14 +63,21 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+       ParseHelper.fetchReviews(self.defaultRange, cleanPerson: self.cleanPerson!) { (result: [PFObject]?, error: NSError?) in
+            self.reviews = result as? [Review] ?? []
+        }
+        
         // Do any additional setup after loading the view.
         let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         self.oneSignal = appDelegate?.oneSignal
         
         
         if let cleanPerson = cleanPerson {
+            //????????
             cleanPerson.downloadImage()
             imageView.image = cleanPerson.image.value
+            
             nameLabel.text = cleanPerson.username
             
             if let hourRate = cleanPerson["hourRate"] as? String {
@@ -109,7 +125,7 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
   
-   
+  
     
     /*
     // MARK: - Navigation
@@ -121,4 +137,9 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
     }
     */
     
+    //MARK: TimelineComponent
+    let defaultRange = 0...4
+    let additionalRangeSize = 5
+    var reviews: [Review]? = []
 }
+

@@ -10,20 +10,19 @@ import Foundation
 import Parse
 
 class ParseHelper {
+    static let ParseCleanPerson = "cleanPerson"
+    static let ParseCustomer = "customer"
     static let ParseUserType = "userType"
     static let ParseUserCounty = "county"
     
+    
     static let ParseRequestClass = "Request"
-    static let ParseRequestCustomer = "customer"
-    static let ParseRequestCleanPerson = "cleanPerson"
     static let ParseRequestAgree = "agree"
     static let ParseRequestChecked = "checked"
     
     static let ParseReviewClass = "Review"
-    static let ParseReviewCustomer = "customer"
-    static let ParseReviewCleanPerson = "cleanPerson"
     static let ParseReviewStar = "stars"
-    static let ParseReviewDescription = "description"
+    static let ParseReviewDescription = "comment"
     static func initRequestInfo(customer: PFUser, cleanPerson: PFUser, block: PFBooleanResultBlock ) {
         //Check if the Request object already set between these two user   ????
 //        let requestQuery = PFQuery(className: ParseRequestClass)
@@ -33,8 +32,8 @@ class ParseHelper {
 //            if result!.count == 0 {
                 //Set up new Request object
                 let requestObject = PFObject(className: ParseRequestClass)
-                requestObject[ParseRequestCustomer] = customer
-                requestObject[ParseRequestCleanPerson] = cleanPerson
+                requestObject[ParseCustomer] = customer
+                requestObject[ParseCleanPerson] = cleanPerson
                 requestObject[ParseRequestAgree] = NSNumber(bool: false)
                 requestObject[ParseRequestChecked] = NSNumber(bool: false)
                 requestObject.saveInBackgroundWithBlock(block)
@@ -46,8 +45,8 @@ class ParseHelper {
     
     static func initReview(stars: NSNumber, description: String, customer: PFUser, cleanPerson: PFUser) {
         let reviewObject = PFObject(className: ParseReviewClass)
-        reviewObject[ParseReviewCustomer] = customer
-        reviewObject[ParseReviewCleanPerson] = cleanPerson
+        reviewObject[ParseCustomer] = customer
+        reviewObject[ParseCleanPerson] = cleanPerson
         reviewObject[ParseReviewDescription] = description
         reviewObject[ParseReviewStar] = stars
         reviewObject.saveInBackground()
@@ -68,11 +67,22 @@ class ParseHelper {
     
     static func fetchParticularRequest(customer: PFUser, cleanPerson: PFUser, completionBlock: PFQueryArrayResultBlock ) {
         let requestQuery = PFQuery(className: ParseRequestClass)
-        requestQuery.whereKey(ParseRequestCleanPerson, equalTo: cleanPerson)
-        requestQuery.whereKey(ParseRequestCustomer, equalTo: customer)
+        requestQuery.whereKey(ParseCleanPerson, equalTo: cleanPerson)
+        requestQuery.whereKey(ParseCustomer, equalTo: customer)
         requestQuery.findObjectsInBackgroundWithBlock(completionBlock)            
 //        requestQuery.getFirstObjectInBackgroundWithBlock(completionBlock)
     }
     
+    
+    static func fetchReviews(range: Range<Int>, cleanPerson: PFUser, completionBlock: PFQueryArrayResultBlock) {
+        let reviewsQuery = PFQuery(className: ParseReviewClass)
+        reviewsQuery.whereKey(ParseCleanPerson, equalTo: cleanPerson)
+        reviewsQuery.includeKey(ParseCustomer)
+        
+        reviewsQuery.skip = range.startIndex
+        reviewsQuery.limit = range.endIndex - range.startIndex
+        reviewsQuery.findObjectsInBackgroundWithBlock(completionBlock)
+        
+    }
 }
 

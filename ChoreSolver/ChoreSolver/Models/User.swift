@@ -49,10 +49,11 @@ class User: PFUser {
              image.value = User.imageCache[name]
             
             if image.value == nil {
+                print("ff")
                 imageFile?.getDataInBackgroundWithBlock({ (data: NSData?, error: NSError?) in
                     
                     if let data = data {
-                        let image = UIImage(data: data, scale: 0.8)!
+                        let image = UIImage(data: data, scale: 0.5)!
                         self.image.value = image
                         User.imageCache[self.imageFile!.name] = image
                     }

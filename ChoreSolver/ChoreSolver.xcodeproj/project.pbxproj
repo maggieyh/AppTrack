@@ -41,6 +41,8 @@
 		6FBBF6A41D4A616B003A7D12 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FBBF6A31D4A616A003A7D12 /* Review.swift */; };
 		6FDDB8791D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */; };
 		6FDDB87B1D34D11700DBA28F /* CustomerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */; };
+		6FECCC6B1D4C337100C78437 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECCC6A1D4C337100C78437 /* ReviewTableViewController.swift */; };
+		6FECCC6E1D4C519800C78437 /* ReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECCC6D1D4C519800C78437 /* ReviewsTableViewCell.swift */; };
 		6FF998881D3BD24300A3466C /* PhotoTakingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF998871D3BD24300A3466C /* PhotoTakingHelper.swift */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +85,8 @@
 		6FBCF7291D474C020013022D /* ChoreSolver-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ChoreSolver-Bridging-Header.h"; path = "ChoreSolver/ChoreSolver-Bridging-Header.h"; sourceTree = "<group>"; };
 		6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cleanPersonRequestTableViewCell.swift; sourceTree = "<group>"; };
 		6FDDB87A1D34D11700DBA28F /* CustomerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomerProfileViewController.swift; sourceTree = "<group>"; };
+		6FECCC6A1D4C337100C78437 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
+		6FECCC6D1D4C519800C78437 /* ReviewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		6FF998871D3BD24300A3466C /* PhotoTakingHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoTakingHelper.swift; sourceTree = "<group>"; };
 		83AC856F9968EC949A59AAB8 /* Pods_ChoreSolver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ChoreSolver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A184FD2700C9E36EE66331 /* Pods-ChoreSolver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ChoreSolver.release.xcconfig"; path = "Pods/Target Support Files/Pods-ChoreSolver/Pods-ChoreSolver.release.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +209,7 @@
 				6F5F58D31D33EB61000ABB58 /* CustomerReqeustViewController.swift */,
 				6F3F511B1D39CF9100D0FB7E /* CleanPersonDetailViewController.swift */,
 				6FBBF6A11D49FFFE003A7D12 /* ReviewPersonViewController.swift */,
+				6FECCC6A1D4C337100C78437 /* ReviewTableViewController.swift */,
 			);
 			path = TabRequest;
 			sourceTree = "<group>";
@@ -231,6 +236,7 @@
 		6F8E6A8C1D31F94900618103 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6FECCC6C1D4C518800C78437 /* Review */,
 				6FDDB8771D34B86E00DBA28F /* CleanPersonRequest */,
 				6F5F58C11D336C42000ABB58 /* CustomerRequestResult */,
 				6F8E6A8D1D31F94900618103 /* SearchResult */,
@@ -312,6 +318,14 @@
 				6FDDB8781D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift */,
 			);
 			path = CleanPersonRequest;
+			sourceTree = "<group>";
+		};
+		6FECCC6C1D4C518800C78437 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				6FECCC6D1D4C519800C78437 /* ReviewsTableViewCell.swift */,
+			);
+			path = Review;
 			sourceTree = "<group>";
 		};
 		F1D4BAF4E8101AB1148B2FFA /* Pods */ = {
@@ -460,9 +474,11 @@
 				6FDDB8791D34B89E00DBA28F /* cleanPersonRequestTableViewCell.swift in Sources */,
 				6F8E6A8F1D31F96200618103 /* SearchResultTableViewCell.swift in Sources */,
 				6FA271481D3E113200E60902 /* User.swift in Sources */,
+				6FECCC6E1D4C519800C78437 /* ReviewsTableViewCell.swift in Sources */,
 				6FAE34CC1D37C40900BDDC10 /* DPDUIView+Extension.swift in Sources */,
 				6F5F58D61D33EBD2000ABB58 /* SearchViewController.swift in Sources */,
 				6FAE34CB1D37C40900BDDC10 /* DPDKeyboardListener.swift in Sources */,
+				6FECCC6B1D4C337100C78437 /* ReviewTableViewController.swift in Sources */,
 				6F9045D81D3C73D200881640 /* CleanPersonProfileEditingViewController.swift in Sources */,
 				6FBBF69C1D49D93E003A7D12 /* FeatureHelper.swift in Sources */,
 				6FAE34D01D37C40900BDDC10 /* DropDown.swift in Sources */,

@@ -18,8 +18,8 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
     var activate: Bool = false
     var cleanPersons: [User] = []
     var selectedCounty: String?
-    let defaultRange = 0...6
-    let additionalRangeSize = 7
+    let defaultRange = 0...4
+    let additionalRangeSize = 5
     var indexPath: NSIndexPath? //selected indexPath
     var timelineComponent: TimelineComponent<User, SearchResultViewController>!
     var oneSignal: OneSignal?

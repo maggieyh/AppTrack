@@ -62,6 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         // Initialize Facebook
 //        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        do {
+            try PFUser.logInWithUsername("testCustomer", password: "testCustomer")
+        } catch {
+            print("Unable to log in")
+        }
         
         let user = PFUser.currentUser()
         var startViewController: UIViewController
@@ -72,16 +77,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("cusotmer")
                 startViewController = storyboard.instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
                 let temp = startViewController as! UITabBarController
-//                let requestQuery = PFQuery(className: "Request")
-//                requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
-//                requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
-//                    if let result = result as? [Request] {
-//                        let rqst = result.filter { $0.checked.boolValue == false && $0.agree == true }
-//                        if rqst.count >= 1 {
-//                        temp.tabBar.items![1].badgeValue = String(rqst.count)
-//                        }
-//                    }
-//                }
+                let requestQuery = PFQuery(className: "Request")
+                requestQuery.whereKey("customer", equalTo: PFUser.currentUser()!)
+                requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+                    if let result = result as? [Request] {
+                        let rqst = result.filter { $0.checked.boolValue == false && $0.agree == true }
+                        if rqst.count >= 1 {
+                        temp.tabBar.items![1].badgeValue = String(rqst.count)
+                        }
+                    }
+                }
             } else {
                 print("cleanPErson")
                 startViewController = storyboard.instantiateViewControllerWithIdentifier("CleanPersonTabBarController") as! UITabBarController
