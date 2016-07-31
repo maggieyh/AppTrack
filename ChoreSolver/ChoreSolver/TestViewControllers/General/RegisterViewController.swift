@@ -81,12 +81,12 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
             guard ele.text != nil else{ self.alert(); return }
         }
         guard self.userImage.image != nil else{ self.alert(); return }
-        guard countyDropDown.selectedItem != nil else { self.alert(); return }
-        self.county = countyDropDown.selectedItem!
+        
+        
         if userType == "CleanPerson" {
             guard countyDropDown.selectedItem != nil else { self.alert(); return }
             guard self.hourRateTextField.text != nil else { self.alert(); return }
-            
+            self.county = countyDropDown.selectedItem!
         }
         
         let username = self.userNameTextField.text!
@@ -97,16 +97,13 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         let newUser = PFUser()
         
         
-        let data = UIImagePNGRepresentation(self.userImage.image!)
-        self.imageFile = PFFile(name: "\(username)\(email).jpg", data: data!)
-        
         newUser.username = username
         newUser.password = password
         newUser.email = finalEmail
         newUser["userType"] = userType
         newUser["phoneNumber"] = phoneNum
-        newUser["imageFile"] = self.imageFile
-        self.imageFile?.saveInBackground()
+//        newUser["imageFile"] = self.imageFile
+        
         
         self.oneSignal!.IdsAvailable({ (userId, pushToken) in
             NSLog("UserId:%@", userId)
@@ -123,8 +120,6 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
             newUser["hourRate"] = self.hourRateTextField.text ?? ""
             newUser["introduction"] = self.introductionTextView.text ?? ""
             newUser["county"] = self.county!
-            newUser["reviewsNum"] = 0
-            newUser["reviewsAverage"] = 0
             
         }
         
@@ -141,17 +136,40 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
 //            AppDelegate.oneSignal!.sendTag("objectId", value: PFUser.currentUser()?.objectId!)
             if ((error) != nil) {
                 print(error)
-                
+                print("fail")
+                 self.spinner.stopAnimating()
             } else {
                 print("success")
+                
+                
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
                     if self.userType == "Customer" {
+
+//                        let data = UIImagePNGRepresentation(self.userImage.image!)
+//                        self.imageFile = PFFile(name: "ddddd.jpg", data: data!)
                         let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
                         self.presentViewController(viewController, animated: true, completion: nil)
+                        
+                        
+                        
                     } else {
+                        
                         let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CleanPersonTabBarController") as! UITabBarController
                         self.presentViewController(viewController, animated: true, completion: nil)
+                        
+//                        let reviewsPoll = PFObject(className: "ReviewsPoll")
+//                        reviewsPoll["totalNum"] = 0
+//                        reviewsPoll["average"] = 0
+//                        reviewsPoll["cleanPerson"] = PFUser.currentUser()!
+//                        reviewsPoll.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) in
+//                            if success {
+//                                print("gggsuccess")
+//                                
+//                            } else {
+//                                print(error)
+//                            }
+//                        })
                     }
 
                     self.spinner.stopAnimating()
@@ -347,6 +365,7 @@ extension RegisterViewController {
         }
     }
 }
+
 
 
 

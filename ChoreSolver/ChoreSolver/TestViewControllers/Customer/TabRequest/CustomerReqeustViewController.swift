@@ -37,20 +37,24 @@ class CustomerReqeustViewController: UIViewController {
                 let str = cleanPersonDetailViewController.cleanPerson?.username
                 cleanPersonDetailViewController.navigationBarItem.title = str! + "'s profile"
                 if requests[indexPath.row].agree.boolValue {
+                    print("in")
                     cleanPersonDetailViewController.stateOfRequest = 1 //agree
-                    if !(requests[indexPath.row].checked.boolValue) && self.tabBarController?.tabBar.items![1].badgeValue != nil {
+                    if !(requests[indexPath.row].checked.boolValue) {
                         requests[indexPath.row].checked = NSNumber(bool: true)
                         requests[indexPath.row].saveInBackground()
-                        let num = Int((self.tabBarController?.tabBar.items![1].badgeValue)!)
-                        print(num)
-                        if num <= 1 {
-                            self.tabBarController?.tabBar.items![1].badgeValue = nil
-                        } else {
-                            self.tabBarController?.tabBar.items![1].badgeValue = String(num!-1)
-                        }
                         
+                        if self.tabBarController?.tabBar.items![1].badgeValue != nil {
+                        
+                            let num = Int((self.tabBarController?.tabBar.items![1].badgeValue)!)
+                            print(num)
+                            if num <= 1 {
+                                self.tabBarController?.tabBar.items![1].badgeValue = nil
+                            } else {
+                                self.tabBarController?.tabBar.items![1].badgeValue = String(num!-1)
+                            }
+                            
+                        }
                     }
-                    
                 } else {
                     cleanPersonDetailViewController.stateOfRequest = 2 //not yet respond
                 }
@@ -76,7 +80,6 @@ class CustomerReqeustViewController: UIViewController {
                     self.requestTableView.reloadData()
             
             }
-        
         
     }
 
@@ -119,6 +122,14 @@ extension CustomerReqeustViewController: UITableViewDelegate, UITableViewDataSou
         } else {
             cell.stateLabel.text = "Request Sent, Wait for Response"
         }
+//        
+//        let reviewPoll = PFQuery(className: "ReviewsPoll")
+//        reviewPoll.whereKey("cleanPerson", equalTo: cell.cleanPerson!)
+//        reviewPoll.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+//            if let result = result {
+//                print(result[0].objectId)
+//            }
+//        }
   
         
         return cell

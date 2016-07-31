@@ -17,19 +17,23 @@ class FeatureHelper {
         var message: UITextField?
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
                 message = (alertController.textFields?.first)!
-                if message!.text == nil {
-                    message!.text = ""
+                let customerName = PFUser.currentUser()?.username!
+                if let cleanPersonOneSignalID = cleanPerson.oneSignalID as? String {
+                    var text = "\(customerName!) sent a request for your contact info! Reply \(customerName!)! \n"
+                    if let message = message?.text {
+                        text = text + message
+                    }
+                    let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [cleanPersonOneSignalID],"contents": ["en": "\(text)"]]
+                    oneSignal.postNotification(jsonData)
                 }
+            
         }))
 
         viewController.presentViewController(alertController, animated: true, completion: nil)
         
         ParseHelper.initRequestInfo(PFUser.currentUser()!, cleanPerson: cleanPerson, block: { (success: Bool, error: NSError?) in
-                let customerName = PFUser.currentUser()?.username!
-                
-                if let cleanPersonOneSignalID = cleanPerson.oneSignalID as? String {
-                    let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [cleanPersonOneSignalID],"contents": ["en": "\(customerName!) sent a request for your contact info! Reply \(customerName!)! \n \(message!.text!)"]]
-                    oneSignal.postNotification(jsonData)
+                if error != nil {
+                    print("from init request info \(error)")
                 }
             })
     }

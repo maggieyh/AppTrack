@@ -69,9 +69,11 @@ class CleanPersonProfileEditingViewController: UIViewController {
             //turn the UIImage into an NSData instance because the PFFile class needs an NSData argument for its initializer.
             if let image = image {
                 self.imageView.image = image
-                let data = UIImagePNGRepresentation(image)
+                guard let data = UIImagePNGRepresentation(image) else { print("ff"); return}
                 let user = PFUser.currentUser()!
-                user.setValue(PFFile(name: "\(user.username)\(user.email!).jpg", data: data!), forKey: "imageFile")
+//                user.setValue(PFFile(name: "\(user.username)\(user.email!).jpg", data: data!), forKey: "imageFile")
+                
+                user.setValue(PFFile(name: "anotheer.jpg", data: data), forKey: "imageFile")
                 user.saveInBackground()
                 
             }
@@ -254,13 +256,13 @@ extension CleanPersonProfileEditingViewController {
 
 extension CleanPersonProfileEditingViewController: UITextViewDelegate {
     func textViewShouldBeginEditing(textView: UITextView) -> Bool {
-        print("shoudl begin")
+       
         self.keyboard = true
         return true
     }
 
     func textViewDidEndEditing(textView: UITextView) {
-        print("didend")
+        
         self.keyboard = false
         
     }

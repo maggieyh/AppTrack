@@ -26,38 +26,43 @@ class ReviewPersonViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var starRating: CosmosView!
     @IBOutlet weak var reviewTextView: UITextView!
     @IBAction func submitButtonTapped(sender: AnyObject) {
-        self.submitButton.enabled = false
-        let num = starRating.rating as NSNumber
-        if reviewTextView.text != "Review to support \(self.cleanPerson?.username!)!" {
+        
+        if reviewTextView.text != "Review to support \(self.cleanPerson!.username!)!" &&  reviewTextView.text != "" {
+            self.submitButton.enabled = false
+            let num = starRating.rating as NSNumber
             self.submitButton.enabled = false
             self.submitButton.hidden = true
             self.reviewTextView.editable = false
             self.starRating.userInteractionEnabled = false
-            
-            let total = self.cleanPerson!.reviewsAverage!.doubleValue * self.cleanPerson!.reviewsNum!.doubleValue
-            print(total)
-            self.cleanPerson!.reviewsAverage = (total + starRating.rating)/(self.cleanPerson!.reviewsNum!.doubleValue + 1) as NSNumber
-            print(self.cleanPerson!.reviewsAverage?.doubleValue)
-            self.cleanPerson!.reviewsNum = (self.cleanPerson!.reviewsNum!.doubleValue + 1) as NSNumber
-            self.cleanPerson!.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) in
-                if success {
-                    print("yes")
-                } else {
-                    print(error)
-                }
-            })
+            print("text")
+            print(reviewTextView.text)
+//            let total = self.cleanPerson!.reviewsAverage!.doubleValue * self.cleanPerson!.reviewsNum!.doubleValue
+//            print(total)
+//            self.cleanPerson!.reviewsAverage = (total + starRating.rating)/(self.cleanPerson!.reviewsNum!.doubleValue + 1) as NSNumber
+//            print(self.cleanPerson!.reviewsAverage?.doubleValue)
+//            self.cleanPerson!.reviewsNum = (self.cleanPerson!.reviewsNum!.doubleValue + 1) as NSNumber
+//            self.cleanPerson!.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) in
+//                if success {
+//                    print("yes")
+//                } else {
+//                    print(error)
+//                }
+//            })
             
             ParseHelper.initReview(num, description: reviewTextView.text, customer: PFUser.currentUser()!, cleanPerson: self.cleanPerson!)
             self.performSegueWithIdentifier("unwindBackToCleanPersonDetailView", sender: self)
+            
         } else {
             let alertController = UIAlertController(title: "Something wrong", message: "you haven't typed in any review", preferredStyle: UIAlertControllerStyle.Alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
+            alertController.view.layoutIfNeeded()
             alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: false, completion: nil)
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
         
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -102,8 +107,9 @@ class ReviewPersonViewController: UIViewController, UITextViewDelegate {
     }
     
     func textViewDidEndEditing(textView: UITextView) {
+        print("ddd")
         if textView.text.isEmpty {
-            textView.text = "Review to support \(self.cleanPerson?.username!)!"
+            textView.text = "Review to support \(self.cleanPerson!.username!)!"
             textView.textColor = UIColor.lightGrayColor()
         }
     }

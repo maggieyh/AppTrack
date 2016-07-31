@@ -22,8 +22,6 @@ class User: PFUser {
     @NSManaged var introduction: NSString?
     @NSManaged var hourRate: NSString?
     
-    @NSManaged var reviewsNum: NSNumber?
-    @NSManaged var reviewsAverage: NSNumber?
     static var imageCache: NSCacheSwift<String, UIImage>! //string is key, uiimage is value
     
     
@@ -51,7 +49,7 @@ class User: PFUser {
              image.value = User.imageCache[name]
             
             if image.value == nil {
-                print("ff")
+                
                 imageFile?.getDataInBackgroundWithBlock({ (data: NSData?, error: NSError?) in
                     
                     if let data = data {

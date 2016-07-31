@@ -61,12 +61,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
        
         // Initialize Facebook
-//        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
-//        do {
-//            try PFUser.logInWithUsername("testCustomer", password: "testCustomer")
-//        } catch {
-//            print("Unable to log in")
-//        }
+        PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
+        do {
+            try PFUser.logInWithUsername("mmmm", password: "mmmm")
+        } catch {
+            print("Unable to log in")
+        }
         
         let user = PFUser.currentUser()
         var startViewController: UIViewController

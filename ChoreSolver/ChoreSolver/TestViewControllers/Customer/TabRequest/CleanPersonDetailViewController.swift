@@ -72,22 +72,19 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.ratingView.settings.updateOnTouch = true
-        self.ratingView.rating = self.cleanPerson!.reviewsAverage!.doubleValue
-        self.ratingView.settings.fillMode = .Precise
-        
-        self.reviewsNumberButton.setTitle("\(self.cleanPerson!.reviewsNum!.intValue) reviews", forState: .Normal)
-        
-        
-        self.view.addSubview(self.ratingView)
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(CleanPersonDetailViewController.goToReviewsTable))
-        self.ratingView.addGestureRecognizer(gesture)
+//        self.ratingView.settings.updateOnTouch = true
+//        self.ratingView.rating = self.cleanPerson!.reviewsAverage!.doubleValue
+//        self.ratingView.settings.fillMode = .Precise
+//        self.reviewsNumberButton.setTitle("\(self.cleanPerson!.reviewsNum!.intValue) reviews", forState: .Normal)
+//        self.view.addSubview(self.ratingView)
+//        let gesture = UITapGestureRecognizer(target: self, action: #selector(CleanPersonDetailViewController.goToReviewsTable))
+//        self.ratingView.addGestureRecognizer(gesture)
         
         ParseHelper.fetchReviews(self.defaultRange, cleanPerson: self.cleanPerson!) { (result: [PFObject]?, error: NSError?) in
             self.reviews = result as? [Review] ?? []
         }
         
-        // Do any additional setup after loading the view.
+       
         let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
         self.oneSignal = appDelegate?.oneSignal
         
@@ -137,6 +134,14 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
                 contactLabel.hidden = true
             }
 
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        ParseHelper.fetchReviews(self.defaultRange, cleanPerson: self.cleanPerson!) { (result: [PFObject]?, error: NSError?) in
+            self.reviews = result as? [Review] ?? []
         }
     }
     override func didReceiveMemoryWarning() {

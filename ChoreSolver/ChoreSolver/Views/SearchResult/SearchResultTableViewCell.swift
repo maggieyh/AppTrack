@@ -100,7 +100,7 @@ class SearchResultTableViewCell: UITableViewCell {
                     //no result, 0-> nil
                     self.stateRequest.value = 0
                 }
-                print("e")
+                
                 if let result = result as? [Request]? {
                     if result?.count != 0 {
                         if result![0].agree.boolValue {
