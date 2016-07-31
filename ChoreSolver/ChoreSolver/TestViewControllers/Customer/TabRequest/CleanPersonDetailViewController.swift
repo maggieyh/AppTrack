@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import Bond
+import Cosmos
 import ConvenienceKit
 class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
     var fromRequestView: Bool?
@@ -19,6 +20,7 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
     var indexPath: NSIndexPath?
     var viewController: UIViewController?
 
+    @IBOutlet weak var ratingView: CosmosView!
     @IBAction func backBarButtonTapped(sender: AnyObject) {
         if fromRequestView! {
             self.performSegueWithIdentifier("unwindBackToRequestView", sender: self)
@@ -34,6 +36,9 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
         if segue.identifier == "showReviewsTable" {
             let VC = segue.destinationViewController as! ReviewTableViewController
             VC.reviews = self.reviews
+            VC.cleanPerson = self.cleanPerson
+        } else if segue.identifier == "goToReviewPage" {
+            let VC = segue.destinationViewController as! ReviewPersonViewController
             VC.cleanPerson = self.cleanPerson
         }
     }
@@ -54,17 +59,31 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    @IBOutlet weak var reviewsNumberButton: UIButton!
     @IBOutlet weak var contactLabel: UILabel!
     @IBOutlet weak var hourRateLabel: UILabel!
     @IBOutlet weak var introductionTextView: UITextView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var introductionLabel: UILabel!
     @IBOutlet weak var contactMethodTextView: UITextView!
+    func goToReviewsTable() {
+        self.performSegueWithIdentifier("showReviewsTable", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.ratingView.settings.updateOnTouch = true
+        self.ratingView.rating = self.cleanPerson!.reviewsAverage!.doubleValue
+        self.ratingView.settings.fillMode = .Precise
         
-       ParseHelper.fetchReviews(self.defaultRange, cleanPerson: self.cleanPerson!) { (result: [PFObject]?, error: NSError?) in
+        self.reviewsNumberButton.setTitle("\(self.cleanPerson!.reviewsNum!.intValue) reviews", forState: .Normal)
+        
+        
+        self.view.addSubview(self.ratingView)
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(CleanPersonDetailViewController.goToReviewsTable))
+        self.ratingView.addGestureRecognizer(gesture)
+        
+        ParseHelper.fetchReviews(self.defaultRange, cleanPerson: self.cleanPerson!) { (result: [PFObject]?, error: NSError?) in
             self.reviews = result as? [Review] ?? []
         }
         

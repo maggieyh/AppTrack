@@ -123,7 +123,8 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
             newUser["hourRate"] = self.hourRateTextField.text ?? ""
             newUser["introduction"] = self.introductionTextView.text ?? ""
             newUser["county"] = self.county!
-
+            newUser["reviewsNum"] = 0
+            newUser["reviewsAverage"] = 0
             
         }
         

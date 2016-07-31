@@ -33,6 +33,20 @@ class ReviewPersonViewController: UIViewController, UITextViewDelegate {
             self.submitButton.hidden = true
             self.reviewTextView.editable = false
             self.starRating.userInteractionEnabled = false
+            
+            let total = self.cleanPerson!.reviewsAverage!.doubleValue * self.cleanPerson!.reviewsNum!.doubleValue
+            print(total)
+            self.cleanPerson!.reviewsAverage = (total + starRating.rating)/(self.cleanPerson!.reviewsNum!.doubleValue + 1) as NSNumber
+            print(self.cleanPerson!.reviewsAverage?.doubleValue)
+            self.cleanPerson!.reviewsNum = (self.cleanPerson!.reviewsNum!.doubleValue + 1) as NSNumber
+            self.cleanPerson!.saveInBackgroundWithBlock({ (success: Bool, error: NSError?) in
+                if success {
+                    print("yes")
+                } else {
+                    print(error)
+                }
+            })
+            
             ParseHelper.initReview(num, description: reviewTextView.text, customer: PFUser.currentUser()!, cleanPerson: self.cleanPerson!)
             self.performSegueWithIdentifier("unwindBackToCleanPersonDetailView", sender: self)
         } else {

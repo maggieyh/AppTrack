@@ -22,6 +22,8 @@ class User: PFUser {
     @NSManaged var introduction: NSString?
     @NSManaged var hourRate: NSString?
     
+    @NSManaged var reviewsNum: NSNumber?
+    @NSManaged var reviewsAverage: NSNumber?
     static var imageCache: NSCacheSwift<String, UIImage>! //string is key, uiimage is value
     
     

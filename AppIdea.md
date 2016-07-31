@@ -375,6 +375,12 @@ http://stackoverflow.com/questions/1126726/how-to-make-a-uitextfield-move-up-whe
 * PUSH notification
 https://www.raywenderlich.com/123862/push-notifications-tutorial
 http://www.appcoda.com/push-notification-ios/
+* design
+http://www.inside.com.tw/2015/12/09/designing-with-contrast
 
 
-
+* message
+https://github.com/layerhq/Layer-Parse-iOS-Example
+https://github.com/layerhq/Atlas-iOS
+https://developer.layer.com/docs/ios/integration#installation-and-setup
+https://github.com/jawwad/layer-quick-start-swift

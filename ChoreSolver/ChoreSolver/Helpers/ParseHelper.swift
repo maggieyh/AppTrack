@@ -49,6 +49,7 @@ class ParseHelper {
         reviewObject[ParseCleanPerson] = cleanPerson
         reviewObject[ParseReviewDescription] = description
         reviewObject[ParseReviewStar] = stars
+        cleanPerson.saveInBackground()
         reviewObject.saveInBackground()
     }
     
