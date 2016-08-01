@@ -299,6 +299,10 @@ _submitting to the App Store_
 * [goals for the week, should be finishing the polish -- demo day on Saturday!]
 
 
+Message 
+design
+
+
 
 * in About page pay tribute to https://icons8.com
 [Back to top ^](#)

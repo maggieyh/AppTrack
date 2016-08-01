@@ -36,6 +36,7 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Do any additional setup after loading the view.
         SearchResultTableViewCell.stateCache = NSCacheSwift<String, Int?>()
         
@@ -57,10 +58,13 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
                 cell.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
                 cell.requestButton.enabled = false
             case 2:
-                cell.requestButton.setTitle("Sent", forState: UIControlState.Normal)
+                cell.requestButton.setTitle("Request", forState: UIControlState.Normal)
                 cell.requestButton.enabled = false
+                cell.requestButton.backgroundColor = UIColor(red: 34/255, green: 192/255, blue: 100/255, alpha: 1.0)
+                cell.requestButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             default:
                 cell.requestButton.enabled = true
+               
             }
             
         }
@@ -136,6 +140,7 @@ extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate
         cell.requestButton.enabled = false
         cell.fetchRequest()
         cell.delegate = self
+        self.customizeButton(cell.requestButton)
         return cell
     }
     
@@ -144,8 +149,15 @@ extension SearchResultViewController: UITableViewDataSource, UITableViewDelegate
 }
 extension SearchResultViewController: searchResultDelegate {
     func requestButtonTap(cleanPerson: User) {
-        print("fasd")
+        
         FeatureHelper.postNotification(self, oneSignal: self.oneSignal!, cleanPerson: cleanPerson)
+    }
+    func customizeButton(button: UIButton!) {
+//        button.setBackgroundImage(nil, forState: .Normal)
+//        button.backgroundColor = UIColor.clearColor()
+        button.layer.cornerRadius = 13
+        button.layer.borderWidth = 1
+        button.layer.borderColor = UIColor.blackColor().CGColor
     }
 }
 

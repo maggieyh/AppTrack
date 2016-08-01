@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 //    var parseLoginHelper: ParseLoginHelper!
     var oneSignal: OneSignal?
+   
     override init() {
         super.init()
         
@@ -127,7 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
         let token = "8e1c066cd654c81cf568464c44181e91"
         Mixpanel.sharedInstanceWithToken(token)
-        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        let mixpanel = Mixpanel.sharedInstance()
         mixpanel.track("App luanched")
         
         self.oneSignal = OneSignal(launchOptions: launchOptions, appId: "6f185136-e88e-4421-84b2-f8e681c0da7e", handleNotification: nil, autoRegister: false)

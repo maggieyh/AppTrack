@@ -15,6 +15,8 @@ import ParseFacebookUtilsV4
 
 class SearchViewController: UIViewController {
 
+    
+    
     var selectedCounty: String?
     var notificationNum: Int?
     @IBOutlet weak var countyPickerView: UIPickerView!
@@ -27,13 +29,14 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.titleTextAttributes =  [ NSFontAttributeName: UIFont.systemFontOfSize(17, weight: UIFontWeightRegular) ]
         // Do any additional setup after loading the view.
         self.countyPickerView.delegate = self
         self.countyPickerView.dataSource = self
-        self.countyPickerView.tintColor = UIColor.whiteColor()
-//        self.tabBarController?.tabBar.items![1].badgeValue = String(notificationNum!)
         
+//        self.tabBarController?.tabBar.items![1].badgeValue = String(notificationNum!)
+    
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -59,7 +62,7 @@ class SearchViewController: UIViewController {
     }
     */
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let attributedString = NSAttributedString(string: Data.counties[row], attributes: [NSForegroundColorAttributeName : UIColor.whiteColor()])
+        let attributedString = NSAttributedString(string: Data.counties[row], attributes: [NSForegroundColorAttributeName : UIColor.blackColor()])
         return attributedString
     }
 }

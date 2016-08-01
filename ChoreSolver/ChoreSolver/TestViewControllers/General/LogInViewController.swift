@@ -9,8 +9,7 @@
 import UIKit
 import ParseUI
 import Parse
-
-
+import Mixpanel
 class LogInViewController: UIViewController {
     
     @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -71,7 +70,12 @@ class LogInViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        let token = "8e1c066cd654c81cf568464c44181e91"
+        Mixpanel.sharedInstanceWithToken(token)
+        let mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("log in")
+        
         // Do any additional setup after loading the view.
         self.hideKeyboardWhenTappedAround()
 //        customizeButton(self.logInButton)
@@ -100,5 +104,14 @@ class LogInViewController: UIViewController {
         button.layer.cornerRadius = 5
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.whiteColor().CGColor
+        
+//        button.buttonColor = UIColor.turquoiseColor()
+//        button.shadowColor = UIColor.greenSeaColor()
+//        button.shadowHeight = 3.0
+//        button.cornerRadius = 6.0
+//       
+//        button.titleLabel!.font = UIFont.boldFlatFontOfSize(16)
+//        button.setTitleColor(UIColor.cloudsColor(), forState: .Normal)
+//        button.setTitleColor(UIColor.cloudsColor(), forState: .Highlighted)
     }
 }
