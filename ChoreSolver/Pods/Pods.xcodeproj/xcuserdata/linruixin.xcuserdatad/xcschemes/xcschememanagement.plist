@@ -4,6 +4,16 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Atlas-AtlasResource.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Atlas.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -54,6 +64,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Mixpanel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Parse.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -74,6 +89,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SVProgressHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -87,12 +107,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>11A91B5D6477C52D122B4350DE467C02</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2189A727627A385231CCBFC87D36327A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>2C8AA1BAF35413BDB954A1DF93576ED1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>40F160B1EC87D07E1B9EE04FB13AB5F3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>42F26A6D67AE51041C7A6BB8622D7937</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,7 +157,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8EFE724FDDAA2478F44F082C05BA272C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>9F766ADB76A46AB732825D44C4BAAABF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A005387B97B8EFFBC24CEB7C8E44CB85</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -138,11 +183,6 @@
 			<true/>
 		</dict>
 		<key>E1F78B1C5F8F2CCD0E68552EAF2B9B52</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FBFB1C2933A577B1AC147651ACD2EAE1</key>
 		<dict>
 			<key>primary</key>
 			<true/>

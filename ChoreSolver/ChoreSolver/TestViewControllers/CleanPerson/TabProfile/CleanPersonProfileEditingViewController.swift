@@ -66,15 +66,14 @@ class CleanPersonProfileEditingViewController: UIViewController {
     @IBOutlet weak var chooseImageButton: UIButton!
     @IBAction func chooseImageButtonTapped(sender: AnyObject) {
         photoTakingHelper = PhotoTakingHelper(viewController: self) { (image: UIImage?) in
-            //turn the UIImage into an NSData instance because the PFFile class needs an NSData argument for its initializer.
             if let image = image {
                 self.imageView.image = image
-                guard let data = UIImagePNGRepresentation(image) else { print("ff"); return}
-                let user = PFUser.currentUser()!
-//                user.setValue(PFFile(name: "\(user.username)\(user.email!).jpg", data: data!), forKey: "imageFile")
+                guard let data = UIImageJPEGRepresentation(image, 0.5) else { return }
                 
-                user.setValue(PFFile(name: "anotheer.jpg", data: data), forKey: "imageFile")
-                user.saveInBackground()
+                let user = PFUser.currentUser()!
+                user.setValue(PFFile(name: "\(user.objectId!).jpg", data: data), forKey: "imageFile")
+                
+
                 
             }
             

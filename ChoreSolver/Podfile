@@ -18,4 +18,5 @@ target 'ChoreSolver' do
   pod ‘Cosmos’, ‘~> 1.2’
   pod 'Atlas'
   pod 'SVProgressHUD'
+  pod ‘Mixpanel’
 end

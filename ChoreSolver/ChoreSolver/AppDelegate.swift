@@ -12,7 +12,7 @@ import FBSDKCoreKit
 import ParseUI
 import ParseFacebookUtilsV4
 import DropDown
-
+import Mixpanel
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -52,8 +52,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set up the Parse SDK
         let configuration = ParseClientConfiguration {
-            $0.applicationId = "CleanSolver"
-            $0.server = "https://cleansolver-parse-yh.herokuapp.com/parse"
+            $0.applicationId = "cleaning-yh"
+            $0.server = "https://cleaning-parse-yh.herokuapp.com/parse"
             
             
         }
@@ -62,11 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         // Initialize Facebook
         PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
-        do {
-            try PFUser.logInWithUsername("mmmm", password: "mmmm")
-        } catch {
-            print("Unable to log in")
-        }
+//        do {
+//            try PFUser.logInWithUsername("mmmm", password: "mmmm")
+//        } catch {
+//            print("Unable to log in")
+//        }
         
         let user = PFUser.currentUser()
         var startViewController: UIViewController
@@ -125,6 +125,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        PFACL.setDefaultACL(acl, withAccessForCurrentUser: true)
 //        
 //        
+        let token = "8e1c066cd654c81cf568464c44181e91"
+        Mixpanel.sharedInstanceWithToken(token)
+        let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("App luanched")
         
         self.oneSignal = OneSignal(launchOptions: launchOptions, appId: "6f185136-e88e-4421-84b2-f8e681c0da7e", handleNotification: nil, autoRegister: false)
         OneSignal.defaultClient().enableInAppAlertNotification(true)

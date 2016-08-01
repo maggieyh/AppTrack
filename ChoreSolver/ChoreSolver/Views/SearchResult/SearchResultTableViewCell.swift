@@ -53,7 +53,7 @@ class SearchResultTableViewCell: UITableViewCell {
                         self.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
                         self.requestButton.enabled = false
                     case 2:
-                        self.requestButton.setTitle("Request Sent", forState: UIControlState.Normal)
+                        self.requestButton.setTitle("Sent", forState: UIControlState.Normal)
                         self.requestButton.enabled = false
                     default:
                         self.requestButton.enabled = true
@@ -70,7 +70,7 @@ class SearchResultTableViewCell: UITableViewCell {
     @IBAction func requestInfoTapped(sender: AnyObject) {
         SearchResultTableViewCell.stateCache[self.cleanPerson!.username!] = 2
         self.stateRequest.value = 2
-        self.requestButton.setTitle("Request Sent", forState: .Normal)
+        self.requestButton.setTitle("Sent", forState: .Normal)
         self.requestButton.enabled = false
         self.delegate?.requestButtonTap(self.cleanPerson!)
 
@@ -123,6 +123,6 @@ class SearchResultTableViewCell: UITableViewCell {
     
     
 
-    
+
     
 }

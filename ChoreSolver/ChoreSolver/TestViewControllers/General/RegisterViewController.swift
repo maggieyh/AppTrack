@@ -23,6 +23,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
     var bo: Bool = true
     var oneSignal: OneSignal?
     var keyboard: Bool?
+    var keyboardadmin: Bool?
     @IBOutlet weak var topLayout: NSLayoutConstraint!
     
     @IBOutlet var spinner:UIActivityIndicatorView!
@@ -144,13 +145,15 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
                 
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     
+                    guard let data = UIImageJPEGRepresentation(self.userImage.image!, 0.5) else { return }
+                    let user = PFUser.currentUser()!
+                    user.setValue(PFFile(name: "\(user.objectId!).jpg", data: data), forKey: "imageFile")
+                    user.saveInBackground()
+                    
                     if self.userType == "Customer" {
 
-//                        let data = UIImagePNGRepresentation(self.userImage.image!)
-//                        self.imageFile = PFFile(name: "ddddd.jpg", data: data!)
                         let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("CustomerTabBarController") as! UITabBarController
                         self.presentViewController(viewController, animated: true, completion: nil)
-                        
                         
                         
                     } else {
@@ -197,7 +200,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         introductionTextView.textColor = UIColor.lightGrayColor()
         
         //keyboard avoiding test
-  
+        self.keyboardadmin = false
         self.keyboard = false
         self.oneSignal?.registerForPushNotifications()
         
@@ -276,10 +279,12 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
 }
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(textField: UITextField) {
+        print("ff")
         self.keyboard = true
     }
     func textFieldDidEndEditing(textField: UITextField) {
-        self.keyboard = false
+        print("enddd")
+        self.keyboard = true
     }
 }
 
@@ -300,6 +305,7 @@ extension RegisterViewController {
     func keyboardWillShow(notification: NSNotification) {
         if self.userType == "CleanPerson" && self.keyboard! {
             let height = getKeyboardHeight(notification) - 40
+            self.keyboardadmin = true
             if bo {
                 self.topLayout.active = false
                 if self.topLayout == nil {
@@ -314,7 +320,8 @@ extension RegisterViewController {
         self.view.endEditing(true)
     }
     func keyboardWillHide(notification: NSNotification) {
-        if self.userType == "CleanPerson" && self.keyboard! {
+        if (self.userType == "CleanPerson" && self.keyboard!) || (self.userType == "CleanPerson" && self.keyboardadmin! ){
+            self.keyboardadmin = false
             let height = getKeyboardHeight(notification) - 40
             if !bo {
                 view.frame.origin.y += height
@@ -346,6 +353,10 @@ extension RegisterViewController {
         return true
     }
    
+    func textViewShouldEndEditing(textView: UITextView) -> Bool {
+        self.keyboard = true
+        return true
+    }
    
     func textViewDidBeginEditing(textView: UITextView) {
         
@@ -355,7 +366,7 @@ extension RegisterViewController {
         }
     }
     
-    
+
     func textViewDidEndEditing(textView: UITextView) {
         print("didend")
         self.keyboard = false

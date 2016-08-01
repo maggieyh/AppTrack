@@ -56,7 +56,9 @@ class LogInViewController: UIViewController {
 
                 } else {
                     // The login failed. Check error to see why.
-                    let alertController = UIAlertController(title: "Fail!!", message: "Something wrong" , preferredStyle: UIAlertControllerStyle.Alert)
+                    let jsonData = error!.userInfo
+                    print(jsonData)
+                    let alertController = UIAlertController(title: "Fail!!", message: "Something wrong\n\(jsonData["error"]!)" , preferredStyle: UIAlertControllerStyle.Alert)
                     alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alertController, animated: true, completion: nil)
                 }

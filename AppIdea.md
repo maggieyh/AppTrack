@@ -384,3 +384,9 @@ https://github.com/layerhq/Layer-Parse-iOS-Example
 https://github.com/layerhq/Atlas-iOS
 https://developer.layer.com/docs/ios/integration#installation-and-setup
 https://github.com/jawwad/layer-quick-start-swift
+
+
+* master key: GdHRFMgTb2Wl5Yze4zoWYMLt4+CzgMjICF7a4tAbpAI=
+* appid: cleaning-yh
+* yaohsiao
+* nSQqKdMoIeFEK1I3

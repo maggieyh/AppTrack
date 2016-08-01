@@ -1,4 +1,6 @@
 PODS:
+  - Atlas (1.0.25):
+    - LayerKit (~> 0.22.0)
   - Bolts (1.7.0):
     - Bolts/AppLinks (= 1.7.0)
     - Bolts/Tasks (= 1.7.0)
@@ -15,6 +17,10 @@ PODS:
     - FBSDKCoreKit
   - FlatUIKit (1.6.2)
   - IHKeyboardAvoiding (2.6)
+  - LayerKit (0.22.0)
+  - Mixpanel (3.0.0):
+    - Mixpanel/Mixpanel (= 3.0.0)
+  - Mixpanel/Mixpanel (3.0.0)
   - OneSignal (1.13.3)
   - Parse (1.13.0):
     - Bolts/Tasks (~> 1.6)
@@ -27,20 +33,25 @@ PODS:
   - ParseUI (1.2.0):
     - Bolts/Tasks (~> 1.3)
     - Parse (~> 1.9)
+  - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
+  - Atlas
   - Bond (= 4.0.0)
   - ConvenienceKit
   - Cosmos (~> 1.2)
   - DropDown
   - FlatUIKit
   - IHKeyboardAvoiding
+  - Mixpanel
   - OneSignal
   - Parse
   - ParseFacebookUtilsV4
   - ParseUI
+  - SVProgressHUD
 
 SPEC CHECKSUMS:
+  Atlas: 6fdfdb6267231e6587c601ef1aa43808e739e25d
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   Bond: b729cdb22552def86efd4adfd8b8d93061eb4649
   ConvenienceKit: ba1ad8797897dc0d011676e961a2f3e9b270c841
@@ -50,11 +61,14 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4
   FlatUIKit: 1b41f0d4952ce8d970d8479ce79df54a960242c4
   IHKeyboardAvoiding: d2541ee56dad83e160cd9aed0468c52247af6f49
+  LayerKit: dc3f45305bd0d520e5a586247d93c6e03b803ccd
+  Mixpanel: ac92056ee35a961362513ba11049e67cffcaa1f1
   OneSignal: 434facae3389cb0d4d3fc57b9a6cf66db685205e
   Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
   ParseFacebookUtilsV4: 2f30c2b7021c8005d3042781da7ef87d06589421
   ParseUI: af2eba584799da4a9fbdac0e178662d7438b502e
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-PODFILE CHECKSUM: 96ae40e112c7e3d1068233483301b20b904719e8
+PODFILE CHECKSUM: cb91c9510df0aa88ba1a1703ea0b5b497bd7a4c4
 
 COCOAPODS: 1.0.1

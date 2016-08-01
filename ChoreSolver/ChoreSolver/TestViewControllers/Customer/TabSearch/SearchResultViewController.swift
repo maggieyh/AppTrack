@@ -57,7 +57,7 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
                 cell.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
                 cell.requestButton.enabled = false
             case 2:
-                cell.requestButton.setTitle("Request Sent", forState: UIControlState.Normal)
+                cell.requestButton.setTitle("Sent", forState: UIControlState.Normal)
                 cell.requestButton.enabled = false
             default:
                 cell.requestButton.enabled = true

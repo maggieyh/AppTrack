@@ -72,6 +72,7 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
 //        self.ratingView.settings.updateOnTouch = true
 //        self.ratingView.rating = self.cleanPerson!.reviewsAverage!.doubleValue
 //        self.ratingView.settings.fillMode = .Precise
@@ -107,6 +108,7 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
                 introductionTextView.text = ""
             }
             
+            print(stateOfRequest)
             if let value = stateOfRequest {
                 switch(value){
                 case 1:
