@@ -31,6 +31,7 @@ class SearchViewController: UIViewController {
         
         self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
         self.navigationController!.navigationBar.titleTextAttributes =  [ NSFontAttributeName: UIFont.systemFontOfSize(17, weight: UIFontWeightRegular) ]
+        
         // Do any additional setup after loading the view.
         self.countyPickerView.delegate = self
         self.countyPickerView.dataSource = self

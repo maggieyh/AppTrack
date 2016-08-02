@@ -20,7 +20,9 @@ class CustomerReqeustViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         self.requestTableView.estimatedRowHeight = 80.0
-        self.requestTableView.rowHeight = UITableViewAutomaticDimension
+        self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
+        self.navigationController!.navigationBar.titleTextAttributes =  [ NSFontAttributeName: UIFont.systemFontOfSize(17, weight: UIFontWeightRegular) ]
+//        self.requestTableView.rowHeight = UITableViewAutomaticDimension
     
     }
 
@@ -118,9 +120,12 @@ extension CustomerReqeustViewController: UITableViewDelegate, UITableViewDataSou
         cell.nameLabel.text = cleanPerson.username
         cell.hourRateLabel.text = ((cleanPerson["hourRate"] as? String) ?? "" ) + "$/hr"
         if request.agree.boolValue {
-            cell.stateLabel.text = "Contact Info Received, Contact " + cell.nameLabel.text! + "!"
+            cell.stateLabel.text = "Received"
+            cell.stateImage.image = UIImage(named: "received")
+            
         } else {
-            cell.stateLabel.text = "Request Sent, Wait for Response"
+            cell.stateLabel.text = "Wait.."
+            cell.stateImage.image = UIImage(named: "hourglass")
         }
 //        
 //        let reviewPoll = PFQuery(className: "ReviewsPoll")

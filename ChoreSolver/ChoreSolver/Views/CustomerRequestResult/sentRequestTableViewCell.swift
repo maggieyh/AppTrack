@@ -12,6 +12,7 @@ import Bond
 import ConvenienceKit
 class sentRequestTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var stateImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cleanPersonImage: UIImageView!
     @IBOutlet weak var stateLabel: UILabel!

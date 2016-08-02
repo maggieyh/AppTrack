@@ -13,6 +13,7 @@ import Foundation
 class SearchResultViewController: UIViewController, TimelineComponentTarget {
 
     
+    
 //    @IBOutlet weak var backToSearchBarButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     var activate: Bool = false
@@ -36,7 +37,6 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         // Do any additional setup after loading the view.
         SearchResultTableViewCell.stateCache = NSCacheSwift<String, Int?>()
         
@@ -57,8 +57,11 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
                 //agree
                 cell.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
                 cell.requestButton.enabled = false
+                cell.requestButton.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1.0)
+                cell.requestButton.layer.borderColor = UIColor.clearColor().CGColor
+                cell.requestButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             case 2:
-                cell.requestButton.setTitle("Request", forState: UIControlState.Normal)
+                cell.requestButton.setTitle("Requested", forState: UIControlState.Normal)
                 cell.requestButton.enabled = false
                 cell.requestButton.backgroundColor = UIColor(red: 34/255, green: 192/255, blue: 100/255, alpha: 1.0)
                 cell.requestButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
@@ -157,7 +160,7 @@ extension SearchResultViewController: searchResultDelegate {
 //        button.backgroundColor = UIColor.clearColor()
         button.layer.cornerRadius = 13
         button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.blackColor().CGColor
+//         button.layer.borderColor = UIColor.blackColor().CGColor
     }
 }
 

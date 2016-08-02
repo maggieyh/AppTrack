@@ -92,11 +92,11 @@ extension CleanPersonRequestViewController: UITableViewDataSource, UITableViewDe
         
         if requests[indexPath.row].agree.boolValue {
             cell.replyButton.hidden = true
-            cell.requestStateLabel.text = "Contact \(self.customer[indexPath.row].username!) to provide your service"
+            cell.requestStateLabel.text = "Contact to provide your service" //\(self.customer[indexPath.row].username!)
             cell.trailingConstraint.constant = 0
         } else {
             cell.replyButton.hidden = false
-            cell.requestStateLabel.text = "\(self.customer[indexPath.row].username!) sent a request for your contact!"
+            cell.requestStateLabel.text = "A request for your contact!" //\(self.customer[indexPath.row].username!) sent a 
             cell.trailingConstraint.constant = 60
         }
         cell.request = requests[indexPath.row]

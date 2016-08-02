@@ -53,11 +53,15 @@ class SearchResultTableViewCell: UITableViewCell {
                         //agree
                         self.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
                         self.requestButton.enabled = false
+                        self.requestButton.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1.0)
+                        self.requestButton.layer.borderColor = UIColor.clearColor().CGColor
+                        self.requestButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
                     case 2:
                         self.requestButton.setTitle("Requested", forState: UIControlState.Normal)
                         self.requestButton.enabled = false
                         self.requestButton.backgroundColor = UIColor(red: 34/255, green: 192/255, blue: 100/255, alpha: 1.0)
                         self.requestButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+                        self.requestButton.layer.borderColor = UIColor.clearColor().CGColor
                     default:
                         self.requestButton.enabled = true
                         
@@ -77,6 +81,7 @@ class SearchResultTableViewCell: UITableViewCell {
         self.requestButton.setTitle("Requested", forState: .Normal)
         self.requestButton.enabled = false
         self.delegate?.requestButtonTap(self.cleanPerson!)
+        self.requestButton.layer.borderColor = UIColor.clearColor().CGColor
         self.requestButton.backgroundColor = UIColor(red: 34/255, green: 192/255, blue: 100/255, alpha: 1.0)
         self.requestButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
 //
