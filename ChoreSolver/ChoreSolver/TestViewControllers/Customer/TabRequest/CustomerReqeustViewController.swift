@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import Mixpanel
 class CustomerReqeustViewController: UIViewController {
 
     var requests: [Request] = []
@@ -23,7 +24,10 @@ class CustomerReqeustViewController: UIViewController {
         self.navigationController!.navigationBar.barTintColor = UIColor.whiteColor()
         self.navigationController!.navigationBar.titleTextAttributes =  [ NSFontAttributeName: UIFont.systemFontOfSize(17, weight: UIFontWeightRegular) ]
 //        self.requestTableView.rowHeight = UITableViewAutomaticDimension
-    
+        let token = "8e1c066cd654c81cf568464c44181e91"
+        Mixpanel.sharedInstanceWithToken(token)
+        let mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("Request view")
     }
 
     @IBAction func unwindBackToRequestView(segue:UIStoryboardSegue) {

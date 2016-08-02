@@ -53,7 +53,7 @@ class User: PFUser {
                 imageFile?.getDataInBackgroundWithBlock({ (data: NSData?, error: NSError?) in
                     
                     if let data = data {
-                        let image = UIImage(data: data, scale: 0.5)!
+                        let image = UIImage(data: data, scale: 0.2)!
                         self.image.value = image
                         User.imageCache[self.imageFile!.name] = image
                     }

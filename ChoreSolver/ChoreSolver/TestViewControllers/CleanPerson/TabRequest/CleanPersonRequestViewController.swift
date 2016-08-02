@@ -8,17 +8,38 @@
 
 import UIKit
 import Parse
-class CleanPersonRequestViewController: UIViewController {
+import ConvenienceKit
+class CleanPersonRequestViewController: UIViewController, TimelineComponentTarget {
 
     @IBOutlet weak var requestTableView: UITableView!
     var requests: [Request] = []
     var customer: [User] = []
+    let defaultRange = 0...4
+    let additionalRangeSize = 5
+    var timelineComponent: TimelineComponent<User, CleanPersonRequestViewController>!
+    var tableView: UITableView!
+    func loadInRange(range: Range<Int>, completionBlock: ([User]?) -> Void) {
+        // 1
+        
+        let requestQuery = PFQuery(className: "Request")
+        requestQuery.whereKey("cleanPerson", equalTo: PFUser.currentUser()!)
+        requestQuery.includeKey("customer")
+        requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+            if let result = result {
+                
+                self.requests = result as! [Request]
+                self.customer = self.requests.map { $0.customer }
+                completionBlock(self.customer)
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tableView = self.requestTableView
         // Do any additional setup after loading the view.
         self.requestTableView.estimatedRowHeight = 80.0
         self.requestTableView.rowHeight = UITableViewAutomaticDimension
+        timelineComponent = TimelineComponent(target: self)
     }
 
     @IBAction func unwindBackToCleanPersonRequestView(segue:UIStoryboardSegue) {
@@ -49,18 +70,20 @@ class CleanPersonRequestViewController: UIViewController {
   
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let requestQuery = PFQuery(className: "Request")
-        requestQuery.whereKey("cleanPerson", equalTo: PFUser.currentUser()!)
-        requestQuery.includeKey("customer")
-        requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
-            if let result = result {
-                
-                self.requests = result as! [Request]
-                self.customer = self.requests.map { $0.customer }
-                self.requestTableView.reloadData()
-                print(self.requests.count)
-            }
-        }
+//        let requestQuery = PFQuery(className: "Request")
+//        requestQuery.whereKey("cleanPerson", equalTo: PFUser.currentUser()!)
+//        requestQuery.includeKey("customer")
+//        requestQuery.findObjectsInBackgroundWithBlock { (result: [PFObject]?, error: NSError?) in
+//            if let result = result {
+//                
+//                self.requests = result as! [Request]
+//                self.customer = self.requests.map { $0.customer }
+//                self.requestTableView.reloadData()
+//                print(self.requests.count)
+//            }
+        
+         timelineComponent.loadInitialIfRequired()
+//        }
         
     }
     /*
@@ -77,8 +100,13 @@ class CleanPersonRequestViewController: UIViewController {
 
 extension CleanPersonRequestViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        timelineComponent.targetWillDisplayEntry(indexPath.row)
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return requests.count
+//        return requests.count
+        return timelineComponent.content.count
     }
     
     

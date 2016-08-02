@@ -37,10 +37,10 @@
                                 </subviews>
                             </stackView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KdW-BX-IRc">
-                                <rect key="frame" x="0.0" y="208" width="600" height="234"/>
+                                <rect key="frame" x="0.0" y="208" width="600" height="200"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="234" id="dsg-fb-XgZ"/>
+                                    <constraint firstAttribute="height" constant="200" id="dsg-fb-XgZ"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="suA-Mf-64O" id="bv6-Au-Kn6"/>
@@ -48,7 +48,7 @@
                                 </connections>
                             </pickerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="0.025103048312883437" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.70980392156862748" green="0.90196078431372551" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="eTk-ql-GbT" firstAttribute="leading" secondItem="d6c-Rb-ltY" secondAttribute="leading" id="6I1-wD-sAq"/>
                             <constraint firstAttribute="trailing" secondItem="KdW-BX-IRc" secondAttribute="trailing" id="AFV-ef-zFc"/>

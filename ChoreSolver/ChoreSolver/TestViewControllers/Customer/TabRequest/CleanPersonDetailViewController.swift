@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import Bond
 import Cosmos
+import Mixpanel
 import ConvenienceKit
 class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
     var fromRequestView: Bool?
@@ -137,6 +138,11 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
             }
 
         }
+        
+        let token = "8e1c066cd654c81cf568464c44181e91"
+        Mixpanel.sharedInstanceWithToken(token)
+        let mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("CleanPerson detail")
     }
     
     override func viewDidAppear(animated: Bool) {

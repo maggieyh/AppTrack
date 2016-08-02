@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import ConvenienceKit
 import Foundation
+import Mixpanel
 class SearchResultViewController: UIViewController, TimelineComponentTarget {
 
     
@@ -111,7 +112,10 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
 //            
 //            self.searchResultTableView.reloadData()
 //        }
-        
+        let token = "8e1c066cd654c81cf568464c44181e91"
+        Mixpanel.sharedInstanceWithToken(token)
+        let mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("Search", properties: ["county": "\(self.selectedCounty!)"])
     }
 
     

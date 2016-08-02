@@ -9,6 +9,7 @@
 import UIKit
 import ConvenienceKit
 import Parse
+import Mixpanel
 class ReviewTableViewController: UIViewController, TimelineComponentTarget {
 
     let defaultRange = 5...9
@@ -24,6 +25,10 @@ class ReviewTableViewController: UIViewController, TimelineComponentTarget {
         // Do any additional setup after loading the view.
          timelineComponent = TimelineComponent(target: self)
         
+        let token = "8e1c066cd654c81cf568464c44181e91"
+        Mixpanel.sharedInstanceWithToken(token)
+        let mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("Reviews Table")
     }
 
     override func didReceiveMemoryWarning() {

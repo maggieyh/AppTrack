@@ -68,7 +68,7 @@ class CleanPersonProfileEditingViewController: UIViewController {
         photoTakingHelper = PhotoTakingHelper(viewController: self) { (image: UIImage?) in
             if let image = image {
                 self.imageView.image = image
-                guard let data = UIImageJPEGRepresentation(image, 0.5) else { return }
+                guard let data = UIImageJPEGRepresentation(image, 0.3) else { return }
                 
                 let user = PFUser.currentUser()!
                 user.setValue(PFFile(name: "\(user.objectId!).jpg", data: data), forKey: "imageFile")
@@ -175,7 +175,7 @@ class CleanPersonProfileEditingViewController: UIViewController {
             // 2
             imageFile?.getDataInBackgroundWithBlock { (data: NSData?, error: NSError?) -> Void in
                 if let data = data {
-                    let image = UIImage(data: data, scale:1.0)!
+                    let image = UIImage(data: data, scale: 0.4)!
                     // 3
                     self.image.value = image
                     self.imageView.image = self.image.value

@@ -9,6 +9,7 @@
 import UIKit
 import Cosmos
 import Parse
+import Mixpanel
 class ReviewPersonViewController: UIViewController, UITextViewDelegate {
     
     func hideKeyboardWhenTappedAround() {
@@ -79,6 +80,10 @@ class ReviewPersonViewController: UIViewController, UITextViewDelegate {
         self.reviewTextView.layer.borderWidth = 1
         self.reviewTextView.layer.borderColor = UIColor.whiteColor().CGColor
         
+        let token = "8e1c066cd654c81cf568464c44181e91"
+        Mixpanel.sharedInstanceWithToken(token)
+        let mixpanel = Mixpanel.sharedInstance()
+        mixpanel.track("Reviewing")
     }
     
     
