@@ -47,9 +47,10 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var navigationBarItem: UINavigationItem!
     @IBOutlet weak var nameLabel: UILabel!
     @IBAction func rightBarButtonTapped(sender: AnyObject) {
-        if self.rightBarButton.title == "Request" {
+        if self.rightBarButton.title == "詢問" {
             self.contactMethodTextView.hidden = false
-            self.contactMethodTextView.text = "Wait for \(self.nameLabel.text!)'s response"
+//            self.contactMethodTextView.text = "Wait for \(self.nameLabel.text!)'s response"
+            self.contactMethodTextView.text = "等待\(self.nameLabel.text!)的回覆"
             self.contactLabel.hidden = false
             self.navigationItem.rightBarButtonItem = nil
             self.stateOfRequest = 2
@@ -116,13 +117,16 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
                     //agree
                     let email = cleanPerson.email!
                     let phone = cleanPerson["phoneNumber"]! as! String
-                    let str = "Email addresss: " + email + "\nPhone number: " + phone
+//                    let str = "Email addresss: " + email + "\nPhone number: " + phone
+                     let str = "電子郵件: " + email + "\n電話: " + phone
                     contactMethodTextView.text = str
                     //review bar button
-                    self.rightBarButton.title = "Review"
+//                    self.rightBarButton.title = "Review"
+                     self.rightBarButton.title = "評價"
                 case 2:
                     //not yet respond
-                    contactMethodTextView.text = "Wait for \(nameLabel.text!)'s response"
+//                    contactMethodTextView.text = "Wait for \(nameLabel.text!)'s response"
+                    contactMethodTextView.text = "等待\(nameLabel.text!)的回覆"
                     //X
                     self.navigationItem.rightBarButtonItem = nil
                     
@@ -130,7 +134,7 @@ class CleanPersonDetailViewController: UIViewController, UITextViewDelegate {
                     contactMethodTextView.hidden = true
                     contactLabel.hidden = true
                      //request
-                    self.rightBarButton.title = "Request"
+                    self.rightBarButton.title = "詢問"
                 }
             } else {
                 contactMethodTextView.hidden = true

@@ -120,11 +120,11 @@ extension CleanPersonRequestViewController: UITableViewDataSource, UITableViewDe
         
         if requests[indexPath.row].agree.boolValue {
             cell.replyButton.hidden = true
-            cell.requestStateLabel.text = "Contact to provide your service" //\(self.customer[indexPath.row].username!)
+            cell.requestStateLabel.text = "聯繫顧客以提供您的服務!" //\(self.customer[indexPath.row].username!)
             cell.trailingConstraint.constant = 0
         } else {
             cell.replyButton.hidden = false
-            cell.requestStateLabel.text = "A request for your contact!" //\(self.customer[indexPath.row].username!) sent a 
+            cell.requestStateLabel.text = "一則希望聯繫您的詢問!" //\A request for your contact(self.customer[indexPath.row].username!) sent a
             cell.trailingConstraint.constant = 60
         }
         cell.request = requests[indexPath.row]
@@ -141,7 +141,7 @@ extension CleanPersonRequestViewController: tableViewCellNotificationDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
         let cell = self.requestTableView.cellForRowAtIndexPath(indexPath) as! cleanPersonRequestTableViewCell
         cell.replyButton.hidden = true
-        cell.requestStateLabel.text = "Contact \(self.customer[indexPath.row].username!) to provide your service"
+        cell.requestStateLabel.text = "聯繫 \(self.customer[indexPath.row].username!) 提供您的服務!"
         cell.trailingConstraint.constant = 0
     }
 }

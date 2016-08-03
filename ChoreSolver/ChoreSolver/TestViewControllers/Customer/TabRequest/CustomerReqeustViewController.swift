@@ -41,7 +41,8 @@ class CustomerReqeustViewController: UIViewController {
             if let indexPath = self.requestTableView.indexPathForSelectedRow {
                 cleanPersonDetailViewController.cleanPerson = requests[indexPath.row].cleanPerson
                 let str = cleanPersonDetailViewController.cleanPerson?.username
-                cleanPersonDetailViewController.navigationBarItem.title = str! + "'s profile"
+//                cleanPersonDetailViewController.navigationBarItem.title = str! + "'s profile"
+                cleanPersonDetailViewController.navigationBarItem.title = str! + "'的簡介"
                 if requests[indexPath.row].agree.boolValue {
                     print("in")
                     cleanPersonDetailViewController.stateOfRequest = 1 //agree
@@ -124,11 +125,11 @@ extension CustomerReqeustViewController: UITableViewDelegate, UITableViewDataSou
         cell.nameLabel.text = cleanPerson.username
         cell.hourRateLabel.text = ((cleanPerson["hourRate"] as? String) ?? "" ) + "$/hr"
         if request.agree.boolValue {
-            cell.stateLabel.text = "Received"
+            cell.stateLabel.text = "收到"//Received
             cell.stateImage.image = UIImage(named: "received")
             
         } else {
-            cell.stateLabel.text = "Wait.."
+            cell.stateLabel.text = "等待.."
             cell.stateImage.image = UIImage(named: "hourglass")
         }
 //        

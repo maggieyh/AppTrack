@@ -18,7 +18,7 @@ class CustomerProfileViewController: UIViewController {
         self.request?.agree = NSNumber(bool: true)
         self.request?.saveInBackground()
         
-        let alertController: UIAlertController = UIAlertController(title: "Send a message", message: "Anything you want to tell", preferredStyle: .Alert)
+        let alertController: UIAlertController = UIAlertController(title: "傳個訊息吧", message: "有任何事想詢問？", preferredStyle: .Alert)
         alertController.addTextFieldWithConfigurationHandler(nil)
         var message: UITextField?
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
@@ -30,7 +30,7 @@ class CustomerProfileViewController: UIViewController {
             let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
             
             if let customerOneSignalID = self.request!.customer.oneSignalID as? String {
-                let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [customerOneSignalID],"contents": ["en": "You recieved \(PFUser.currentUser()!.username!)'s info. Contact each other !!\n\(message!.text!)"]]
+                let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [customerOneSignalID],"contents": ["en": "You recieved \(PFUser.currentUser()!.username!)'s info. Contact each other !!\n\(message!.text!)","zh":"您收到\(PFUser.currentUser()!.username!)的聯繫方式. 聯絡對方吧 !!\n\(message!.text!)" ]]
                 
                 appDelegate!.oneSignal!.postNotification(jsonData)
             }
@@ -59,7 +59,7 @@ class CustomerProfileViewController: UIViewController {
         self.contactMethodTextView.editable = false
         let email = customer.email!
         let phone = customer.phoneNumber as! String
-        let str = "Email addresss: " + email + "\nPhone number: " + phone
+        let str = "電子郵件: " + email + "\n電話： " + phone
         self.contactMethodTextView.text = str
         
     }

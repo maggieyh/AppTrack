@@ -51,12 +51,14 @@ class CleanPersonProfileEditingViewController: UIViewController {
         if doubleTapped {
             self.state(true)
             
-            editBarButton.title = "Update"
+//            editBarButton.title = "Update"
+            editBarButton.title = "更新"
             doubleTapped = false
         } else {
             self.state(false)
             self.update()
-            editBarButton.title = "Edit"
+//            editBarButton.title = "Edit"
+             editBarButton.title = "編輯"
             doubleTapped = true
     
         }

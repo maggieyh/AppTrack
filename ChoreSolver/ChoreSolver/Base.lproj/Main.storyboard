@@ -22,14 +22,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eTk-ql-GbT">
                                 <rect key="frame" x="0.0" y="113" width="600" height="76"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Need Cleaning Service ?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1YQ-0K-uFV">
-                                        <rect key="frame" x="164" y="0.0" width="272" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="需要清潔服務?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1YQ-0K-uFV">
+                                        <rect key="frame" x="219" y="0.0" width="163" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Your County" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tte-Ob-Nbl">
-                                        <rect key="frame" x="210" y="50" width="180" height="26"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="選擇您的縣市" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tte-Ob-Nbl">
+                                        <rect key="frame" x="237" y="50" width="126" height="26"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -116,7 +116,7 @@
                                                         <constraint firstAttribute="width" constant="80" id="eA7-Zx-zPS"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <state key="normal" title="Request">
+                                                    <state key="normal" title="詢問">
                                                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
@@ -178,7 +178,7 @@
                             <constraint firstItem="gEq-qd-thP" firstAttribute="top" secondItem="Ecs-IX-Kaf" secondAttribute="bottom" id="muA-Mg-jqb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Search Result" id="vek-lN-neT">
+                    <navigationItem key="navigationItem" title="搜尋結果" id="vek-lN-neT">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="jVl-0N-yXU">
                             <connections>
                                 <segue destination="wHO-dY-De9" kind="unwind" unwindAction="unwindBackToSearchView:" id="3Of-rX-xfb"/>
@@ -373,7 +373,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="AIb-JN-9cU">
                                                 <rect key="frame" x="0.0" y="0.0" width="99" height="22"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Y6-gx-ocx">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名字:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Y6-gx-ocx">
                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="45" id="1AA-s6-KAf"/>
@@ -394,7 +394,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PkJ-bo-pol">
                                                 <rect key="frame" x="0.0" y="37" width="167" height="24"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hour Rate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9z-bV-WpD">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時薪:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9z-bV-WpD">
                                                         <rect key="frame" x="0.0" y="0.0" width="75" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="75" id="ZSz-A0-Yor"/>
@@ -412,8 +412,8 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Introduction:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugX-h7-TdR">
-                                                <rect key="frame" x="0.0" y="76" width="93" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="簡介:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugX-h7-TdR">
+                                                <rect key="frame" x="0.0" y="76" width="37" height="20"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -443,9 +443,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pwS-Pj-aIf">
-                                <rect key="frame" x="264" y="294" width="72" height="33"/>
+                                <rect key="frame" x="283" y="294" width="34" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="REVIEWS">
+                                <state key="normal" title="評價">
                                     <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -453,7 +453,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow" translatesAutoresizingMaskIntoConstraints="NO" id="eua-H1-E7L">
-                                <rect key="frame" x="344" y="301" width="16" height="19"/>
+                                <rect key="frame" x="325" y="301" width="16" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="19" id="fKf-Q2-qh5"/>
                                 </constraints>
@@ -482,7 +482,7 @@
                                 <action selector="backBarButtonTapped:" destination="DmH-vk-If5" id="szi-tL-11C"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Review" id="pXQ-1w-aqO">
+                        <barButtonItem key="rightBarButtonItem" title="評價" id="pXQ-1w-aqO">
                             <connections>
                                 <action selector="rightBarButtonTapped:" destination="DmH-vk-If5" id="gbC-zY-3Hf"/>
                             </connections>
@@ -509,7 +509,7 @@
             </objects>
             <point key="canvasLocation" x="2790" y="-866"/>
         </scene>
-        <!--Reviews-->
+        <!--評價-->
         <scene sceneID="3mg-G8-HJJ">
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="hVa-z0-Yey" customClass="ReviewTableViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
@@ -588,7 +588,7 @@
                             <constraint firstAttribute="trailing" secondItem="aFe-uX-HEb" secondAttribute="trailing" id="Xr6-Bu-cGK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Reviews" id="xWH-Mz-EVp">
+                    <navigationItem key="navigationItem" title="評價" id="xWH-Mz-EVp">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="urM-Fw-L2T">
                             <connections>
                                 <segue destination="ssG-0p-rmf" kind="unwind" unwindAction="unwindBackToCleanPersonDetailView:" id="ECY-xC-j1Z"/>
@@ -650,7 +650,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9X-a1-O6q">
                                 <rect key="frame" x="30" y="384" width="540" height="30"/>
                                 <color key="backgroundColor" red="0.70980392156862748" green="0.90196078431372551" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Submit">
+                                <state key="normal" title="提交">
                                     <color key="titleColor" red="0.070588235289999995" green="0.4039215686" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -743,7 +743,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Qg-bf-ZUd">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="電話" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Qg-bf-ZUd">
                                         <rect key="frame" x="0.0" y="150" width="500" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="TLF-Fe-pbQ"/>
@@ -751,7 +751,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hour Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yo1-OY-4tJ">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$/hr" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yo1-OY-4tJ">
                                         <rect key="frame" x="0.0" y="190" width="500" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="zJ7-D8-rQd"/>
@@ -775,12 +775,12 @@
                                     <constraint firstItem="Yg9-S3-7qV" firstAttribute="leading" secondItem="i6L-bM-CBc" secondAttribute="leading" id="mdF-pj-7LM"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTb-uM-fSj">
-                                <rect key="frame" x="230" y="454" width="141" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTb-uM-fSj">
+                                <rect key="frame" x="256" y="454" width="90" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="LIA-Ds-MG0"/>
                                 </constraints>
-                                <state key="normal" title="Choose Your County"/>
+                                <state key="normal" title="選擇您的縣市"/>
                                 <connections>
                                     <action selector="chooseCounty:" destination="3bZ-Vn-37C" eventType="touchDown" id="2yR-20-MZn"/>
                                     <action selector="chooseCountyTapped:" destination="oma-3N-B0B" eventType="touchDown" id="Gpc-s7-h9B"/>
@@ -935,7 +935,7 @@
                             <constraint firstItem="URJ-jr-TFw" firstAttribute="top" secondItem="v2o-7O-Tfl" secondAttribute="bottom" id="nTx-ZU-pMr"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Request" id="2TM-kK-H12"/>
+                    <navigationItem key="navigationItem" title="詢問" id="2TM-kK-H12"/>
                     <connections>
                         <outlet property="requestTableView" destination="URJ-jr-TFw" id="hge-Hr-0Je"/>
                     </connections>
@@ -944,7 +944,7 @@
             </objects>
             <point key="canvasLocation" x="2081" y="-2336"/>
         </scene>
-        <!--Customer Profile-->
+        <!--顧客訊息-->
         <scene sceneID="PZl-RS-cMa">
             <objects>
                 <viewController id="kSi-Og-QQz" customClass="CustomerProfileViewController" customModule="ChoreSolver" customModuleProvider="target" sceneMemberID="viewController">
@@ -982,8 +982,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="fMa-Fd-uw1">
                                 <rect key="frame" x="20" y="254" width="560" height="149"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contact Method: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F55-HJ-gVz">
-                                        <rect key="frame" x="0.0" y="0.0" width="134" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="聯繫方式: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F55-HJ-gVz">
+                                        <rect key="frame" x="0.0" y="0.0" width="78" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="ls4-iE-tzf"/>
                                         </constraints>
@@ -1016,13 +1016,13 @@
                             <constraint firstItem="Arb-BS-yu1" firstAttribute="centerX" secondItem="qLa-iG-Svd" secondAttribute="centerX" id="y5k-CB-T7b"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Customer Profile" id="fNW-zQ-BCh">
+                    <navigationItem key="navigationItem" title="顧客訊息" id="fNW-zQ-BCh">
                         <barButtonItem key="leftBarButtonItem" title="Back" id="KqA-Iv-ZCT">
                             <connections>
                                 <segue destination="LnW-KO-9RR" kind="unwind" unwindAction="unwindBackToCleanPersonRequestView:" id="M4b-pp-4yh"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Reply" id="1D9-Dg-Vig">
+                        <barButtonItem key="rightBarButtonItem" title="回覆" id="1D9-Dg-Vig">
                             <connections>
                                 <action selector="replyButtonTapped:" destination="kSi-Og-QQz" id="Cgc-j2-jrz"/>
                             </connections>
@@ -1058,11 +1058,11 @@
             </objects>
             <point key="canvasLocation" x="547" y="-1275"/>
         </scene>
-        <!--Search-->
+        <!--搜尋-->
         <scene sceneID="jLs-iH-c5G">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zod-oR-4g4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="search" id="E3g-Mh-PqC"/>
+                    <tabBarItem key="tabBarItem" title="搜尋" image="search" id="E3g-Mh-PqC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x5S-jF-rIc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1077,11 +1077,11 @@
             </objects>
             <point key="canvasLocation" x="1361" y="-1574"/>
         </scene>
-        <!--Request-->
+        <!--詢問-->
         <scene sceneID="M9Y-dY-7R3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cLb-4m-0RC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Request" image="request" id="vHP-KK-M8W"/>
+                    <tabBarItem key="tabBarItem" title="詢問" image="request" id="vHP-KK-M8W"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="r0r-dU-UO8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1114,11 +1114,11 @@
             </objects>
             <point key="canvasLocation" x="547" y="-2751"/>
         </scene>
-        <!--Request-->
+        <!--詢問-->
         <scene sceneID="pnW-Rs-WEy">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kiE-0O-k62" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Request" image="receivedRequest" id="iVE-4J-6AC"/>
+                    <tabBarItem key="tabBarItem" title="詢問" image="receivedRequest" id="iVE-4J-6AC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XVA-Ye-Au6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1149,7 +1149,7 @@
                                 <rect key="frame" x="25" y="110" width="550" height="205"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FuD-0p-1yG">
-                                        <rect key="frame" x="168" y="0.0" width="214" height="60"/>
+                                        <rect key="frame" x="203" y="0.0" width="145" height="60"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="3hL-Lb-bqy">
                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
@@ -1164,8 +1164,8 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8a-9c-EMB">
-                                                <rect key="frame" x="70" y="0.0" width="144" height="60"/>
-                                                <state key="normal" title="Choose profile photo"/>
+                                                <rect key="frame" x="70" y="0.0" width="75" height="60"/>
+                                                <state key="normal" title="選張照片吧"/>
                                                 <connections>
                                                     <action selector="choosePhotoTapped:" destination="3bZ-Vn-37C" eventType="touchDown" id="FIH-MO-b17"/>
                                                 </connections>
@@ -1175,12 +1175,12 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" restorationIdentifier="Customer Stack View" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="pS5-9X-ilg" userLabel="General Info Stack View">
                                         <rect key="frame" x="0.0" y="70" width="550" height="135"/>
                                         <subviews>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="krl-pK-GIb">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="帳號名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="krl-pK-GIb">
                                                 <rect key="frame" x="0.0" y="0.0" width="550" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Passwod" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7p7-3M-WUE">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7p7-3M-WUE">
                                                 <rect key="frame" x="0.0" y="35" width="550" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -1190,7 +1190,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZJS-0i-aMK">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="電話" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZJS-0i-aMK">
                                                 <rect key="frame" x="0.0" y="105" width="550" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -1212,20 +1212,20 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="mZx-Qg-VF0">
                                 <rect key="frame" x="75" y="30" width="451" height="65"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up as:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKy-I1-Yzv">
-                                        <rect key="frame" x="183" y="0.0" width="86" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="註冊成為:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKy-I1-Yzv">
+                                        <rect key="frame" x="191" y="0.0" width="69" height="20"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bKw-0u-9aE">
-                                        <rect key="frame" x="131" y="30" width="189" height="36"/>
+                                        <rect key="frame" x="172" y="30" width="107" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="fWs-HN-zeV"/>
                                         </constraints>
                                         <segments>
-                                            <segment title="Customer"/>
-                                            <segment title="Clean Person"/>
+                                            <segment title="顧客"/>
+                                            <segment title="清潔員"/>
                                         </segments>
                                         <connections>
                                             <action selector="userTypeToggled:" destination="3bZ-Vn-37C" eventType="valueChanged" id="L0k-LU-U1D"/>
@@ -1233,9 +1233,9 @@
                                     </segmentedControl>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2B-8n-mLh">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2B-8n-mLh">
                                 <rect key="frame" x="538" y="30" width="37" height="30"/>
-                                <state key="normal" title="Done"/>
+                                <state key="normal" title="完成"/>
                                 <connections>
                                     <action selector="doneTapped:" destination="3bZ-Vn-37C" eventType="touchDown" id="mRg-dh-1D0"/>
                                 </connections>
@@ -1252,14 +1252,14 @@
                                     <outlet property="delegate" destination="3bZ-Vn-37C" id="67g-Be-9V2"/>
                                 </connections>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l92-gg-i9p">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l92-gg-i9p">
                                 <rect key="frame" x="230" y="501" width="141" height="30"/>
-                                <state key="normal" title="Choose Your County"/>
+                                <state key="normal" title="選擇您的縣市"/>
                                 <connections>
                                     <action selector="chooseCounty:" destination="3bZ-Vn-37C" eventType="touchDown" id="U12-YL-24X"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hour Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aJi-Q9-Nlf">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="$/hr" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aJi-Q9-Nlf">
                                 <rect key="frame" x="25" y="323" width="550" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="jWg-aJ-NFf"/>
@@ -1267,9 +1267,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3F-dP-Zpm">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3F-dP-Zpm">
                                 <rect key="frame" x="15" y="30" width="48" height="30"/>
-                                <state key="normal" title="Cancel"/>
+                                <state key="normal" title="取消"/>
                                 <connections>
                                     <segue destination="1Nn-J2-psl" kind="unwind" unwindAction="unwindBackToLogInView:" id="uab-DM-2SK"/>
                                 </connections>
@@ -1369,7 +1369,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Kt9-i3-xMh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Log In">
+                                <state key="normal" title="登入">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="default">
@@ -1388,7 +1388,7 @@
                                     <constraint firstAttribute="width" constant="100" id="ORO-Pi-LUD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Sign Up">
+                                <state key="normal" title="註冊">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -1425,11 +1425,11 @@
             </objects>
             <point key="canvasLocation" x="-773" y="-2241"/>
         </scene>
-        <!--Profile-->
+        <!--簡介-->
         <scene sceneID="f8s-7D-29A">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p0z-cF-LnI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="0qg-wL-IOg"/>
+                    <tabBarItem key="tabBarItem" title="簡介" image="profile" id="0qg-wL-IOg"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="6p8-Q8-8TC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1456,6 +1456,6 @@
         <image name="user" width="626" height="626"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MQO-sq-OWD"/>
+        <segue reference="o9i-bz-S5k"/>
     </inferredMetricsTieBreakers>
 </document>

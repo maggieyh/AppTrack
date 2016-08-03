@@ -28,7 +28,7 @@ class ReviewPersonViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var reviewTextView: UITextView!
     @IBAction func submitButtonTapped(sender: AnyObject) {
         
-        if reviewTextView.text != "Review to support \(self.cleanPerson!.username!)!" &&  reviewTextView.text != "" {
+        if reviewTextView.text != "評價\(self.cleanPerson!.username!)的服務!" &&  reviewTextView.text != "" {
             self.submitButton.enabled = false
             let num = starRating.rating as NSNumber
             self.submitButton.enabled = false
@@ -54,7 +54,7 @@ class ReviewPersonViewController: UIViewController, UITextViewDelegate {
             self.performSegueWithIdentifier("unwindBackToCleanPersonDetailView", sender: self)
             
         } else {
-            let alertController = UIAlertController(title: "Something wrong", message: "you haven't typed in any review", preferredStyle: UIAlertControllerStyle.Alert)
+            let alertController = UIAlertController(title: "Something wrong", message: "您尚未輸入評價", preferredStyle: UIAlertControllerStyle.Alert)
             let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil)
             alertController.view.layoutIfNeeded()
             alertController.addAction(okAction)
@@ -72,7 +72,7 @@ class ReviewPersonViewController: UIViewController, UITextViewDelegate {
         starRating.settings.fillMode = .Full
         self.reviewTextView.delegate = self
         
-        self.reviewTextView.text = "Review to support \(self.cleanPerson!.username!)!"
+        self.reviewTextView.text = "評價\(self.cleanPerson!.username!)的服務!"
         self.reviewTextView.textColor = UIColor.lightGrayColor()
         self.hideKeyboardWhenTappedAround()
         
@@ -114,7 +114,7 @@ class ReviewPersonViewController: UIViewController, UITextViewDelegate {
     func textViewDidEndEditing(textView: UITextView) {
         print("ddd")
         if textView.text.isEmpty {
-            textView.text = "Review to support \(self.cleanPerson!.username!)!"
+            textView.text = "評價\(self.cleanPerson!.username!)的服務!"
             textView.textColor = UIColor.lightGrayColor()
         }
     }

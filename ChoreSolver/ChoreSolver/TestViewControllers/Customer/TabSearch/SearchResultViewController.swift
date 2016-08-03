@@ -56,13 +56,13 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
             switch(value){
             case 1:
                 //agree
-                cell.requestButton.setTitle("Contact!", forState: UIControlState.Normal)
+                cell.requestButton.setTitle("聯繫!", forState: UIControlState.Normal)
                 cell.requestButton.enabled = false
                 cell.requestButton.backgroundColor = UIColor(red: 245/255, green: 166/255, blue: 35/255, alpha: 1.0)
                 cell.requestButton.layer.borderColor = UIColor.clearColor().CGColor
                 cell.requestButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
             case 2:
-                cell.requestButton.setTitle("Requested", forState: UIControlState.Normal)
+                cell.requestButton.setTitle("已詢問", forState: UIControlState.Normal)
                 cell.requestButton.enabled = false
                 cell.requestButton.backgroundColor = UIColor(red: 34/255, green: 192/255, blue: 100/255, alpha: 1.0)
                 cell.requestButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
@@ -88,7 +88,7 @@ class SearchResultViewController: UIViewController, TimelineComponentTarget {
                 let cell = self.tableView.cellForRowAtIndexPath(indexPath) as! SearchResultTableViewCell
                 cleanPersonDetailViewController.stateOfRequest = cell.stateRequest.value
                 let str = cell.cleanPerson?.username!
-                cleanPersonDetailViewController.navigationBarItem.title =  str! + "'s profile"
+                cleanPersonDetailViewController.navigationBarItem.title =  str! + "的簡介"
                 self.tableView.deselectRowAtIndexPath(indexPath, animated:true)
             }
         }

@@ -12,14 +12,14 @@ import Parse
 class FeatureHelper {
     
     static func postNotification(viewController: UIViewController, oneSignal: OneSignal, cleanPerson: User){
-        let alertController: UIAlertController = UIAlertController(title: "Send a message", message: "Anything you want to tell", preferredStyle: .Alert)
+        let alertController: UIAlertController = UIAlertController(title: "傳個訊息吧", message: "有任何事想詢問？", preferredStyle: .Alert)
         alertController.addTextFieldWithConfigurationHandler(nil)
         var message: UITextField?
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
                 message = (alertController.textFields?.first)!
                 let customerName = PFUser.currentUser()?.username!
                 if let cleanPersonOneSignalID = cleanPerson.oneSignalID as? String {
-                    var text = "\(customerName!) sent a request for your contact info! Reply \(customerName!)! \n"
+                    var text = "\(customerName!)希望聯繫您! 回覆\(customerName!)以傳送您的聯繫方式! \n"
                     if let message = message?.text {
                         text = text + message
                     }

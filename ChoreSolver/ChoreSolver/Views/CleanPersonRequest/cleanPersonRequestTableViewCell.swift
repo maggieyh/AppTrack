@@ -36,7 +36,8 @@ class cleanPersonRequestTableViewCell: UITableViewCell {
         self.request?.agree = NSNumber(bool: true)
         self.request?.saveInBackground()
         
-        let alertController: UIAlertController = UIAlertController(title: "Send a message", message: "Anything you want to tell", preferredStyle: .Alert)
+//        let alertController: UIAlertController = UIAlertController(title: "Send a message", message: "Anything you want to tell", preferredStyle: .Alert)
+        let alertController: UIAlertController = UIAlertController(title: "傳個訊息吧", message: "有任何事要詢問？", preferredStyle: .Alert)
         alertController.addTextFieldWithConfigurationHandler(nil)
         var message: UITextField?
         alertController.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
@@ -48,7 +49,7 @@ class cleanPersonRequestTableViewCell: UITableViewCell {
                 let appDelegate = UIApplication.sharedApplication().delegate as? AppDelegate
                 
                 if let customerOneSignalID = self.customer!.oneSignalID as? String {
-                    let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [customerOneSignalID],"contents": ["en": "You recieved \(PFUser.currentUser()!.username!)'s info. Contact each other !!\n\(message!.text!)"]]
+                    let jsonData = ["app_id": "6f185136-e88e-4421-84b2-f8e681c0da7e","include_player_ids": [customerOneSignalID],"contents": ["en": "You recieved \(PFUser.currentUser()!.username!)'s info. Contact each other !!\n\(message!.text!)","zh": "您收到\(PFUser.currentUser()!.username!)的聯絡方式! 聯繫對方吧!\n\(message!.text!)"]]
                     
                     appDelegate!.oneSignal!.postNotification(jsonData)
                 }

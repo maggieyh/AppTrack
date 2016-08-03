@@ -71,7 +71,8 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
     }
 
     func alert() {
-        let alertController = UIAlertController(title: "Some Fields are not completed", message: "Please comlete text fields and upload your picture!", preferredStyle: UIAlertControllerStyle.Alert)
+//        let alertController = UIAlertController(title: "Some Fields are not completed", message: "Please comlete text fields and upload your picture!", preferredStyle: UIAlertControllerStyle.Alert)
+        let alertController = UIAlertController(title: "有部份未完成!", message: "請完成以下表單並上傳您的照片!", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }
@@ -256,10 +257,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate {
         countyDropDown.bottomOffset = CGPoint(x: 0, y: countyButton.bounds.height)
         
         // You can also use localizationKeysDataSource instead. Check the docs.
-        countyDropDown.dataSource = [
-            "Changhua County", "Chiayi City", "Chiayi County","Hsinchu City","Hsinchu County", "Hualien County", "Kaohsiung City", "Keelung City", "Kinmen County", "Lienchiang County", "Miaoli County", "Nantou County", "New Taipei City", "Penghu County", "Pingtung County", "Taichung City", "Tainan City", "Taipei City", "Taitung County", "Taoyuan City", "Yilan County", "Yunlin County"
-        ]
-        
+        countyDropDown.dataSource = Data.counties
         // Action triggered on selection
         countyDropDown.selectionAction = { [unowned self] (index, item) in
             self.countyButton.setTitle(item, forState: .Normal)
@@ -371,7 +369,7 @@ extension RegisterViewController {
         print("didend")
         self.keyboard = false
         if textView.text.isEmpty {
-            textView.text = "Introduce Yourself"
+            textView.text = "自我介紹!"
             textView.textColor = UIColor.lightGrayColor()
         }
     }
