@@ -622,7 +622,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yao.ChoreSolver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "18784e4b-f923-4d52-a08f-dbf810ff63a9";
 				SWIFT_OBJC_BRIDGING_HEADER = "ChoreSolver/ChoreSolver-Bridging-Header.h";
 			};
 			name = Debug;
@@ -638,7 +638,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yao.ChoreSolver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "18784e4b-f923-4d52-a08f-dbf810ff63a9";
 				SWIFT_OBJC_BRIDGING_HEADER = "ChoreSolver/ChoreSolver-Bridging-Header.h";
 			};
 			name = Release;

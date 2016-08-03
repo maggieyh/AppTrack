@@ -28,7 +28,7 @@
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="選擇您的縣市" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tte-Ob-Nbl">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="選擇您的縣市" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tte-Ob-Nbl">
                                         <rect key="frame" x="237" y="50" width="126" height="26"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -775,8 +775,8 @@
                                     <constraint firstItem="Yg9-S3-7qV" firstAttribute="leading" secondItem="i6L-bM-CBc" secondAttribute="leading" id="mdF-pj-7LM"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTb-uM-fSj">
-                                <rect key="frame" x="256" y="454" width="90" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTb-uM-fSj">
+                                <rect key="frame" x="255" y="454" width="90" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="LIA-Ds-MG0"/>
                                 </constraints>
@@ -982,7 +982,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="fMa-Fd-uw1">
                                 <rect key="frame" x="20" y="254" width="560" height="149"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="聯繫方式: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F55-HJ-gVz">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="聯繫方式: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F55-HJ-gVz">
                                         <rect key="frame" x="0.0" y="0.0" width="78" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="ls4-iE-tzf"/>
@@ -1233,8 +1233,8 @@
                                     </segmentedControl>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2B-8n-mLh">
-                                <rect key="frame" x="538" y="30" width="37" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c2B-8n-mLh">
+                                <rect key="frame" x="545" y="30" width="30" height="30"/>
                                 <state key="normal" title="完成"/>
                                 <connections>
                                     <action selector="doneTapped:" destination="3bZ-Vn-37C" eventType="touchDown" id="mRg-dh-1D0"/>
@@ -1252,8 +1252,8 @@
                                     <outlet property="delegate" destination="3bZ-Vn-37C" id="67g-Be-9V2"/>
                                 </connections>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l92-gg-i9p">
-                                <rect key="frame" x="230" y="501" width="141" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l92-gg-i9p">
+                                <rect key="frame" x="255" y="501" width="90" height="30"/>
                                 <state key="normal" title="選擇您的縣市"/>
                                 <connections>
                                     <action selector="chooseCounty:" destination="3bZ-Vn-37C" eventType="touchDown" id="U12-YL-24X"/>
@@ -1267,8 +1267,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3F-dP-Zpm">
-                                <rect key="frame" x="15" y="30" width="48" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3F-dP-Zpm">
+                                <rect key="frame" x="33" y="30" width="30" height="30"/>
                                 <state key="normal" title="取消"/>
                                 <connections>
                                     <segue destination="1Nn-J2-psl" kind="unwind" unwindAction="unwindBackToLogInView:" id="uab-DM-2SK"/>
