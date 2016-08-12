@@ -16,7 +16,6 @@ target 'ChoreSolver' do
   pod ‘FlatUIKit’
   pod ‘OneSignal’
   pod ‘Cosmos’, ‘~> 1.2’
-  pod 'Atlas'
   pod 'SVProgressHUD'
   pod ‘Mixpanel’
 end

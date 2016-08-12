@@ -445,7 +445,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		C1B008B16B8DB10504E6DA21 /* [CP] Embed Pods Frameworks */ = {
@@ -616,13 +616,13 @@
 			baseConfigurationReference = 4C26C908E74100B9CB8DBBFC /* Pods-ChoreSolver.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = ChoreSolver/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yao.ChoreSolver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "18784e4b-f923-4d52-a08f-dbf810ff63a9";
+				PROVISIONING_PROFILE = "2009b937-baa7-4185-915d-074239dce6f9";
 				SWIFT_OBJC_BRIDGING_HEADER = "ChoreSolver/ChoreSolver-Bridging-Header.h";
 			};
 			name = Debug;
@@ -632,13 +632,13 @@
 			baseConfigurationReference = F6A184FD2700C9E36EE66331 /* Pods-ChoreSolver.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = ChoreSolver/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yao.ChoreSolver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "18784e4b-f923-4d52-a08f-dbf810ff63a9";
+				PROVISIONING_PROFILE = "2009b937-baa7-4185-915d-074239dce6f9";
 				SWIFT_OBJC_BRIDGING_HEADER = "ChoreSolver/ChoreSolver-Bridging-Header.h";
 			};
 			name = Release;
