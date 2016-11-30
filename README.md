@@ -1,4 +1,4 @@
-# AppTrack
+# Chore Solver
  Chore Solver is cleaning service platform which connects the customers and cleaning person directly.
 Built a Parse database on Heroku.com, and created an iOS app using customized log in/ sign up pages, remote push notification, Sketch design. 
 
